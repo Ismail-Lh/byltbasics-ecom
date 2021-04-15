@@ -4,9 +4,9 @@ const SearchIcon = () => {
       aria-hidden='true'
       focusable='false'
       role='presentation'
-      class='icon icon-search'
+      className='icon icon-search'
       viewBox='0 0 19 18'
-      tabindex='-1'
+      tabIndex='-1'
       disabled='disabled'
       clickable='false'>
       <path

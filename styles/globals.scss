@@ -12,18 +12,24 @@ html {
 
 body {
   font-family: $primary-font-family;
+  background-color: $white-color;
 }
 
 a {
-  color: $black-color;
+  color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
   list-style: none;
 }
 
+// img {
+//   width: 100%;
+// }
+
 .container {
-  max-width: 110rem;
+  max-width: 125rem;
   margin: 0 auto;
 }
