@@ -34,7 +34,38 @@ input {
   outline: none;
 }
 
+svg {
+  width: 2.5em;
+  height: 2.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
 .container {
   max-width: 125rem;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    max-width: 98rem;
+  }
+
+  @media (max-width: 980px) {
+    max-width: 92rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 72rem;
+  }
+
+  @media (max-width: 425px) {
+    max-width: 39rem;
+  }
+
+  @media (max-width: 375px) {
+    max-width: 35rem;
+  }
+
+  @media (max-width: 320px) {
+    max-width: 30rem;
+  }
 }

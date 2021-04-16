@@ -3,13 +3,17 @@
 .navbar {
   &__list {
     display: flex;
+
+    @media (max-width: 980px) {
+      display: none;
+    }
   }
 
   &__links {
     a {
       display: inline-block;
       text-transform: uppercase;
-      padding: 2.8rem 2.5rem;
+      padding: 2rem 2.5rem;
       font-size: $sm-size-3;
       font-weight: $semi-bold;
       border-bottom: 2px solid transparent;
@@ -18,6 +22,18 @@
       &:hover {
         border-bottom: 2px solid $venice-blue-color;
       }
+
+      @media (max-width: 1024px) {
+        padding: 2rem 1.4rem;
+      }
+    }
+  }
+}
+
+.menu {
+  &__icon {
+    @media (min-width: 979px) {
+      display: none;
     }
   }
 }

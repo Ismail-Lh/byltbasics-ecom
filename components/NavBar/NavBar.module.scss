@@ -6,4 +6,8 @@
   align-items: center;
   justify-content: center;
   color: $valhalla-color;
+
+  @media (max-width: 980px) {
+    padding: 1rem 0;
+  }
 }
