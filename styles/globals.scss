@@ -25,9 +25,14 @@ ul {
   list-style: none;
 }
 
-// img {
-//   width: 100%;
-// }
+button {
+  background: transparent;
+  border: 0;
+}
+
+input {
+  outline: none;
+}
 
 .container {
   max-width: 125rem;

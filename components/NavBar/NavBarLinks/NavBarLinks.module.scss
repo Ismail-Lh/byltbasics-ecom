@@ -1,0 +1,23 @@
+@use '../../../styles/variables' as *;
+
+.navbar {
+  &__list {
+    display: flex;
+  }
+
+  &__links {
+    a {
+      display: inline-block;
+      text-transform: uppercase;
+      padding: 2.8rem 2.5rem;
+      font-size: $sm-size-3;
+      font-weight: $semi-bold;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        border-bottom: 2px solid $venice-blue-color;
+      }
+    }
+  }
+}

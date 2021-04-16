@@ -5,43 +5,5 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
-  font-size: $sm-size-3;
   color: $valhalla-color;
-
-  &__list {
-    display: flex;
-  }
-
-  &__items {
-    text-transform: uppercase;
-    padding: 2.8rem 2.5rem;
-    font-weight: $bold;
-  }
-
-  &__icons {
-    display: flex;
-    justify-content: flex-end;
-
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
-
-    svg {
-      width: 2.5rem;
-      height: 2.5rem;
-      cursor: pointer;
-
-      &:not(:last-of-type) {
-        margin-right: 2rem;
-      }
-    }
-  }
-}
-
-.logo {
-  justify-self: center;
-
-  &__img {
-    width: 13rem;
-  }
 }
