@@ -1,0 +1,10 @@
+@use '../../../styles/variables' as *;
+
+.hero {
+  &__title {
+    text-transform: uppercase;
+    font-size: $xl-size-1;
+    margin-bottom: 2rem;
+    width: min-content;
+  }
+}

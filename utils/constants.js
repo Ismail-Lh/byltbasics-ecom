@@ -14,3 +14,33 @@ export const Icons = [
   { id: uuidv4(), icon: <LoginIcon />, route: 'account/login' },
   { id: uuidv4(), icon: <CartIcon /> },
 ];
+
+export const HeroData = [
+  {
+    title: 'the spring collection',
+    subtitle: 'Newly Refreshed. Refined Comfort.',
+    imgUrl: '/assets/hero-1.jpg',
+    position: 'right',
+    color: '#fff',
+    route: '/collections/spring-collection',
+    id: uuidv4(),
+  },
+  // {
+  //   title: 'performance collection',
+  //   subtitle: 'pushing the limit',
+  //   imgUrl: '/assets/hero-2.jpg',
+  //   id: uuidv4(),
+  // },
+  // {
+  //   title: 'step into premium',
+  //   subtitle: 'introducing the everyday shoe',
+  //   imgUrl: '/assets/hero-3.jpg',
+  //   id: uuidv4(),
+  // },
+  // {
+  //   title: 'new in stock hooded henleys',
+  //   subtitle: "it's time to earn your stripes",
+  //   imgUrl: '/assets/hero-3.jpg',
+  //   id: uuidv4(),
+  // },
+];
