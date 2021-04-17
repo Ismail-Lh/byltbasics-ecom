@@ -32,8 +32,9 @@
 
 .menu {
   &__icon {
-    @media (min-width: 979px) {
-      display: none;
+    display: none;
+    @media (max-width: 980px) {
+      display: block;
     }
   }
 }

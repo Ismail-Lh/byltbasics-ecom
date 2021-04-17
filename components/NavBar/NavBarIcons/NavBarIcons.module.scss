@@ -19,10 +19,11 @@
     }
 
     &_2 {
+      display: none;
       text-align: end;
 
-      @media (min-width: 979px) {
-        display: none;
+      @media (max-width: 980px) {
+        display: block;
       }
     }
   }
