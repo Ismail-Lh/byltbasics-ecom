@@ -74,3 +74,38 @@ h1 {
     max-width: 30rem;
   }
 }
+
+// Hero Slider
+.hero {
+  &__slide {
+    height: calc(100vh - 5.9rem);
+  }
+}
+
+.arrow {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: $white-color;
+  cursor: pointer;
+
+  &:hover {
+    fill: $valhalla-color;
+  }
+
+  &__left {
+    left: 5px;
+  }
+
+  &__right {
+    left: auto;
+    right: 5px;
+  }
+
+  &__disabled {
+    fill: rgba(255, 255, 255, 0.5);
+  }
+}
