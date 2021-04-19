@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
+import classes from './HeroSection.module.scss';
 import { HeroData } from '../../utils/constants';
 import { HeroImage } from '../../components';
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
@@ -39,23 +40,33 @@ const HeroSection = () => {
       if (!pause && slider) {
         slider.next();
       }
-    }, 3000);
+    }, 1000000);
     return () => {
       clearInterval(timer.current);
     };
   }, [pause, slider]);
 
   return (
-    <div>
+    <div className={classes.hero__section}>
       <div ref={sliderRef} className='keen-slider'>
         {HeroData.map(
-          ({ id, title, subtitle, imgUrl, color, route, position }) => (
+          ({
+            id,
+            title,
+            subtitle,
+            imgUrlDesktop,
+            imgUrlMobile,
+            color,
+            route,
+            position,
+          }) => (
             <div className='keen-slider__slide hero__slide' key={id}>
               <HeroImage
                 key={id}
                 title={title}
                 subtitle={subtitle}
-                imgUrl={imgUrl}
+                imgUrlDesktop={imgUrlDesktop}
+                imgUrlMobile={imgUrlMobile}
                 position={position}
                 color={color}
                 route={route}
@@ -65,7 +76,7 @@ const HeroSection = () => {
         )}
       </div>
       {slider && (
-        <div>
+        <div className='arrows'>
           <ArrowLeftIcon
             onClick={e => e.stopPropagation() || slider.prev()}
             disabled={currentSlide === 0}

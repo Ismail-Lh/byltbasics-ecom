@@ -1,48 +1,41 @@
-import classes from './HeroImage.module.scss';
-
 import HeroTitle from '../HeroTitle/HeroTitle';
 import HeroSubtitle from '../HeroSubtitle/HeroSubtitle';
 
 import { Button } from '../../../components';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
-const HeroImage = ({ title, subtitle, imgUrl, position, color, route }) => {
+const HeroImage = ({
+  title,
+  subtitle,
+  imgUrlDesktop,
+  imgUrlMobile,
+  position,
+  color,
+  route,
+}) => {
+  const { width } = useWindowDimensions();
+
   const backgroundImage = {
-    backgroundImage: `url(${imgUrl})`,
+    backgroundImage: `${
+      width >= 700 ? `url(${imgUrlDesktop})` : `url(${imgUrlMobile})`
+    }`,
   };
 
   const positionStyle = p => {
-    let styles;
+    let CLASS_NAME;
 
-    if (p === 'right') {
-      styles = {
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        paddingRight: '8rem',
-      };
-    }
+    if (p === 'right') CLASS_NAME = 'hero__content-right';
 
-    if (p === 'left') {
-      styles = {
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        paddingLeft: '8rem',
-      };
-    }
+    if (p === 'left') CLASS_NAME = 'hero__content-left';
 
-    if (p === 'center') {
-      styles = {
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-      };
-    }
+    if (p === 'center') CLASS_NAME = 'hero__content-center';
 
-    return styles;
+    return CLASS_NAME;
   };
 
   return (
-    <div className={classes.hero__image} style={backgroundImage}>
-      <div className={classes.hero__content} style={positionStyle(position)}>
+    <div className='hero__image' style={backgroundImage}>
+      <div className={positionStyle(position)}>
         <HeroSubtitle subtitle={subtitle} color={color} />
 
         <HeroTitle title={title} color={color} />

@@ -62,6 +62,18 @@ h1 {
     max-width: 72rem;
   }
 
+  @media (max-width: 700px) {
+    max-width: 65rem;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 54rem;
+  }
+
+  @media (max-width: 500px) {
+    max-width: 44rem;
+  }
+
   @media (max-width: 425px) {
     max-width: 39rem;
   }
@@ -71,7 +83,60 @@ h1 {
   }
 
   @media (max-width: 320px) {
-    max-width: 30rem;
+    max-width: 29rem;
+  }
+}
+
+// Hero Image styles
+.hero {
+  &__image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__content {
+    &-right,
+    &-left,
+    &-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
+      @media (max-width: 700px) {
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 4rem;
+      }
+    }
+
+    &-right {
+      align-items: flex-end;
+      padding-right: 8rem;
+
+      @media (max-width: 700px) {
+        align-items: center;
+        padding-right: 0;
+      }
+    }
+
+    &-left {
+      align-items: flex-start;
+      padding-left: 8rem;
+
+      @media (max-width: 700px) {
+        align-items: center;
+        padding-left: 0;
+      }
+    }
+
+    &-center {
+      align-items: center;
+      text-align: center;
+    }
   }
 }
 
@@ -79,6 +144,26 @@ h1 {
 .hero {
   &__slide {
     height: calc(100vh - 5.9rem);
+
+    @media (max-width: 700px) {
+      height: calc(110rem - 5.9rem);
+    }
+
+    @media (max-width: 600px) {
+      height: calc(100rem - 5.9rem);
+    }
+
+    @media (max-width: 500px) {
+      height: calc(90rem - 5.9rem);
+    }
+
+    @media (max-width: 425px) {
+      height: calc(80rem - 5.9rem);
+    }
+
+    @media (max-width: 375px) {
+      height: calc(70rem - 5.9rem);
+    }
   }
 }
 
