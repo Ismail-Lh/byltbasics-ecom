@@ -1,0 +1,9 @@
+.products {
+  &__category {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2rem;
+    height: 25rem;
+  }
+}

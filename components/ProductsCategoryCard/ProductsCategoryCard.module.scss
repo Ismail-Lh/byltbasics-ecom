@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 2rem;
+
+  &__title {
+    color: $white-color;
+    font-size: $md-size-1;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+}

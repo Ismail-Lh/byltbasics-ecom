@@ -1,11 +1,10 @@
-import classes from './HomePageContainer.module.scss';
-
-import { HeroSection } from '../../sections';
+import { HeroSection, ProductsCategorySection } from '../../sections';
 
 const HomePageContainer = () => {
   return (
     <div>
       <HeroSection />
+      <ProductsCategorySection />
     </div>
   );
 };

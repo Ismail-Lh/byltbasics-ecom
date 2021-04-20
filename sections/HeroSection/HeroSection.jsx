@@ -40,7 +40,7 @@ const HeroSection = () => {
       if (!pause && slider) {
         slider.next();
       }
-    }, 1000000);
+    }, 3000);
     return () => {
       clearInterval(timer.current);
     };

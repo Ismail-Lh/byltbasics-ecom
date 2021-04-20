@@ -6,3 +6,6 @@ export { default as NavBar } from './NavBar/NavBar';
 
 // Hero
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';
+
+// Products Category
+export { default as ProductsCategoryCard } from './ProductsCategoryCard/ProductsCategoryCard';

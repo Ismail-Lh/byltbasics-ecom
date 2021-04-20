@@ -19,8 +19,8 @@ export const HeroData = [
   {
     title: 'the spring collection',
     subtitle: 'Newly Refreshed. Refined Comfort.',
-    imgUrlDesktop: '/assets/hero-1.jpg',
-    imgUrlMobile: '/assets/hero-1-mobile.jpg',
+    imgUrlDesktop: 'hero-1.jpg',
+    imgUrlMobile: 'hero-1-mobile.jpg',
     position: 'right',
     color: '#fff',
     route: '/collections/spring-collection',
@@ -29,8 +29,8 @@ export const HeroData = [
   {
     title: 'performance collection',
     subtitle: 'pushing the limits',
-    imgUrlDesktop: '/assets/hero-2.jpg',
-    imgUrlMobile: '/assets/hero-2-mobile.jpg',
+    imgUrlDesktop: 'hero-2.jpg',
+    imgUrlMobile: 'hero-2-mobile.jpg',
     position: 'center',
     color: '#fff',
     route: '/collections/performance-collection',
@@ -39,21 +39,48 @@ export const HeroData = [
   {
     title: 'step into premium',
     subtitle: 'introducing: the everyday shoe',
-    imgUrlDesktop: '/assets/hero-3.jpg',
-    imgUrlMobile: '/assets/hero-3-mobile.jpg',
+    imgUrlDesktop: 'hero-3.jpg',
+    imgUrlMobile: 'hero-3-mobile.jpg',
     position: 'left',
     color: '#25293b',
-    route: '/collections/everyday-shoes',
+    route: '/products/everyday-shoes',
     id: uuidv4(),
   },
   {
     title: 'new in stock hooded henleys',
     subtitle: "it's time to earn your stripes",
-    imgUrlDesktop: '/assets/hero-4.jpg',
-    imgUrlMobile: '/assets/hero-4-mobile.jpg',
+    imgUrlDesktop: 'hero-4.jpg',
+    imgUrlMobile: 'hero-4-mobile.jpg',
     position: 'center',
     color: '#000',
-    route: '/collections/hooded-henleys',
+    route: '/products/drop-cut-lux-hooded-henley',
+    id: uuidv4(),
+  },
+];
+
+export const ProductsCategoryData = [
+  {
+    category: 'long sleeves',
+    imgUrl: '/assets/long-sleeves.jpg',
+    route: '/collections/long-sleeves',
+    id: uuidv4(),
+  },
+  {
+    category: 'board shorts',
+    imgUrl: '/assets/board-shorts.jpg',
+    route: '/products/coastal-board-shorts',
+    id: uuidv4(),
+  },
+  {
+    category: 'tanks',
+    imgUrl: '/assets/tanks.jpg',
+    route: '/collections/tanks',
+    id: uuidv4(),
+  },
+  {
+    category: 'weekender shorts',
+    imgUrl: '/assets/weekender-shorts.jpg',
+    route: '/products/weekender-shorts',
     id: uuidv4(),
   },
 ];
