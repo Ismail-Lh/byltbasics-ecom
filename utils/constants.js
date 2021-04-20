@@ -58,7 +58,7 @@ export const HeroData = [
   },
 ];
 
-export const ProductsCategoryData = [
+export const ProductsCategoryData_1 = [
   {
     category: 'long sleeves',
     imgUrl: '/assets/long-sleeves.jpg',
@@ -81,6 +81,39 @@ export const ProductsCategoryData = [
     category: 'weekender shorts',
     imgUrl: '/assets/weekender-shorts.jpg',
     route: '/products/weekender-shorts',
+    id: uuidv4(),
+  },
+];
+
+export const ProductsCategoryData_2 = [
+  {
+    category: 'drop-cuts',
+    imgUrl: '/assets/drop-cuts.jpg',
+    route: '/collections/drop-cuts',
+    id: uuidv4(),
+  },
+  {
+    category: 'split helms',
+    imgUrl: '/assets/split-helms.jpg',
+    route: '/products/lux-basic-crew-split-hem',
+    id: uuidv4(),
+  },
+  {
+    category: 'v-neck',
+    imgUrl: '/assets/v-neck.jpg',
+    route: '/collections/v-neck',
+    id: uuidv4(),
+  },
+  {
+    category: 'henleys',
+    imgUrl: '/assets/henley.jpg',
+    route: '/collections/henley',
+    id: uuidv4(),
+  },
+  {
+    category: 'tanks',
+    imgUrl: '/assets/tanks-2.jpg',
+    route: '/collections/tanks',
     id: uuidv4(),
   },
 ];

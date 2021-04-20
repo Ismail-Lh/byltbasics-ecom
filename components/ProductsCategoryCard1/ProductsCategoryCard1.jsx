@@ -1,8 +1,8 @@
-import classes from './ProductsCategoryCard.module.scss';
+import classes from './ProductsCategoryCard1.module.scss';
 
-import { Button } from '../../components';
+import { Button } from '..';
 
-const ProductsCategoryCard = ({ category, imgUrl, route }) => {
+const ProductsCategoryCardV1 = ({ category, imgUrl, route }) => {
   return (
     <div className={classes.card} style={{ backgroundImage: `url(${imgUrl})` }}>
       <h3 className={classes.card__title}>{category}</h3>
@@ -13,4 +13,4 @@ const ProductsCategoryCard = ({ category, imgUrl, route }) => {
   );
 };
 
-export default ProductsCategoryCard;
+export default ProductsCategoryCardV1;

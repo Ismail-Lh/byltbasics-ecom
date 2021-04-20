@@ -8,4 +8,5 @@ export { default as NavBar } from './NavBar/NavBar';
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';
 
 // Products Category
-export { default as ProductsCategoryCard } from './ProductsCategoryCard/ProductsCategoryCard';
+export { default as ProductsCategoryCard1 } from './ProductsCategoryCard1/ProductsCategoryCard1';
+export { default as ProductsCategoryCard2 } from './ProductsCategoryCard2/ProductsCategoryCard2';
