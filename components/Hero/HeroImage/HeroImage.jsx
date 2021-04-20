@@ -1,8 +1,9 @@
+import { Wrapper } from './HeroImageStyles';
+
 import HeroTitle from '../HeroTitle/HeroTitle';
 import HeroSubtitle from '../HeroSubtitle/HeroSubtitle';
 
 import { Button } from '../../../components';
-import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const HeroImage = ({
   title,
@@ -13,14 +14,6 @@ const HeroImage = ({
   color,
   route,
 }) => {
-  const { width } = useWindowDimensions();
-
-  const backgroundImage = {
-    backgroundImage: `${
-      width >= 700 ? `url(${imgUrlDesktop})` : `url(${imgUrlMobile})`
-    }`,
-  };
-
   const positionStyle = p => {
     let CLASS_NAME;
 
@@ -34,7 +27,7 @@ const HeroImage = ({
   };
 
   return (
-    <div className='hero__image' style={backgroundImage}>
+    <Wrapper imgUrlDesktop={imgUrlDesktop} imgUrlMobile={imgUrlMobile}>
       <div className={positionStyle(position)}>
         <HeroSubtitle subtitle={subtitle} color={color} />
 
@@ -44,7 +37,7 @@ const HeroImage = ({
           shop now
         </Button>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
