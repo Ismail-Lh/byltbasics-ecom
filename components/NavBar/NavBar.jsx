@@ -6,15 +6,17 @@ import NavBarLogo from './NavBarLogo/NavBarLogo';
 
 const NavBar = () => {
   return (
-    <div className='container'>
-      <nav className={classes.navbar}>
-        <NavBarLinks />
+    <nav className={classes.navbar}>
+      <div className='container'>
+        <div className={classes.navbar__items}>
+          <NavBarLinks />
 
-        <NavBarLogo />
+          <NavBarLogo />
 
-        <NavBarIcons />
-      </nav>
-    </div>
+          <NavBarIcons />
+        </div>
+      </div>
+    </nav>
   );
 };
 

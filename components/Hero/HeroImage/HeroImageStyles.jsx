@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
   width: 100%;
 
   @media (max-width: 700px) {

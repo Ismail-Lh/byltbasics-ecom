@@ -138,23 +138,23 @@ h1 {
     height: calc(100vh - 5.9rem);
 
     @media (max-width: 700px) {
-      height: calc(110rem - 5.9rem);
+      height: calc(110rem - 10rem);
     }
 
     @media (max-width: 600px) {
-      height: calc(100rem - 5.9rem);
+      height: calc(100rem - 10rem);
     }
 
     @media (max-width: 500px) {
-      height: calc(90rem - 5.9rem);
+      height: calc(90rem - 10rem);
     }
 
     @media (max-width: 425px) {
-      height: calc(80rem - 5.9rem);
+      height: calc(80rem - 10rem);
     }
 
     @media (max-width: 375px) {
-      height: calc(70rem - 5.9rem);
+      height: calc(70rem - 5.2rem);
     }
   }
 }

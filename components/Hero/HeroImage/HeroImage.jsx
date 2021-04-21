@@ -27,7 +27,10 @@ const HeroImage = ({
   };
 
   return (
-    <Wrapper imgUrlDesktop={imgUrlDesktop} imgUrlMobile={imgUrlMobile}>
+    <Wrapper
+      imgUrlDesktop={imgUrlDesktop}
+      imgUrlMobile={imgUrlMobile}
+      className='hero__slide'>
       <div className={positionStyle(position)}>
         <HeroSubtitle subtitle={subtitle} color={color} />
 

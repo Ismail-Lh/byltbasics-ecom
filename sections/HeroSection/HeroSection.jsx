@@ -60,7 +60,7 @@ const HeroSection = () => {
             route,
             position,
           }) => (
-            <div className='keen-slider__slide hero__slide' key={id}>
+            <div className='keen-slider__slide ' key={id}>
               <HeroImage
                 key={id}
                 title={title}
