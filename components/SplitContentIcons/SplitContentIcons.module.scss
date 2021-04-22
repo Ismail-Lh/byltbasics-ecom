@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+
+.split {
+  &__content {
+    &_icons {
+      margin-top: 2rem;
+    }
+
+    &_icon {
+      display: flex;
+      align-items: center;
+
+      &:not(:last-of-type) {
+        margin-bottom: 2rem;
+      }
+
+      svg {
+        margin-right: 2rem;
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      span {
+        font-size: $sm-size-2;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

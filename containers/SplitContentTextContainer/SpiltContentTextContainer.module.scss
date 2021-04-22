@@ -6,6 +6,20 @@
       background-color: $valhalla-color;
       padding: 4rem;
       color: $white-color;
+
+      a {
+        text-transform: uppercase;
+        font-size: $sm-size-2;
+        color: $light-grey-color;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease-in;
+
+        &:hover {
+          color: $white-color;
+          border-bottom: 2px solid $light-grey-color;
+        }
+      }
     }
   }
 }

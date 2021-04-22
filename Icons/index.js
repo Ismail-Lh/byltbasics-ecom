@@ -5,3 +5,6 @@ export { default as SearchIcon } from './SearchIcon';
 export { default as MenuIcon } from './MenuIcon';
 export { default as ArrowLeftIcon } from './ArrowLeftIcon';
 export { default as ArrowRightIcon } from './ArrowRightIcon';
+export { default as WrinkleIcon } from './WrinkleIcon';
+export { default as ShrinkIcon } from './ShrinkIcon';
+export { default as AthleticIcon } from './AthleticIcon';

@@ -12,4 +12,5 @@ export { default as ProductsCategoryCard1 } from './ProductsCategoryCard1/Produc
 export { default as ProductsCategoryCard2 } from './ProductsCategoryCard2/ProductsCategoryCard2';
 
 // Split Content Section
-export { default as SplitContentTitle } from './SplitContentTitle/SplitContentTitle';
+export { default as SplitContentText } from './SplitContentText/SplitContentText';
+export { default as SplitContentIcons } from './SplitContentIcons/SplitContentIcons';

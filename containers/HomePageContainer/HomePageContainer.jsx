@@ -39,6 +39,7 @@ const HomePageContainer = () => {
           title='basics to last a lifetime'
           text='Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear.'
           isTextFirst={true}
+          route='/pages/bylt-apparel-sizing-guide'
         />
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
       </SplitContentSection>

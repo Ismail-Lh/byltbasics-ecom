@@ -1,11 +1,13 @@
 import classes from './SpiltContentTextContainer.module.scss';
 
-import { SplitContentTitle } from '../../components';
+import { SplitContentText, MyLink, SplitContentIcons } from '../../components';
 
-const SplitContentTextContainer = ({ title, text, isTextFirst }) => {
+const SplitContentTextContainer = ({ title, text, isTextFirst, route }) => {
   return (
     <div className={classes.split__content_text}>
-      <SplitContentTitle title={title} />
+      <SplitContentText title={title} text={text} />
+      <MyLink route={route}>load more</MyLink>
+      <SplitContentIcons isTextFirst={isTextFirst} />
     </div>
   );
 };

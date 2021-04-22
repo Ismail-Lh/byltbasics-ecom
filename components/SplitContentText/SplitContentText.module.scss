@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+
+.split__content {
+  &_title {
+    text-transform: uppercase;
+    font-size: $lg-size;
+    font-weight: $semi-bold;
+    position: relative;
+    margin-bottom: 4.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1.5rem;
+      width: 37%;
+      height: 5px;
+      background-color: $venice-blue-color;
+    }
+  }
+
+  &_text {
+    font-size: $sm-size-2;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+}
