@@ -15,6 +15,15 @@ const HomePageContainer = () => {
         imgUrlDesktop='hero-5.jpg'
         imgUrlMobile='hero-5-mobile.jpg'
       />
+      <HeroImage
+        title='snow wash collection'
+        subtitle='vintage grade. custom made.'
+        position='center'
+        color='#fff'
+        route='/collections/snow-wash'
+        imgUrlDesktop='hero-6.jpg'
+        imgUrlMobile='hero-6-mobile.jpg'
+      />
     </div>
   );
 };
