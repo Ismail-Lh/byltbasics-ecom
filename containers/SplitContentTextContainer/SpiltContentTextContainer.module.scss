@@ -1,0 +1,11 @@
+@use '../../styles/variables' as *;
+
+.split {
+  &__content {
+    &_text {
+      background-color: $valhalla-color;
+      padding: 4rem;
+      color: $white-color;
+    }
+  }
+}
