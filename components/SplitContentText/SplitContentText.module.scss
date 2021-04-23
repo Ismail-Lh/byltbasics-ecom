@@ -23,5 +23,9 @@
     font-size: $sm-size-2;
     line-height: 1.5;
     margin-bottom: 1.5rem;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
   }
 }
