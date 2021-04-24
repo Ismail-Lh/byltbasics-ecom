@@ -12,6 +12,10 @@
         place-content: center;
       }
 
+      @media (max-width: 425px) {
+        padding: 3rem;
+      }
+
       a {
         text-transform: uppercase;
         font-size: $sm-size-2;

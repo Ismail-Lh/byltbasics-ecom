@@ -4,7 +4,7 @@ const AthleticIcon = () => {
       aria-hidden='true'
       focusable='false'
       role='presentation'
-      class='icon icon-athletic'
+      className='icon icon-athletic'
       viewBox='0 0 28 27'>
       <path
         fill='#FFF'

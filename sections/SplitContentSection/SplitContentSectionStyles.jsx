@@ -11,20 +11,20 @@ export const Wrapper = styled.div`
     grid-template-rows: 60rem 50rem;
     height: auto;
 
-    div:first-of-type {
-      order: 2;
+    div:first-child {
+      order: ${props => props.order};
     }
   }
 
   @media (max-width: 768px) {
-    grid-template-rows: repeat(2, 50rem);
+    grid-template-rows: 50rem auto;
   }
 
   @media (max-width: 425px) {
-    grid-template-rows: 25rem 50rem;
+    grid-template-rows: 25rem auto;
   }
 
   @media (max-width: 320px) {
-    grid-template-rows: 20rem 50rem;
+    grid-template-rows: 20rem auto;
   }
 `;

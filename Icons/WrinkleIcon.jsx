@@ -4,7 +4,7 @@ const WrinkleIcon = () => {
       aria-hidden='true'
       focusable='false'
       role='presentation'
-      class='icon icon-wrinkle'
+      className='icon icon-wrinkle'
       viewBox='0 0 35 27'>
       <path
         fill='#FFF'

@@ -34,7 +34,7 @@ const HomePageContainer = () => {
         imgUrlMobile='hero-6-mobile.jpg'
       />
 
-      <SplitContentSection isTextFirst={true}>
+      <SplitContentSection isTextFirst={true} order='2'>
         <SplitContentTextContainer
           title='basics to last a lifetime'
           text='Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear.'
@@ -42,6 +42,16 @@ const HomePageContainer = () => {
           route='/pages/bylt-apparel-sizing-guide'
         />
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
+      </SplitContentSection>
+
+      <SplitContentSection isTextFirst={false} order='-1'>
+        <SplitContentImageContainer imgUrl='/assets/split-content-img-2.jpg' />
+        <SplitContentTextContainer
+          title='give $10, get $10'
+          text='Give your friends $10 off their first purchase and get $10 in points when they spend $50 or more.'
+          isTextFirst={false}
+          route='/pages/rewards'
+        />
       </SplitContentSection>
     </div>
   );
