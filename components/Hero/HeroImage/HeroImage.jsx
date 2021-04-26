@@ -17,11 +17,11 @@ const HeroImage = ({
   const positionStyle = p => {
     let CLASS_NAME;
 
-    if (p === 'right') CLASS_NAME = 'hero__content-right';
+    if (p === 'right') CLASS_NAME = 'hero__content hero__content-right';
 
-    if (p === 'left') CLASS_NAME = 'hero__content-left';
+    if (p === 'left') CLASS_NAME = 'hero__content hero__content-left';
 
-    if (p === 'center') CLASS_NAME = 'hero__content-center';
+    if (p === 'center') CLASS_NAME = 'hero__content hero__content-center';
 
     return CLASS_NAME;
   };

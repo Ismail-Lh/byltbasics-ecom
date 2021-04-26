@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
   width: 100%;
 
   @media (max-width: 700px) {
-    background-image: ${props => `url(/assets/${props.imgUrlMobile})`};
+    background-image: ${props =>
+      props.imgUrlMobile
+        ? `url(/assets/${props.imgUrlMobile})`
+        : `url(/assets/${props.imgUrlDesktop})`};
   }
 `;

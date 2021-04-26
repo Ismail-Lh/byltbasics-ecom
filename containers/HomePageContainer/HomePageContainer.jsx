@@ -1,6 +1,7 @@
 import { HeroImage } from '../../components';
 import {
   HeroSection,
+  ImagesGridSection,
   ProductsCategorySection,
   SplitContentSection,
 } from '../../sections';
@@ -43,6 +44,8 @@ const HomePageContainer = () => {
         />
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
       </SplitContentSection>
+
+      <ImagesGridSection />
 
       <SplitContentSection isTextFirst={false} order='-1'>
         <SplitContentImageContainer imgUrl='/assets/split-content-img-2.jpg' />
