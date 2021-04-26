@@ -14,3 +14,7 @@ export { default as ProductsCategoryCard2 } from './ProductsCategoryCard2/Produc
 // Split Content Section
 export { default as SplitContentText } from './SplitContentText/SplitContentText';
 export { default as SplitContentIcons } from './SplitContentIcons/SplitContentIcons';
+
+// Footer Section
+export { default as FooterFormText } from './FooterFormText/FooterFormText';
+export { default as FooterFormInput } from './FooterFormInput/FooterFormInput';

@@ -5,3 +5,5 @@ export { default as ProductsCategorySection } from './ProductsCategroySection/Pr
 export { default as SplitContentSection } from './SplitContentSection/SplitContentSection';
 
 export { default as ImagesGridSection } from './ImagesGridSection/ImagesGridSection';
+
+export { default as FooterSection } from './FooterSection/FooterSection';

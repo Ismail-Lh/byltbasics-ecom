@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 3rem 0;
+    background-color: $valhalla-color;
+    color: $white-color;
+    padding: 6rem 0;
+  }
+}

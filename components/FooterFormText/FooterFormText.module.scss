@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  &__form {
+    &_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h1,
+      h2 {
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: $xl-size-2;
+        margin-top: 1rem;
+      }
+
+      h2 {
+        font-size: $md-size-1;
+      }
+    }
+  }
+}

@@ -3,3 +3,5 @@ export { default as HomePageContainer } from './HomePageContainer/HomePageContai
 export { default as SplitContentTextContainer } from './SplitContentTextContainer/SplitContentTextContainer';
 
 export { default as SplitContentImageContainer } from './SplitContentImageContainer/SplitContentImageContainer';
+
+export { default as FooterFormContainer } from './FooterFormContainer/FooterFormContainer';
