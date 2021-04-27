@@ -9,8 +9,8 @@ const FooterFormInput = () => {
       <form className={classes.form}>
         <input
           type='text'
-          placeholder='Email Address'
-          className={classes.form__input}
+          placeholder='Email address'
+          className={classes.form__ipt}
         />
         <button type='submit' className={classes.form__btn}>
           submit
