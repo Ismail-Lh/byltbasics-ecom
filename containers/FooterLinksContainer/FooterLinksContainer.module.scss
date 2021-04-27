@@ -6,11 +6,29 @@
     margin: 4rem 0;
     padding: 0 2rem;
 
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 375px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
     &_1 {
       img {
         display: block;
         margin-bottom: 2rem;
         max-width: 18rem;
+
+        @media (max-width: 375px) {
+          display: none;
+        }
       }
 
       a {

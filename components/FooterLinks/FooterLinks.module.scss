@@ -6,7 +6,9 @@
       font-size: $sm-size-3;
       font-weight: $semi-bold;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+      }
 
       a {
         color: $black-color;
