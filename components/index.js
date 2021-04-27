@@ -18,3 +18,4 @@ export { default as SplitContentIcons } from './SplitContentIcons/SplitContentIc
 // Footer Section
 export { default as FooterFormText } from './FooterFormText/FooterFormText';
 export { default as FooterFormInput } from './FooterFormInput/FooterFormInput';
+export { default as FooterLinks } from './FooterLinks/FooterLinks';

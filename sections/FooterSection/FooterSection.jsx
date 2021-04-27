@@ -1,11 +1,12 @@
 import classes from './FooterSection.module.scss';
 
-import { FooterFormContainer } from '../../containers';
+import { FooterFormContainer, FooterLinksContainer } from '../../containers';
 
 const FooterSection = () => {
   return (
     <div className='container'>
       <FooterFormContainer />
+      <FooterLinksContainer />
     </div>
   );
 };

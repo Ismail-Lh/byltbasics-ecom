@@ -1,0 +1,26 @@
+.footer {
+  &__links {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    gap: 2.5rem;
+    margin: 4rem 0;
+    padding: 0 2rem;
+
+    &_1 {
+      img {
+        display: block;
+        margin-bottom: 2rem;
+        max-width: 18rem;
+      }
+
+      a {
+        margin-right: 1rem;
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+}

@@ -10,3 +10,5 @@ export { default as ShrinkIcon } from './ShrinkIcon';
 export { default as AthleticIcon } from './AthleticIcon';
 export { default as FriendsIcon } from './FriendsIcon';
 export { default as MoneyIcon } from './MoneyIcon';
+export { default as FacebookIcon } from './FacebookIcon';
+export { default as InstagramIcon } from './InstagramIcon';

@@ -5,3 +5,5 @@ export { default as SplitContentTextContainer } from './SplitContentTextContaine
 export { default as SplitContentImageContainer } from './SplitContentImageContainer/SplitContentImageContainer';
 
 export { default as FooterFormContainer } from './FooterFormContainer/FooterFormContainer';
+
+export { default as FooterLinksContainer } from './FooterLinksContainer/FooterLinksContainer';

@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  &__list {
+    li {
+      font-size: $sm-size-3;
+      font-weight: $semi-bold;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+
+      a {
+        color: $black-color;
+        transition: all 0.2s ease-in;
+
+        &:hover {
+          color: $venice-blue-color;
+        }
+      }
+    }
+  }
+}
