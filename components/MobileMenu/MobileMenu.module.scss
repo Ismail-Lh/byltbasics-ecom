@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.mobile {
+  &__menu {
+    &_show {
+      width: 50%;
+      height: 100%;
+      background-color: $white-color;
+      padding: 4rem 2rem;
+      animation: showMenu 0.3s linear;
+    }
+
+    &_hide {
+      animation: hideMenu 0.3s linear;
+    }
+
+    &_icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      svg {
+        &:first-of-type {
+          height: 1.9rem;
+          width: 1.9rem;
+        }
+      }
+    }
+
+    &_form {
+      width: 100%;
+      position: relative;
+
+      input {
+        width: 100%;
+        padding: 1rem 2rem;
+        text-transform: capitalize;
+        font-size: $sm-size-2;
+        border: 2px solid $valhalla-color;
+      }
+
+      svg {
+        position: absolute;
+        right: 1.5rem;
+        top: 1rem;
+        width: 2.5rem;
+      }
+    }
+  }
+}
+
+@keyframes showMenu {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hideMenu {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+} ;

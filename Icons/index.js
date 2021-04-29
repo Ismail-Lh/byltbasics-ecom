@@ -3,6 +3,7 @@ export { default as ContactIcon } from './ContactIcon';
 export { default as LoginIcon } from './LoginIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as MenuIcon } from './MenuIcon';
+export { default as CloseIcon } from './CloseIcon';
 export { default as ArrowLeftIcon } from './ArrowLeftIcon';
 export { default as ArrowRightIcon } from './ArrowRightIcon';
 export { default as WrinkleIcon } from './WrinkleIcon';

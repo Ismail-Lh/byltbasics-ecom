@@ -1,8 +1,10 @@
 export { default as MyLink } from './MyLink/MyLink';
 export { default as Button } from './Button/Button';
+export { default as Overlay } from './Overlay/Overlay';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';
+export { default as MobileMenu } from './MobileMenu/MobileMenu';
 
 // Hero Section
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';

@@ -3,8 +3,9 @@ import classes from './NavBarLinks.module.scss';
 
 import { NavbarLinks } from '../../../utils/constants';
 import { MenuIcon } from '../../../Icons';
+import { MobileMenu } from '../..';
 
-const NavBarLinks = () => {
+const NavBarLinks = ({ openMenu }) => {
   return (
     <>
       <ul className={classes.navbar__list}>
@@ -15,7 +16,7 @@ const NavBarLinks = () => {
         ))}
       </ul>
       <div className={classes.menu__icon}>
-        <MenuIcon />
+        <MenuIcon openMenu={openMenu} />
       </div>
     </>
   );
