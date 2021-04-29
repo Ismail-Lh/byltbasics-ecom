@@ -45,6 +45,17 @@ const FooterLinksContainer = () => {
           ]}
         />
       </div>
+      <div className={classes.footer__copyright}>
+        <p className={classes.footer__copyright_1}>
+          COPYRIGHT © 2021, BYLT BASICS. ALL RIGHTS RESERVED.
+        </p>
+        <p className={classes.footer__copyright_2}>
+          DEVELOPED BY{' '}
+          <MyLink route='https://twitter.com/lhbibe_ismail'>
+            ISMAIL LAHBIYEB
+          </MyLink>
+        </p>
+      </div>
     </div>
   );
 };

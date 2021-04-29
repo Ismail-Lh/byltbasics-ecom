@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .footer {
   &__links {
     display: grid;
@@ -38,6 +40,31 @@
           width: 2rem;
           height: 2rem;
         }
+      }
+    }
+  }
+
+  &__copyright {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 2rem;
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+      place-items: center;
+    }
+
+    p {
+      font-size: $sm-size-3;
+    }
+
+    &_2 {
+      text-align: right;
+
+      a {
+        color: $venice-blue-color;
+        border-bottom: 2px solid $light-grey-color;
       }
     }
   }
