@@ -2,10 +2,11 @@ import Link from 'next/link';
 import classes from './NavBarLinks.module.scss';
 
 import { NavbarLinks } from '../../../utils/constants';
+import { useProductsContext } from '../../../contexts/products_context';
 import { MenuIcon } from '../../../Icons';
-import { MobileMenu } from '../..';
 
-const NavBarLinks = ({ openMenu }) => {
+const NavBarLinks = () => {
+  const { openSidebar } = useProductsContext();
   return (
     <>
       <ul className={classes.navbar__list}>
@@ -16,7 +17,9 @@ const NavBarLinks = ({ openMenu }) => {
         ))}
       </ul>
       <div className={classes.menu__icon}>
-        <MenuIcon openMenu={openMenu} />
+        <button type='button' onClick={openSidebar}>
+          <MenuIcon />
+        </button>
       </div>
     </>
   );

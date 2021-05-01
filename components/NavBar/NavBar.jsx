@@ -7,17 +7,11 @@ import NavBarLinks from './NavBarLinks/NavBarLinks';
 import NavBarLogo from './NavBarLogo/NavBarLogo';
 
 const NavBar = () => {
-  const [showMenu, setShowMenu] = useState(false);
-
-  const openMenu = () => setShowMenu(true);
-
-  const hideMenu = () => setShowMenu(false);
-
   return (
     <nav className={classes.navbar}>
       <div className='container'>
         <div className={classes.navbar__items}>
-          <NavBarLinks openMenu={openMenu} />
+          <NavBarLinks />
 
           <NavBarLogo />
 
@@ -25,7 +19,7 @@ const NavBar = () => {
         </div>
       </div>
 
-      <MobileMenu hideMenu={hideMenu} showMenu={showMenu} />
+      <MobileMenu />
     </nav>
   );
 };

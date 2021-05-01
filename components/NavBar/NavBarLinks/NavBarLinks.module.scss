@@ -33,6 +33,7 @@
 .menu {
   &__icon {
     display: none;
+    width: fit-content;
     @media (max-width: 980px) {
       display: block;
     }
