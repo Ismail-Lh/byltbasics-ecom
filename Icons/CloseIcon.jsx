@@ -6,7 +6,7 @@ const CloseIcon = () => {
       role='presentation'
       className='icon icon-close'
       viewBox='0 0 18 19'
-      tabindex='-1'
+      tabIndex='-1'
       disabled='disabled'
       clickable='false'>
       <path
