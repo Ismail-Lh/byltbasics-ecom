@@ -2,6 +2,7 @@ import { HeroImage } from '../../components';
 import {
   HeroSection,
   ImagesGridSection,
+  PopularProductsSection,
   ProductsCategorySection,
   SplitContentSection,
 } from '../../sections';
@@ -24,6 +25,8 @@ const HomePageContainer = () => {
         imgUrlDesktop='hero-5.jpg'
         imgUrlMobile='hero-5-mobile.jpg'
       />
+
+      <PopularProductsSection />
 
       <HeroImage
         title='snow wash collection'
