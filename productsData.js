@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const addDataBase = firebase => {
   const dataBase = firebase.firestore();
-  dataBase.settings({ timestampsInSnapshots: true });
   /* men
     ============================================ */
 
