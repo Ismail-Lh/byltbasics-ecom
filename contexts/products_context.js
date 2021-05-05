@@ -6,6 +6,8 @@ import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
   GET_MEN_PRODUCTS,
+  GET_WOMEN_PRODUCTS,
+  GET_POPULAR_PRODUCTS,
 } from '../utils/actions';
 
 const ProductsContext = createContext();
@@ -13,23 +15,36 @@ const ProductsContext = createContext();
 const initialState = {
   isSidebarOpen: false,
   men_products: [],
+  women_products: [],
   gender: 'men',
   loading: false,
+  popular_products: [],
 };
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
   const { men, loading } = useFirebaseData('men');
-  // // const { womenProducts } = useFirebaseData('women');
+  const { women } = useFirebaseData('women');
 
-  // console.log(men);
-
+  // Get menProducts
   useEffect(() => {
     dispatch({
       type: GET_MEN_PRODUCTS,
       payload: { men, loading },
     });
   }, [men]);
+
+  // Get womenProducts
+  useEffect(() => {
+    dispatch({
+      type: GET_WOMEN_PRODUCTS,
+      payload: { women, loading },
+    });
+  }, [women]);
+
+  const getPopularProducts = products => {
+    dispatch({ type: GET_POPULAR_PRODUCTS, payload: products });
+  };
 
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
@@ -40,7 +55,8 @@ export const ProductsProvider = ({ children }) => {
   };
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, getPopularProducts }}>
       {children}
     </ProductsContext.Provider>
   );
