@@ -36,13 +36,22 @@ const ProductsReducer = (state, action) => {
   }
 
   if (action.type === GET_POPULAR_PRODUCTS) {
-    const products = action.payload;
+    const { womenProducts, menProducts } = action.payload;
 
-    const popularProducts = products?.filter(
+    const menPopularProducts = menProducts?.filter(
       product => product.popularity === true
     );
 
-    return { ...state, popular_products: [...popularProducts] };
+    const womenPopularProducts = womenProducts?.filter(
+      product => product.popularity === true
+    );
+
+    return {
+      ...state,
+      popular_products: [
+        { men: [...menPopularProducts], women: [...womenPopularProducts] },
+      ],
+    };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

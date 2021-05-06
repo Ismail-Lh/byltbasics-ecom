@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *;
+
+.popularProducts {
+  &__wrapper {
+    margin: 2rem 0;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

@@ -1,16 +1,29 @@
-import { useEffect } from 'react';
 import { useProductsContext } from '../../contexts/products_context';
 import classes from './PopularProductsSection.module.scss';
 
-const PopularProductsSection = ({ products }) => {
-  const { getPopularProducts } = useProductsContext();
+const PopularProductsSection = ({ gender }) => {
+  const { popular_products } = useProductsContext();
 
-  useEffect(() => {
-    getPopularProducts(products);
-    console.log(products);
-  }, [products]);
+  const popularProducts = popular_products?.map(products => products[gender]);
 
-  return <div>Popular products section</div>;
+  return (
+    <div className={classes.popularProducts__wrapper}>
+      <div className='container'>
+        <h2 className={classes.popularProducts__title}>
+          {gender} popular products
+        </h2>
+        <div>
+          {popularProducts.map(products =>
+            products.map(({ name, id }) => (
+              <div key={id}>
+                <h3>{name}</h3>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PopularProductsSection;

@@ -8,13 +8,8 @@ import {
 } from '../../sections';
 
 import { SplitContentImageContainer, SplitContentTextContainer } from '../';
-import { useProductsContext } from '../../contexts/products_context';
 
 const HomePageContainer = () => {
-  const {
-    men_products: menProducts,
-    women_products: womenProducts,
-  } = useProductsContext();
   return (
     <div>
       <HeroSection />
@@ -31,7 +26,7 @@ const HomePageContainer = () => {
         imgUrlMobile='hero-5-mobile.jpg'
       />
 
-      <PopularProductsSection products={menProducts} />
+      <PopularProductsSection gender='men' />
 
       <HeroImage
         title='snow wash collection'
@@ -53,7 +48,7 @@ const HomePageContainer = () => {
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
       </SplitContentSection>
 
-      <PopularProductsSection products={womenProducts} />
+      <PopularProductsSection gender='women' />
 
       <ImagesGridSection />
 

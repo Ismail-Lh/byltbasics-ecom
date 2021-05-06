@@ -42,9 +42,20 @@ export const ProductsProvider = ({ children }) => {
     });
   }, [women]);
 
-  const getPopularProducts = products => {
-    dispatch({ type: GET_POPULAR_PRODUCTS, payload: products });
-  };
+  // Get womenProducts
+  useEffect(() => {
+    dispatch({
+      type: GET_POPULAR_PRODUCTS,
+      payload: {
+        womenProducts: state.women_products,
+        menProducts: state.men_products,
+      },
+    });
+  }, [state.women_products, state.men_products]);
+
+  // const getPopularProducts = products => {
+  //   dispatch({ type: GET_POPULAR_PRODUCTS, payload: products });
+  // };
 
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
@@ -55,8 +66,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   return (
-    <ProductsContext.Provider
-      value={{ ...state, openSidebar, closeSidebar, getPopularProducts }}>
+    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
       {children}
     </ProductsContext.Provider>
   );
