@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+
+.card {
+  &__image {
+    background-color: $light-grey-color;
+    height: 37.5rem;
+    width: 100%;
+    position: relative;
+
+    &:hover {
+      button {
+        display: block;
+      }
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      mix-blend-mode: multiply;
+    }
+
+    button {
+      display: none;
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: $sm-size-3;
+      font-weight: bold;
+      padding: 1.3rem 2.6rem;
+      width: 65%;
+      background-color: $valhalla-color;
+      color: $white-color;
+      border: 3px solid $valhalla-color;
+      border-radius: 4px;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: $valhalla-color;
+        background-color: $white-color;
+      }
+    }
+  }
+
+  &__info {
+    margin-top: 1rem;
+
+    &_name {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: $sm-size-3;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease-in;
+
+      &:hover {
+        color: $venice-blue-color;
+      }
+    }
+
+    &_price {
+      font-size: $sm-size-4;
+    }
+  }
+}

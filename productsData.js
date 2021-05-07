@@ -7,8 +7,10 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('men').add({
   //   id: uuidv4(),
-  //   name: 'drop-cuts: lux',
+  //   name: 'drop-cuts lux',
   //   collections: 'mens-tops',
+  //   category: 'tops',
+  //   type: 'drop-cuts',
   //   price: 28990,
   //   description: 'Cool touch, high-cotton LUX Blend fabric.',
   //   images: ['1'],
@@ -31,6 +33,8 @@ export const addDataBase = firebase => {
   //   id: uuidv4(),
   //   name: 'the bylt crop top',
   //   collections: 'womens-tops',
+  //   category: 'tops',
+  //   type: 'crop top',
   //   price: 38990,
   //   discountPer: 30,
   //   description:

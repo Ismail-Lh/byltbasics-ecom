@@ -20,3 +20,6 @@ export { default as SplitContentIcons } from './SplitContentIcons/SplitContentIc
 export { default as FooterFormText } from './FooterFormText/FooterFormText';
 export { default as FooterFormInput } from './FooterFormInput/FooterFormInput';
 export { default as FooterLinks } from './FooterLinks/FooterLinks';
+
+// Popular Products Section
+export { default as ProductsCard } from './ProductsCard/ProductsCard';

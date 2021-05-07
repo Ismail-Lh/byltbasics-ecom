@@ -1,3 +1,4 @@
+import { ProductsCard } from '../../components';
 import { useProductsContext } from '../../contexts/products_context';
 import classes from './PopularProductsSection.module.scss';
 
@@ -10,14 +11,12 @@ const PopularProductsSection = ({ gender }) => {
     <div className={classes.popularProducts__wrapper}>
       <div className='container'>
         <h2 className={classes.popularProducts__title}>
-          {gender} popular products
+          {gender}'s popular products
         </h2>
-        <div>
+        <div className={classes.popularProducts__cards}>
           {popularProducts.map(products =>
-            products.map(({ name, id }) => (
-              <div key={id}>
-                <h3>{name}</h3>
-              </div>
+            products.map(product => (
+              <ProductsCard key={product.id} {...product} gender={gender} />
             ))
           )}
         </div>
