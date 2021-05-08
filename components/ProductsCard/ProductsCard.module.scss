@@ -51,11 +51,19 @@
   &__info {
     margin-top: 1rem;
 
+    &_sale,
     &_name {
       text-transform: uppercase;
-      font-weight: bold;
       font-size: $sm-size-3;
+      font-weight: bold;
       margin-bottom: 0.5rem;
+    }
+
+    &_sale {
+      color: $valencia-color;
+    }
+
+    &_name {
       transition: color 0.2s ease-in;
 
       &:hover {
@@ -65,6 +73,42 @@
 
     &_price {
       font-size: $sm-size-4;
+
+      .old {
+        text-decoration: line-through;
+        color: $grey-color;
+        margin-left: 5px;
+      }
+    }
+
+    &_colors {
+      margin-top: 0.5rem;
+
+      p {
+        text-transform: capitalize;
+        color: $grey-color;
+        font-size: $sm-size-4;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      .colors {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+
+        div {
+          cursor: pointer;
+          &:not(:last-of-type) {
+            margin-right: 5px;
+          }
+
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
     }
   }
 }

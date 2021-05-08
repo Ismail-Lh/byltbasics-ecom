@@ -18,6 +18,6 @@ function MyApp({ Component, pageProps }) {
     </FirebaseProvider>
   );
 }
-
 // <button onClick={() => addDataBase(firebase)}>add</button>
+
 export default MyApp;
