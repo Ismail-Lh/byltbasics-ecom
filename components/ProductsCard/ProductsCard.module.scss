@@ -100,8 +100,9 @@
 
         div {
           cursor: pointer;
+          margin-bottom: 3px;
           &:not(:last-of-type) {
-            margin-right: 5px;
+            margin-right: 7px;
           }
 
           img {

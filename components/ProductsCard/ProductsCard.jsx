@@ -15,22 +15,21 @@ const ProductsCard = ({
 }) => {
   const colorStyle = discountPer => {
     let style;
-    if (discountPer) {
-      style = {
-        color: '#d84242',
-      };
-    } else {
-      style = {
-        color: '#000',
-      };
-    }
+
+    style = { color: `${discountPer ? '#d84242' : '#000'}` };
 
     return style;
   };
 
-  const [color, setColor] = useState(colors[0]);
+  // const borderStyle = () => {
+  //   let style;
 
-  console.log(colors);
+  //   style = { border: '1px solid #000' };
+
+  //   return style;
+  // };
+
+  const [color, setColor] = useState(colors[0]);
 
   return (
     <div className={classes.card}>
@@ -68,7 +67,11 @@ const ProductsCard = ({
           <div className={classes.colors}>
             {colors.map((clr, idx) => (
               <div key={idx} onClick={() => setColor(clr)}>
-                <img src={`assets/products/colors/${clr}.jpg`} alt={clr} />
+                <img
+                  src={`assets/products/colors/${clr}.jpg`}
+                  alt={clr}
+                  className={`${clr === color && 'active-color'}`}
+                />
               </div>
             ))}
           </div>

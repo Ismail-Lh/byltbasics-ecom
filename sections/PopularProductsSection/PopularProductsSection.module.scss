@@ -2,7 +2,8 @@
 
 .popularProducts {
   &__wrapper {
-    margin: 2rem 0;
+    margin: 3rem 0;
+    position: relative;
   }
 
   &__title {
@@ -13,8 +14,8 @@
   }
 
   &__cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    // display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // gap: 1rem;
   }
 }
