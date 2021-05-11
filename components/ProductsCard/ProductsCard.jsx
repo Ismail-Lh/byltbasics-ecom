@@ -10,6 +10,7 @@ const ProductsCard = ({
   colors,
   discountPer,
   category,
+  images,
   type,
   gender,
 }) => {
@@ -28,7 +29,7 @@ const ProductsCard = ({
       <div className={classes.card__image}>
         <MyLink route={`/products/${name}`}>
           <img
-            src={`assets/products/${gender}/${category}/${type}/${name}/${color}/small/1.jpg`}
+            src={`assets/products/${gender}/${category}/${type}/${name}/${color}/small/${images[0]}`}
             alt={`${name}-${color}`}
           />
         </MyLink>
