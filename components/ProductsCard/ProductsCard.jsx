@@ -21,14 +21,6 @@ const ProductsCard = ({
     return style;
   };
 
-  // const borderStyle = () => {
-  //   let style;
-
-  //   style = { border: '1px solid #000' };
-
-  //   return style;
-  // };
-
   const [color, setColor] = useState(colors[0]);
 
   return (
@@ -42,6 +34,14 @@ const ProductsCard = ({
         </MyLink>
 
         <button type='button'>quick add</button>
+
+        {discountPer && (
+          <img
+            src='assets/sale-badge.svg'
+            alt='sale-badge'
+            className={classes.sale_badge}
+          />
+        )}
       </div>
 
       <div className={classes.card__info}>

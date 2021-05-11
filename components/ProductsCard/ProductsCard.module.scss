@@ -46,6 +46,14 @@
         background-color: $white-color;
       }
     }
+
+    .sale_badge {
+      width: 4.2rem;
+      height: 2rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
   }
 
   &__info {

@@ -18,20 +18,20 @@ const PopularProductsSection = ({ gender }) => {
   const [sliderRef, slider] = useKeenSlider({
     spacing: 15,
     slidesPerView: 4,
-    centered: true,
+    centered: false,
     loop: true,
     mode: 'snap',
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },
     breakpoints: {
-      '(min-width: 768px)': {
+      '(max-width: 768px)': {
         slidesPerView: 2,
-        mode: 'free-snap',
+        mode: 'snap',
       },
-      '(min-width: 1200px)': {
-        slidesPerView: 4,
-        mode: 'free-snap',
+      '(max-width: 425px)': {
+        slidesPerView: 1,
+        mode: 'snap',
       },
     },
   });
@@ -55,14 +55,8 @@ const PopularProductsSection = ({ gender }) => {
 
       {slider && (
         <div className='arrows'>
-          <ArrowLeftIcon
-            onClick={e => e.stopPropagation() || slider.prev()}
-            disabled={currentSlide === 0}
-          />
-          <ArrowRightIcon
-            onClick={e => e.stopPropagation() || slider.next()}
-            disabled={currentSlide === slider.details().size - 1}
-          />
+          <ArrowLeftIcon onClick={e => e.stopPropagation() || slider.prev()} />
+          <ArrowRightIcon onClick={e => e.stopPropagation() || slider.next()} />
         </div>
       )}
     </div>
