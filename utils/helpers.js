@@ -14,48 +14,14 @@ export const formatPrice = (price, discountPer) => {
   return newPrice;
 };
 
-// export const finalItemPrice = (price, discountPer) => {
-//   if (!discountPer) return price;
+export const getLocalStorage = key => {
+  let storage = localStorage.getItem(key);
 
-//   return price - (price * discountPer) / 100;
-// };
+  if (key === 'singleProduct') {
+    return storage ? JSON.parse(storage) : {};
+  }
+};
 
-// export const getLocalStorage = key => {
-//   let storage = localStorage.getItem(key);
-
-//   if (key === 'allProducts') {
-//     return storage ? JSON.parse(storage) : {};
-//   }
-
-//   if (key === 'gender') {
-//     return storage ? JSON.parse(storage) : 'men';
-//   }
-
-//   if (key === 'productsByGender') {
-//     return storage ? JSON.parse(storage) : [];
-//   }
-
-//   if (key === 'products') {
-//     return storage ? JSON.parse(storage) : [];
-//   }
-
-//   if (key === 'singleProduct') {
-//     return storage ? JSON.parse(storage) : {};
-//   }
-
-//   if (key === 'productsCategory') {
-//     return storage ? JSON.parse(storage) : 'clothing';
-//   }
-
-//   if (key === 'designerData') {
-//     return storage ? JSON.parse(storage) : {};
-//   }
-
-//   if (key === 'cart') {
-//     return storage ? JSON.parse(storage) : [];
-//   }
-// };
-
-// export const setLocalStorage = (key, value) => {
-//   localStorage.setItem(key, JSON.stringify(value));
-// };
+export const setLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};

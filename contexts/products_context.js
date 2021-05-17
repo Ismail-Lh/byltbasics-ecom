@@ -8,7 +8,9 @@ import {
   GET_MEN_PRODUCTS,
   GET_WOMEN_PRODUCTS,
   GET_POPULAR_PRODUCTS,
+  GET_SINGLE_PRODUCT,
 } from '../utils/actions';
+import { getLocalStorage, setLocalStorage } from '../utils/helpers';
 
 const ProductsContext = createContext();
 
@@ -16,15 +18,25 @@ const initialState = {
   isSidebarOpen: false,
   men_products: [],
   women_products: [],
-  gender: 'men',
+  // gender: 'men',
   loading: false,
   popular_products: [],
+  single_product: {},
+  product_color: '',
 };
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
   const { men, loading } = useFirebaseData('men');
   const { women } = useFirebaseData('women');
+
+  const openSidebar = () => {
+    dispatch({ type: SIDEBAR_OPEN });
+  };
+
+  const closeSidebar = () => {
+    dispatch({ type: SIDEBAR_CLOSE });
+  };
 
   // Get menProducts
   useEffect(() => {
@@ -53,20 +65,20 @@ export const ProductsProvider = ({ children }) => {
     });
   }, [state.women_products, state.men_products]);
 
-  // const getPopularProducts = products => {
-  //   dispatch({ type: GET_POPULAR_PRODUCTS, payload: products });
-  // };
-
-  const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN });
+  const getSingleProduct = (productId, gender, color) => {
+    dispatch({
+      type: GET_SINGLE_PRODUCT,
+      payload: { productId, gender, color },
+    });
   };
 
-  const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE });
-  };
+  // useEffect(() => {
+  //   setLocalStorage('singleProduct', state.single_product);
+  // }, [state.single_product]);
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, getSingleProduct }}>
       {children}
     </ProductsContext.Provider>
   );

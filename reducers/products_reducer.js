@@ -4,6 +4,7 @@ import {
   GET_MEN_PRODUCTS,
   GET_WOMEN_PRODUCTS,
   GET_POPULAR_PRODUCTS,
+  GET_SINGLE_PRODUCT,
 } from '../utils/actions';
 
 const ProductsReducer = (state, action) => {
@@ -51,6 +52,27 @@ const ProductsReducer = (state, action) => {
       popular_products: [
         { men: [...menPopularProducts], women: [...womenPopularProducts] },
       ],
+    };
+  }
+
+  if (action.type === GET_SINGLE_PRODUCT) {
+    const { productId, gender, color } = action.payload;
+    const { women_products, men_products } = state;
+
+    let singleProduct = {};
+
+    if (gender === 'men') {
+      singleProduct = men_products?.filter(product => product.id === productId);
+    } else if (gender === 'women') {
+      singleProduct = women_products?.filter(
+        product => product.id === productId
+      );
+    }
+
+    return {
+      ...state,
+      single_product: singleProduct[0],
+      product_color: color,
     };
   }
 

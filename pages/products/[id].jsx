@@ -1,5 +1,7 @@
-const ProductsPage = () => {
-  return <h1>Products Page</h1>;
+import { SingleProductContainer } from '../../containers';
+
+const SingleProductPage = () => {
+  return <SingleProductContainer />;
 };
 
-export default ProductsPage;
+export default SingleProductPage;

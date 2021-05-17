@@ -3,8 +3,10 @@ import { useState } from 'react';
 import classes from './ProductsCard.module.scss';
 import { MyLink } from '..';
 import { formatPrice } from '../../utils/helpers';
+import { useProductsContext } from '../../contexts/products_context';
 
 const ProductsCard = ({
+  id,
   name,
   price,
   colors,
@@ -12,6 +14,7 @@ const ProductsCard = ({
   category,
   images,
   type,
+  route,
   gender,
 }) => {
   const colorStyle = discountPer => {
@@ -24,10 +27,14 @@ const ProductsCard = ({
 
   const [color, setColor] = useState(colors[0]);
 
+  const { getSingleProduct } = useProductsContext();
+
   return (
     <div className={classes.card}>
-      <div className={classes.card__image}>
-        <MyLink route={`/products/${name}`}>
+      <div
+        className={classes.card__image}
+        onClick={() => getSingleProduct(id, gender, color)}>
+        <MyLink route={`/products/${route}`}>
           <img
             src={`assets/products/${gender}/${category}/${type}/${name}/${color}/small/${images[0]}`}
             alt={`${name}-${color}`}

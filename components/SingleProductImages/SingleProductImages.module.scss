@@ -1,0 +1,13 @@
+.singleProduct {
+  &_images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 47.2rem;
+    gap: 1rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

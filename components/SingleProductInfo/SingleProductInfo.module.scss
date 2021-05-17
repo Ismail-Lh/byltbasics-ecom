@@ -1,0 +1,27 @@
+@use '../../styles/variables' as *;
+
+.productInfo {
+  &_title {
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    font-size: $md-size-2;
+    max-width: 22ch;
+    line-height: 1;
+    letter-spacing: 0.0334375em;
+  }
+
+  &_price {
+    font-size: $sm-size-2;
+
+    .new {
+      font-weight: bold;
+    }
+
+    .old {
+      text-decoration: line-through;
+      margin-left: 5px;
+      opacity: 0.8;
+    }
+  }
+}
