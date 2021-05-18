@@ -203,94 +203,94 @@ export const addDataBase = firebase => {
   //   popularity: true,
   // });
 
-  dataBase.collection('women').add({
-    id: uuidv4(),
-    name: "women's elite + joggers",
-    category: 'bottoms',
-    type: 'joggers',
-    price: 7499,
-    description:
-      "Reimagined in every way, our Women’s Elite+ Joggers have been completely upgraded for even greater comfort, added durability, and all around flexibility. With the new Elite+ Fabric perfect for any season, you'll never want to take these joggers off!",
-    images: [
-      '1.jpg',
-      '2.jpg',
-      '3.jpg',
-      '4.jpg',
-      '5.jpg',
-      '6.jpg',
-      '7.jpg',
-      '8.jpg',
-      '9.jpg',
-    ],
-    colors: ['black', 'dark olive', 'sand', 'gunmetal', 'storm', 'midnight'],
-    sizes: [
-      { size: 'xs', isAvailable: true },
-      { size: 's', isAvailable: true },
-      { size: 'm', isAvailable: false },
-      { size: 'l', isAvailable: false },
-    ],
-    stock: 15,
-    popularity: true,
-  });
+  // dataBase.collection('women').add({
+  //   id: uuidv4(),
+  //   name: "women's elite + joggers",
+  //   category: 'bottoms',
+  //   type: 'joggers',
+  //   price: 7499,
+  //   description:
+  //     "Reimagined in every way, our Women’s Elite+ Joggers have been completely upgraded for even greater comfort, added durability, and all around flexibility. With the new Elite+ Fabric perfect for any season, you'll never want to take these joggers off!",
+  //   images: [
+  //     '1.jpg',
+  //     '2.jpg',
+  //     '3.jpg',
+  //     '4.jpg',
+  //     '5.jpg',
+  //     '6.jpg',
+  //     '7.jpg',
+  //     '8.jpg',
+  //     '9.jpg',
+  //   ],
+  //   colors: ['black', 'dark olive', 'sand', 'gunmetal', 'storm', 'midnight'],
+  //   sizes: [
+  //     { size: 'xs', isAvailable: true },
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: false },
+  //   ],
+  //   stock: 15,
+  //   popularity: true,
+  // });
 
-  dataBase.collection('women').add({
-    id: uuidv4(),
-    name: "women's everyday leggings",
-    category: 'bottoms',
-    type: 'leggings',
-    price: 6899,
-    discountPer: 30,
-    description:
-      'Figure forming, high waisted leggings that lift and sculpt. Please note - This item is EXCHANGE ONLY and not eligible for return.',
-    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
-    colors: ['blush', 'grey', 'black'],
-    sizes: [
-      { size: 'xs', isAvailable: true },
-      { size: 's', isAvailable: true },
-      { size: 'm', isAvailable: false },
-      { size: 'l', isAvailable: false },
-    ],
-    stock: 15,
-    popularity: true,
-  });
+  // dataBase.collection('women').add({
+  //   id: uuidv4(),
+  //   name: "women's everyday leggings",
+  //   category: 'bottoms',
+  //   type: 'leggings',
+  //   price: 6899,
+  //   discountPer: 30,
+  //   description:
+  //     'Figure forming, high waisted leggings that lift and sculpt. Please note - This item is EXCHANGE ONLY and not eligible for return.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['blush', 'grey', 'black'],
+  //   sizes: [
+  //     { size: 'xs', isAvailable: true },
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: false },
+  //   ],
+  //   stock: 15,
+  //   popularity: true,
+  // });
 
-  dataBase.collection('women').add({
-    id: uuidv4(),
-    name: "women's essential tee",
-    category: 'tops',
-    type: 'essential tee',
-    price: 2899,
-    description:
-      'Flattering athletic and comfortable cut with a standard straight hemline.',
-    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
-    colors: ['black', 'white', 'blush'],
-    sizes: [
-      { size: 'xs', isAvailable: true },
-      { size: 's', isAvailable: false },
-      { size: 'm', isAvailable: false },
-      { size: 'l', isAvailable: false },
-    ],
-    stock: 15,
-    popularity: true,
-  });
+  // dataBase.collection('women').add({
+  //   id: uuidv4(),
+  //   name: "women's essential tee",
+  //   category: 'tops',
+  //   type: 'essential tee',
+  //   price: 2899,
+  //   description:
+  //     'Flattering athletic and comfortable cut with a standard straight hemline.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['black', 'white', 'blush'],
+  //   sizes: [
+  //     { size: 'xs', isAvailable: true },
+  //     { size: 's', isAvailable: false },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: false },
+  //   ],
+  //   stock: 15,
+  //   popularity: true,
+  // });
 
-  dataBase.collection('women').add({
-    id: uuidv4(),
-    name: "women's essential tank",
-    category: 'tops',
-    type: 'essential tank',
-    price: 2899,
-    description:
-      'Flattering athletic and comfortable cut with our signature drop-cut hemline.',
-    images: ['1.png', '2.png', '3.png'],
-    colors: ['white', 'black', 'blush'],
-    sizes: [
-      { size: 'xs', isAvailable: true },
-      { size: 's', isAvailable: false },
-      { size: 'm', isAvailable: false },
-      { size: 'l', isAvailable: false },
-    ],
-    stock: 15,
-    popularity: true,
-  });
+  // dataBase.collection('women').add({
+  //   id: uuidv4(),
+  //   name: "women's essential tank",
+  //   category: 'tops',
+  //   type: 'essential tank',
+  //   price: 2899,
+  //   description:
+  //     'Flattering athletic and comfortable cut with our signature drop-cut hemline.',
+  //   images: ['1.png', '2.png', '3.png'],
+  //   colors: ['white', 'black', 'blush'],
+  //   sizes: [
+  //     { size: 'xs', isAvailable: true },
+  //     { size: 's', isAvailable: false },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: false },
+  //   ],
+  //   stock: 15,
+  //   popularity: true,
+  // });
 };

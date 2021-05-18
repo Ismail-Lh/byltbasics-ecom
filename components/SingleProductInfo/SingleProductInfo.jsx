@@ -1,7 +1,25 @@
-import { formatPrice } from '../../utils/helpers';
+import { useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
+import { formatPrice } from '../../utils/helpers';
 
-const SingleProductInfo = ({ name, price, discountPer }) => {
+const SingleProductInfo = ({
+  name,
+  price,
+  discountPer,
+  description,
+  colors,
+  color,
+  changeColor,
+  sizes,
+}) => {
+  const [size, setSize] = useState('');
+
+  const btnStyles = {
+    textDecoration: 'line-through',
+    opacity: 0.8,
+    cursor: 'not-allowed',
+  };
+
   return (
     <div className={classes.singleProduct_info}>
       <div className={classes.productInfo}>
@@ -12,8 +30,63 @@ const SingleProductInfo = ({ name, price, discountPer }) => {
             {formatPrice(price, discountPer)} USD
           </span>{' '}
           {discountPer && (
-            <span className={classes.old}>{formatPrice(price)} USD</span>
+            <>
+              <span className={classes.old}>{formatPrice(price)} USD</span>
+              <p>{discountPer}% off</p>
+            </>
           )}
+        </div>
+      </div>
+
+      <div className={classes.productInfo_payment}>
+        <p>
+          4 interest-free payments. Available for orders above $35.{' '}
+          <span>Klarna</span>.{' '}
+          <button className={classes.btn_more}>Learn more</button>
+        </p>
+      </div>
+
+      <div className={classes.productInfo_description}>
+        <p>
+          {description} <button className={classes.btn_more}>Learn more</button>
+        </p>
+      </div>
+
+      <div className={classes.productInfo_colors}>
+        <p>
+          Color: <span>{color}</span>
+        </p>
+        <div className={classes.colors}>
+          {colors?.map((clr, idx) => (
+            <div key={idx} onClick={() => changeColor(clr)}>
+              <img
+                src={`/assets/products/colors/${clr}.jpg`}
+                alt={clr}
+                className={`${clr === color && 'active-color'}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={classes.productInfo_sizes}>
+        <p className={classes.left}>
+          size <button className={classes.btn_more}>size guide</button>
+        </p>
+
+        <div className={classes.right}>
+          {sizes?.map((s, idx) => (
+            <button
+              key={idx}
+              onClick={() => setSize(s.size)}
+              className={`${
+                s.size === size && s.isAvailable
+                  ? 'active-size'
+                  : 'not-available'
+              }`}>
+              {s.size}
+            </button>
+          ))}
         </div>
       </div>
     </div>

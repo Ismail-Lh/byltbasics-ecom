@@ -282,3 +282,14 @@ h1 {
 .active-color {
   border: 2px solid $valencia-color;
 }
+
+.active-size {
+  background-color: $black-color;
+  color: $white-color;
+}
+
+.not-available {
+  text-decoration: line-through;
+  cursor: none;
+  opacity: 0.8;
+}

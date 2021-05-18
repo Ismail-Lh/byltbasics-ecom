@@ -16,6 +16,7 @@
 
     .new {
       font-weight: bold;
+      color: $valencia-color;
     }
 
     .old {
@@ -23,5 +24,119 @@
       margin-left: 5px;
       opacity: 0.8;
     }
+
+    p {
+      color: $valencia-color;
+      text-transform: uppercase;
+    }
   }
+
+  &_payment {
+    margin-top: 5px;
+    font-size: $sm-size-4;
+
+    p {
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &_description {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: $sm-size-3;
+      line-height: 1.57em;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  &_colors,
+  &_sizes {
+    padding: 1rem 0;
+    border-bottom: 1px solid $light-grey-color;
+
+    p {
+      font-size: $sm-size-3;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+
+  &_colors {
+    border-top: 1px solid $light-grey-color;
+
+    p {
+      span {
+        font-size: $sm-size-4;
+        font-weight: 400;
+        margin-left: 1rem;
+      }
+    }
+
+    .colors {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+
+      div {
+        cursor: pointer;
+        height: 2.8rem;
+        width: 2.8rem;
+        &:not(:last-of-type) {
+          margin-right: 7px;
+        }
+
+        img {
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &_sizes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+      button {
+        margin-left: 2.1rem;
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        padding: 0.5rem 1rem;
+        text-transform: uppercase;
+        font-size: $sm-size-2;
+        cursor: pointer;
+        transition: all 0.2s ease-in;
+
+        &:hover {
+          color: $white-color;
+          background-color: $black-color;
+        }
+
+        &:not(:last-of-type) {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.btn_more {
+  text-transform: capitalize;
+  text-decoration: underline;
+  cursor: pointer;
 }
