@@ -1,13 +1,39 @@
-.singleProduct {
-  &_images {
+.singleProductImages {
+  &_desktop,
+  &_mobile {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &_desktop {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 47.2rem;
     gap: 1rem;
+  }
 
-    img {
-      height: 100%;
-      width: 100%;
+  &_mobile {
+    .small_images {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+
+      div {
+        width: 10rem;
+
+        @media (max-width: 425px) {
+          width: 7rem;
+        }
+
+        img {
+          border-radius: 5px;
+        }
+      }
     }
   }
 }

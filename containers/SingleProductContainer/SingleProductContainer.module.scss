@@ -1,8 +1,18 @@
 .singleProduct {
   margin-top: 7.9rem;
+
+  @media (max-width: 768px) {
+    margin-top: 6.9rem;
+  }
+
   &_container {
     display: grid;
     grid-template-columns: 60% 37%;
     column-gap: 3.5rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+    }
   }
 }
