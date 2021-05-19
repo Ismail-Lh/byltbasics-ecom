@@ -54,7 +54,9 @@
   }
 
   &_colors,
-  &_sizes {
+  &_sizes,
+  &_qty,
+  &_addToCart {
     padding: 1rem 0;
     border-bottom: 1px solid $light-grey-color;
 
@@ -99,11 +101,14 @@
     }
   }
 
-  &_sizes {
+  &_sizes,
+  &_qty {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
 
+  &_sizes {
     .left {
       button {
         margin-left: 2.1rem;
@@ -130,6 +135,54 @@
         &:not(:last-of-type) {
           margin-right: 5px;
         }
+      }
+    }
+  }
+
+  &_qty {
+    div {
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      button,
+      span {
+        font-size: $sm-size-1;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        transition: all 0.2s ease-in;
+        width: 3rem;
+        text-align: center;
+
+        &:hover {
+          color: $white-color;
+          background-color: $black-color;
+        }
+      }
+    }
+  }
+
+  &_addToCart {
+    button {
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: $sm-size-3;
+      font-weight: bold;
+      padding: 1.5rem;
+      color: $white-color;
+      background-color: $venice-blue-color;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: $venice-blue-color;
+        background-color: $white-color;
+        border: 2px solid $venice-blue-color;
       }
     }
   }

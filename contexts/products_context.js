@@ -72,9 +72,9 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
-  // useEffect(() => {
-  //   setLocalStorage('singleProduct', state.single_product);
-  // }, [state.single_product]);
+  useEffect(() => {
+    setLocalStorage('singleProduct', state.single_product);
+  }, [state.single_product]);
 
   return (
     <ProductsContext.Provider

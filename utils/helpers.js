@@ -15,7 +15,7 @@ export const formatPrice = (price, discountPer) => {
 };
 
 export const getLocalStorage = key => {
-  let storage = localStorage.getItem(key);
+  let storage = localStorage?.getItem(key);
 
   if (key === 'singleProduct') {
     return storage ? JSON.parse(storage) : {};
@@ -23,5 +23,5 @@ export const getLocalStorage = key => {
 };
 
 export const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
+  localStorage?.setItem(key, JSON.stringify(value));
 };

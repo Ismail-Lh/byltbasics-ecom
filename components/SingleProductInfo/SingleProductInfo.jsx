@@ -78,16 +78,29 @@ const SingleProductInfo = ({
           {sizes?.map((s, idx) => (
             <button
               key={idx}
-              onClick={() => setSize(s.size)}
-              className={`${
-                s.size === size && s.isAvailable
-                  ? 'active-size'
-                  : 'not-available'
-              }`}>
+              className={`${s.size === size && 'active-size'}`}
+              disabled={!s.isAvailable}
+              onClick={() => setSize(s.size)}>
               {s.size}
             </button>
           ))}
         </div>
+      </div>
+
+      <div className={classes.productInfo_qty}>
+        <p>quantity</p>
+
+        <div>
+          <button> - </button>
+          <span> 1 </span>
+          <button> + </button>
+        </div>
+      </div>
+
+      <div className={classes.productInfo_addToCart}>
+        <button disabled={size}>{`${
+          size ? 'add to cart' : 'select a size'
+        }`}</button>
       </div>
     </div>
   );
