@@ -46,7 +46,11 @@ const PopularProductsSection = ({ gender }) => {
           {popularProducts.map(products =>
             products.map(product => (
               <div className='keen-slider__slide' key={product.id}>
-                <ProductsCard key={product.id} {...product} gender={gender} />
+                <ProductsCard
+                  key={product.id}
+                  product={product}
+                  gender={gender}
+                />
               </div>
             ))
           )}

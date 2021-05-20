@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
 import { formatPrice } from '../../utils/helpers';
+import { useProductsContext } from '../../contexts/products_context';
 
 const SingleProductInfo = ({
   name,
@@ -13,12 +14,6 @@ const SingleProductInfo = ({
   sizes,
 }) => {
   const [size, setSize] = useState('');
-
-  const btnStyles = {
-    textDecoration: 'line-through',
-    opacity: 0.8,
-    cursor: 'not-allowed',
-  };
 
   return (
     <div className={classes.singleProduct_info}>

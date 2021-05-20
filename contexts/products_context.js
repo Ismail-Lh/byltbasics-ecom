@@ -21,8 +21,7 @@ const initialState = {
   // gender: 'men',
   loading: false,
   popular_products: [],
-  single_product: {},
-  product_color: '',
+  single_product: getLocalStorage('singleProduct'),
 };
 
 export const ProductsProvider = ({ children }) => {
@@ -65,20 +64,24 @@ export const ProductsProvider = ({ children }) => {
     });
   }, [state.women_products, state.men_products]);
 
-  const getSingleProduct = (productId, gender, color) => {
+  const getSingleProduct = (productId, gender) => {
     dispatch({
       type: GET_SINGLE_PRODUCT,
-      payload: { productId, gender, color },
+      payload: { productId, gender },
     });
   };
 
   useEffect(() => {
     setLocalStorage('singleProduct', state.single_product);
   }, [state.single_product]);
-
   return (
     <ProductsContext.Provider
-      value={{ ...state, openSidebar, closeSidebar, getSingleProduct }}>
+      value={{
+        ...state,
+        openSidebar,
+        closeSidebar,
+        getSingleProduct,
+      }}>
       {children}
     </ProductsContext.Provider>
   );

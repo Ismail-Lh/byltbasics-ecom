@@ -1,22 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classes from './ProductsCard.module.scss';
 import { MyLink } from '..';
-import { formatPrice } from '../../utils/helpers';
+import {
+  formatPrice,
+  getProductColor,
+  setLocalStorage,
+} from '../../utils/helpers';
 import { useProductsContext } from '../../contexts/products_context';
 
-const ProductsCard = ({
-  id,
-  name,
-  price,
-  colors,
-  discountPer,
-  category,
-  images,
-  type,
-  route,
-  gender,
-}) => {
+const ProductsCard = ({ product, gender }) => {
+  const { getSingleProduct } = useProductsContext();
   const colorStyle = discountPer => {
     let style;
 
@@ -25,25 +19,27 @@ const ProductsCard = ({
     return style;
   };
 
-  const [color, setColor] = useState(colors[0]);
+  const [color, setColor] = useState(product?.colors[0]);
 
-  const { getSingleProduct } = useProductsContext();
+  useEffect(() => {
+    setLocalStorage('productColor', color);
+  }, [color]);
 
   return (
     <div className={classes.card}>
       <div
         className={classes.card__image}
-        onClick={() => getSingleProduct(id, gender, color)}>
-        <MyLink route={`/products/${route}`}>
+        onClick={() => getSingleProduct(product?.id, gender)}>
+        <MyLink route={`/products/${product?.route}`}>
           <img
-            src={`assets/products/${gender}/${category}/${type}/${name}/${color}/small/${images[0]}`}
-            alt={`${name}-${color}`}
+            src={`assets/products/${gender}/${product?.category}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
+            alt={`${product?.name}-${color}`}
           />
         </MyLink>
 
         <button type='button'>quick add</button>
 
-        {discountPer && (
+        {product?.discountPer && (
           <img
             src='assets/sale-badge.svg'
             alt='sale-badge'
@@ -53,27 +49,33 @@ const ProductsCard = ({
       </div>
 
       <div className={classes.card__info}>
-        {discountPer && (
-          <p className={classes.card__info_sale}>sale {discountPer}% off</p>
+        {product?.discountPer && (
+          <p className={classes.card__info_sale}>
+            sale {product?.discountPer}% off
+          </p>
         )}
 
         <h2 className={classes.card__info_name}>
-          <MyLink route={`/products/${name}`}>{name}</MyLink>
+          <MyLink route={`/products/${product?.name}`}>{product?.name}</MyLink>
         </h2>
 
         <div className={classes.card__info_price}>
-          <span className={classes.new} style={colorStyle(discountPer)}>
-            {formatPrice(price, discountPer)} USD
+          <span
+            className={classes.new}
+            style={colorStyle(product?.discountPer)}>
+            {formatPrice(product?.price, product?.discountPer)} USD
           </span>{' '}
-          {discountPer && (
-            <span className={classes.old}>{formatPrice(price)} USD</span>
+          {product?.discountPer && (
+            <span className={classes.old}>
+              {formatPrice(product?.price)} USD
+            </span>
           )}
         </div>
 
         <div className={classes.card__info_colors}>
           <p>{color}</p>
           <div className={classes.colors}>
-            {colors.map((clr, idx) => (
+            {product?.colors?.map((clr, idx) => (
               <div key={idx} onClick={() => setColor(clr)}>
                 <img
                   src={`assets/products/colors/${clr}.jpg`}

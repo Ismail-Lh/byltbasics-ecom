@@ -3,50 +3,44 @@ import { useState } from 'react';
 import classes from './SingleProductImages.module.scss';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 
-const SingleProductImages = ({
-  images,
-  name,
-  color,
-  category,
-  type,
-  gender,
-}) => {
+const SingleProductImages = ({ product, color }) => {
   const { width } = useWindowDimensions();
 
   const [imageIndex, setImageIndex] = useState(0);
 
+  const Images = ({ handelClick }) => {
+    return (
+      <>
+        {product?.images?.map((img, idx) => (
+          <div key={idx} onClick={() => handelClick && handelClick(idx)}>
+            <img
+              src={`/assets/products/${product?.gender}/${product?.category}/${product?.type}/${product?.name}/${color}/large/${img}`}
+              alt={`${product?.name}-${color}-${idx}`}
+            />
+          </div>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
-      {width <= 768 ? (
+      {width > 768 ? (
+        <div className={classes.singleProductImages_desktop}>
+          <Images />
+        </div>
+      ) : (
         <div className={classes.singleProductImages_mobile}>
           <div className={classes.big_image}>
             <img
-              src={`/assets/products/${gender}/${category}/${type}/${name}/${color}/large/${images[imageIndex]}`}
-              alt={`${name}-${color}-${imageIndex}`}
+              src={`/assets/products/${product?.gender}/${product?.category}/${product?.type}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
+              alt={`${product?.name}-${color}-${imageIndex}`}
             />
           </div>
 
           <div className={classes.small_images}>
-            {images?.map((img, idx) => (
-              <div key={idx} onClick={() => setImageIndex(idx)}>
-                <img
-                  src={`/assets/products/${gender}/${category}/${type}/${name}/${color}/large/${img}`}
-                  alt={`${name}-${color}`}
-                />
-              </div>
-            ))}
+            <Images handelClick={setImageIndex} />
           </div>
-        </div>
-      ) : (
-        <div className={classes.singleProductImages_desktop}>
-          {images?.map((img, idx) => (
-            <div key={idx}>
-              <img
-                src={`/assets/products/${gender}/${category}/${type}/${name}/${color}/large/${img}`}
-                alt={`${name}-${color}`}
-              />
-            </div>
-          ))}
         </div>
       )}
     </>
