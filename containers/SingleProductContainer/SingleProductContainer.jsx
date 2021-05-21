@@ -1,25 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import classes from './SingleProductContainer.module.scss';
 
 import { SingleProductImages, SingleProductInfo } from '../../components';
 import { useProductsContext } from '../../contexts/products_context';
-import { getProductColor } from '../../utils/helpers';
 
 const SingleProductContainer = () => {
   const { single_product: product } = useProductsContext();
 
-  const { color, setColor } = getProductColor(
-    'productColor',
-    product?.colors[0]
-  );
+  const [color, setColor] = useState(product?.productColor);
 
   return (
     <div className={classes.singleProduct}>
       <div className='container'>
         <div className={classes.singleProduct_container}>
-          <SingleProductImages product={product} color={color} />
+          <SingleProductImages product={product?.productInfo} color={color} />
           <SingleProductInfo
-            {...product}
+            product={product?.productInfo}
             color={color}
             changeColor={setColor}
           />

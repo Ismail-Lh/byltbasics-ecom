@@ -64,16 +64,17 @@ export const ProductsProvider = ({ children }) => {
     });
   }, [state.women_products, state.men_products]);
 
-  const getSingleProduct = (productId, gender) => {
+  const getSingleProduct = (productId, gender, color) => {
     dispatch({
       type: GET_SINGLE_PRODUCT,
-      payload: { productId, gender },
+      payload: { productId, gender, color },
     });
   };
 
   useEffect(() => {
     setLocalStorage('singleProduct', state.single_product);
   }, [state.single_product]);
+
   return (
     <ProductsContext.Provider
       value={{

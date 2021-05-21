@@ -21,15 +21,15 @@ const ProductsCard = ({ product, gender }) => {
 
   const [color, setColor] = useState(product?.colors[0]);
 
-  useEffect(() => {
-    setLocalStorage('productColor', color);
-  }, [color]);
+  // useEffect(() => {
+  //   setLocalStorage('productColor', color);
+  // }, [color]);
 
   return (
     <div className={classes.card}>
       <div
         className={classes.card__image}
-        onClick={() => getSingleProduct(product?.id, gender)}>
+        onClick={() => getSingleProduct(product?.id, gender, color)}>
         <MyLink route={`/products/${product?.route}`}>
           <img
             src={`assets/products/${gender}/${product?.category}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}

@@ -23,10 +23,6 @@ export const getLocalStorage = (key, value) => {
     if (key === 'singleProduct') {
       return storage ? JSON.parse(storage) : {};
     }
-
-    if (key === 'productColor') {
-      return storage ? JSON.parse(storage) : value;
-    }
   }
 };
 
@@ -34,14 +30,4 @@ export const setLocalStorage = (key, value) => {
   if (typeof window !== 'undefined') {
     localStorage?.setItem(key, JSON.stringify(value));
   }
-};
-
-export const getProductColor = (key, value) => {
-  const [color, setColor] = useState(getLocalStorage(key, value));
-
-  useEffect(() => {
-    setLocalStorage(key, color);
-  }, [color]);
-
-  return { color, setColor };
 };

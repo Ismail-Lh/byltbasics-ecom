@@ -3,31 +3,24 @@ import classes from './SingleProductInfo.module.scss';
 import { formatPrice } from '../../utils/helpers';
 import { useProductsContext } from '../../contexts/products_context';
 
-const SingleProductInfo = ({
-  name,
-  price,
-  discountPer,
-  description,
-  colors,
-  color,
-  changeColor,
-  sizes,
-}) => {
+const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
 
   return (
     <div className={classes.singleProduct_info}>
       <div className={classes.productInfo}>
-        <h1 className={classes.productInfo_title}>{name}</h1>
+        <h1 className={classes.productInfo_title}>{product?.name}</h1>
 
         <div className={classes.productInfo_price}>
           <span className={classes.new}>
-            {formatPrice(price, discountPer)} USD
+            {formatPrice(product?.price, product?.discountPer)} USD
           </span>{' '}
-          {discountPer && (
+          {product?.discountPer && (
             <>
-              <span className={classes.old}>{formatPrice(price)} USD</span>
-              <p>{discountPer}% off</p>
+              <span className={classes.old}>
+                {formatPrice(product?.price)} USD
+              </span>
+              <p>{product?.discountPer}% off</p>
             </>
           )}
         </div>
@@ -43,7 +36,8 @@ const SingleProductInfo = ({
 
       <div className={classes.productInfo_description}>
         <p>
-          {description} <button className={classes.btn_more}>Learn more</button>
+          {product?.description}{' '}
+          <button className={classes.btn_more}>Learn more</button>
         </p>
       </div>
 
@@ -52,7 +46,7 @@ const SingleProductInfo = ({
           Color: <span>{color}</span>
         </p>
         <div className={classes.colors}>
-          {colors?.map((clr, idx) => (
+          {product?.colors?.map((clr, idx) => (
             <div key={idx} onClick={() => changeColor(clr)}>
               <img
                 src={`/assets/products/colors/${clr}.jpg`}
@@ -70,7 +64,7 @@ const SingleProductInfo = ({
         </p>
 
         <div className={classes.right}>
-          {sizes?.map((s, idx) => (
+          {product?.sizes?.map((s, idx) => (
             <button
               key={idx}
               className={`${s.size === size && 'active-size'}`}

@@ -56,7 +56,7 @@ const ProductsReducer = (state, action) => {
   }
 
   if (action.type === GET_SINGLE_PRODUCT) {
-    const { productId, gender } = action.payload;
+    const { productId, gender, color } = action.payload;
     const { women_products, men_products } = state;
 
     let singleProduct = {};
@@ -71,7 +71,10 @@ const ProductsReducer = (state, action) => {
 
     return {
       ...state,
-      single_product: singleProduct[0],
+      single_product: {
+        productInfo: { ...singleProduct[0] },
+        productColor: color,
+      },
     };
   }
 
