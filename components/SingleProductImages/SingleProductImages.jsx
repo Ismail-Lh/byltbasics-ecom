@@ -1,12 +1,12 @@
 import { useState } from 'react';
+import { useMediaQuery, useMediaQueries } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 const SingleProductImages = ({ product, color }) => {
-  const { width } = useWindowDimensions();
-
   const [imageIndex, setImageIndex] = useState(0);
+
+  const matches = useMediaQuery('only screen and (max-width: 768px)');
 
   const Images = ({ handelClick }) => {
     return (
@@ -25,7 +25,7 @@ const SingleProductImages = ({ product, color }) => {
 
   return (
     <>
-      {width > 768 ? (
+      {!matches ? (
         <div className={classes.singleProductImages_desktop}>
           <Images />
         </div>
