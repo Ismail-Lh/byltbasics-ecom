@@ -7,15 +7,25 @@ import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from '../utils/actions';
 
 const CartContext = createContext();
 
-const initialState = {};
+const initialState = {
+  cart: [],
+};
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialState);
+
+  const addToCart = (amount, size, color, id, product) => {
+    dispatch({
+      type: ADD_TO_CART,
+      payload: { amount, size, color, id, product },
+    });
+  };
 
   return (
     <CartContext.Provider
       value={{
         ...state,
+        addToCart,
       }}>
       {children}
     </CartContext.Provider>

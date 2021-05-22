@@ -2,10 +2,12 @@ import { useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
 import { formatPrice } from '../../utils/helpers';
 import { AmountBtn } from '..';
+import { useCartContext } from '../../contexts/cart_context';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
   const [amount, setAmount] = useState(1);
+  const { addToCart } = useCartContext();
 
   return (
     <div className={classes.singleProduct_info}>
@@ -88,9 +90,10 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       </div>
 
       <div className={classes.productInfo_addToCart}>
-        <button disabled={size}>{`${
-          size ? 'add to cart' : 'select a size'
-        }`}</button>
+        <button
+          onClick={() =>
+            size && addToCart(amount, size, color, product?.id, product)
+          }>{`${size ? 'add to cart' : 'select a size'}`}</button>
       </div>
     </div>
   );

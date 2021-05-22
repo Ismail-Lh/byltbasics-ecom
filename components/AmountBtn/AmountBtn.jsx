@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const AmountBtn = ({ stock, amount, setAmount }) => {
   const inc = () => {
     setAmount(oldAmount => {
