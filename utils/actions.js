@@ -5,3 +5,8 @@ export const GET_WOMEN_PRODUCTS = 'GET_WOMEN_PRODUCTS';
 export const GET_POPULAR_PRODUCTS = 'GET_POPULAR_PRODUCTS';
 export const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
 export const GET_PRODUCT_COLOR = 'GET_PRODUCT_COLOR';
+
+// Cart actions
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const CLEAR_CART = 'CLEAR_CART';

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
 import { formatPrice } from '../../utils/helpers';
+import { AmountBtn } from '..';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
+  const [amount, setAmount] = useState(1);
 
   return (
     <div className={classes.singleProduct_info}>
@@ -78,11 +80,11 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       <div className={classes.productInfo_qty}>
         <p>quantity</p>
 
-        <div>
-          <button> - </button>
-          <span> 1 </span>
-          <button> + </button>
-        </div>
+        <AmountBtn
+          stock={product?.stock}
+          amount={amount}
+          setAmount={setAmount}
+        />
       </div>
 
       <div className={classes.productInfo_addToCart}>
