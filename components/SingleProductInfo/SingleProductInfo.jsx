@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
 import { formatPrice } from '../../utils/helpers';
 import { AmountBtn } from '..';
@@ -8,6 +8,11 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
   const [amount, setAmount] = useState(1);
   const { addToCart } = useCartContext();
+
+  useEffect(() => {
+    setSize('');
+    setAmount(1);
+  }, [color]);
 
   return (
     <div className={classes.singleProduct_info}>

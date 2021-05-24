@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-
 export const formatPrice = (price, discountPer) => {
   let finalPrice;
 
-  if (!discountPer) finalPrice = price;
+  if (!discountPer || discountPer === 'undefined') finalPrice = price;
   else {
     finalPrice = price - (price * discountPer) / 100;
   }
@@ -16,12 +14,16 @@ export const formatPrice = (price, discountPer) => {
   return newPrice;
 };
 
-export const getLocalStorage = (key, value) => {
+export const getLocalStorage = key => {
   if (typeof window !== 'undefined') {
     let storage = localStorage?.getItem(key);
 
     if (key === 'singleProduct') {
       return storage ? JSON.parse(storage) : {};
+    }
+
+    if (key === 'cart') {
+      return storage ? JSON.parse(storage) : [];
     }
   }
 };

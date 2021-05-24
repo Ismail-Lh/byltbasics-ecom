@@ -8,7 +8,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from '../utils/actions';
 const CartContext = createContext();
 
 const initialState = {
-  cart: [],
+  cart: getLocalStorage('cart'),
 };
 
 export const CartProvider = ({ children }) => {
@@ -20,6 +20,10 @@ export const CartProvider = ({ children }) => {
       payload: { amount, size, color, id, product },
     });
   };
+
+  useEffect(() => {
+    setLocalStorage('cart', state.cart);
+  }, [state.cart]);
 
   return (
     <CartContext.Provider
