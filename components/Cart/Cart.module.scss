@@ -1,0 +1,108 @@
+@use '../../styles/variables' as *;
+
+.cart {
+  &__header,
+  &__freeShipping {
+    border-bottom: 1px solid $light-grey-color;
+  }
+
+  &__header {
+    .close {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      svg {
+        width: 2rem;
+      }
+    }
+
+    h1 {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: $md-size-2;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__freeShipping {
+    p {
+      margin: 1.5rem 0;
+      text-transform: uppercase;
+      font-size: $sm-size-2;
+      font-weight: bold;
+    }
+  }
+
+  &__products {
+    .product {
+      display: grid;
+      grid-template-columns: 20% 75.5%;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid $light-grey-color;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &__info {
+        width: 100%;
+
+        &_1,
+        &_2 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        &_1 {
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+
+          .name,
+          .color,
+          .size {
+            text-transform: uppercase;
+            font-weight: bold;
+          }
+
+          .name {
+            font-size: $sm-size-2;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease-in;
+
+            &:hover {
+              color: $venice-blue-color;
+            }
+          }
+
+          .color,
+          .size {
+            color: $grey-color;
+            font-size: $sm-size-4;
+          }
+        }
+
+        &_2 {
+          margin-top: 2rem;
+
+          .amountBtn {
+            font-size: $sm-size-2;
+
+            span {
+              margin: 0 1.5rem;
+            }
+          }
+
+          .price {
+            font-size: $sm-size-3;
+          }
+        }
+      }
+    }
+  }
+}

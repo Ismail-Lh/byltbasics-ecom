@@ -3,12 +3,19 @@ import React, { useContext, createContext, useReducer, useEffect } from 'react';
 import CartReducer from '../reducers/cart_reducer';
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
 
-import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from '../utils/actions';
+import {
+  ADD_TO_CART,
+  OPEN_CART,
+  CLOSE_CART,
+  REMOVE_FROM_CART,
+  CLEAR_CART,
+} from '../utils/actions';
 
 const CartContext = createContext();
 
 const initialState = {
   cart: getLocalStorage('cart'),
+  isCartOpen: false,
 };
 
 export const CartProvider = ({ children }) => {
@@ -25,11 +32,26 @@ export const CartProvider = ({ children }) => {
     setLocalStorage('cart', state.cart);
   }, [state.cart]);
 
+  const openCart = () => {
+    dispatch({ type: OPEN_CART });
+  };
+
+  const closeCart = () => {
+    dispatch({ type: CLOSE_CART });
+  };
+
+  const removeFromCart = id => {
+    dispatch({ type: REMOVE_FROM_CART, payload: id });
+  };
+
   return (
     <CartContext.Provider
       value={{
         ...state,
         addToCart,
+        openCart,
+        closeCart,
+        removeFromCart,
       }}>
       {children}
     </CartContext.Provider>

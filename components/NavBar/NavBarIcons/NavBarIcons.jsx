@@ -4,9 +4,11 @@ import classes from './NavBarIcons.module.scss';
 import { MyLink } from '../../../components';
 import { Icons } from '../../../utils/constants';
 import { CartIcon } from '../../../Icons';
+import { useCartContext } from '../../../contexts/cart_context';
 
 const NavBarIcons = () => {
   const [showInput, setShowInput] = useState(false);
+  const { openCart } = useCartContext();
 
   const toggleInput = () => setShowInput(!showInput);
 
@@ -20,14 +22,17 @@ const NavBarIcons = () => {
         )}
 
         {Icons.map(({ id, icon, route, search }) => (
-          <MyLink route={route} key={id} handelClick={search && toggleInput}>
+          <MyLink
+            route={route}
+            key={id}
+            handelClick={search ? toggleInput : openCart}>
             {icon}
           </MyLink>
         ))}
       </div>
-      <div className={classes.navbar__icons_2}>
+      <button className={classes.navbar__icons_2} onClick={openCart}>
         <CartIcon />
-      </div>
+      </button>
     </>
   );
 };

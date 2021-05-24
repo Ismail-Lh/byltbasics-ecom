@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './NavBar.module.scss';
 
-import { MobileMenu } from '..';
+import { Cart, MobileMenu } from '..';
 import NavBarIcons from './NavBarIcons/NavBarIcons';
 import NavBarLinks from './NavBarLinks/NavBarLinks';
 import NavBarLogo from './NavBarLogo/NavBarLogo';
@@ -20,6 +20,7 @@ const NavBar = () => {
       </div>
 
       <MobileMenu />
+      <Cart />
     </nav>
   );
 };

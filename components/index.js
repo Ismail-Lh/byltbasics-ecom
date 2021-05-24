@@ -29,3 +29,6 @@ export { default as SingleProductImages } from './SingleProductImages/SingleProd
 export { default as SingleProductInfo } from './SingleProductInfo/SingleProductInfo';
 
 export { default as AmountBtn } from './AmountBtn/AmountBtn';
+
+// Cart
+export { default as Cart } from './Cart/Cart';
