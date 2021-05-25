@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { AmountBtn, MyLink } from '..';
 import { useCartContext } from '../../contexts/cart_context';
 import { CloseIcon } from '../../Icons';
+import { formatPrice } from '../../utils/helpers';
 
 import classes from './Cart.module.scss';
 
@@ -10,7 +12,16 @@ const Cart = () => {
     closeCart,
     cart: products,
     removeFromCart,
+    product_amount,
   } = useCartContext();
+
+  // const totalPrice = (price, amount, discountPer) => {
+  //   let total_price = price * amount;
+
+  //   let sub_total = formatPrice(total_price, discountPer);
+  //   return sub_total;
+  // };
+
   return (
     <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
       <div className={classes.cart__header}>
@@ -72,10 +83,12 @@ const Cart = () => {
 
                 <div className={classes.product__info_2}>
                   <div className={classes.amountBtn}>
-                    <AmountBtn amount={amount} />
+                    <AmountBtn stock={max} productAmount={amount} />
                   </div>
 
-                  <p className={classes.price}>{price}USD</p>
+                  <p className={classes.price}>
+                    {formatPrice(price, discountPer, product_amount)} USD
+                  </p>
                 </div>
               </div>
             </div>

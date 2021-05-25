@@ -1,9 +1,10 @@
-export const formatPrice = (price, discountPer) => {
+export const formatPrice = (price, discountPer, product_amount = 1) => {
   let finalPrice;
 
-  if (!discountPer || discountPer === 'undefined') finalPrice = price;
+  if (!discountPer || discountPer === 'undefined')
+    finalPrice = price * product_amount;
   else {
-    finalPrice = price - (price * discountPer) / 100;
+    finalPrice = (price - (price * discountPer) / 100) * product_amount;
   }
 
   const newPrice = Intl.NumberFormat('en-US', {
@@ -24,6 +25,10 @@ export const getLocalStorage = key => {
 
     if (key === 'cart') {
       return storage ? JSON.parse(storage) : [];
+    }
+
+    if (key === 'productAmount') {
+      return storage ? JSON.parse(storage) : 1;
     }
   }
 };
