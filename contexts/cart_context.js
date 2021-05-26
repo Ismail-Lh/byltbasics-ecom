@@ -9,6 +9,8 @@ import {
   CLOSE_CART,
   REMOVE_FROM_CART,
   CLEAR_CART,
+  COUNT_TOTAL_PRODUCTS,
+  COUNT_CART_SUBTOTAL,
 } from '../utils/actions';
 
 const CartContext = createContext();
@@ -17,6 +19,7 @@ const initialState = {
   cart: getLocalStorage('cart'),
   isCartOpen: false,
   total_products: 0,
+  subTotal: 0,
 };
 
 export const CartProvider = ({ children }) => {
@@ -31,6 +34,8 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     setLocalStorage('cart', state.cart);
+    dispatch({ type: COUNT_TOTAL_PRODUCTS });
+    dispatch({ type: COUNT_CART_SUBTOTAL });
   }, [state.cart]);
 
   const openCart = () => {

@@ -12,7 +12,7 @@ export const Icons = [
   { id: uuidv4(), icon: <SearchIcon />, search: true },
   { id: uuidv4(), icon: <ContactIcon />, route: 'contact-us' },
   { id: uuidv4(), icon: <LoginIcon />, route: 'account/login' },
-  { id: uuidv4(), icon: <CartIcon /> },
+  { id: uuidv4(), icon: <CartIcon />, cartIcon: true },
 ];
 
 export const HeroData = [

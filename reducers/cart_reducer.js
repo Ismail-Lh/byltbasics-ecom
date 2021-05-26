@@ -4,7 +4,11 @@ import {
   OPEN_CART,
   REMOVE_FROM_CART,
   CLEAR_CART,
+  COUNT_TOTAL_PRODUCTS,
+  COUNT_CART_SUBTOTAL,
 } from '../utils/actions';
+
+import { formatPrice } from '../utils/helpers';
 
 const CartReducer = (state, action) => {
   if (action.type === ADD_TO_CART) {
@@ -67,6 +71,29 @@ const CartReducer = (state, action) => {
 
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] };
+  }
+
+  if (action.type === COUNT_TOTAL_PRODUCTS) {
+    const productAmount = state.cart.map(({ amount }) => amount);
+
+    const totalProducts = productAmount.reduce((acc, curr) => acc + curr, 0);
+
+    return { ...state, total_products: totalProducts };
+  }
+
+  if (action.type === COUNT_CART_SUBTOTAL) {
+    const totalPrices = state.cart.map(({ price, discountPer, amount }) => {
+      let prices;
+
+      if (!discountPer || discountPer === 'undefined') prices = price * amount;
+      else prices = (price - (price * discountPer) / 100) * amount;
+
+      return prices;
+    });
+
+    const finalSubTotal = totalPrices.reduce((acc, curr) => acc + curr, 0);
+
+    return { ...state, subTotal: formatPrice(finalSubTotal) };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

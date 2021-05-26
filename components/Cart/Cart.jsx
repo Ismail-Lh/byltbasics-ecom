@@ -12,6 +12,7 @@ const Cart = () => {
     cart: products,
     removeFromCart,
     clearCart,
+    subTotal,
   } = useCartContext();
 
   return (
@@ -92,7 +93,7 @@ const Cart = () => {
 
           <div className={classes.cart__subtotal}>
             <p className={classes.cart__subtotal_title}>subtotal:</p>
-            <p className={classes.cart__subtotal_price}>$99.99</p>
+            <p className={classes.cart__subtotal_price}>{subTotal} USD</p>
           </div>
 
           <div className={classes.cart__clear}>
