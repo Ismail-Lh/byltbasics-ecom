@@ -6,7 +6,9 @@ import { useCartContext } from '../../contexts/cart_context';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
-  const { addToCart, product_amount: amount } = useCartContext();
+  const { addToCart } = useCartContext();
+
+  const [amount, setAmount] = useState(1);
 
   useEffect(() => {
     setSize('');
@@ -85,7 +87,12 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       <div className={classes.productInfo_qty}>
         <p>quantity</p>
 
-        <AmountBtn stock={product?.stock} />
+        <AmountBtn
+          stock={product?.stock}
+          setAmount={setAmount}
+          productAmount={amount}
+          productColor={color}
+        />
       </div>
 
       <div className={classes.productInfo_addToCart}>

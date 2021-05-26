@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useCartContext } from '../../contexts/cart_context';
 
-const AmountBtn = ({ stock, productAmount = 1 }) => {
-  const { getProductAmount } = useCartContext();
-  const [amount, setAmount] = useState(productAmount);
+const AmountBtn = ({ stock, productAmount, setAmount, productColor }) => {
+  // const { getProductAmount } = useCartContext();
+  // const [amount, setAmount] = useState(productAmount);
 
-  // useEffect(() => {
-  //   setAmount(1);
-  // }, [productColor]);
+  useEffect(() => {
+    setAmount(1);
+  }, [productColor]);
 
   const inc = () => {
     setAmount(oldAmount => {
@@ -16,7 +16,6 @@ const AmountBtn = ({ stock, productAmount = 1 }) => {
       if (newAmount > stock) {
         newAmount = stock;
       }
-      getProductAmount(newAmount);
 
       return newAmount;
     });
@@ -29,7 +28,6 @@ const AmountBtn = ({ stock, productAmount = 1 }) => {
       if (newAmount < 1) {
         newAmount = 1;
       }
-      getProductAmount(newAmount);
 
       return newAmount;
     });
@@ -42,7 +40,7 @@ const AmountBtn = ({ stock, productAmount = 1 }) => {
   return (
     <div>
       <button onClick={dec}> - </button>
-      <span> {amount} </span>
+      <span> {productAmount} </span>
       <button onClick={inc}> + </button>
     </div>
   );

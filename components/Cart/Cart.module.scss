@@ -2,14 +2,67 @@
 
 .cart {
   &__header,
-  &__freeShipping {
+  &__freeShipping,
+  &__products .product,
+  &__subtotal {
     border-bottom: 1px solid $light-grey-color;
+  }
+
+  &__header .close,
+  &__subtotal,
+  &__products .product__info_1,
+  &__products .product__info_2 {
+    display: flex;
+    align-items: center;
+  }
+
+  &__header h1,
+  &__freeShipping p,
+  &__empty,
+  &__products .product__info_1 .name,
+  &__products .product__info_2 .productQty,
+  &__products .product__info_2 .price {
+    font-size: $sm-size-2;
+  }
+
+  &__header h1,
+  &__freeShipping p,
+  &__empty,
+  &__products .product__info_1 .name,
+  &__products .product__info_1 .price,
+  &__products .product__info_1 .size,
+  &__subtotal p,
+  &__checkout a,
+  &__clear button {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &__freeShipping p,
+  &__empty,
+  &__subtotal p {
+    margin: 1.5rem 0;
+  }
+
+  &__subtotal,
+  &__checkout a,
+  &__clear button {
+    font-size: $md-size-4;
+  }
+
+  &__checkout,
+  &__clear {
+    margin: 1.5rem 0;
+  }
+
+  &__checkout a,
+  &__clear button {
+    display: block;
+    width: 100%;
   }
 
   &__header {
     .close {
-      display: flex;
-      align-items: center;
       justify-content: flex-end;
 
       svg {
@@ -18,19 +71,7 @@
     }
 
     h1 {
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: $md-size-2;
       margin-bottom: 2rem;
-    }
-  }
-
-  &__freeShipping {
-    p {
-      margin: 1.5rem 0;
-      text-transform: uppercase;
-      font-size: $sm-size-2;
-      font-weight: bold;
     }
   }
 
@@ -40,7 +81,6 @@
       grid-template-columns: 20% 75.5%;
       gap: 2rem;
       padding: 1.5rem 0;
-      border-bottom: 1px solid $light-grey-color;
 
       img {
         width: 100%;
@@ -52,8 +92,6 @@
 
         &_1,
         &_2 {
-          display: flex;
-          align-items: center;
           justify-content: space-between;
         }
 
@@ -63,15 +101,7 @@
             height: 1.5rem;
           }
 
-          .name,
-          .color,
-          .size {
-            text-transform: uppercase;
-            font-weight: bold;
-          }
-
           .name {
-            font-size: $sm-size-2;
             margin-bottom: 0.5rem;
             transition: color 0.2s ease-in;
 
@@ -90,19 +120,16 @@
         &_2 {
           margin-top: 2rem;
 
-          .amountBtn {
-            font-size: $sm-size-2;
-
-            span {
-              margin: 0 1.5rem;
-            }
-          }
-
+          .productQty,
           .price {
-            font-size: $sm-size-3;
+            text-transform: capitalize;
           }
         }
       }
     }
+  }
+
+  &__subtotal {
+    justify-content: space-between;
   }
 }

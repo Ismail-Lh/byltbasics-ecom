@@ -8,7 +8,6 @@ import {
   OPEN_CART,
   CLOSE_CART,
   REMOVE_FROM_CART,
-  GET_PRODUCT_AMOUNT,
   CLEAR_CART,
 } from '../utils/actions';
 
@@ -17,7 +16,7 @@ const CartContext = createContext();
 const initialState = {
   cart: getLocalStorage('cart'),
   isCartOpen: false,
-  product_amount: 1,
+  total_products: 0,
 };
 
 export const CartProvider = ({ children }) => {
@@ -46,13 +45,9 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: REMOVE_FROM_CART, payload: id });
   };
 
-  const getProductAmount = productAmount => {
-    dispatch({ type: GET_PRODUCT_AMOUNT, payload: productAmount });
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
   };
-
-  // useEffect(() => {
-  //   setLocalStorage('productAmount', state.product_amount);
-  // }, state.product_amount);
 
   return (
     <CartContext.Provider
@@ -62,7 +57,7 @@ export const CartProvider = ({ children }) => {
         openCart,
         closeCart,
         removeFromCart,
-        getProductAmount,
+        clearCart,
       }}>
       {children}
     </CartContext.Provider>
