@@ -8,6 +8,33 @@ export const NavbarLinks = [
   { id: uuidv4(), link: 'last call', route: 'sales' },
 ];
 
+export const menCollections = [
+  { id: uuidv4(), collection: 'new releases', route: 'new' },
+  { id: uuidv4(), collection: 'snow wash collection', route: 'snow-wash' },
+  {
+    id: uuidv4(),
+    collection: 'performance collection',
+    route: 'performance-collection',
+  },
+  {
+    id: uuidv4(),
+    collection: 'executive collection',
+    route: 'executive-collection',
+  },
+  { id: uuidv4(), collection: 'kids collection', route: 'kids-collection' },
+  { id: uuidv4(), collection: 'bundles', route: 'mens-bundles' },
+  { id: uuidv4(), collection: 'last call', route: 'sales' },
+  { id: uuidv4(), collection: 'bylt fresh', route: 'bylt fresh' },
+  { id: uuidv4(), collection: 'shop all', route: 'shop-men' },
+];
+
+export const womenCollections = [
+  { id: uuidv4(), collection: 'bundles', route: 'shop-men' },
+  { id: uuidv4(), collection: 'last call', route: 'shop-men' },
+  { id: uuidv4(), collection: 'bylt fresh', route: 'shop-men' },
+  { id: uuidv4(), collection: 'shop all', route: 'shop-men' },
+];
+
 export const Icons = [
   { id: uuidv4(), icon: <SearchIcon />, search: true },
   { id: uuidv4(), icon: <ContactIcon />, route: 'contact-us' },

@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+
+.dropDownMenu {
+  background-color: $white-color;
+  position: absolute;
+  top: 5.9rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60vh;
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  transform: translateY(calc(-100% - 5.9rem));
+}

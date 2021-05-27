@@ -307,3 +307,26 @@ h1 {
   cursor: none;
   opacity: 0.8;
 }
+
+// Drop Down Menu styles
+.dropDownMenu {
+  background-color: $white-color;
+  position: absolute;
+  top: 5.9rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 60vh;
+  opacity: 0;
+  z-index: -1;
+  visibility: hidden;
+  transform: translateY(calc(-100% - 5.9rem));
+  transition: all 0.2s ease-in;
+
+  &__show {
+    opacity: 1;
+    z-index: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

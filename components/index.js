@@ -4,6 +4,7 @@ export { default as Button } from './Button/Button';
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';
 export { default as MobileMenu } from './MobileMenu/MobileMenu';
+export { default as DropDownMenu } from './DropDownMenu/DropDownMenu';
 
 // Hero Section
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';
