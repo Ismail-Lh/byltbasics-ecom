@@ -1,4 +1,4 @@
-import { Button, MyLink } from '..';
+import { AmountBtn, Button, MyLink } from '..';
 import { useCartContext } from '../../contexts/cart_context';
 import { CloseIcon } from '../../Icons';
 import { formatPrice } from '../../utils/helpers';
@@ -13,6 +13,7 @@ const Cart = () => {
     removeFromCart,
     clearCart,
     subTotal,
+    toggleCartAmount,
   } = useCartContext();
 
   return (
@@ -79,7 +80,11 @@ const Cart = () => {
                     </div>
 
                     <div className={classes.product__info_2}>
-                      <p className={classes.productQty}>qty: {amount}</p>
+                      <AmountBtn
+                        productAmount={amount}
+                        incAmount={() => toggleCartAmount(id, 'inc')}
+                        decAmount={() => toggleCartAmount(id, 'dec')}
+                      />
 
                       <p className={classes.price}>
                         {formatPrice(price, discountPer, amount)} USD

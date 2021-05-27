@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.amountBtn {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button,
+  span {
+    font-size: $sm-size-1;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease-in;
+    width: 3rem;
+    text-align: center;
+
+    &:hover {
+      color: $white-color;
+      background-color: $black-color;
+    }
+  }
+}

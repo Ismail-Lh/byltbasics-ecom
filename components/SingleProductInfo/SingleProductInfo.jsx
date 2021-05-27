@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
-import { formatPrice } from '../../utils/helpers';
+import { decAmount, formatPrice, incAmount } from '../../utils/helpers';
 import { AmountBtn } from '..';
 import { useCartContext } from '../../contexts/cart_context';
 
@@ -12,6 +12,7 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
 
   useEffect(() => {
     setSize('');
+    setAmount(1);
   }, [color]);
 
   return (
@@ -88,10 +89,9 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
         <p>quantity</p>
 
         <AmountBtn
-          stock={product?.stock}
-          setAmount={setAmount}
+          incAmount={() => incAmount(setAmount, product?.stock)}
+          decAmount={() => decAmount(setAmount)}
           productAmount={amount}
-          productColor={color}
         />
       </div>
 

@@ -11,6 +11,7 @@ import {
   CLEAR_CART,
   COUNT_TOTAL_PRODUCTS,
   COUNT_CART_SUBTOTAL,
+  TOGGLE_CART_AMOUNT,
 } from '../utils/actions';
 
 const CartContext = createContext();
@@ -54,6 +55,10 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: CLEAR_CART });
   };
 
+  const toggleCartAmount = (id, value) => {
+    dispatch({ type: TOGGLE_CART_AMOUNT, payload: { id, value } });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -63,6 +68,7 @@ export const CartProvider = ({ children }) => {
         closeCart,
         removeFromCart,
         clearCart,
+        toggleCartAmount,
       }}>
       {children}
     </CartContext.Provider>

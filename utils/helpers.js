@@ -34,3 +34,27 @@ export const setLocalStorage = (key, value) => {
     localStorage?.setItem(key, JSON.stringify(value));
   }
 };
+
+export const incAmount = (setAmount, stock) => {
+  setAmount(oldAmount => {
+    let newAmount = oldAmount + 1;
+
+    if (newAmount > stock) {
+      newAmount = stock;
+    }
+
+    return newAmount;
+  });
+};
+
+export const decAmount = setAmount => {
+  setAmount(oldAmount => {
+    let newAmount = oldAmount - 1;
+
+    if (newAmount < 1) {
+      newAmount = 1;
+    }
+
+    return newAmount;
+  });
+};

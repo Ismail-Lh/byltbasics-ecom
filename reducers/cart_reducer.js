@@ -6,6 +6,7 @@ import {
   CLEAR_CART,
   COUNT_TOTAL_PRODUCTS,
   COUNT_CART_SUBTOTAL,
+  TOGGLE_CART_AMOUNT,
 } from '../utils/actions';
 
 import { formatPrice } from '../utils/helpers';
@@ -94,6 +95,36 @@ const CartReducer = (state, action) => {
     const finalSubTotal = totalPrices.reduce((acc, curr) => acc + curr, 0);
 
     return { ...state, subTotal: formatPrice(finalSubTotal) };
+  }
+
+  if (action.type === TOGGLE_CART_AMOUNT) {
+    const { id, value } = action.payload;
+
+    const tempCart = state.cart.map(item => {
+      if (item.id === id) {
+        let newAmount;
+        if (value === 'inc') {
+          newAmount = item.amount + 1;
+
+          if (newAmount > item.max) {
+            newAmount = item.max;
+          }
+
+          return { ...item, amount: newAmount };
+        } else if (value === 'dec') {
+          newAmount = item.amount - 1;
+
+          if (newAmount < 1) {
+            newAmount = 1;
+          }
+
+          return { ...item, amount: newAmount };
+        }
+      }
+      return item;
+    });
+
+    return { ...state, cart: tempCart };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
