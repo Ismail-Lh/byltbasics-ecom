@@ -316,12 +316,16 @@ h1 {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 60vh;
+  height: 58vh;
   opacity: 0;
   z-index: -1;
   visibility: hidden;
   transform: translateY(calc(-100% - 5.9rem));
   transition: all 0.2s ease-in;
+
+  .container {
+    height: 100%;
+  }
 
   &__show {
     opacity: 1;

@@ -35,6 +35,71 @@ export const womenCollections = [
   { id: uuidv4(), collection: 'shop all', route: 'shop-men' },
 ];
 
+export const menCategories = [
+  {
+    id: uuidv4(),
+    productCategory: 'tops',
+    productTypes: [
+      'drop cuts',
+      'long sleeves',
+      'tanks',
+      'henleys',
+      'dotted pattern',
+      'striped pattern',
+      'v-necks',
+      'split hems',
+      'crews',
+      'polos',
+      'dress shirts',
+    ],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'bottoms',
+    productTypes: ['shorts', 'joggers', 'pants'],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'outerwear',
+    productTypes: ['pullovers', 'sweatshirts', 'jackets'],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'underwear',
+    productTypes: ['boxer briefs', 'trunks'],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'hats & accessories',
+    productTypes: [
+      'hats',
+      'shoes',
+      'socks',
+      'face masks',
+      'gift cards',
+      'hand sanitizer',
+    ],
+  },
+];
+
+export const womenCategories = [
+  {
+    id: uuidv4(),
+    productCategory: 'tops',
+    productTypes: ['essential tank', 'essential tee', 'crop top'],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'bottoms',
+    productTypes: ['joggers', 'leggings'],
+  },
+  {
+    id: uuidv4(),
+    productCategory: 'hats & accessories',
+    productTypes: ['hats', 'gift cards', 'face masks'],
+  },
+];
+
 export const Icons = [
   { id: uuidv4(), icon: <SearchIcon />, search: true },
   { id: uuidv4(), icon: <ContactIcon />, route: 'contact-us' },

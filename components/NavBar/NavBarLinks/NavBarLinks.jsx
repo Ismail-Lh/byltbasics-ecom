@@ -2,8 +2,10 @@ import Link from 'next/link';
 import classes from './NavBarLinks.module.scss';
 
 import {
+  menCategories,
   menCollections,
   NavbarLinks,
+  womenCategories,
   womenCollections,
 } from '../../../utils/constants';
 import { useState } from 'react';
@@ -13,7 +15,13 @@ import { DropDownMenu } from '../../';
 
 const NavBarLinks = () => {
   const { openSidebar } = useProductsContext();
-  const [showDropMenu, setShowDropMenu] = useState(false);
+  const [showMenDropMenu, setShowMenDropMenu] = useState(false);
+  const [showWomenDropMenu, setShowWomenDropMenu] = useState(false);
+
+  const handelHover = (link, state) => {
+    link === 'men' && setShowMenDropMenu(state);
+    link === 'women' && setShowWomenDropMenu(state);
+  };
 
   return (
     <>
@@ -22,27 +30,37 @@ const NavBarLinks = () => {
           <li
             className={classes.navbar__links}
             key={id}
-            onMouseEnter={() =>
-              (link === 'men' || link === 'women') && setShowDropMenu(true)
-            }
-            onMouseLeave={() =>
-              (link === 'men' || link === 'women') && setShowDropMenu(false)
-            }>
+            onMouseEnter={() => handelHover(link, true)}
+            onMouseLeave={() => handelHover(link, false)}>
             <Link href={`/collections/${route}`}>{link}</Link>
 
             {link === 'men' && (
               <DropDownMenu
                 collections={menCollections}
+                productsCategories={menCategories}
                 gender='men'
-                showDropMenu={showDropMenu}
+                imageInfo={{
+                  imgUrl: 'men-drop-down-img.jpg',
+                  route: 'collections/spring-collection',
+                  subtitle: 'shop the latest styles',
+                  title: 'gear up for summer',
+                }}
+                showDropMenu={showMenDropMenu}
               />
             )}
 
             {link === 'women' && (
               <DropDownMenu
                 collections={womenCollections}
+                productsCategories={womenCategories}
                 gender='women'
-                showDropMenu={showDropMenu}
+                imageInfo={{
+                  imgUrl: 'women-drop-down-img.jpg',
+                  route: 'products/womens-elite-joggers',
+                  subtitle: 'ultimate comfort. premium style.',
+                  title: "women's elite + joggers",
+                }}
+                showDropMenu={showWomenDropMenu}
               />
             )}
           </li>
