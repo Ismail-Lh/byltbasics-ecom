@@ -9,3 +9,5 @@ export { default as FooterFormContainer } from './FooterFormContainer/FooterForm
 export { default as FooterLinksContainer } from './FooterLinksContainer/FooterLinksContainer';
 
 export { default as SingleProductContainer } from './SingleProductContainer/SingleProductContainer';
+
+export { default as AboutUsPageContainer } from './AboutUsPageContainer/AboutUsPageContainer';
