@@ -6,21 +6,63 @@
   grid-template-rows: 42rem 60.7rem;
   row-gap: 7rem;
 
+  @media (max-width: 768px) {
+    grid-template-rows: auto;
+  }
+
+  @media (max-width: 500px) {
+    margin: 5rem 0;
+    row-gap: 5rem;
+  }
+
+  @media (max-width: 375px) {
+    margin: 3rem 0;
+    row-gap: 3rem;
+  }
+
   .splitContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 8rem;
 
-    &__image,
-    &__image img,
+    @media (max-width: 980px) {
+      gap: 5rem;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 375px) {
+      gap: 3rem;
+    }
+
+    &__image_1,
+    &__image_2,
+    &__image_1 img,
+    &__image_2 img,
     .text .img img {
       width: 100%;
       height: 100%;
     }
 
+    &__image_2 {
+      @media (max-width: 768px) {
+        order: 2;
+      }
+    }
+
     .text {
       padding-left: 5rem;
+
+      @media (max-width: 980px) {
+        padding-left: 3rem;
+      }
+
+      @media (max-width: 375px) {
+        padding-left: 1.5rem;
+      }
 
       .title,
       .img {
@@ -30,6 +72,10 @@
       p:not(:last-of-type),
       .content:not(:last-of-type) {
         margin-bottom: 3rem;
+
+        @media (max-width: 500px) {
+          margin-bottom: 2rem;
+        }
       }
 
       .title {

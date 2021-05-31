@@ -29,7 +29,7 @@ const AboutUsPageContainer = () => {
               </p>
             </div>
             {/* ------------------------------ */}
-            <div className={classes.splitContent__image}>
+            <div className={classes.splitContent__image_1}>
               <img
                 src='/assets/about-us-split-content-img-1.jpg'
                 alt='about-us-split-content-img-1'
@@ -38,7 +38,7 @@ const AboutUsPageContainer = () => {
           </div>
           {/* ------------------------------ */}
           <div className={classes.splitContent}>
-            <div className={classes.splitContent__image}>
+            <div className={classes.splitContent__image_2}>
               <img
                 src='/assets/about-us-split-content-img-2.jpg'
                 alt='about-us-split-content-img-2'
