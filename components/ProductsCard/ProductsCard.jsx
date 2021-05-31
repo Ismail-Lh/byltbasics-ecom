@@ -9,7 +9,7 @@ import {
 } from '../../utils/helpers';
 import { useProductsContext } from '../../contexts/products_context';
 
-const ProductsCard = ({ product, gender }) => {
+const ProductsCard = ({ product }) => {
   const { getSingleProduct } = useProductsContext();
   const colorStyle = discountPer => {
     let style;
@@ -21,18 +21,14 @@ const ProductsCard = ({ product, gender }) => {
 
   const [color, setColor] = useState(product?.colors[0]);
 
-  // useEffect(() => {
-  //   setLocalStorage('productColor', color);
-  // }, [color]);
-
   return (
     <div className={classes.card}>
       <div
         className={classes.card__image}
-        onClick={() => getSingleProduct(product?.id, gender, color)}>
+        onClick={() => getSingleProduct(product?.id, product?.gender, color)}>
         <MyLink route={`/products/${product?.route}`}>
           <img
-            src={`assets/products/${gender}/${product?.category}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
+            src={`/assets/products/${product?.gender}/${product?.category}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
             alt={`${product?.name}-${color}`}
           />
         </MyLink>
@@ -78,7 +74,7 @@ const ProductsCard = ({ product, gender }) => {
             {product?.colors?.map((clr, idx) => (
               <div key={idx} onClick={() => setColor(clr)}>
                 <img
-                  src={`assets/products/colors/${clr}.jpg`}
+                  src={`/assets/products/colors/${clr}.jpg`}
                   alt={clr}
                   className={`${clr === color && 'active-color'}`}
                 />
