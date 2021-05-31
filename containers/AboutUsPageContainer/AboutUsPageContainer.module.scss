@@ -1,44 +1,52 @@
 @use '../../styles/variables' as *;
 
 .aboutUs {
-  margin: 6rem 0;
+  margin: 7rem 0;
+  display: grid;
+  grid-template-rows: 42rem 60.7rem;
+  row-gap: 7rem;
+
   .splitContent {
-    &__title {
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: $md-size-2;
-      margin-bottom: 1.5rem;
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 8rem;
 
-    &__image {
-      height: 100%;
+    &__image,
+    &__image img,
+    .text .img img {
       width: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      height: 100%;
     }
 
-    &_1 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 42rem;
-      align-items: center;
-      gap: 8rem;
+    .text {
+      padding-left: 5rem;
 
-      &__text {
-        padding-left: 5rem;
+      .title,
+      .img {
+        margin-bottom: 1.5rem;
+      }
 
-        &_1,
-        &_2 {
-          font-size: $sm-size-3;
-          line-height: 2.2rem;
-          font-weight: 400;
-        }
+      p:not(:last-of-type),
+      .content:not(:last-of-type) {
+        margin-bottom: 3rem;
+      }
 
-        &_1 {
-          margin-bottom: 3rem;
-        }
+      .title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: $md-size-2;
+      }
+
+      p {
+        font-size: $sm-size-3;
+        line-height: 2.2rem;
+        font-weight: 400;
+        width: 90%;
+      }
+
+      .img {
+        width: 3.65rem;
       }
     }
   }
