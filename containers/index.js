@@ -11,3 +11,5 @@ export { default as FooterLinksContainer } from './FooterLinksContainer/FooterLi
 export { default as SingleProductContainer } from './SingleProductContainer/SingleProductContainer';
 
 export { default as AboutUsPageContainer } from './AboutUsPageContainer/AboutUsPageContainer';
+
+export { default as ShopMenPageContainer } from './ShopMenPageContainer/ShopMenPageContainer';

@@ -5,7 +5,9 @@ import { BackgroundImage } from '../../components';
 const AboutUsPageContainer = () => {
   return (
     <div>
-      <BackgroundImage imgSrc='about-us-bg.jpg' title='our story' />
+      <div className={classes.backgroundImage}>
+        <BackgroundImage imgSrc='about-us-bg.jpg' title='our story' />
+      </div>
       <div className='container'>
         <div className={classes.aboutUs}>
           {/* ------------------------------ */}
