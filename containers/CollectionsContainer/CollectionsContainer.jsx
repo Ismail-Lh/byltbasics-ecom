@@ -1,7 +1,10 @@
-import { ProductsCard } from '../../components';
 import classes from './CollectionsContainer.module.scss';
+import { useFiltersContext } from '../../contexts/filters_context';
+import { ProductsCard, SortProducts } from '../../components';
 
-const CollectionsContainer = ({ products }) => {
+const CollectionsContainer = () => {
+  const { filtered_products: products } = useFiltersContext();
+
   return (
     <div className='container'>
       <div className={classes.collections__grid}>
@@ -10,10 +13,10 @@ const CollectionsContainer = ({ products }) => {
         </div>
         <div className={classes.collections__products}>
           <div className={classes.sorts}>
-            <h1>sort by</h1>
+            <SortProducts />
           </div>
           <div className={classes.products}>
-            {products.map(product => (
+            {products?.map(product => (
               <ProductsCard product={product} key={product.id} />
             ))}
           </div>

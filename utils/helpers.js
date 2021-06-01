@@ -26,6 +26,10 @@ export const getLocalStorage = key => {
     if (key === 'cart') {
       return storage ? JSON.parse(storage) : [];
     }
+
+    if (key === 'productsByGender') {
+      return storage ? JSON.parse(storage) : [];
+    }
   }
 };
 

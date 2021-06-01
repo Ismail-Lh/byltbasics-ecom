@@ -1,6 +1,7 @@
 export { default as MyLink } from './MyLink/MyLink';
 export { default as Button } from './Button/Button';
 export { default as BackgroundImage } from './BackgroundImage/BackgroundImage';
+export { default as SortProducts } from './SortProducts/SortProducts';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';

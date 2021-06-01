@@ -15,6 +15,7 @@ import { DropDownMenu } from '../../';
 
 const NavBarLinks = () => {
   const { openSidebar } = useProductsContext();
+
   const [showMenDropMenu, setShowMenDropMenu] = useState(false);
   const [showWomenDropMenu, setShowWomenDropMenu] = useState(false);
 
