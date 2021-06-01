@@ -1,6 +1,6 @@
 import classes from './CollectionsContainer.module.scss';
 import { useFiltersContext } from '../../contexts/filters_context';
-import { ProductsCard, SortProducts } from '../../components';
+import { ProductsCard, SortProducts, Filters } from '../../components';
 
 const CollectionsContainer = () => {
   const { filtered_products: products } = useFiltersContext();
@@ -9,7 +9,7 @@ const CollectionsContainer = () => {
     <div className='container'>
       <div className={classes.collections__grid}>
         <div className={classes.collections__filters}>
-          <h1>Filters</h1>
+          <Filters />
         </div>
         <div className={classes.collections__products}>
           <div className={classes.sorts}>

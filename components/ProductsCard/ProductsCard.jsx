@@ -28,7 +28,7 @@ const ProductsCard = ({ product }) => {
         onClick={() => getSingleProduct(product?.id, product?.gender, color)}>
         <MyLink route={`/products/${product?.route}`}>
           <img
-            src={`/assets/products/${product?.gender}/${product?.category}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
+            src={`/assets/products/${product?.gender}/${product?.collections}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
             alt={`${product?.name}-${color}`}
           />
         </MyLink>
@@ -37,7 +37,7 @@ const ProductsCard = ({ product }) => {
 
         {product?.discountPer && (
           <img
-            src='assets/sale-badge.svg'
+            src='/assets/sale-badge.svg'
             alt='sale-badge'
             className={classes.sale_badge}
           />
