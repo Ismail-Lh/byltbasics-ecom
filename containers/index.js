@@ -12,6 +12,6 @@ export { default as SingleProductContainer } from './SingleProductContainer/Sing
 
 export { default as AboutUsPageContainer } from './AboutUsPageContainer/AboutUsPageContainer';
 
-export { default as ShopMenPageContainer } from './ShopMenPageContainer/ShopMenPageContainer';
+export { default as ShopPageContainer } from './ShopPageContainer/ShopPageContainer';
 
 export { default as CollectionsContainer } from './CollectionsContainer/CollectionsContainer';
