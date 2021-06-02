@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+
+.filter {
+  &__type {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $light-grey-color;
+
+    &_title,
+    &_value div {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &_title {
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &_value {
+      padding: 1rem 2rem;
+      // justify-content: space-around;
+
+      div {
+        &:not(:last-of-type) {
+          margin-bottom: 1rem;
+        }
+
+        img {
+          width: 4rem;
+          height: 4rem;
+          margin-right: 2rem;
+        }
+
+        h4 {
+          text-transform: capitalize;
+          font-size: $sm-size-4;
+          font-weight: 400;
+          border-bottom: 1px solid transparent;
+          transition: all 0.2s ease-in;
+
+          &:hover {
+            color: $venice-blue-color;
+            border-bottom: 1px solid $venice-blue-color;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+
+.filters {
+  h3 {
+    text-transform: uppercase;
+    font-size: $sm-size-3;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $light-grey-color;
+  }
+}

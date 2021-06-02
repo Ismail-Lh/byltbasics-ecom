@@ -4,7 +4,7 @@ import classes from './Filters.module.scss';
 const Filters = () => {
   return (
     <div className={classes.filters}>
-      <h1 className={classes.filters__title}>filters</h1>
+      <h3 className={classes.filters__title}>filters</h3>
       <FilterType type='collections' title='collections' />
       <FilterType type='cut' title='cut' />
       <FilterType type='neck' title='neck' />
