@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+
+.form {
+  &__select {
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    font-size: $sm-size-3;
+    font-weight: bold;
+    color: $venice-blue-color;
+    border: 2px solid $venice-blue-color;
+    border-radius: 5px;
+    outline: 0;
+  }
+}

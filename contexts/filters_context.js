@@ -16,7 +16,7 @@ const FiltersContext = createContext();
 const initialState = {
   products_by_gender: getLocalStorage('productsByGender'),
   filtered_products: [],
-  sort: 'price: low to hight',
+  sort: 'sort by',
   filters: {
     collections: 'all',
     cut: 'all',

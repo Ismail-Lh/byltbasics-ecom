@@ -36,23 +36,33 @@ const FiltersReducer = (state, action) => {
     const { sort, filtered_products } = state;
     let tempProducts = [...filtered_products];
 
+    if (sort === 'sort-by') {
+      tempProducts = tempProducts;
+    }
+
     if (sort === 'price-lowest') {
       tempProducts = tempProducts.sort(
         (curr, next) =>
           itemPrice(curr.price, curr.discountPer) -
           itemPrice(next.price, next.discountPer)
       );
-    } else if (sort === 'price-highest') {
+    }
+
+    if (sort === 'price-highest') {
       tempProducts = tempProducts.sort(
         (curr, next) =>
           itemPrice(next.price, next.discountPer) -
           itemPrice(curr.price, curr.discountPer)
       );
-    } else if (sort === 'name-a') {
+    }
+
+    if (sort === 'name-a') {
       tempProducts = tempProducts.sort((curr, next) =>
         curr.name.localeCompare(next.name)
       );
-    } else if (sort === 'name-z') {
+    }
+
+    if (sort === 'name-z') {
       tempProducts = tempProducts.sort((curr, next) =>
         next.name.localeCompare(curr.name)
       );

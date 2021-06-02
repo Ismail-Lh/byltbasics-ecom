@@ -6,13 +6,13 @@ const SortProducts = () => {
 
   return (
     <form className={classes.form}>
-      <label htmlFor='sort'>Sort by :</label>
       <select
         name='sort'
         id='sort'
         className={classes.form__select}
         value={sort}
         onChange={updateSort}>
+        <option value='sort-by'>sort by</option>
         <option value='price-lowest'>price: low to hight</option>
         <option value='price-highest'>price: hight to low</option>
         <option value='name-a'>a - z</option>
