@@ -5,6 +5,9 @@ import {
   UPDATE_SORT,
   GET_PRODUCTS_BY_GENDER,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
+  CLEAR_FILTERS,
 } from '../utils/actions';
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
 
@@ -14,6 +17,13 @@ const initialState = {
   products_by_gender: getLocalStorage('productsByGender'),
   filtered_products: [],
   sort: 'price: low to hight',
+  filters: {
+    collections: 'all',
+    cut: 'all',
+    neck: 'all',
+    sleeve: 'all',
+    fabric: 'all',
+  },
 };
 
 export const FiltersProvider = ({ children }) => {
@@ -37,12 +47,26 @@ export const FiltersProvider = ({ children }) => {
     dispatch({ type: SORT_PRODUCTS });
   }, [state.sort]);
 
+  const updateFilters = (type, value) => {
+    dispatch({ type: UPDATE_FILTERS, payload: { type, value } });
+  };
+
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
+  }, [state.filters]);
+
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
+
   return (
     <FiltersContext.Provider
       value={{
         ...state,
         getProductsByGender,
         updateSort,
+        updateFilters,
+        clearFilters,
       }}>
       {children}
     </FiltersContext.Provider>
