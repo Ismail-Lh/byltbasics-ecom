@@ -30,6 +30,10 @@ export const getLocalStorage = key => {
     if (key === 'productsByGender') {
       return storage ? JSON.parse(storage) : [];
     }
+
+    if (key === 'gender') {
+      return storage ? JSON.parse(storage) : '';
+    }
   }
 };
 

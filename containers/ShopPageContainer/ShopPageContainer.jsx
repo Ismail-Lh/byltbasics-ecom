@@ -5,12 +5,12 @@ import { useFiltersContext } from '../../contexts/filters_context';
 import { BackgroundImage } from '../../components';
 import { CollectionsContainer } from '..';
 
-const ShopPageContainer = ({ imgSrc, title, products }) => {
-  const { getProductsByGender } = useFiltersContext();
+const ShopPageContainer = ({ imgSrc, title }) => {
+  // const { getProductsByGender, gender } = useFiltersContext();
 
-  useEffect(() => {
-    getProductsByGender(products);
-  }, []);
+  // useEffect(() => {
+  //   getProductsByGender(products);
+  // }, [gender]);
 
   return (
     <div>

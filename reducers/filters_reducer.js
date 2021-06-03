@@ -5,6 +5,7 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
+  UPDATE_GENDER,
 } from '../utils/actions';
 
 const itemPrice = (price, discountPer) => {
@@ -14,8 +15,20 @@ const itemPrice = (price, discountPer) => {
 };
 
 const FiltersReducer = (state, action) => {
+  if (action.type === UPDATE_GENDER) {
+    const gender = action.payload;
+
+    return { ...state, gender };
+  }
+
   if (action.type === GET_PRODUCTS_BY_GENDER) {
-    const products = action.payload;
+    const { men_products, women_products } = action.payload;
+    const { gender } = state;
+
+    let products = [];
+
+    if (gender === 'men') products = men_products;
+    if (gender === 'women') products = women_products;
 
     return {
       ...state,
@@ -79,38 +92,46 @@ const FiltersReducer = (state, action) => {
 
   if (action.type === FILTER_PRODUCTS) {
     const { products_by_gender: products } = state;
-    const { collections, cut, neck, sleeve, fabric } = state.filters;
+    const { collections, style, cut, neck, sleeve, fabric } = state.filters;
 
     let tempProducts = [...products];
 
     if (collections !== 'all') {
       tempProducts = tempProducts
         ?.map(product => product)
-        ?.filter(product => product.collections.toLowerCase() === collections);
+        ?.filter(
+          product => product?.collections?.toLowerCase() === collections
+        );
+    }
+
+    if (style !== 'all') {
+      tempProducts = tempProducts
+        ?.map(product => product)
+        ?.filter(product => product?.style?.toLowerCase() === style);
     }
 
     if (cut !== 'all') {
       tempProducts = tempProducts
         ?.map(product => product)
-        ?.filter(product => product.cut.toLowerCase() === cut);
+        ?.filter(product => product?.cut?.toLowerCase() === cut);
     }
 
     if (neck !== 'all') {
       tempProducts = tempProducts
         ?.map(product => product)
-        ?.filter(product => product.neck.toLowerCase() === neck);
+        ?.filter(product => product?.neck?.toLowerCase() === neck);
     }
 
     if (sleeve !== 'all') {
       tempProducts = tempProducts
         ?.map(product => product)
-        ?.filter(product => product.sleeve.toLowerCase() === sleeve);
+        ?.filter(product => product?.sleeve?.toLowerCase() === sleeve);
     }
 
     if (fabric !== 'all') {
       tempProducts = tempProducts
         ?.map(product => product)
-        ?.filter(product => product.fabric.toLowerCase() === fabric);
+        ?.filter(product => product?.fabric?.toLowerCase() === fabric);
     }
 
     return { ...state, filtered_products: tempProducts };
@@ -122,6 +143,7 @@ const FiltersReducer = (state, action) => {
       filters: {
         ...state.filters,
         collections: 'all',
+        style: 'all',
         cut: 'all',
         neck: 'all',
         sleeve: 'all',

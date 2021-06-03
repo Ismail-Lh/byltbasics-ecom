@@ -11,6 +11,7 @@ const Filters = () => {
       <h3 className={classes.filters__title}>filters</h3>
 
       <FilterType type='collections' title='collections' />
+      <FilterType type='style' title='style' />
       <FilterType type='cut' title='cut' />
       <FilterType type='neck' title='neck' />
       <FilterType type='sleeve' title='sleeve' />

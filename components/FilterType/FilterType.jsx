@@ -9,7 +9,6 @@ const FilterType = ({ type, title }) => {
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
   const filtersValue = [...new Set(products.map(product => product[type]))];
-  const gender = [...new Set(products.map(product => product.gender))];
 
   return (
     <div className={classes.filter__type}>
@@ -23,13 +22,17 @@ const FilterType = ({ type, title }) => {
       {toggleAccordion && (
         <div className={classes.filter__type_value}>
           {filtersValue.map((value, idx) => (
-            <div key={idx} onClick={() => updateFilters(type, value)}>
-              <img
-                src={`/assets/filters/${gender[0]}/${type}/${value}.png`}
-                alt={value}
-              />
-              <h4>{value}</h4>
-            </div>
+            <>
+              {value !== undefined && (
+                <div key={idx} onClick={() => updateFilters(type, value)}>
+                  <img
+                    src={`/assets/filters/${type}/${value}.png`}
+                    alt={value}
+                  />
+                  <h4>{value}</h4>
+                </div>
+              )}
+            </>
           ))}
         </div>
       )}

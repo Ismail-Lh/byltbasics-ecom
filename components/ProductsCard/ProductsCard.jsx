@@ -28,7 +28,7 @@ const ProductsCard = ({ product }) => {
         onClick={() => getSingleProduct(product?.id, product?.gender, color)}>
         <MyLink route={`/products/${product?.route}`}>
           <img
-            src={`/assets/products/${product?.gender}/${product?.collections}/${product?.type}/${product?.name}/${color}/small/${product?.images[0]}`}
+            src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/small/${product?.images[0]}`}
             alt={`${product?.name}-${color}`}
           />
         </MyLink>

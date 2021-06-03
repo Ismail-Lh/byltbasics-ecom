@@ -3,6 +3,7 @@ import React, { useContext, createContext, useReducer, useEffect } from 'react';
 import FiltersReducer from '../reducers/filters_reducer';
 import {
   UPDATE_SORT,
+  UPDATE_GENDER,
   GET_PRODUCTS_BY_GENDER,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
@@ -10,15 +11,18 @@ import {
   CLEAR_FILTERS,
 } from '../utils/actions';
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
+import { useProductsContext } from './products_context';
 
 const FiltersContext = createContext();
 
 const initialState = {
-  products_by_gender: getLocalStorage('productsByGender'),
+  gender: getLocalStorage('gender'),
+  products_by_gender: [],
   filtered_products: [],
   sort: 'sort by',
   filters: {
     collections: 'all',
+    style: 'all',
     cut: 'all',
     neck: 'all',
     sleeve: 'all',
@@ -28,14 +32,24 @@ const initialState = {
 
 export const FiltersProvider = ({ children }) => {
   const [state, dispatch] = useReducer(FiltersReducer, initialState);
+  const { men_products, women_products } = useProductsContext();
 
-  const getProductsByGender = products => {
-    dispatch({ type: GET_PRODUCTS_BY_GENDER, payload: products });
+  const updateGender = gender => {
+    dispatch({ type: UPDATE_GENDER, payload: gender });
   };
 
   useEffect(() => {
+    dispatch({
+      type: GET_PRODUCTS_BY_GENDER,
+      payload: { men_products, women_products },
+    });
+
+    setLocalStorage('gender', state.gender);
+  }, [state.gender]);
+
+  useEffect(() => {
     setLocalStorage('productsByGender', state.products_by_gender);
-  }, [state.products_by_gender]);
+  }, [state.gender, state.products_by_gender]);
 
   const updateSort = e => {
     const { value } = e.target;
@@ -63,7 +77,7 @@ export const FiltersProvider = ({ children }) => {
     <FiltersContext.Provider
       value={{
         ...state,
-        getProductsByGender,
+        updateGender,
         updateSort,
         updateFilters,
         clearFilters,
