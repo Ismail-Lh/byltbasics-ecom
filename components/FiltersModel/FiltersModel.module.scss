@@ -1,0 +1,24 @@
+@use '../../styles/variables' as *;
+
+.filtersModel {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $light-grey-color;
+
+    .title {
+      font-size: $md-size-4;
+      font-weight: bold;
+    }
+
+    .closeBtn {
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+  }
+}

@@ -44,12 +44,11 @@ const Cart = () => {
                 color,
                 size,
                 amount,
-                max,
                 price,
                 discountPer,
                 image,
-                type,
-                category,
+                collections,
+                style,
                 route,
                 gender,
               }) => (
@@ -57,7 +56,7 @@ const Cart = () => {
                   <div className={classes.product__img}>
                     <MyLink route={`/products/${route}`}>
                       <img
-                        src={`/assets/products/${gender}/${category}/${type}/${name}/${color}/small/${image}`}
+                        src={`/assets/products/${gender}/${collections}/${style}/${name}/${color}/small/${image}`}
                         alt={`${name}-${color}-${size}`}
                       />
                     </MyLink>

@@ -1,6 +1,17 @@
 @use '../../styles/variables' as *;
 
 .filters {
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
   h3 {
     text-transform: uppercase;
     font-size: $sm-size-3;
@@ -11,6 +22,14 @@
     margin-bottom: 1rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid $light-grey-color;
+  }
+
+  &__title {
+    @media (max-width: 768px) {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
   }
 
   &__clear {

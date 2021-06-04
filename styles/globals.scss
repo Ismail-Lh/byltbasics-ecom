@@ -90,7 +90,8 @@ h1 {
 }
 
 .mobileMenu,
-.cart {
+.cart,
+.filtersModel {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -108,14 +109,18 @@ h1 {
 }
 
 // Mobile Menu
-.mobileMenu {
+.mobileMenu,
+.filtersModel {
   left: 0;
-  width: 50%;
   transform: translateX(-100%);
 
   &__show {
     transform: translate(0);
   }
+}
+
+.mobileMenu {
+  width: 50%;
 
   @media (max-width: 425px) {
     width: 100%;
@@ -194,6 +199,16 @@ h1 {
 
   &__show {
     transform: translate(0);
+  }
+}
+
+// FiltersModel style
+.filtersModel {
+  width: 100%;
+
+  h3 {
+    text-transform: uppercase;
+    font-size: $sm-size-3;
   }
 }
 

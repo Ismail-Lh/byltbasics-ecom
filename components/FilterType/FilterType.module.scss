@@ -26,6 +26,24 @@
     &_value {
       padding: 1rem 1.5rem;
 
+      @media (max-width: 768px) {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+
+        div {
+          border: 2px solid $light-grey-color;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          transition: border 0.2s ease-in;
+
+          &:hover {
+            border: 2px solid $venice-blue-color;
+          }
+        }
+      }
+
       div {
         &:not(:last-of-type) {
           margin-bottom: 1rem;
