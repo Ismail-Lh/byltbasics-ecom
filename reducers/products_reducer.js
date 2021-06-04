@@ -1,8 +1,7 @@
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
-  GET_MEN_PRODUCTS,
-  GET_WOMEN_PRODUCTS,
+  GET_PRODUCTS,
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
 } from '../utils/actions';
@@ -16,41 +15,30 @@ const ProductsReducer = (state, action) => {
     return { ...state, isSidebarOpen: false };
   }
 
-  if (action.type === GET_MEN_PRODUCTS) {
-    const { men: menProducts, loading } = action.payload;
+  if (action.type === GET_PRODUCTS) {
+    const { men: menProducts, women: womenProducts, loading } = action.payload;
 
     return {
       ...state,
       men_products: [...menProducts],
-      loading,
-    };
-  }
-
-  if (action.type === GET_WOMEN_PRODUCTS) {
-    const { women: womenProducts, loading } = action.payload;
-
-    return {
-      ...state,
       women_products: [...womenProducts],
       loading,
     };
   }
 
   if (action.type === GET_POPULAR_PRODUCTS) {
-    const { womenProducts, menProducts } = action.payload;
+    const { men_products, women_products } = state;
 
-    const menPopularProducts = menProducts?.filter(
-      product => product.popularity === true
-    );
-
-    const womenPopularProducts = womenProducts?.filter(
-      product => product.popularity === true
-    );
+    const popularProducts = products =>
+      products?.filter(product => product.popularity === true);
 
     return {
       ...state,
       popular_products: [
-        { men: [...menPopularProducts], women: [...womenPopularProducts] },
+        {
+          men: [...popularProducts(men_products)],
+          women: [...popularProducts(women_products)],
+        },
       ],
     };
   }
@@ -61,12 +49,15 @@ const ProductsReducer = (state, action) => {
 
     let singleProduct = {};
 
+    const getSingleProduct = products =>
+      products?.filter(product => product.id === productId);
+
     if (gender === 'men') {
-      singleProduct = men_products?.filter(product => product.id === productId);
-    } else if (gender === 'women') {
-      singleProduct = women_products?.filter(
-        product => product.id === productId
-      );
+      singleProduct = getSingleProduct(men_products);
+    }
+
+    if (gender === 'women') {
+      singleProduct = getSingleProduct(women_products);
     }
 
     return {

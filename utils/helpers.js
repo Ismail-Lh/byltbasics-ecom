@@ -1,7 +1,7 @@
 export const formatPrice = (price, discountPer, product_amount = 1) => {
   let finalPrice;
 
-  if (!discountPer || discountPer === 'undefined')
+  if (!discountPer || discountPer === undefined)
     finalPrice = price * product_amount;
   else {
     finalPrice = (price - (price * discountPer) / 100) * product_amount;

@@ -5,7 +5,7 @@ import ProductsReducer from '../reducers/products_reducer';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
-  GET_MEN_PRODUCTS,
+  GET_PRODUCTS,
   GET_WOMEN_PRODUCTS,
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
@@ -37,30 +37,17 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  // Get menProducts
+  // Get menProducts && womenProducts
   useEffect(() => {
     dispatch({
-      type: GET_MEN_PRODUCTS,
-      payload: { men, loading },
+      type: GET_PRODUCTS,
+      payload: { men, women, loading },
     });
-  }, [men]);
+  }, [men, women]);
 
-  // Get womenProducts
-  useEffect(() => {
-    dispatch({
-      type: GET_WOMEN_PRODUCTS,
-      payload: { women, loading },
-    });
-  }, [women]);
-
-  // Get womenProducts
   useEffect(() => {
     dispatch({
       type: GET_POPULAR_PRODUCTS,
-      payload: {
-        womenProducts: state.women_products,
-        menProducts: state.men_products,
-      },
     });
   }, [state.women_products, state.men_products]);
 

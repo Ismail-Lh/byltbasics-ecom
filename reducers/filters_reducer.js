@@ -40,8 +40,6 @@ const FiltersReducer = (state, action) => {
   if (action.type === UPDATE_SORT) {
     const value = action.payload;
 
-    console.log(value);
-
     return { ...state, sort: value };
   }
 

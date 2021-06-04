@@ -49,7 +49,7 @@ export const FiltersProvider = ({ children }) => {
 
   useEffect(() => {
     setLocalStorage('productsByGender', state.products_by_gender);
-  }, [state.gender, state.products_by_gender]);
+  }, [state.gender]);
 
   const updateSort = e => {
     const { value } = e.target;
