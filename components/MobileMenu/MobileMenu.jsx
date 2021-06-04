@@ -4,7 +4,7 @@ import { useProductsContext } from '../../contexts/products_context';
 import { CartIcon, CloseIcon, SearchIcon } from '../../Icons';
 import { NavbarLinks } from '../../utils/constants';
 
-const MobileMenu = () => {
+const MobileMenu = ({ handelUpdateGender }) => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
 
   return (
@@ -30,8 +30,11 @@ const MobileMenu = () => {
         {NavbarLinks.map(({ id, link, route }) => (
           <li
             key={id}
-            onClick={closeSidebar}
-            className='mobileMenu__list-items'>
+            className='mobileMenu__list-items'
+            onClick={() => {
+              handelUpdateGender(link);
+              closeSidebar();
+            }}>
             <Link href={`/collections/${route}`}>{link}</Link>
           </li>
         ))}

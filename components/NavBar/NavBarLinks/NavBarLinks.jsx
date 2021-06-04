@@ -12,11 +12,9 @@ import { useState } from 'react';
 import { useProductsContext } from '../../../contexts/products_context';
 import { MenuIcon } from '../../../Icons';
 import { DropDownMenu } from '../../';
-import { useFiltersContext } from '../../../contexts/filters_context';
 
-const NavBarLinks = () => {
+const NavBarLinks = ({ handelUpdateGender }) => {
   const { openSidebar } = useProductsContext();
-  const { updateGender } = useFiltersContext();
 
   const [showMenDropMenu, setShowMenDropMenu] = useState(false);
   const [showWomenDropMenu, setShowWomenDropMenu] = useState(false);
@@ -26,11 +24,6 @@ const NavBarLinks = () => {
     link === 'women' && setShowWomenDropMenu(state);
   };
 
-  const handelClick = link => {
-    link === 'men' && updateGender('men');
-    link === 'women' && updateGender('women');
-  };
-
   return (
     <>
       <ul className={classes.navbar__list}>
@@ -38,7 +31,7 @@ const NavBarLinks = () => {
           <li
             className={classes.navbar__links}
             key={id}
-            onClick={() => handelClick(link)}
+            onClick={() => handelUpdateGender(link)}
             onMouseEnter={() => handelHover(link, true)}
             onMouseLeave={() => handelHover(link, false)}>
             <Link href={`/collections/${route}`}>{link}</Link>
