@@ -2,23 +2,23 @@ import React, { useContext, createContext, useReducer, useEffect } from 'react';
 import useFirebaseData from '../hooks/useFirebaseData';
 
 import ProductsReducer from '../reducers/products_reducer';
+
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
   GET_PRODUCTS,
-  GET_WOMEN_PRODUCTS,
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
 } from '../utils/actions';
+
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
 
 const ProductsContext = createContext();
 
 const initialState = {
   isSidebarOpen: false,
-  men_products: [],
-  women_products: [],
-  // gender: 'men',
+  men_products: getLocalStorage('menProducts'),
+  women_products: getLocalStorage('womenProducts'),
   loading: false,
   popular_products: [],
   single_product: getLocalStorage('singleProduct'),
@@ -44,6 +44,11 @@ export const ProductsProvider = ({ children }) => {
       payload: { men, women, loading },
     });
   }, [men, women]);
+
+  useEffect(() => {
+    setLocalStorage('menProducts', state.men_products);
+    setLocalStorage('womenProducts', state.women_products);
+  }, [state.men_products, state.women_products]);
 
   useEffect(() => {
     dispatch({

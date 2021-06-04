@@ -1,6 +1,9 @@
 import React, { useContext, createContext, useReducer, useEffect } from 'react';
 
 import FiltersReducer from '../reducers/filters_reducer';
+import { useProductsContext } from './products_context';
+import { getLocalStorage, setLocalStorage } from '../utils/helpers';
+
 import {
   UPDATE_SORT,
   UPDATE_GENDER,
@@ -10,14 +13,12 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
 } from '../utils/actions';
-import { getLocalStorage, setLocalStorage } from '../utils/helpers';
-import { useProductsContext } from './products_context';
 
 const FiltersContext = createContext();
 
 const initialState = {
   gender: getLocalStorage('gender'),
-  products_by_gender: [],
+  products: [],
   filtered_products: [],
   sort: 'sort by',
   filters: {
@@ -45,10 +46,6 @@ export const FiltersProvider = ({ children }) => {
     });
 
     setLocalStorage('gender', state.gender);
-  }, [state.gender]);
-
-  useEffect(() => {
-    setLocalStorage('productsByGender', state.products_by_gender);
   }, [state.gender]);
 
   const updateSort = e => {

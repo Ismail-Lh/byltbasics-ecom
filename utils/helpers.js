@@ -19,15 +19,19 @@ export const getLocalStorage = key => {
   if (typeof window !== 'undefined') {
     let storage = localStorage?.getItem(key);
 
+    if (key === 'menProducts') {
+      return storage ? JSON.parse(storage) : [];
+    }
+
+    if (key === 'womenProducts') {
+      return storage ? JSON.parse(storage) : [];
+    }
+
     if (key === 'singleProduct') {
       return storage ? JSON.parse(storage) : {};
     }
 
     if (key === 'cart') {
-      return storage ? JSON.parse(storage) : [];
-    }
-
-    if (key === 'productsByGender') {
       return storage ? JSON.parse(storage) : [];
     }
 

@@ -30,7 +30,7 @@ const FiltersReducer = (state, action) => {
 
     return {
       ...state,
-      products_by_gender: products,
+      products: products,
       filtered_products: products,
     };
   }
@@ -85,7 +85,7 @@ const FiltersReducer = (state, action) => {
   }
 
   if (action.type === FILTER_PRODUCTS) {
-    const { products_by_gender: products } = state;
+    const { products } = state;
     const { collections, style, cut, neck, sleeve, fabric } = state.filters;
 
     let tempProducts = [...products];
