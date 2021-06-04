@@ -16,9 +16,7 @@ const itemPrice = (price, discountPer) => {
 
 const FiltersReducer = (state, action) => {
   if (action.type === UPDATE_GENDER) {
-    const gender = action.payload;
-
-    return { ...state, gender };
+    return { ...state, gender: action.payload };
   }
 
   if (action.type === GET_PRODUCTS_BY_GENDER) {
@@ -38,9 +36,7 @@ const FiltersReducer = (state, action) => {
   }
 
   if (action.type === UPDATE_SORT) {
-    const value = action.payload;
-
-    return { ...state, sort: value };
+    return { ...state, sort: action.payload };
   }
 
   if (action.type === SORT_PRODUCTS) {
