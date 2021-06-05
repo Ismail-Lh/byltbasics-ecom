@@ -1,12 +1,11 @@
 import {
-  GET_PRODUCTS_BY_GENDER,
+  UPDATE_COLLECTION,
+  GET_PRODUCTS_BY_COLLECTION,
   UPDATE_SORT,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
-  UPDATE_GENDER,
-  GET_SALES_PRODUCTS,
 } from '../utils/actions';
 
 const itemPrice = (price, discountPer) => {
@@ -16,36 +15,27 @@ const itemPrice = (price, discountPer) => {
 };
 
 const FiltersReducer = (state, action) => {
-  if (action.type === UPDATE_GENDER) {
-    return { ...state, gender: action.payload };
+  if (action.type === UPDATE_COLLECTION) {
+    return { ...state, collection: action.payload };
   }
 
-  if (action.type === GET_PRODUCTS_BY_GENDER) {
+  if (action.type === GET_PRODUCTS_BY_COLLECTION) {
     const { men_products, women_products } = action.payload;
-    const { gender } = state;
+    const { collection } = state;
 
+    const allProducts = [...men_products, ...women_products];
+    const salesProducts = allProducts.filter(product => product.discountPer);
     let products = [];
 
-    if (gender === 'men') products = men_products;
-    if (gender === 'women') products = women_products;
+    if (collection === 'men') products = men_products;
+    if (collection === 'women') products = women_products;
+    if (collection === 'bundles') products = women_products;
+    if (collection === 'last call') products = salesProducts;
 
     return {
       ...state,
       products: products,
       filtered_products: products,
-    };
-  }
-
-  if (action.type === GET_SALES_PRODUCTS) {
-    const { men_products, women_products } = action.payload;
-
-    const allProducts = [...men_products, ...women_products];
-
-    const salesProducts = allProducts.filter(product => product.discountPer);
-
-    return {
-      ...state,
-      sales_products: salesProducts,
     };
   }
 

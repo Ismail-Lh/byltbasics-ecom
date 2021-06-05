@@ -1,11 +1,13 @@
 import Link from 'next/link';
+import { useFiltersContext } from '../../contexts/filters_context';
 
 import { useProductsContext } from '../../contexts/products_context';
 import { CartIcon, CloseIcon, SearchIcon } from '../../Icons';
 import { NavbarLinks } from '../../utils/constants';
 
-const MobileMenu = ({ handelUpdateGender }) => {
+const MobileMenu = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { updateCollection } = useFiltersContext();
 
   return (
     <div
@@ -32,7 +34,7 @@ const MobileMenu = ({ handelUpdateGender }) => {
             key={id}
             className='mobileMenu__list-items'
             onClick={() => {
-              handelUpdateGender(link);
+              updateCollection(link);
               closeSidebar();
             }}>
             <Link href={`/collections/${route}`}>{link}</Link>

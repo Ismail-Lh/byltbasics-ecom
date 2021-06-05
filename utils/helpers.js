@@ -35,7 +35,7 @@ export const getLocalStorage = key => {
       return storage ? JSON.parse(storage) : [];
     }
 
-    if (key === 'gender') {
+    if (key === 'collection') {
       return storage ? JSON.parse(storage) : '';
     }
   }
