@@ -4,11 +4,11 @@ import classes from './FilterType.module.scss';
 
 import { useFiltersContext } from '../../contexts/filters_context';
 
-const FilterType = ({ type, title }) => {
-  const { filtered_products: products, updateFilters } = useFiltersContext();
+const FilterType = ({ type, title, products }) => {
+  const { updateFilters } = useFiltersContext();
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
-  const filtersValue = [...new Set(products.map(product => product[type]))];
+  const filtersValue = [...new Set(products?.map(product => product[type]))];
 
   return (
     <div className={classes.filter__type}>

@@ -3,6 +3,7 @@ export { default as Button } from './Button/Button';
 export { default as BackgroundImage } from './BackgroundImage/BackgroundImage';
 export { default as SortProducts } from './SortProducts/SortProducts';
 export { default as Filters } from './Filters/Filters';
+export { default as FiltersValue } from './FiltersValue/FiltersValue';
 export { default as FilterType } from './FilterType/FilterType';
 export { default as FiltersModel } from './FiltersModel/FiltersModel';
 

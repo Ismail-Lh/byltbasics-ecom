@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+
+.filters {
+  &__clear {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $light-grey-color;
+
+    button {
+      width: 100%;
+      padding: 1.3rem 1.6rem;
+    }
+  }
+}

@@ -5,9 +5,10 @@ import { useProductsContext } from './products_context';
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
 
 import {
-  UPDATE_SORT,
   UPDATE_GENDER,
   GET_PRODUCTS_BY_GENDER,
+  GET_SALES_PRODUCTS,
+  UPDATE_SORT,
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
@@ -20,6 +21,7 @@ const initialState = {
   gender: getLocalStorage('gender'),
   products: [],
   filtered_products: [],
+  sales_products: [],
   sort: 'sort by',
   filters: {
     collections: 'all',
@@ -47,6 +49,13 @@ export const FiltersProvider = ({ children }) => {
 
     setLocalStorage('gender', state.gender);
   }, [state.gender]);
+
+  useEffect(() => {
+    dispatch({
+      type: GET_SALES_PRODUCTS,
+      payload: { men_products, women_products },
+    });
+  }, []);
 
   const updateSort = e => {
     const { value } = e.target;

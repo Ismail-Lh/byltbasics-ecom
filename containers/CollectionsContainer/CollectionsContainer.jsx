@@ -1,13 +1,10 @@
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './CollectionsContainer.module.scss';
-import { useFiltersContext } from '../../contexts/filters_context';
 
 import { ProductsCard, SortProducts, Filters } from '../../components';
 
-const CollectionsContainer = () => {
-  const { filtered_products: products } = useFiltersContext();
-
+const CollectionsContainer = ({ products }) => {
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
 
   return (
@@ -16,7 +13,7 @@ const CollectionsContainer = () => {
         {!matchesMedia ? (
           <>
             <div>
-              <Filters />
+              <Filters products={products} />
             </div>
 
             <div className={classes.collections__products}>
@@ -34,7 +31,7 @@ const CollectionsContainer = () => {
           <>
             <div className={classes.collections__filters}>
               <div>
-                <Filters />
+                <Filters products={products} />
               </div>
               <div className={classes.sorts}>
                 <SortProducts />

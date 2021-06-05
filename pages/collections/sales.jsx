@@ -1,16 +1,16 @@
 import { ShopPageContainer } from '../../containers';
 import { useFiltersContext } from '../../contexts/filters_context';
 
-const ShopMenPage = () => {
-  const { filtered_products: products } = useFiltersContext();
+const SalesPage = () => {
+  const { sales_products: products } = useFiltersContext();
 
   return (
     <ShopPageContainer
-      imgSrc='shop-men.png'
-      title='all men'
+      imgSrc='shop-sales.jpg'
+      title='last call'
       products={products}
     />
   );
 };
 
-export default ShopMenPage;
+export default SalesPage;

@@ -17,8 +17,7 @@
     font-size: $sm-size-3;
   }
 
-  &__title,
-  &__clear {
+  &__title {
     margin-bottom: 1rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid $light-grey-color;
@@ -29,13 +28,6 @@
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: 0;
-    }
-  }
-
-  &__clear {
-    button {
-      width: 100%;
-      padding: 1.3rem 1.6rem;
     }
   }
 }

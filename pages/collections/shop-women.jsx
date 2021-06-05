@@ -1,8 +1,8 @@
 import { ShopPageContainer } from '../../containers';
-import { useProductsContext } from '../../contexts/products_context';
+import { useFiltersContext } from '../../contexts/filters_context';
 
 const ShopWomenPage = () => {
-  const { women_products: products } = useProductsContext();
+  const { filtered_products: products } = useFiltersContext();
 
   return (
     <ShopPageContainer

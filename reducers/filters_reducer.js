@@ -6,6 +6,7 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
   UPDATE_GENDER,
+  GET_SALES_PRODUCTS,
 } from '../utils/actions';
 
 const itemPrice = (price, discountPer) => {
@@ -32,6 +33,19 @@ const FiltersReducer = (state, action) => {
       ...state,
       products: products,
       filtered_products: products,
+    };
+  }
+
+  if (action.type === GET_SALES_PRODUCTS) {
+    const { men_products, women_products } = action.payload;
+
+    const allProducts = [...men_products, ...women_products];
+
+    const salesProducts = allProducts.filter(product => product.discountPer);
+
+    return {
+      ...state,
+      sales_products: salesProducts,
     };
   }
 
