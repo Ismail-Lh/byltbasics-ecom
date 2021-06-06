@@ -8,10 +8,16 @@ export const addDataBase = firebase => {
   // Category: Tops
   // dataBase.collection('men').add({
   //   id: uuidv4(),
+  //   gender: 'men',
   //   name: 'drop-cut lux',
+  //   route: 'drop-cut-lux',
   //   collections: 'mens-tops',
-  //   category: 'tops',
-  //   type: 'drop-cuts',
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description: 'Cool touch, high-cotton LUX Blend fabric.',
   //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
@@ -49,10 +55,16 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('men').add({
   //   id: uuidv4(),
+  //   gender: 'men',
   //   name: 'drop-cut shirt',
+  //   route: 'drop-cut-shirt',
   //   collections: 'mens-tops',
-  //   category: 'tops',
-  //   type: 'drop-cuts',
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'bylt blend',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     'Meet the new and improved BYLT Blend fabric in your favorite signature drop-cut short sleeve shirt. We have worked hard to take your favorite style to the next level of comfort, fit, & functionality.',
@@ -87,10 +99,16 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('men').add({
   //   id: uuidv4(),
+  //   gender: 'men',
   //   name: 'drop-cut lux pocket',
+  //   route: 'drop-cut-lux-pocket',
   //   collections: 'mens-tops',
-  //   category: 'tops',
-  //   type: 'drop-cuts',
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     'Athletic and comfortable cut with our signature drop-cut hemline featuring our new high-cotton LUX Blend fabric.',
@@ -128,10 +146,16 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('men').add({
   //   id: uuidv4(),
+  //   gender: 'men',
   //   name: 'striped drop-cut lux',
+  //   route: 'striped-drop-cut-lux',
   //   collections: 'mens-tops',
-  //   category: 'tops',
-  //   type: 'drop-cuts',
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     "Elevated to a whole new level, your favorite Drop-Cut: LUX Shirt is made complete with a newly innovative striped pattern. This 'Striped Drop-Cut: LUX' is the perfect way to upgrade your everyday style.",
@@ -159,10 +183,16 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('men').add({
   //   id: uuidv4(),
+  //   gender: 'men',
   //   name: 'striped drop-cut v-neck lux',
+  //   route: 'striped-drop-cut-v-neck-lux',
   //   collections: 'mens-tops',
-  //   category: 'tops',
-  //   type: 'drop-cuts',
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'v-necks',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     'A fresh new take on your classic V-Neck. Your favorite style has been elevated with a V-neck collar and our signature Drop-Cut hemline perfected with the LUX fabric you love.',
@@ -183,10 +213,12 @@ export const addDataBase = firebase => {
     ============================================ */
   // dataBase.collection('women').add({
   //   id: uuidv4(),
+  //   gender: 'women',
   //   name: 'the bylt crop top',
+  //   route: 'the-bylt-crop-top',
   //   collections: 'womens-tops',
-  //   category: 'tops',
-  //   type: 'crop top',
+  //   style: 'crop tops',
+  //   date: new Date().getTime(),
   //   price: 3899,
   //   discountPer: 30,
   //   description:
@@ -205,9 +237,13 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('women').add({
   //   id: uuidv4(),
+  //   gender: 'women',
   //   name: "women's elite + joggers",
-  //   category: 'bottoms',
-  //   type: 'joggers',
+  //   route: "women's-elite-joggers",
+  //   collections: 'womens-bottoms',
+  //   style: 'joggers',
+  //   fabric: 'elite+',
+  //   date: new Date().getTime(),
   //   price: 7499,
   //   description:
   //     "Reimagined in every way, our Women’s Elite+ Joggers have been completely upgraded for even greater comfort, added durability, and all around flexibility. With the new Elite+ Fabric perfect for any season, you'll never want to take these joggers off!",
@@ -235,9 +271,13 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('women').add({
   //   id: uuidv4(),
+  //   gender: 'women',
   //   name: "women's everyday leggings",
-  //   category: 'bottoms',
-  //   type: 'leggings',
+  //   route: "women's-everyday-leggings",
+  //   collections: 'womens-bottoms',
+  //   style: 'leggings',
+  //   fabric: 'elite+',
+  //   date: new Date().getTime(),
   //   price: 6899,
   //   discountPer: 30,
   //   description:
@@ -256,9 +296,15 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('women').add({
   //   id: uuidv4(),
+  //   gender: 'women',
   //   name: "women's essential tee",
-  //   category: 'tops',
-  //   type: 'essential tee',
+  //   route: "women's-essential-tee",
+  //   collections: 'womens-tops',
+  //   style: 'essential tee',
+  //   cut: 'crews',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     'Flattering athletic and comfortable cut with a standard straight hemline.',
@@ -276,9 +322,13 @@ export const addDataBase = firebase => {
 
   // dataBase.collection('women').add({
   //   id: uuidv4(),
+  //   gender: 'women',
   //   name: "women's essential tank",
-  //   category: 'tops',
-  //   type: 'essential tank',
+  //   route: "women's-essential-tank",
+  //   collections: 'womens-tops',
+  //   style: 'tanks',
+  //   sleeve: 'no sleeves',
+  //   date: new Date().getTime(),
   //   price: 2899,
   //   description:
   //     'Flattering athletic and comfortable cut with our signature drop-cut hemline.',

@@ -8,8 +8,8 @@ import { ProductsProvider } from '../contexts/products_context';
 import { FiltersProvider } from '../contexts/filters_context';
 import { CartProvider } from '../contexts/cart_context';
 
-import firebase from '../lib/firebase.prod';
-import { addDataBase } from '../productsData';
+// import firebase from '../lib/firebase.prod';
+// import { addDataBase } from '../productsData';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -26,6 +26,8 @@ function MyApp({ Component, pageProps }) {
     </FirebaseProvider>
   );
 }
-// <button onClick={() => addDataBase(firebase)}>add</button>
+{
+  /* <button onClick={() => addDataBase(firebase)}>add</button>; */
+}
 
 export default MyApp;
