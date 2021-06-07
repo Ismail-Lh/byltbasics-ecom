@@ -68,11 +68,11 @@ const FiltersReducer = (state, action) => {
     }
 
     if (sort === 'new-old') {
-      tempProducts = tempProducts.sort((curr, next) => curr.date - next.date);
+      tempProducts = tempProducts.sort((curr, next) => next.date - curr.date);
     }
 
     if (sort === 'old-new') {
-      tempProducts = tempProducts.sort((curr, next) => next.date - curr.date);
+      tempProducts = tempProducts.sort((curr, next) => curr.date - next.date);
     }
 
     if (sort === 'name-a') {

@@ -209,6 +209,144 @@ export const addDataBase = firebase => {
   //   popularity: true,
   // });
 
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'henley drop cut lux',
+  //   route: 'henley-drop-cut-lux',
+  //   collections: 'mens-tops',
+  //   style: 'henleys',
+  //   cut: 'drop-cuts',
+  //   neck: 'henleys',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
+  //   price: 3899,
+  //   description:
+  //     'Enjoy the best selling Drop-Cut shirt transformed into a short sleeve Henley. Our Henley Drop-Cut is here to add character and versatility to your wardrobe. This shirt is the peak of style, comfort, and function.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg'],
+  //   colors: [
+  //     'white',
+  //     'black',
+  //     'navy',
+  //     'heather grey',
+  //     'dark heather grey',
+  //     'maroon',
+  //     'iris',
+  //   ],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'training shorts',
+  //   route: 'training-shorts',
+  //   collections: 'mens-bottoms',
+  //   style: 'shorts',
+  //   fabric: 'performance',
+  //   date: new Date().getTime(),
+  //   price: 7499,
+  //   description:
+  //     "Made from our NEW lightweight, breathable and ultra-stretch Performance Blend fabric, the new Training Short is built to withstand your most active days. Feel the difference that's sure to never slow you down during those high intensity training sessions.",
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['black', 'storm-camo', 'asphalt-camo', 'forest camo', 'charcoal'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: "men's elite+ drop-cut pullover",
+  //   route: 'men-elite-drop-cut-pullover',
+  //   collections: 'outerwear',
+  //   style: 'pullovers',
+  //   cut: 'drop-cuts',
+  //   neck: 'hooded',
+  //   sleeve: 'long sleeves',
+  //   fabric: 'elite+',
+  //   date: new Date().getTime(),
+  //   price: 8999,
+  //   description:
+  //     "Made for complete comfort in all climates, our Drop-Cut Elite+ Pullover has been re-imagined in ultimate style. Now with even greater comfort, breathability, and complete all around flexibility, you've found your new go-to pullover for all seasons!",
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['storm', 'gunmetal', 'dark olive', 'sand', 'black', 'midnight'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'everyday hat',
+  //   route: 'everyday-hat',
+  //   collections: 'hats-accessories',
+  //   style: 'hats',
+  //   date: new Date().getTime(),
+  //   price: 2899,
+  //   description:
+  //     'The 100% Cotton Everyday Cap features an adjustable antique brass buckle closure to ensure the perfect fit.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg'],
+  //   colors: ['white', 'black'],
+  //   sizes: [{ size: 'os', isAvailable: true }],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'allday boxer briefs',
+  //   route: 'allday-boxer-briefs',
+  //   collections: 'underwear',
+  //   style: 'boxer briefs',
+  //   fabric: 'all day',
+  //   date: new Date().getTime(),
+  //   price: 2599,
+  //   description:
+  //     'Our AllDay Boxer Brief Underwear style has been completely upgraded! Now in all around enhanced fabric, experience improved support with all day breathability and ultimate comfort. ',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: [
+  //     'black',
+  //     'sky blue navy',
+  //     'forest camo',
+  //     'dark olive',
+  //     'asphalt camo',
+  //   ],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
   /* women
     ============================================ */
   // dataBase.collection('women').add({
