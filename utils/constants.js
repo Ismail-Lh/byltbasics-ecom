@@ -38,46 +38,60 @@ export const womenCollections = [
 export const menCategories = [
   {
     id: uuidv4(),
-    productCategory: 'tops',
+    productCategory: { category: 'tops', route: 'mens-tops' },
     productTypes: [
-      'drop cuts',
-      'long sleeves',
-      'tanks',
-      'henleys',
-      'dotted pattern',
-      'striped pattern',
-      'v-necks',
-      'split hems',
-      'crews',
-      'polos',
-      'dress shirts',
+      { type: 'drop cuts', route: 'drop-cuts', id: uuidv4() },
+      { type: 'long sleeves', route: 'long-sleeves', id: uuidv4() },
+      { type: 'tanks', route: 'tanks', id: uuidv4() },
+      { type: 'henleys', route: 'henleys', id: uuidv4() },
+      { type: 'dotted pattern', route: 'dotted-pattern', id: uuidv4() },
+      { type: 'striped pattern', route: 'striped-pattern', id: uuidv4() },
+      { type: 'v-necks', route: '', id: uuidv4() },
+      { type: 'split hems', route: 'v-necks', id: uuidv4() },
+      { type: 'crews', route: 'crews', id: uuidv4() },
+      { type: 'polos', route: 'polos', id: uuidv4() },
+      { type: 'dress shirts', route: 'dress-shirts', id: uuidv4() },
     ],
   },
   {
     id: uuidv4(),
-    productCategory: 'bottoms',
-    productTypes: ['shorts', 'joggers', 'pants'],
-  },
-  {
-    id: uuidv4(),
-    productCategory: 'outerwear',
-    productTypes: ['pullovers', 'sweatshirts', 'jackets'],
-  },
-  {
-    id: uuidv4(),
-    productCategory: 'underwear',
-    productTypes: ['boxer briefs', 'trunks'],
-  },
-  {
-    id: uuidv4(),
-    productCategory: 'hats & accessories',
+    productCategory: { category: 'bottoms', route: 'mens-bottoms' },
     productTypes: [
-      'hats',
-      'shoes',
-      'socks',
-      'face masks',
-      'gift cards',
-      'hand sanitizer',
+      { type: 'shorts', route: 'shorts', id: uuidv4() },
+      { type: 'joggers', route: 'joggers', id: uuidv4() },
+      { type: 'pants', route: 'pants', id: uuidv4() },
+    ],
+  },
+  {
+    id: uuidv4(),
+    productCategory: { category: 'outerwear', route: 'outerwear' },
+    productTypes: [
+      { type: 'pullovers', route: 'pullovers', id: uuidv4() },
+      { type: 'sweatshirts', route: 'sweatshirts', id: uuidv4() },
+      { type: 'jackets', route: 'jackets', id: uuidv4() },
+    ],
+  },
+  {
+    id: uuidv4(),
+    productCategory: { category: 'underwear', route: 'underwear' },
+    productTypes: [
+      { type: 'boxer briefs', route: 'boxer-briefs', id: uuidv4() },
+      { type: 'trunks', route: 'trunks', id: uuidv4() },
+    ],
+  },
+  {
+    id: uuidv4(),
+    productCategory: {
+      category: 'hats & accessories',
+      route: 'hats-accessories',
+    },
+    productTypes: [
+      { type: 'hats', route: 'hats', id: uuidv4() },
+      { type: 'shoes', route: 'shoes', id: uuidv4() },
+      { type: 'socks', route: 'socks', id: uuidv4() },
+      { type: 'face masks', route: 'face-masks', id: uuidv4() },
+      { type: 'gift cards', route: 'gift-cards', id: uuidv4() },
+      { type: 'hand sanitizer', route: 'hand-sanitizer', id: uuidv4() },
     ],
   },
 ];
@@ -85,18 +99,32 @@ export const menCategories = [
 export const womenCategories = [
   {
     id: uuidv4(),
-    productCategory: 'tops',
-    productTypes: ['essential tank', 'essential tee', 'crop top'],
+    productCategory: { category: 'tops', route: 'womens-tops' },
+    productTypes: [
+      { type: 'essential tank', route: 'essential-tank', id: uuidv4() },
+      { type: 'essential tee', route: 'essential-tee', id: uuidv4() },
+      { type: 'crop top', route: 'crop-top', id: uuidv4() },
+    ],
   },
   {
     id: uuidv4(),
-    productCategory: 'bottoms',
-    productTypes: ['joggers', 'leggings'],
+    productCategory: { category: 'bottoms', route: 'womens-bottoms' },
+    productTypes: [
+      { type: 'joggers', route: 'joggers', id: uuidv4() },
+      { type: 'leggings', route: 'leggings', id: uuidv4() },
+    ],
   },
   {
     id: uuidv4(),
-    productCategory: 'hats & accessories',
-    productTypes: ['hats', 'gift cards', 'face masks'],
+    productCategory: {
+      category: 'hats & accessories',
+      route: 'hats-accessories',
+    },
+    productTypes: [
+      { type: 'hats', route: 'hats', id: uuidv4() },
+      { type: 'gift cards', route: 'gift-cards', id: uuidv4() },
+      { type: 'face masks', route: 'face-masks', id: uuidv4() },
+    ],
   },
 ];
 

@@ -1,4 +1,5 @@
 import { MyLink } from '..';
+import { useFiltersContext } from '../../contexts/filters_context';
 import classes from './DropDownMenu.module.scss';
 
 const DropDownMenu = ({
@@ -6,8 +7,9 @@ const DropDownMenu = ({
   collections,
   productsCategories,
   imageInfo,
-  gender,
 }) => {
+  const { updateCollection } = useFiltersContext();
+
   return (
     <div
       className={`${
@@ -17,23 +19,38 @@ const DropDownMenu = ({
         <div className={classes.dropDownMenu__grid}>
           <ul className={classes.dropDownMenu__collections}>
             {collections.map(({ id, collection, route }) => (
-              <li key={id}>
-                <MyLink route={route}>{collection}</MyLink>
+              <li
+                key={id}
+                onClick={e => {
+                  e.stopPropagation();
+                  updateCollection(collection);
+                }}>
+                <MyLink route={`/collections/${route}`}>{collection}</MyLink>
               </li>
             ))}
           </ul>
           <div className={classes.dropDownMenu__categories}>
             {productsCategories.map(({ id, productCategory, productTypes }) => (
               <div className={classes.category} key={id}>
-                <h2 className={classes.category__title}>
-                  <MyLink route={`collections/${productCategory}`}>
-                    {productCategory}
+                <h2
+                  className={classes.category__title}
+                  onClick={e => {
+                    e.stopPropagation();
+                    updateCollection(productCategory.category);
+                  }}>
+                  <MyLink route={`/collections/${productCategory.route}`}>
+                    {productCategory.category}
                   </MyLink>
                 </h2>
                 <ul className={classes.category__type}>
-                  {productTypes.map((type, idx) => (
-                    <li key={idx}>
-                      <MyLink route={`collections/${type}`}>{type}</MyLink>
+                  {productTypes.map(({ id, type, route }) => (
+                    <li
+                      key={id}
+                      onClick={e => {
+                        e.stopPropagation();
+                        updateCollection(type);
+                      }}>
+                      <MyLink route={`/collections/${route}`}>{type}</MyLink>
                     </li>
                   ))}
                 </ul>
