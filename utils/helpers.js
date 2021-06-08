@@ -36,7 +36,7 @@ export const getLocalStorage = key => {
     }
 
     if (key === 'collection') {
-      return storage ? JSON.parse(storage) : '';
+      return storage ? JSON.parse(storage) : { route: '', title: '' };
     }
   }
 };

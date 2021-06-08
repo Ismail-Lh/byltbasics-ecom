@@ -18,44 +18,54 @@ const DropDownMenu = ({
       <div className='container'>
         <div className={classes.dropDownMenu__grid}>
           <ul className={classes.dropDownMenu__collections}>
-            {collections.map(({ id, collection, route }) => (
+            {collections.map(({ id, collection }) => (
               <li
                 key={id}
                 onClick={e => {
                   e.stopPropagation();
-                  updateCollection(collection);
+                  updateCollection(collection, collection);
                 }}>
-                <MyLink route={`/collections/${route}`}>{collection}</MyLink>
+                <MyLink route={`/collections/${collection}`}>
+                  {collection}
+                </MyLink>
               </li>
             ))}
           </ul>
           <div className={classes.dropDownMenu__categories}>
-            {productsCategories.map(({ id, productCategory, productTypes }) => (
-              <div className={classes.category} key={id}>
-                <h2
-                  className={classes.category__title}
-                  onClick={e => {
-                    e.stopPropagation();
-                    updateCollection(productCategory.category);
-                  }}>
-                  <MyLink route={`/collections/${productCategory.route}`}>
-                    {productCategory.category}
-                  </MyLink>
-                </h2>
-                <ul className={classes.category__type}>
-                  {productTypes.map(({ id, type, route }) => (
-                    <li
-                      key={id}
-                      onClick={e => {
-                        e.stopPropagation();
-                        updateCollection(type);
-                      }}>
-                      <MyLink route={`/collections/${route}`}>{type}</MyLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {productsCategories.map(
+              ({ id, productCategory, productTypes, gender }) => (
+                <div className={classes.category} key={id}>
+                  <h2
+                    className={classes.category__title}
+                    onClick={e => {
+                      e.stopPropagation();
+                      updateCollection(
+                        productCategory.collection,
+                        productCategory.category
+                      );
+                    }}>
+                    <MyLink
+                      route={`/collections/${gender}/${productCategory.collection}`}>
+                      {productCategory.category}
+                    </MyLink>
+                  </h2>
+                  <ul className={classes.category__type}>
+                    {productTypes.map(({ id, type, collection }) => (
+                      <li
+                        key={id}
+                        onClick={e => {
+                          e.stopPropagation();
+                          updateCollection(collection, type);
+                        }}>
+                        <MyLink route={`/collections/${gender}/${collection}`}>
+                          {type}
+                        </MyLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
           </div>
           <div className={classes.dropDownMenu__image}>
             <MyLink route={imageInfo.route}>

@@ -3,11 +3,11 @@ import classes from './ShopPageContainer.module.scss';
 import { BackgroundImage } from '../../components';
 import { CollectionsContainer } from '..';
 
-const ShopPageContainer = ({ imgSrc, title }) => {
+const ShopPageContainer = () => {
   return (
     <div>
       <div className={classes.backgroundImage}>
-        <BackgroundImage imgSrc={imgSrc} title={title} />
+        <BackgroundImage />
       </div>
 
       <CollectionsContainer />

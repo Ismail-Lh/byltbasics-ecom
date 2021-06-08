@@ -35,8 +35,8 @@ export const FiltersProvider = ({ children }) => {
   const [state, dispatch] = useReducer(FiltersReducer, initialState);
   const { men_products, women_products } = useProductsContext();
 
-  const updateCollection = collection => {
-    dispatch({ type: UPDATE_COLLECTION, payload: collection });
+  const updateCollection = (route, title) => {
+    dispatch({ type: UPDATE_COLLECTION, payload: { route, title } });
   };
 
   useEffect(() => {

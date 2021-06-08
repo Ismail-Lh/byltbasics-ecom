@@ -26,6 +26,13 @@ const NavBarLinks = () => {
     link === 'women' && setShowWomenDropMenu(state);
   };
 
+  const handelClick = link => {
+    link === 'men' && updateCollection('shop-men', 'all men');
+    link === 'women' && updateCollection('shop-women', 'all women');
+    link === 'bundles' && updateCollection('bundles', 'bundles');
+    link === 'last call' && updateCollection('sales', 'last call');
+  };
+
   return (
     <>
       <ul className={classes.navbar__list}>
@@ -33,7 +40,7 @@ const NavBarLinks = () => {
           <li
             className={classes.navbar__links}
             key={id}
-            onClick={() => updateCollection(link)}
+            onClick={() => handelClick(link)}
             onMouseEnter={() => handelHover(link, true)}
             onMouseLeave={() => handelHover(link, false)}>
             <Link href={`/collections/${route}`}>{link}</Link>
@@ -45,7 +52,7 @@ const NavBarLinks = () => {
                 gender='men'
                 imageInfo={{
                   imgUrl: 'men-drop-down-img.jpg',
-                  route: 'collections/spring-collection',
+                  route: '/collections/spring-collection',
                   subtitle: 'shop the latest styles',
                   title: 'gear up for summer',
                 }}
@@ -60,7 +67,7 @@ const NavBarLinks = () => {
                 gender='women'
                 imageInfo={{
                   imgUrl: 'women-drop-down-img.jpg',
-                  route: 'products/womens-elite-joggers',
+                  route: '/products/womens-elite-joggers',
                   subtitle: 'ultimate comfort. premium style.',
                   title: "women's elite + joggers",
                 }}
