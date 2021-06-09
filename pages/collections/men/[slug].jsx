@@ -1,30 +1,32 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ShopPageContainer } from '../../../containers';
 import { useFiltersContext } from '../../../contexts/filters_context';
 
 const MensCollections = () => {
-  const { collection, updateCollection } = useFiltersContext();
+  const { updateCollection } = useFiltersContext();
 
-  //   const router = useRouter();
-  //   const slug = router.query.slug;
+  const router = useRouter();
+  const { slug } = router.query;
 
-  //   const getTheCollectionTitle = route => {
-  //     let title = '';
+  const getTheCollectionTitle = route => {
+    let title = '';
 
-  //     if (route === 'mens-tops') title = 'tops';
-  //     if (route === 'mens-drop-cuts') title = 'drop-cuts';
-  //     if (route === 'mens-long-sleeves') title = 'long sleeves';
-  //     if (route === 'mens-vnecks') title = 'v-necks';
-  //     if (route === 'mens-crews') title = 'crews';
-  //     if (route === 'mens-henleys') title = 'henleys';
+    const strIncludes = str => route?.includes(str);
 
-  //     return title;
-  //   };
+    if (strIncludes('tops')) title = 'tops';
+    if (strIncludes('drop-cuts')) title = 'drop-cuts';
+    if (strIncludes('long-sleeves')) title = 'long sleeves';
+    if (strIncludes('vnecks')) title = 'v-necks';
+    if (strIncludes('crews')) title = 'crews';
+    if (strIncludes('henleys')) title = 'henleys';
 
-  //   useEffect(() => {
-  //     updateCollection(slug, getTheCollectionTitle(slug));
-  //   }, [slug]);
+    return title;
+  };
+
+  useEffect(() => {
+    updateCollection(slug, getTheCollectionTitle(slug));
+  }, [slug]);
 
   return <ShopPageContainer />;
 };

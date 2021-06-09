@@ -20,7 +20,7 @@ const CollectionsContainer = () => {
 
   const FiltersContainer = () => (
     <div>
-      <Filters products={products} />
+      <Filters />
     </div>
   );
 

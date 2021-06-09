@@ -46,7 +46,7 @@ export const FiltersProvider = ({ children }) => {
     });
 
     setLocalStorage('collection', state.collection);
-  }, [state.collection]);
+  }, [state.collection, men_products, women_products]);
 
   const updateSort = e => {
     const { value } = e.target;

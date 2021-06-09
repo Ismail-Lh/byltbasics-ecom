@@ -1,25 +1,31 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import { useFiltersContext } from '../../contexts/filters_context';
 import { ShopPageContainer } from '../../containers';
 
 const Collections = () => {
-  //   const router = useRouter();
-  //   const slug = router.query.slug;
+  const { updateCollection } = useFiltersContext();
 
-  //   const getTheCollectionTitle = route => {
-  //     let title = '';
+  const router = useRouter();
+  const { slug } = router.query;
 
-  //     if (route === 'mens-tops') title = 'tops';
-  //     if (route === 'mens-drop-cuts') title = 'drop-cuts';
-  //     if (route === 'mens-long-sleeves') title = 'long sleeves';
-  //     if (route === 'mens-vnecks') title = 'v-necks';
-  //     if (route === 'mens-crews') title = 'crews';
-  //     if (route === 'mens-henleys') title = 'henleys';
+  const getTheCollectionTitle = route => {
+    let title = '';
 
-  //     return title;
-  //   };
+    const strIncludes = str => route?.includes(str);
 
-  //   useEffect(() => {
-  //     updateCollection(slug, getTheCollectionTitle(slug));
-  //   }, [slug]);
+    if (strIncludes('men')) title = 'all men';
+    if (strIncludes('women')) title = 'all women';
+    if (strIncludes('bundles')) title = 'bundles';
+    if (strIncludes('sales')) title = 'last call';
+
+    return title;
+  };
+
+  useEffect(() => {
+    updateCollection(slug, getTheCollectionTitle(slug));
+  }, [slug]);
 
   return <ShopPageContainer />;
 };
