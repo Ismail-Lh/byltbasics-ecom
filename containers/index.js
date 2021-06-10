@@ -15,3 +15,5 @@ export { default as AboutUsPageContainer } from './AboutUsPageContainer/AboutUsP
 export { default as ShopPageContainer } from './ShopPageContainer/ShopPageContainer';
 
 export { default as CollectionsContainer } from './CollectionsContainer/CollectionsContainer';
+
+export { default as ContactUsPageContainer } from './ContactUsPageContainer/ContactUsPageContainer';

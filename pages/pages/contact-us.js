@@ -1,5 +1,7 @@
+import { ContactUsPageContainer } from '../../containers';
+
 const ContactUsPage = () => {
-  return <div>Contact us page</div>;
+  return <ContactUsPageContainer />;
 };
 
 export default ContactUsPage;
