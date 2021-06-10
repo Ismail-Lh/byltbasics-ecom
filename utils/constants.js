@@ -88,12 +88,6 @@ export const menCategories = [
         id: uuidv4(),
       },
       {
-        type: 'split hems',
-        route: 'split-hems',
-        collection: 'mens-split-hems',
-        id: uuidv4(),
-      },
-      {
         type: 'crews',
         route: 'crews',
         collection: 'mens-crews',
@@ -106,9 +100,9 @@ export const menCategories = [
         id: uuidv4(),
       },
       {
-        type: 'dress shirts',
-        route: 'dress-shirts',
-        collection: 'mens-dress-shirts',
+        type: 'executive collection',
+        route: 'executive-collection',
+        collection: 'executive-collection',
         id: uuidv4(),
       },
     ],
@@ -126,12 +120,6 @@ export const menCategories = [
         type: 'shorts',
         route: 'shorts',
         collection: 'mens-shorts',
-        id: uuidv4(),
-      },
-      {
-        type: 'joggers',
-        route: 'joggers',
-        collection: 'mens-joggers',
         id: uuidv4(),
       },
       {
@@ -155,12 +143,6 @@ export const menCategories = [
         type: 'pullovers',
         route: 'pullovers',
         collection: 'mens-pullovers',
-        id: uuidv4(),
-      },
-      {
-        type: 'sweatshirts',
-        route: 'sweatshirts',
-        collection: 'mens-sweatshirts',
         id: uuidv4(),
       },
       {
@@ -200,30 +182,11 @@ export const menCategories = [
     productCategory: {
       category: 'hats & accessories',
       route: 'hats-accessories',
-      collection: 'mens-accessories',
+      collection: 'accessories',
     },
     productTypes: [
-      { type: 'hats', route: 'hats', collection: 'mens-hats', id: uuidv4() },
-      { type: 'shoes', route: 'shoes', collection: 'mens-shoes', id: uuidv4() },
-      { type: 'socks', route: 'socks', collection: 'mens-socks', id: uuidv4() },
-      {
-        type: 'face masks',
-        route: 'face-masks',
-        collection: 'mens-face-masks',
-        id: uuidv4(),
-      },
-      {
-        type: 'gift cards',
-        route: 'gift-cards',
-        collection: 'mens-gift-cards',
-        id: uuidv4(),
-      },
-      {
-        type: 'hand sanitizer',
-        route: 'hand-sanitizer',
-        collection: 'mens-hand-sanitizer',
-        id: uuidv4(),
-      },
+      { type: 'hats', route: 'hats', collection: 'hats', id: uuidv4() },
+      { type: 'socks', route: 'socks', collection: 'socks', id: uuidv4() },
     ],
   },
 ];
@@ -237,26 +200,6 @@ export const womenCategories = [
       route: 'womens-tops',
       collection: 'womens-tops',
     },
-    productTypes: [
-      {
-        type: 'essential tank',
-        route: 'essential-tank',
-        collection: 'womens-essential-tank',
-        id: uuidv4(),
-      },
-      {
-        type: 'essential tee',
-        route: 'essential-tee',
-        collection: 'womens-essential-tee',
-        id: uuidv4(),
-      },
-      {
-        type: 'crop top',
-        route: 'crop-top',
-        collection: 'womens-crop-top',
-        id: uuidv4(),
-      },
-    ],
   },
   {
     id: uuidv4(),
@@ -273,12 +216,6 @@ export const womenCategories = [
         collection: 'womens-joggers',
         id: uuidv4(),
       },
-      {
-        type: 'leggings',
-        route: 'leggings',
-        collection: 'womens-leggings',
-        id: uuidv4(),
-      },
     ],
   },
   {
@@ -287,22 +224,10 @@ export const womenCategories = [
     productCategory: {
       category: 'hats & accessories',
       route: 'hats-accessories',
-      collection: 'womens-hats-accessories',
+      collection: 'accessories',
     },
     productTypes: [
-      { type: 'hats', route: 'hats', collection: 'womens-hats', id: uuidv4() },
-      {
-        type: 'gift cards',
-        route: 'gift-cards',
-        collection: 'womens-gift-cards',
-        id: uuidv4(),
-      },
-      {
-        type: 'face masks',
-        route: 'face-masks',
-        collection: 'womens-face-masks',
-        id: uuidv4(),
-      },
+      { type: 'hats', route: 'hats', collection: 'hats', id: uuidv4() },
     ],
   },
 ];

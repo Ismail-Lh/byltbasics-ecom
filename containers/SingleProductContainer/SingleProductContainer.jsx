@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import classes from './SingleProductContainer.module.scss';
 
-import { SingleProductImages, SingleProductInfo } from '../../components';
 import { useProductsContext } from '../../contexts/products_context';
+import { SingleProductImages, SingleProductInfo } from '../../components';
 
 const SingleProductContainer = () => {
   const { single_product: product } = useProductsContext();

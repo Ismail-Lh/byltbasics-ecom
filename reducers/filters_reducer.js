@@ -65,13 +65,13 @@ const FiltersReducer = (state, action) => {
     if (collection.route === 'mens-outerwear')
       products = getProductsByCollection('outerwear', men_products);
 
-    // Men's outerwear products collection
+    // Men's underwear products collection
     if (collection.route === 'mens-underwear')
       products = getProductsByCollection('underwear', men_products);
 
-    // Men's outerwear products collection
-    if (collection.route === 'mens-accessories')
-      products = getProductsByCollection('hats-accessories', men_products);
+    // Men's & Women's accessories products collection
+    if (collection.route === 'accessories')
+      products = getProductsByCollection('hats-accessories', allProducts);
 
     // Men's henleys products collection
     if (collection.route === 'mens-henleys')
@@ -86,8 +86,8 @@ const FiltersReducer = (state, action) => {
       products = getProductsByStyle('pullovers', men_products);
 
     // Men's hats products collection
-    if (collection.route === 'mens-hats')
-      products = getProductsByStyle('hats', men_products);
+    if (collection.route === 'hats')
+      products = getProductsByStyle('hats', allProducts);
 
     // Men's boxer briefs products collection
     if (collection.route === 'boxer-briefs')
@@ -111,6 +111,19 @@ const FiltersReducer = (state, action) => {
 
     // Women's products collections
     if (collection.route === 'shop-women') products = women_products;
+
+    // Women's tops products collection
+    if (collection.route === 'womens-tops')
+      products = getProductsByCollection('womens-tops', women_products);
+
+    // Women's bottoms products collection
+    if (collection.route === 'womens-bottoms')
+      products = getProductsByCollection('womens-bottoms', women_products);
+
+    // Women's joggers products collection
+    if (collection.route === 'womens-joggers')
+      products = getProductsByStyle('joggers', women_products);
+
     if (collection.route === 'bundles') products = women_products;
     if (collection.route === 'sales') products = salesProducts;
 

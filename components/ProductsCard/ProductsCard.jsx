@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
-
+import { useState } from 'react';
 import classes from './ProductsCard.module.scss';
-import { MyLink } from '..';
-import {
-  formatPrice,
-  getProductColor,
-  setLocalStorage,
-} from '../../utils/helpers';
+
 import { useProductsContext } from '../../contexts/products_context';
+import { formatPrice } from '../../utils/helpers';
+import { MyLink } from '..';
 
 const ProductsCard = ({ product }) => {
   const { getSingleProduct } = useProductsContext();
@@ -21,12 +17,14 @@ const ProductsCard = ({ product }) => {
 
   const [color, setColor] = useState(product?.colors[0]);
 
+  const productRoute = `/products/${product?.route}/?gender=${product?.gender}&id=${product?.id}`;
+
   return (
     <div className={classes.card}>
       <div
         className={classes.card__image}
         onClick={() => getSingleProduct(product?.id, product?.gender, color)}>
-        <MyLink route={`/products/${product?.route}`}>
+        <MyLink route={productRoute}>
           <img
             src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/small/${product?.images[0]}`}
             alt={`${product?.name}-${color}`}
@@ -52,7 +50,7 @@ const ProductsCard = ({ product }) => {
         )}
 
         <h2 className={classes.card__info_name}>
-          <MyLink route={`/products/${product?.name}`}>{product?.name}</MyLink>
+          <MyLink route={productRoute}>{product?.name}</MyLink>
         </h2>
 
         <div className={classes.card__info_price}>

@@ -50,7 +50,7 @@ const DropDownMenu = ({
                     </MyLink>
                   </h2>
                   <ul className={classes.category__type}>
-                    {productTypes.map(({ id, type, collection }) => (
+                    {productTypes?.map(({ id, type, collection }) => (
                       <li
                         key={id}
                         onClick={e => {

@@ -21,7 +21,6 @@ export const TOGGLE_CART_AMOUNT = 'TOGGLE_CART_AMOUNT';
 // Filters Context & Reducer Actions
 export const UPDATE_COLLECTION = 'UPDATE_COLLECTION';
 export const GET_PRODUCTS_BY_COLLECTION = 'GET_PRODUCTS_BY_COLLECTION';
-export const GET_SLUG = 'GET_SLUG';
 export const GET_SALES_PRODUCTS = 'GET_SALES_PRODUCTS';
 export const UPDATE_SORT = 'UPDATE_SORT';
 export const SORT_PRODUCTS = 'SORT_PRODUCTS';
