@@ -4,15 +4,32 @@
   margin: 5.9rem 0;
   padding: 4rem 0;
 
-  &__grid {
+  @media (max-width: 768px) {
+    margin: 5.9rem 0 0 0;
+    padding: 2rem 0;
+  }
+
+  &__grid,
+  &__info .form__user {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__grid {
     gap: 4rem;
     align-items: center;
     justify-content: center;
   }
 
   &__img {
+    @media (max-width: 768px) {
+      display: none;
+    }
+
     img {
       width: 100%;
     }
@@ -22,6 +39,10 @@
     .header,
     .paragraphs p {
       margin-bottom: 3rem;
+
+      @media (max-width: 768px) {
+        margin-bottom: 2rem;
+      }
     }
 
     .header h3,
@@ -53,19 +74,17 @@
 
     .form {
       &__user {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
 
-        input,
-        textarea {
-          padding: 1.5rem;
-          border: 0;
-          border-radius: 5px;
-          outline: 0;
-          background-color: $light-grey-color;
-          text-transform: capitalize;
-          font-size: $sm-size-2;
+        @media (max-width: 768px) {
+          input {
+            margin-bottom: 1.5rem;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+          }
         }
 
         textarea {
@@ -73,25 +92,9 @@
         }
       }
 
-      .submitBtn {
+      button {
         width: 100%;
         margin-top: 2rem;
-        padding: 1.5rem;
-        font-size: $sm-size-1;
-        font-weight: bold;
-        color: $white-color;
-        background-color: $venice-blue-color;
-        text-align: center;
-        text-transform: uppercase;
-        border-radius: 5px;
-        border: 3px solid transparent;
-        transition: all 0.2s ease-in;
-
-        &:hover {
-          color: $venice-blue-color;
-          background-color: $white-color;
-          border: 3px solid $venice-blue-color;
-        }
       }
     }
   }

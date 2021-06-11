@@ -2,7 +2,14 @@ import Link from 'next/link';
 
 import classes from './Button.module.scss';
 
-const Button = ({ route, color, handelClick, children }) => {
+const Button = ({
+  route,
+  color,
+  handelClick,
+  handelSubmit,
+  type = 'button',
+  children,
+}) => {
   return (
     <>
       {!route ? (
@@ -10,7 +17,9 @@ const Button = ({ route, color, handelClick, children }) => {
           className={`${
             color === 'white' ? classes.btn__white : classes.btn__black
           }`}
-          onClick={handelClick}>
+          type={type}
+          onClick={handelClick && handelClick}
+          onSubmit={handelSubmit && handelSubmit}>
           {children}
         </button>
       ) : (

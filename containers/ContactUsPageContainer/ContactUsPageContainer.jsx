@@ -1,4 +1,5 @@
 import classes from './ContactUsPageContainer.module.scss';
+import { Button, FormInput } from '../../components';
 
 const ContactUsPageContainer = () => {
   return (
@@ -41,25 +42,30 @@ const ContactUsPageContainer = () => {
 
             <form className={classes.form}>
               <div className={classes.form__user}>
-                <input type='text' placeholder='name' />
-                <input
+                <FormInput
+                  type='text'
+                  name='name'
+                  id='name'
+                  placeholder='name'
+                />
+
+                <FormInput
                   type='email'
                   name='email'
                   id='email'
                   placeholder='email'
                 />
 
-                <textarea
+                <FormInput
+                  type='textarea'
                   name='message'
                   id='message'
-                  cols='30'
-                  rows='10'
                   placeholder='message'
                 />
               </div>
-              <button type='submit' className={classes.submitBtn}>
+              <Button type='submit' color='black'>
                 send
-              </button>
+              </Button>
             </form>
           </div>
         </div>
