@@ -2,7 +2,7 @@ import classes from './FiltersModel.module.scss';
 import { CloseIcon } from '../../Icons';
 import { FiltersValue } from '..';
 
-const FiltersModel = ({ products, openFiltersModel, setOpenFiltersModel }) => {
+const FiltersModel = ({ openFiltersModel, setOpenFiltersModel }) => {
   return (
     <div
       className={`${
@@ -16,7 +16,7 @@ const FiltersModel = ({ products, openFiltersModel, setOpenFiltersModel }) => {
           <CloseIcon />
         </button>
       </div>
-      <FiltersValue products={products} />
+      <FiltersValue />
     </div>
   );
 };

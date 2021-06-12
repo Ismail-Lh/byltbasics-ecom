@@ -4,11 +4,11 @@ import classes from './FilterType.module.scss';
 
 import { useFiltersContext } from '../../contexts/filters_context';
 
-const FilterType = ({ type, title, products }) => {
+const FilterType = ({ title, products }) => {
   const { updateFilters } = useFiltersContext();
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
-  const filtersValue = [...new Set(products?.map(product => product[type]))];
+  const filtersValue = [...new Set(products?.map(product => product[title]))];
 
   return (
     <div className={classes.filter__type}>
@@ -24,9 +24,9 @@ const FilterType = ({ type, title, products }) => {
           {filtersValue.map((value, idx) => (
             <>
               {value !== undefined && (
-                <div key={idx} onClick={() => updateFilters(type, value)}>
+                <div key={idx} onClick={() => updateFilters(title, value)}>
                   <img
-                    src={`/assets/filters/${type}/${value}.png`}
+                    src={`/assets/filters/${title}/${value}.png`}
                     alt={value}
                   />
                   <h4>{value}</h4>

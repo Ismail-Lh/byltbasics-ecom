@@ -1,16 +1,47 @@
 import classes from './FiltersValue.module.scss';
 
 import { useFiltersContext } from '../../contexts/filters_context';
-import { filterTypes } from '../../utils/constants';
 import { Button, FilterType } from '..';
 
-const FiltersValue = ({ products }) => {
-  const { clearFilters } = useFiltersContext();
+const FiltersValue = () => {
+  const { products, clearFilters } = useFiltersContext();
+
+  const productsKey = Object.keys(...products);
+
+  const substrings = [
+    'collections',
+    'style',
+    'cut',
+    'fabric',
+    'sleeve',
+    'neck',
+  ];
+
+  const containsAny = (keys, substrings) => {
+    const key = keys.map(key => {
+      for (let i = 0; i != substrings.length; i++) {
+        let filtersTitle = [];
+        let str = substrings[i];
+
+        if (key.includes(str)) {
+          filtersTitle.push(key);
+
+          return filtersTitle;
+        }
+      }
+    });
+
+    return [].concat(...key);
+  };
+
+  const filtersTitle = containsAny(productsKey, substrings)
+    .filter(key => key !== undefined)
+    .sort((a, b) => a.localeCompare(b));
 
   return (
     <>
-      {filterTypes.map(({ id, type, title }) => (
-        <FilterType key={id} type={type} title={title} products={products} />
+      {filtersTitle.map((title, idx) => (
+        <FilterType key={idx} title={title} products={products} />
       ))}
 
       <div className={classes.filters__clear}>

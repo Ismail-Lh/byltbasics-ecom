@@ -341,12 +341,3 @@ export const ProductsCategoryData_2 = [
     id: uuidv4(),
   },
 ];
-
-export const filterTypes = [
-  { id: uuidv4(), type: 'collections', title: 'collections' },
-  { id: uuidv4(), type: 'style', title: 'style' },
-  { id: uuidv4(), type: 'cut', title: 'cut' },
-  { id: uuidv4(), type: 'neck', title: 'neck' },
-  { id: uuidv4(), type: 'sleeve', title: 'sleeve' },
-  { id: uuidv4(), type: 'fabric', title: 'fabric' },
-];

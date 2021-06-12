@@ -1,6 +1,6 @@
 import classes from './FormInput.module.scss';
 
-const FormInput = ({ type, name, id, placeholder }) => {
+const FormInput = ({ type, name, id, placeholder, handelChange, value, error }) => {
   if (type === 'textarea')
     return (
       <textarea
@@ -14,13 +14,19 @@ const FormInput = ({ type, name, id, placeholder }) => {
     );
 
   return (
-    <input
-      className={classes.formIpt}
-      type={type}
-      name={name}
-      id={id}
-      placeholder={placeholder}
-    />
+    <div>
+      <input
+        className={classes.formIpt}
+        type={type}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        onChange={handelChange}
+        value={value}
+        required
+      />
+      {error && <p>{error}</p>}
+    </div>
   );
 };
 

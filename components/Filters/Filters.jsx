@@ -4,10 +4,8 @@ import { FaAngleRight } from 'react-icons/fa';
 import classes from './Filters.module.scss';
 import { FiltersModel, FiltersValue } from '..';
 import { useState } from 'react';
-import { useFiltersContext } from '../../contexts/filters_context';
 
 const Filters = () => {
-  const { products } = useFiltersContext();
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
 
   const [openFiltersModel, setOpenFiltersModel] = useState(false);
@@ -25,7 +23,7 @@ const Filters = () => {
     <>
       {!matchesMedia ? (
         <FiltersContainer>
-          <FiltersValue products={products} />
+          <FiltersValue />
         </FiltersContainer>
       ) : (
         <>
@@ -36,7 +34,6 @@ const Filters = () => {
           <FiltersModel
             openFiltersModel={openFiltersModel}
             setOpenFiltersModel={setOpenFiltersModel}
-            products={products}
           />
         </>
       )}
