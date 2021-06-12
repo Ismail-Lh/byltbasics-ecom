@@ -6,7 +6,9 @@ import { Button, FilterType } from '..';
 const FiltersValue = () => {
   const { products, clearFilters } = useFiltersContext();
 
-  const productsKey = Object.keys(...products);
+  const productsObject = Object.assign({}, ...products);
+
+  const productsKey = Object.keys(productsObject);
 
   const substrings = [
     'collections',
