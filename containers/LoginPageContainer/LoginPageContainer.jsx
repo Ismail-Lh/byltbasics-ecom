@@ -13,7 +13,9 @@ const LoginPageContainer = () => {
               through the checkout process faster, store multiple shipping
               addresses, view and track your orders in your account and more.
             </p>
-            <Button color='black'>creat account</Button>
+            <Button color='black' route='/account/register'>
+              creat account
+            </Button>
           </div>
 
           <div className={classes.login__registered}>
