@@ -17,3 +17,5 @@ export { default as ShopPageContainer } from './ShopPageContainer/ShopPageContai
 export { default as CollectionsContainer } from './CollectionsContainer/CollectionsContainer';
 
 export { default as ContactUsPageContainer } from './ContactUsPageContainer/ContactUsPageContainer';
+
+export { default as LoginPageContainer } from './LoginPageContainer/LoginPageContainer';

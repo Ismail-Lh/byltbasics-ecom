@@ -10,7 +10,7 @@ const FooterLinksContainer = () => {
     <div className='container'>
       <div className={classes.footer__links}>
         <div className={classes.footer__links_1}>
-          <img src='assets/Bylt-Logo.png' alt='Bylt-Logo' />
+          <img src='/assets/Bylt-Logo.png' alt='Bylt-Logo' />
 
           <MyLink route='https://www.facebook.com/BYLTbasics/'>
             <FacebookIcon />
