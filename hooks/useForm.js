@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 
 const useForm = () => {
-  const [value, setValue] = useState({ name: '', email: '' });
-  const [error, setError] = useState({ name: '', email: '' });
+  const initialState = { name: '', email: '', password: '' };
+
+  const [value, setValue] = useState(initialState);
+  const [error, setError] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -27,11 +29,15 @@ const useForm = () => {
     } else if (value.name.length > 12) {
       error.name = 'User name must be less than 12 characters';
     }
-    //   if (!values.password) {
-    //     errors.password = 'Password is required';
-    //   } else if (values.password.length < 8) {
-    //     errors.password = 'Password must be 8 or more characters';
-    //   }
+
+    if (!value.password) {
+      error.password = 'Password is required';
+    }
+    // else if (value.password.length < 8) {
+    //   error.password = 'Password must be at least 8 characters';
+    // } else if (value.password.length < 14) {
+    //   error.password = 'Password must be less than 14 characters';
+    // }
 
     return error;
   };

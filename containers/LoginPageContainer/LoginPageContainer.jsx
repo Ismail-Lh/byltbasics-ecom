@@ -1,7 +1,11 @@
 import classes from './LoginPageContainer.module.scss';
 import { Button, FormInput } from '../../components';
 
+import useForm from '../../hooks/useForm';
+
 const LoginPageContainer = () => {
+  const { value, error, handleChange, handleSubmit } = useForm();
+
   return (
     <div className={classes.login__container}>
       <div className='container'>
@@ -21,13 +25,23 @@ const LoginPageContainer = () => {
           <div className={classes.login__registered}>
             <h1 className={classes.login__title}>registered customers</h1>
 
-            <form className={classes.login__form}>
-              <FormInput name='email' id='email' placeholder='email address' />
+            <form className={classes.login__form} onSubmit={handleSubmit}>
+              <FormInput
+                name='email'
+                id='email'
+                placeholder='email address'
+                handleChange={handleChange}
+                value={value.email}
+                error={error.email}
+              />
               <FormInput
                 type='password'
                 name='password'
                 id='password'
                 placeholder='password'
+                handleChange={handleChange}
+                value={value.password}
+                error={error.password}
               />
 
               <Button type='submit' color='black'>
