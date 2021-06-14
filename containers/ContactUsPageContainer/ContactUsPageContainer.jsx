@@ -2,17 +2,9 @@ import classes from './ContactUsPageContainer.module.scss';
 import { Button, FormInput } from '../../components';
 
 import useForm from '../../hooks/useForm';
-import validate from '../../utils/LoginFormValidationRules';
 
 const ContactUsPageContainer = () => {
-  const { values, handleChange, handleSubmit, errors } = useForm(
-    login,
-    validate
-  );
-
-  function login() {
-    console.log('No errors, submit callback called!');
-  }
+  const { value, handleChange, handleSubmit, error } = useForm();
 
   return (
     <div className={classes.contactUs}>
@@ -55,23 +47,21 @@ const ContactUsPageContainer = () => {
             <form className={classes.form} onSubmit={handleSubmit}>
               <div className={classes.form__user}>
                 <FormInput
-                  type='text'
                   name='name'
                   id='name'
                   placeholder='name'
                   handleChange={handleChange}
-                  value={values.name}
-                  error={errors.name}
+                  value={value.name}
+                  error={error.name}
                 />
 
                 <FormInput
-                  type='email'
                   name='email'
                   id='email'
                   placeholder='email'
                   handleChange={handleChange}
-                  value={values.email}
-                  error={errors.email}
+                  value={value.email}
+                  error={error.email}
                 />
 
                 <FormInput

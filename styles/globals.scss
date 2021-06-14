@@ -349,3 +349,26 @@ h1 {
     transform: translateY(0);
   }
 }
+
+// Form Input Compo
+.formIpt,
+.textarea {
+  padding: 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  outline: 0;
+  background-color: $light-grey-color;
+  text-transform: capitalize;
+  font-size: $sm-size-2;
+  width: 100%;
+  margin-bottom: 7px;
+
+  &__error {
+    border: 2px solid $error-color;
+  }
+
+  &__errorMsg {
+    color: $error-color;
+    margin-left: 1rem;
+  }
+}
