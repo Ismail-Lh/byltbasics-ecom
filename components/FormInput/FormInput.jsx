@@ -6,6 +6,7 @@ const FormInput = ({
   handleChange,
   value,
   error,
+  label,
 }) => {
   if (type === 'textarea')
     return (
@@ -21,6 +22,7 @@ const FormInput = ({
 
   return (
     <div>
+      {label && <label htmlFor={id}>{label}</label>}
       <input
         className={`${!error ? 'formIpt' : 'formIpt formIpt__error'}`}
         type={type}

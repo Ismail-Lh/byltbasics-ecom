@@ -19,3 +19,5 @@ export { default as CollectionsContainer } from './CollectionsContainer/Collecti
 export { default as ContactUsPageContainer } from './ContactUsPageContainer/ContactUsPageContainer';
 
 export { default as LoginPageContainer } from './LoginPageContainer/LoginPageContainer';
+
+export { default as RegisterPageContainer } from './RegisterPageContainer/RegisterPageContainer';

@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.register {
+  margin-top: 5.9rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+
+  &__container {
+    max-width: 60%;
+    margin: 0 auto;
+
+    a {
+      font-size: $sm-size-2;
+      text-transform: uppercase;
+      color: $grey-color;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease-in;
+
+      &:hover {
+        color: $venice-blue-color;
+        border-bottom: 2px solid $venice-blue-color;
+      }
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $sm-size-1;
+    margin-bottom: 2.5rem;
+  }
+
+  &__form,
+  &__form div {
+    margin-bottom: 1.5rem;
+  }
+
+  &__form {
+    label {
+      text-transform: capitalize;
+      font-size: $sm-size-2;
+      font-weight: 300;
+      cursor: pointer;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
