@@ -2,12 +2,27 @@
 
 .register {
   margin-top: 5.9rem;
-  padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding: 4rem 0 2rem 0;
+
+  @media (max-width: 768px) {
+    padding-top: 2rem;
+  }
 
   &__container {
-    max-width: 60%;
+    width: 60%;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
+
+    @media (max-width: 600px) {
+      width: 90%;
+    }
+
+    @media (max-width: 375px) {
+      width: 95%;
+    }
 
     a {
       font-size: $sm-size-2;
@@ -29,6 +44,10 @@
     font-weight: bold;
     font-size: $sm-size-1;
     margin-bottom: 2.5rem;
+
+    @media (max-width: 500px) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__form,
