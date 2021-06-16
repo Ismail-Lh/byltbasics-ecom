@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 
 const useForm = () => {
-  const initialState = { name: '', email: '', password: '' };
+  const initialState = {
+    name: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    password_1: '',
+    password_2: '',
+  };
 
   const [value, setValue] = useState(initialState);
   const [error, setError] = useState(initialState);
@@ -30,14 +38,38 @@ const useForm = () => {
       error.name = 'User name must be less than 12 characters';
     }
 
-    if (!value.password) {
-      error.password = 'Password is required';
+    if (!value.first_name) {
+      error.first_name = 'First name is required';
+    } else if (value.first_name.length < 4) {
+      error.first_name = 'First name must be at least 4 characters';
+    } else if (value.first_name.length > 12) {
+      error.first_name = 'First name must be less than 12 characters';
     }
-    // else if (value.password.length < 8) {
-    //   error.password = 'Password must be at least 8 characters';
-    // } else if (value.password.length < 14) {
-    //   error.password = 'Password must be less than 14 characters';
-    // }
+
+    if (!value.last_name) {
+      error.last_name = 'Last name is required';
+    } else if (value.last_name.length < 4) {
+      error.last_name = 'Last name must be at least 4 characters';
+    } else if (value.last_name.length > 12) {
+      error.last_name = 'Last name must be less than 12 characters';
+    }
+
+    if (!value.password || !value.password_1) {
+      error.password = 'Password is required';
+      error.password_1 = 'Password is required';
+    }
+
+    if (!value.password_1) {
+      error.password_1 = 'Password is required';
+    } else if (value.password_1.length < 8) {
+      error.password_1 = 'Password must be at least 8 characters';
+    } else if (value.password_1.length > 14) {
+      error.password_1 = 'Password must be less than 14 characters';
+    }
+
+    if (value.password_1 !== value.password_2) {
+      error.password_2 = 'Password do not match';
+    }
 
     return error;
   };
