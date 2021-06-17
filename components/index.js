@@ -40,3 +40,7 @@ export { default as AmountBtn } from './AmountBtn/AmountBtn';
 
 // Cart
 export { default as Cart } from './Cart/Cart';
+
+// Login page
+export { default as Register } from './Register/Register';
+export { default as Login } from './Login/Login';

@@ -9,6 +9,7 @@ const Button = ({
   handelSubmit,
   type = 'button',
   children,
+  disabled,
 }) => {
   return (
     <>
@@ -19,7 +20,8 @@ const Button = ({
           }`}
           type={type}
           onClick={handelClick && handelClick}
-          onSubmit={handelSubmit && handelSubmit}>
+          onSubmit={handelSubmit && handelSubmit}
+          disabled={disabled && disabled}>
           {children}
         </button>
       ) : (

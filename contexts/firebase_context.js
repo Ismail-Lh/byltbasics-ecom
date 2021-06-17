@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 
-import firebase from '../lib/firebase.prod';
+import { firebase } from '../lib/firebase.prod';
 
 const FirebaseContext = createContext();
 

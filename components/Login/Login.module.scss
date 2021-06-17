@@ -1,0 +1,9 @@
+@use '../../styles/variables' as *;
+
+.login {
+  &__form {
+    div {
+      margin-bottom: 1.3rem;
+    }
+  }
+}

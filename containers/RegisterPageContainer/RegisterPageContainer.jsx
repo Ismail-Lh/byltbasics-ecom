@@ -1,36 +1,42 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import classes from './RegisterPageContainer.module.scss';
 
 import useForm from '../../hooks/useForm';
+import { useAuthContext } from '../../contexts/auth_context';
 import { Button, FormInput, MyLink } from '../../components';
 
 const RegisterPageContainer = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
+  const { signUp } = useAuthContext();
+
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState('');
+  const router = useRouter();
+
+  const handleSignUp = async e => {
+    e.preventDefault();
+    handleSubmit();
+
+    try {
+      setLoading(true);
+      await signUp(value.email, value.password_1);
+      router.push('/account');
+    } catch {
+      setErr('Failed to create an account');
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className={classes.register}>
       <div className='container'>
         <div className={classes.register__container}>
           <h1 className={classes.register__title}>create account</h1>
-
-          <form className={classes.register__form} onSubmit={handleSubmit}>
-            <FormInput
-              name='first_name'
-              id='first name'
-              placeholder='first name'
-              label='first name'
-              handleChange={handleChange}
-              value={value.first_name}
-              error={error.first_name}
-            />
-            <FormInput
-              name='last_name'
-              id='last name'
-              placeholder='last name'
-              label='last name'
-              handleChange={handleChange}
-              value={value.last_name}
-              error={error.last_name}
-            />
+          {err && <h3>{err}</h3>}
+          <form className={classes.register__form} onSubmit={handleSignUp}>
             <FormInput
               name='email'
               id='email'
@@ -61,7 +67,7 @@ const RegisterPageContainer = () => {
               error={error.password_2}
             />
 
-            <Button color='black' type='submit'>
+            <Button disabled={loading} color='black' type='submit'>
               create account
             </Button>
           </form>
