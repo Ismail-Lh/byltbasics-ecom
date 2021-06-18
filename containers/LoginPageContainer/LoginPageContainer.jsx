@@ -6,8 +6,6 @@ const LoginPageContainer = () => {
     <div className={classes.login__container}>
       <div className='container'>
         <div className={classes.login__grid}>
-          <Register />
-
           <Login />
         </div>
       </div>
