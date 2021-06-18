@@ -22,8 +22,8 @@ const Login = () => {
       setLoading(true);
       await login(value.email, value.password);
       router.push('/account');
-    } catch {
-      setErr('Failed to log in');
+    } catch (error) {
+      setErr(error.message);
     }
 
     setLoading(false);

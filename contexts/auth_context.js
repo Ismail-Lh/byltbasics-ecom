@@ -8,18 +8,26 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  const router = useRouter();
+  const signUp = async (email, password, firstName, lastName) => {
+    const res = await auth.createUserWithEmailAndPassword(email, password);
 
-  const signUp = (email, password, firstName, lastName) => {
-    return auth.createUserWithEmailAndPassword(email, password).then(result =>
-      result.user.updateProfile({
-        displayName: `${firstName} ${lastName}`,
-      })
-    );
+    const user = res.user.updateProfile({
+      displayName: `${firstName} ${lastName}`,
+    });
+
+    return user;
   };
 
   const login = async (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    const res = await auth.signInWithEmailAndPassword(email, password);
+
+    return res;
+  };
+
+  const logout = async () => {
+    const res = await auth.signOut();
+
+    return res;
   };
 
   useEffect(() => {
@@ -33,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signUp, login }}>
+    <AuthContext.Provider value={{ user, signUp, login, logout }}>
       {!loading && children}
     </AuthContext.Provider>
   );

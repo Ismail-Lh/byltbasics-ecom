@@ -9,7 +9,7 @@ import { Button, FormInput, MyLink } from '../../components';
 
 const RegisterPageContainer = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
-  const { signUp, user } = useAuthContext();
+  const { signUp } = useAuthContext();
 
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
