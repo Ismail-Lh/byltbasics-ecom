@@ -8,19 +8,21 @@ import { Button, FormInput, MyLink } from '..';
 
 const Login = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
-  const { login } = useAuthContext();
+  const { login, resetPassword } = useAuthContext();
 
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
   const router = useRouter();
 
-  const [resetPassword, setResetPassword] = useState(false);
+  const [isResetPassword, setIsResetPassword] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleLogin = async e => {
     e.preventDefault();
     handleSubmit();
 
     try {
+      setErr('');
       setLoading(true);
       await login(value.email, value.password);
       router.push('/account');
@@ -31,9 +33,23 @@ const Login = () => {
     setLoading(false);
   };
 
+  const handleReset = async e => {
+    e.preventDefault();
+
+    try {
+      setMessage('');
+      setErr('');
+      setLoading(true);
+      await resetPassword(value.email);
+      setMessage('check your email inbox for more information.');
+    } catch (error) {
+      setErr(error.message);
+    }
+  };
+
   return (
     <div className={classes.login}>
-      {!resetPassword ? (
+      {!isResetPassword ? (
         <>
           <h1>registered customers</h1>
           {err && <h3>{err}</h3>}
@@ -65,7 +81,7 @@ const Login = () => {
             <MyLink route='/account/register'>create an account</MyLink>
             <button
               className={classes.btn}
-              onClick={() => setResetPassword(true)}>
+              onClick={() => setIsResetPassword(true)}>
               forgot your password?
             </button>
           </div>
@@ -73,12 +89,14 @@ const Login = () => {
       ) : (
         <>
           <h1>reset password</h1>
+          {err && <h3>{err}</h3>}
+          {message && <h3>{message}</h3>}
           <p className={classes.resetText}>
             Please enter your email address below. You will receive a link to
             reset your password.
           </p>
 
-          <form className={classes.login__form}>
+          <form className={classes.login__form} onSubmit={handleReset}>
             <FormInput
               name='email'
               id='email'
@@ -95,7 +113,7 @@ const Login = () => {
 
           <button
             className={classes.btn}
-            onClick={() => setResetPassword(false)}>
+            onClick={() => setIsResetPassword(false)}>
             cancel
           </button>
         </>
