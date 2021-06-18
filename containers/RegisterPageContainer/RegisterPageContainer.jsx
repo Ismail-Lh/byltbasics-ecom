@@ -9,7 +9,7 @@ import { Button, FormInput, MyLink } from '../../components';
 
 const RegisterPageContainer = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
-  const { signUp } = useAuthContext();
+  const { signUp, user } = useAuthContext();
 
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState('');
@@ -21,10 +21,17 @@ const RegisterPageContainer = () => {
 
     try {
       setLoading(true);
-      await signUp(value.email, value.password_1);
+      await signUp(
+        value.email,
+        value.password_1,
+        value.first_name,
+        value.last_name
+      );
       router.push('/account');
     } catch {
-      setErr('Failed to create an account');
+      err => {
+        setErr(err.message);
+      };
     }
 
     setLoading(false);
@@ -37,6 +44,24 @@ const RegisterPageContainer = () => {
           <h1 className={classes.register__title}>create account</h1>
           {err && <h3>{err}</h3>}
           <form className={classes.register__form} onSubmit={handleSignUp}>
+            <FormInput
+              name='first_name'
+              id='first name'
+              placeholder='first name'
+              label='first name'
+              handleChange={handleChange}
+              value={value.first_name}
+              error={error.first_name}
+            />
+            <FormInput
+              name='last_name'
+              id='last name'
+              placeholder='last name'
+              label='last name'
+              handleChange={handleChange}
+              value={value.last_name}
+              error={error.last_name}
+            />
             <FormInput
               name='email'
               id='email'

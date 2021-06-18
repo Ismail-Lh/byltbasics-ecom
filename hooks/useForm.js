@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 const useForm = () => {
   const initialState = {
     name: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     password_1: '',
@@ -36,21 +38,21 @@ const useForm = () => {
       error.name = 'User name must be less than 12 characters';
     }
 
-    // if (!value.first_name) {
-    //   error.first_name = 'First name is required';
-    // } else if (value.first_name.length < 4) {
-    //   error.first_name = 'First name must be at least 4 characters';
-    // } else if (value.first_name.length > 12) {
-    //   error.first_name = 'First name must be less than 12 characters';
-    // }
+    if (!value.first_name) {
+      error.first_name = 'First name is required';
+    } else if (value.first_name.length < 4) {
+      error.first_name = 'First name must be at least 4 characters';
+    } else if (value.first_name.length > 12) {
+      error.first_name = 'First name must be less than 12 characters';
+    }
 
-    // if (!value.last_name) {
-    //   error.last_name = 'Last name is required';
-    // } else if (value.last_name.length < 4) {
-    //   error.last_name = 'Last name must be at least 4 characters';
-    // } else if (value.last_name.length > 12) {
-    //   error.last_name = 'Last name must be less than 12 characters';
-    // }
+    if (!value.last_name) {
+      error.last_name = 'Last name is required';
+    } else if (value.last_name.length < 4) {
+      error.last_name = 'Last name must be at least 4 characters';
+    } else if (value.last_name.length > 12) {
+      error.last_name = 'Last name must be less than 12 characters';
+    }
 
     if (!value.password) {
       error.password = 'Password is required';
