@@ -371,3 +371,23 @@ h1 {
     margin-left: 1rem;
   }
 }
+
+// Alert compo
+.alert {
+  font-size: $sm-size-1;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  text-align: center;
+  text-transform: capitalize;
+  border: 2px solid transparent;
+
+  &__error {
+    color: $error-color;
+    border-color: $error-color;
+  }
+
+  &__success {
+    color: $success-color;
+    border-color: $success-color;
+  }
+}

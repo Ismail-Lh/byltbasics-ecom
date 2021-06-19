@@ -4,7 +4,7 @@ import classes from './Login.module.scss';
 
 import { useAuthContext } from '../../contexts/auth_context';
 import useForm from '../../hooks/useForm';
-import { Button, FormInput, MyLink } from '..';
+import { Alert, Button, FormInput, MyLink } from '..';
 
 const Login = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
@@ -37,8 +37,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      setMessage('');
       setErr('');
+      setMessage('');
       setLoading(true);
       await resetPassword(value.email);
       setMessage('check your email inbox for more information.');
@@ -52,7 +52,7 @@ const Login = () => {
       {!isResetPassword ? (
         <>
           <h1>registered customers</h1>
-          {err && <h3>{err}</h3>}
+          {err && <Alert error> {err}</Alert>}
           <form className={classes.login__form} onSubmit={handleLogin}>
             <FormInput
               name='email'
@@ -89,8 +89,9 @@ const Login = () => {
       ) : (
         <>
           <h1>reset password</h1>
-          {err && <h3>{err}</h3>}
-          {message && <h3>{message}</h3>}
+          {err && <Alert error> {err}</Alert>}
+
+          {message && <Alert>{message}</Alert>}
           <p className={classes.resetText}>
             Please enter your email address below. You will receive a link to
             reset your password.

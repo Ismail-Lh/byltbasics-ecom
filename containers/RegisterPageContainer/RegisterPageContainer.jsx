@@ -5,7 +5,7 @@ import classes from './RegisterPageContainer.module.scss';
 
 import useForm from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/auth_context';
-import { Button, FormInput, MyLink } from '../../components';
+import { Alert, Button, FormInput, MyLink } from '../../components';
 
 const RegisterPageContainer = () => {
   const { value, error, handleChange, handleSubmit } = useForm();
@@ -20,6 +20,7 @@ const RegisterPageContainer = () => {
     handleSubmit();
 
     try {
+      setErr('');
       setLoading(true);
       await signUp(
         value.email,
@@ -28,21 +29,21 @@ const RegisterPageContainer = () => {
         value.last_name
       );
       router.push('/account');
-    } catch {
-      err => {
-        setErr(err.message);
-      };
+    } catch (error) {
+      setErr(error.message);
     }
 
     setLoading(false);
   };
+
+  console.log(loading);
 
   return (
     <div className={classes.register}>
       <div className='container'>
         <div className={classes.register__container}>
           <h1 className={classes.register__title}>create account</h1>
-          {err && <h3>{err}</h3>}
+          {err && <Alert error>{err}</Alert>}
           <form className={classes.register__form} onSubmit={handleSignUp}>
             <FormInput
               name='first_name'

@@ -19,6 +19,7 @@ export { default as HeroImage } from './Hero/HeroImage/HeroImage';
 // Products Category Section
 export { default as ProductsCategoryCard1 } from './ProductsCategoryCard1/ProductsCategoryCard1';
 export { default as ProductsCategoryCard2 } from './ProductsCategoryCard2/ProductsCategoryCard2';
+export { default as Alert } from './Alert/Alert.jsx';
 
 // Split Content Section
 export { default as SplitContentText } from './SplitContentText/SplitContentText';
