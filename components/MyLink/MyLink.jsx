@@ -5,7 +5,7 @@ const MyLink = ({ route, children, handelClick }) => {
 
   return (
     <Link href={route}>
-      <a>{children}</a>
+      <a onClick={handelClick}>{children}</a>
     </Link>
   );
 };
