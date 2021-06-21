@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
 import classes from './AccountPageContainer.module.scss';
 
 import { useAuthContext } from '../../contexts/auth_context';
-import { Alert, Loader } from '../../components';
+import { Alert, Button, Loader } from '../../components';
 
 const AccountPageContainer = () => {
   const { logout, user, setErr, err, loading, setLoading } = useAuthContext();
   const router = useRouter();
 
-  const handleLogout = async () => {
+  const handelLogout = async () => {
     try {
       setErr('');
       setLoading(true);
@@ -28,10 +27,27 @@ const AccountPageContainer = () => {
       ) : (
         <div className='container'>
           {err && <Alert error>{err}</Alert>}
-          <h1>account page container</h1>
-          <h2>{user.displayName}</h2>
-          <h2>{user.email}</h2>
-          <button onClick={handleLogout}>log out</button>
+
+          <div className={classes.account__grid}>
+            <div className={classes.account__user}>
+              <h2>account info</h2>
+              <div className={classes.userInfo}>
+                <p>
+                  <span>user name:</span> {user.displayName}
+                </p>
+                <p>
+                  <span>user email address:</span> {user.email}
+                </p>
+              </div>
+              <Button color='black' handelClick={handelLogout}>
+                log out
+              </Button>
+            </div>
+            <div className={classes.account__orders}>
+              <h2>recent orders</h2>
+              <p>you have not placed any order yet.</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
