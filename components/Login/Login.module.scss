@@ -38,12 +38,22 @@
     display: grid;
     grid-template-columns: auto 1fr;
 
+    @media (max-width: 425px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
     a {
       color: $venice-blue-color;
     }
 
     .btn {
       justify-self: end;
+
+      @media (max-width: 425px) {
+        justify-self: flex-start;
+      }
     }
   }
 }
