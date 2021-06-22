@@ -1,9 +1,17 @@
-import { AmountBtn, Button, MyLink } from '..';
-import { useCartContext } from '../../contexts/cart_context';
-import { CloseIcon } from '../../Icons';
-import { formatPrice } from '../../utils/helpers';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 
 import classes from './Cart.module.scss';
+import { useCartContext } from '../../contexts/cart_context';
+
+import { formatPrice } from '../../utils/helpers';
+import { AmountBtn, Button, MyLink } from '..';
+import { CloseIcon } from '../../Icons';
+import { useAuthContext } from '../../contexts/auth_context';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(process.env.stripe_public_key);
 
 const Cart = () => {
   const {
@@ -15,6 +23,26 @@ const Cart = () => {
     subTotal,
     toggleCartAmount,
   } = useCartContext();
+
+  const { user } = useAuthContext();
+
+  const createCheckoutSession = async () => {
+    //  Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call the backend to create the checkout session
+    const checkoutSession = await axios.post('/api/create-checkout-session', {
+      items: products,
+      email: user.email,
+    });
+
+    // When the customer clicks on the button, redirect them to Stripe Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result.error) alert(result.error.message);
+  };
 
   return (
     <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
@@ -101,15 +129,17 @@ const Cart = () => {
           </div>
 
           <div className={classes.cart__clear}>
-            <Button color='black' handelClick={clearCart}>
-              Clear cart
-            </Button>
+            <Button handelClick={clearCart}>Clear cart</Button>
           </div>
 
           <div className={classes.cart__checkout}>
-            <Button color='black' route='/pages/checkout'>
-              checkout
-            </Button>
+            {!user ? (
+              <Button route='/account/login'>sign in to checkout</Button>
+            ) : (
+              <Button role='link' handelClick={createCheckoutSession}>
+                proceed to checkout
+              </Button>
+            )}
           </div>
         </>
       )}

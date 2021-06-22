@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { auth } from '../lib/firebase.prod';
 
 const AuthContext = createContext();
@@ -37,6 +36,18 @@ export const AuthProvider = ({ children }) => {
 
     return res;
   };
+
+  // const updateEmail = async email => {
+  //   const res = await user.updateEmail(email);
+
+  //   return res;
+  // };
+
+  // const updatePassword = async password => {
+  //   const res = await user.updatePassword(password);
+
+  //   return res;
+  // };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {

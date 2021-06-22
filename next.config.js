@@ -1,9 +1,5 @@
 module.exports = {
-  future: {
-    webpack5: true,
-  },
-  webpack: function (config, options) {
-    config.experiments = {};
-    return config;
+  env: {
+    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
   },
 };

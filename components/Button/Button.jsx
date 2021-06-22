@@ -10,6 +10,7 @@ const Button = ({
   type = 'button',
   children,
   disabled,
+  role,
 }) => {
   return (
     <>
@@ -18,6 +19,7 @@ const Button = ({
           className={`${
             color === 'white' ? classes.btn__white : classes.btn__black
           }`}
+          role={role}
           type={type}
           onClick={handelClick && handelClick}
           onSubmit={handelSubmit && handelSubmit}

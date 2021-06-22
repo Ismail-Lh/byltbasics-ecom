@@ -32,6 +32,7 @@
   &__products .product__info_1 .price,
   &__products .product__info_1 .size,
   &__subtotal p,
+  &__checkout button,
   &__checkout a,
   &__clear button {
     text-transform: uppercase;
@@ -45,6 +46,7 @@
   }
 
   &__subtotal,
+  &__checkout button,
   &__checkout a,
   &__clear button {
     font-size: $md-size-4;
@@ -56,6 +58,7 @@
   }
 
   &__checkout a,
+  &__checkout button,
   &__clear button {
     display: block;
     width: 100%;

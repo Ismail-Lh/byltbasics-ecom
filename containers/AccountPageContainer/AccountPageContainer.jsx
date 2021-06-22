@@ -39,10 +39,10 @@ const AccountPageContainer = () => {
                   <span>user email address:</span> {user.email}
                 </p>
               </div>
-              <Button color='black' handelClick={handelLogout}>
-                log out
-              </Button>
+
+              <Button handelClick={handelLogout}>log out</Button>
             </div>
+
             <div className={classes.account__orders}>
               <h2>recent orders</h2>
               <p>you have not placed any order yet.</p>
