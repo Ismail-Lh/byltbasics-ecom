@@ -1,5 +1,7 @@
+import {SuccessCheckoutPageContainer} from '../../containers'
+
 const SuccessCheckoutPage = () => {
-  return <div>SuccessCheckoutPage</div>;
+  return <SuccessCheckoutPageContainer/>;
 };
 
 export default SuccessCheckoutPage;
