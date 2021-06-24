@@ -4,16 +4,13 @@ export default async (req, res) => {
   const { items, email } = req.body;
 
   const transformedItems = items.map(item => {
-    const { gender, collections, style, name, color, image, price, amount } =
-      item;
-
-    //  const imgUrl = `/assets/products/${gender}/${collections}/${style}/${name}/${color}/small/${image}`;
+    const { name, price, amount } = item;
 
     return {
       quantity: amount,
       price_data: {
         currency: 'usd',
-        unit_amount: price * 1000,
+        unit_amount: price,
         product_data: {
           name: name,
           images: [item.image],
@@ -43,6 +40,7 @@ export default async (req, res) => {
     metadata: {
       email,
       images: JSON.stringify(imgUrl),
+      item: JSON.stringify(transformedItems),
     },
   });
 

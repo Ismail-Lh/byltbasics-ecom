@@ -46,3 +46,6 @@ export { default as Cart } from './Cart/Cart';
 // Login page
 export { default as Register } from './Register/Register';
 export { default as Login } from './Login/Login';
+
+// Account Page
+export { default as UserOrders } from './UserOrders/UserOrders';

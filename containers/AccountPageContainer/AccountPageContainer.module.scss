@@ -4,21 +4,17 @@
   &__container {
     margin-top: 5.9rem;
     padding: 6rem 0;
+
+    @media (max-width: 425px) {
+      padding: 3rem 0;
+    }
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: 40% auto;
-    gap: 3rem;
     padding: 0 6rem;
 
     @media (max-width: 768px) {
-      grid-template-columns: 50% auto;
       padding: 0;
-    }
-
-    @media (max-width: 425px) {
-      grid-template-columns: 1fr;
     }
 
     h2 {
@@ -43,6 +39,9 @@
   }
 
   &__user {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid $light-grey-color;
     .userInfo {
       margin-bottom: 2rem;
     }

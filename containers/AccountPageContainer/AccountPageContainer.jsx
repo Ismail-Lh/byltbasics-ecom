@@ -2,9 +2,13 @@ import { useRouter } from 'next/router';
 import classes from './AccountPageContainer.module.scss';
 
 import { useAuthContext } from '../../contexts/auth_context';
-import { Alert, Button, Loader } from '../../components';
+import { Alert, Button, Loader, UserOrders } from '../../components';
 
-const AccountPageContainer = () => {
+const AccountPageContainer = ({
+  orders,
+  loading: ordersLoading,
+  err: ordersError,
+}) => {
   const { logout, user, setErr, err, loading, setLoading } = useAuthContext();
   const router = useRouter();
 
@@ -45,7 +49,20 @@ const AccountPageContainer = () => {
 
             <div className={classes.account__orders}>
               <h2>recent orders</h2>
-              <p>you have not placed any order yet.</p>
+              {orders.length === 0 ? (
+                <p>you have not placed any order yet.</p>
+              ) : (
+                <>
+                  {ordersLoading === true ? (
+                    <Loader message='please wait until your orders is loaded...' />
+                  ) : (
+                    <>
+                      <p>you have {orders.length} orders.</p>
+                      <UserOrders orders={orders} />
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
