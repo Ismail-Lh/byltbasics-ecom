@@ -20,6 +20,7 @@ a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  display: inline-block;
 }
 
 ul {
@@ -335,7 +336,7 @@ h1 {
   opacity: 0;
   z-index: -1;
   visibility: hidden;
-  transform: translateY(calc(-100% - 5.9rem));
+  display: none;
   transition: all 0.2s ease-in;
 
   .container {
@@ -345,8 +346,8 @@ h1 {
   &__show {
     opacity: 1;
     z-index: 1;
+    display: block;
     visibility: visible;
-    transform: translateY(0);
   }
 }
 

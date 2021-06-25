@@ -1,17 +1,15 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .backgroundImage {
+  @include grid-center();
+  @include bg-image-setup();
+
   width: 100%;
   margin-top: 5.9rem;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  place-content: center;
   color: $white-color;
 
   &__title {
-    font-weight: bold;
-    text-transform: uppercase;
+    @include text-transform();
   }
 }

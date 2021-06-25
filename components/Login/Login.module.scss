@@ -1,11 +1,11 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .login {
   .resetText {
     margin-bottom: 1.5rem;
-    text-transform: capitalize;
     font-size: $sm-size-3;
-    font-weight: 400;
+    @include text-transform($transform: capitalize, $weight: 400);
   }
 
   &__create a,
@@ -16,10 +16,9 @@
 
   .btn {
     color: $grey-color;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
     width: max-content;
-    transition: all 0.2s ease-in;
+    @include mrb-pdb-brb($mr-b: 0, $pd-b: 4px, $br-b: 2px solid transparent);
+    @include transition();
 
     &:hover {
       color: $venice-blue-color;
@@ -35,12 +34,10 @@
   }
 
   &__create {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    @include grid-columns($columns: auto 1fr);
 
     @media (max-width: 425px) {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      @include grid-columns($columns: 1fr, $gap: 1rem);
       justify-content: flex-start;
     }
 

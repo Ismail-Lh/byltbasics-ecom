@@ -1,10 +1,9 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .card {
-  display: flex;
+  @include flex-ali-jus($justify: flex-end);
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
   text-align: center;
   padding-bottom: 2rem;
 

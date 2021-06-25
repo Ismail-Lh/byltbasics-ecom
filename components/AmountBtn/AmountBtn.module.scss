@@ -1,10 +1,9 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .amountBtn {
   width: 25%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-ali-jus($justify: space-between);
 
   button,
   span {
@@ -12,14 +11,11 @@
   }
 
   button {
-    padding: 0.5rem 1rem;
-    transition: all 0.2s ease-in;
-    width: 3rem;
-    text-align: center;
+    @include pd-wh-txa($pd: 0.5rem 1rem, $wh: 3rem, $txa: center);
+    @include transition();
 
     &:hover {
-      color: $white-color;
-      background-color: $black-color;
+      @include bg-txt-br-color($bg-color: $black-color, $color: $white-color);
     }
   }
 }

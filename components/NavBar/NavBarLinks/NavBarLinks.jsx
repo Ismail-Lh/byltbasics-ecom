@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import classes from './NavBarLinks.module.scss';
 
+import { useProductsContext } from '../../../contexts/products_context';
+import { useFiltersContext } from '../../../contexts/filters_context';
 import {
   menCategories,
   menCollections,
@@ -8,11 +11,8 @@ import {
   womenCategories,
   womenCollections,
 } from '../../../utils/constants';
-import { useState } from 'react';
-import { useProductsContext } from '../../../contexts/products_context';
 import { MenuIcon } from '../../../Icons';
 import { DropDownMenu } from '../../';
-import { useFiltersContext } from '../../../contexts/filters_context';
 
 const NavBarLinks = () => {
   const { openSidebar } = useProductsContext();

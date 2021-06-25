@@ -1,15 +1,18 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .form {
   &__select {
     padding: 1rem 2rem;
-    text-transform: uppercase;
     font-size: $sm-size-3;
-    font-weight: bold;
-    color: $venice-blue-color;
-    border: 2px solid $venice-blue-color;
+    border: 2px solid;
     border-radius: 5px;
     outline: 0;
+    @include bg-txt-br-color(
+      $color: $venice-blue-color,
+      $br-color: $venice-blue-color
+    );
+    @include text-transform();
 
     @media (max-width: 500px) {
       padding: 1rem;

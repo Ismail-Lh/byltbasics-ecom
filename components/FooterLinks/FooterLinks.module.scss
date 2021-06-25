@@ -1,18 +1,19 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .footer {
   &__list {
     li {
       font-size: $sm-size-3;
-      font-weight: $semi-bold;
-      text-transform: uppercase;
+      @include text-transform($weight: $semi-bold);
+
       &:not(:last-of-type) {
         margin-bottom: 1.5rem;
       }
 
       a {
         color: $black-color;
-        transition: all 0.2s ease-in;
+        @include transition();
 
         &:hover {
           color: $venice-blue-color;

@@ -3,7 +3,7 @@ import classes from './ProductsCard.module.scss';
 
 import { useProductsContext } from '../../contexts/products_context';
 import { formatPrice } from '../../utils/helpers';
-import { MyLink } from '..';
+import { MyLink, Button } from '..';
 
 const ProductsCard = ({ product }) => {
   const { getSingleProduct } = useProductsContext();
@@ -31,7 +31,7 @@ const ProductsCard = ({ product }) => {
           />
         </MyLink>
 
-        <button type='button'>quick add</button>
+        <Button>quick add</Button>
 
         {product?.discountPer && (
           <img

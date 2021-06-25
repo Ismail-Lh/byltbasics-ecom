@@ -1,42 +1,32 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .cart {
   &__header,
   &__freeShipping,
-  &__products .product,
   &__subtotal {
     border-bottom: 1px solid $light-grey-color;
   }
 
   &__header .close,
-  &__subtotal,
-  &__products .product__info_1,
-  &__products .product__info_2 {
-    display: flex;
-    align-items: center;
+  &__subtotal {
+    @include flex-align();
   }
 
   &__header h1,
   &__freeShipping p,
-  &__empty,
-  &__products .product__info_1 .name,
-  &__products .product__info_2 .productQty,
-  &__products .product__info_2 .price {
+  &__empty {
     font-size: $sm-size-2;
   }
 
   &__header h1,
   &__freeShipping p,
   &__empty,
-  &__products .product__info_1 .name,
-  &__products .product__info_1 .price,
-  &__products .product__info_1 .size,
   &__subtotal p,
   &__checkout button,
   &__checkout a,
   &__clear button {
-    text-transform: uppercase;
-    font-weight: bold;
+    @include text-transform();
   }
 
   &__freeShipping p,
@@ -75,60 +65,6 @@
 
     h1 {
       margin-bottom: 2rem;
-    }
-  }
-
-  &__products {
-    .product {
-      display: grid;
-      grid-template-columns: 20% 75.5%;
-      gap: 2rem;
-      padding: 1.5rem 0;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      &__info {
-        width: 100%;
-
-        &_1,
-        &_2 {
-          justify-content: space-between;
-        }
-
-        &_1 {
-          svg {
-            width: 1.5rem;
-            height: 1.5rem;
-          }
-
-          .name {
-            margin-bottom: 0.5rem;
-            transition: color 0.2s ease-in;
-
-            &:hover {
-              color: $venice-blue-color;
-            }
-          }
-
-          .color,
-          .size {
-            color: $grey-color;
-            font-size: $sm-size-4;
-          }
-        }
-
-        &_2 {
-          margin-top: 2rem;
-
-          .productQty,
-          .price {
-            text-transform: capitalize;
-          }
-        }
-      }
     }
   }
 

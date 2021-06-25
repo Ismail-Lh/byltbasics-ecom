@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .card {
   &__image {
@@ -13,13 +14,8 @@
       }
     }
 
-    a {
-      cursor: pointer;
-    }
-
     img {
-      height: 100%;
-      width: 100%;
+      @include wh-hei();
       mix-blend-mode: multiply;
     }
 
@@ -29,27 +25,11 @@
       bottom: 3rem;
       left: 50%;
       transform: translateX(-50%);
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: $sm-size-3;
-      font-weight: bold;
-      padding: 1.3rem 2.6rem;
       width: 65%;
-      background-color: $valhalla-color;
-      color: $white-color;
-      border: 3px solid $valhalla-color;
-      border-radius: 4px;
-      transition: all 0.2s ease-in;
-
-      &:hover {
-        color: $valhalla-color;
-        background-color: $white-color;
-      }
     }
 
     .sale_badge {
-      width: 4.2rem;
-      height: 2rem;
+      @include wh-hei($wh: 4.2rem, $hei: 2rem);
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -61,10 +41,9 @@
 
     &_sale,
     &_name {
-      text-transform: uppercase;
       font-size: $sm-size-3;
-      font-weight: bold;
       margin-bottom: 0.5rem;
+      @include text-transform();
     }
 
     &_sale {
@@ -72,7 +51,7 @@
     }
 
     &_name {
-      transition: color 0.2s ease-in;
+      @include transition();
 
       &:hover {
         color: $venice-blue-color;
@@ -93,16 +72,14 @@
       margin-top: 0.5rem;
 
       p {
-        text-transform: capitalize;
         color: $grey-color;
         font-size: $sm-size-4;
-        font-weight: bold;
         font-style: italic;
+        @include text-transform($transform: capitalize);
       }
 
       .colors {
-        display: flex;
-        align-items: center;
+        @include flex-align();
         flex-wrap: wrap;
         margin-top: 1rem;
 

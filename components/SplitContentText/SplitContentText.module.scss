@@ -1,12 +1,12 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .split__content {
   &_title {
-    text-transform: uppercase;
     font-size: $lg-size;
-    font-weight: $semi-bold;
     position: relative;
     margin-bottom: 4.5rem;
+    @include text-transform($weight: $semi-bold);
 
     @media (max-width: 375px) {
       font-size: $md-size-1;
@@ -18,8 +18,7 @@
       position: absolute;
       left: 0;
       bottom: -1.5rem;
-      width: 37%;
-      height: 5px;
+      @include wh-hei($wh: 37%, $hei: 5px);
       background-color: $venice-blue-color;
     }
   }

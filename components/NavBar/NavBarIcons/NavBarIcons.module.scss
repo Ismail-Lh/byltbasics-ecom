@@ -1,4 +1,5 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixin' as *;
 
 .navbar {
   &__icons {
@@ -14,9 +15,7 @@
     }
 
     &_1 {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      @include flex-ali-jus($justify: flex-end);
       padding-right: 2.5rem;
 
       @media (max-width: 980px) {
@@ -36,19 +35,6 @@
       @media (max-width: 980px) {
         display: block;
       }
-    }
-  }
-
-  &__form {
-    input {
-      border: 0;
-      padding: 1rem 2rem;
-      background-color: $light-grey-color;
-      color: $black-color;
-      margin-right: 1rem;
-      border-radius: 4px;
-      font-size: $sm-size-2; // 16px
-      text-transform: capitalize;
     }
   }
 }

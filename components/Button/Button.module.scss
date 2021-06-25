@@ -1,37 +1,41 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .btn {
   &__white,
   &__black {
-    padding: 1.3rem 2.6rem;
-    width: 20rem;
     font-size: $sm-size-3;
-    font-weight: $semi-bold;
-    text-transform: uppercase;
-    text-align: center;
     border-radius: 3px;
     border: 3px solid transparent;
-    transition: all 0.2s ease-in;
+
+    @include pd-wh-txa($pd: 1.3rem 2.6rem, $wh: 20, $txa: center);
+    @include text-transform($weight: $semi-bold);
+    @include transition();
   }
   &__white {
-    color: $black-color;
-    background-color: $white-color;
-    border-color: $white-color;
+    @include bg-txt-br-color(
+      $bg-color: $white-color,
+      $color: $black-color,
+      $br-color: $white-color
+    );
 
     &:hover {
-      background-color: transparent;
-      color: $white-color;
+      @include bg-txt-br-color($color: $white-color, $br-color: $white-color);
     }
   }
 
   &__black {
-    color: $white-color;
-    background-color: $valhalla-color;
-    border-color: $valhalla-color;
+    @include bg-txt-br-color(
+      $bg-color: $valhalla-color,
+      $color: $white-color,
+      $br-color: $valhalla-color
+    );
 
     &:hover {
-      background-color: transparent;
-      color: $valhalla-color;
+      @include bg-txt-br-color(
+        $color: $valhalla-color,
+        $br-color: $valhalla-color
+      );
     }
   }
 }

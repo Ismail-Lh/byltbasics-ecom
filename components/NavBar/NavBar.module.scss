@@ -1,18 +1,13 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .navbar {
+  @include ps-fixed();
   height: 5.9rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
   background-color: $white-color;
 
   &__items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    @include grid-columns($columns: repeat(3, 1fr));
     align-items: center;
     justify-content: center;
     color: $valhalla-color;

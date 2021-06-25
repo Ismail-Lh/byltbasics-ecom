@@ -1,13 +1,10 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .filtersModel {
   &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid $light-grey-color;
+    @include flex-ali-jus($justify: space-between);
+    @include mrb-pdb-brb();
 
     .title {
       font-size: $md-size-4;
@@ -16,8 +13,7 @@
 
     .closeBtn {
       svg {
-        width: 1.75rem;
-        height: 1.75rem;
+        @include wh-hei($wh: 1.75rem, $hei: 1.75rem);
       }
     }
   }

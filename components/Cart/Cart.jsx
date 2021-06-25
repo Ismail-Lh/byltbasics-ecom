@@ -3,11 +3,10 @@ import axios from 'axios';
 
 import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
-
-import { formatPrice } from '../../utils/helpers';
-import { AmountBtn, Button, MyLink } from '..';
-import { CloseIcon } from '../../Icons';
 import { useAuthContext } from '../../contexts/auth_context';
+
+import { Button, CartItems } from '..';
+import { CloseIcon } from '../../Icons';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -18,10 +17,8 @@ const Cart = () => {
     isCartOpen,
     closeCart,
     cart: products,
-    removeFromCart,
     clearCart,
     subTotal,
-    toggleCartAmount,
   } = useCartContext();
 
   const { user } = useAuthContext();
@@ -64,64 +61,7 @@ const Cart = () => {
         <p className={classes.cart__empty}>Your cart is currently empty.</p>
       ) : (
         <>
-          <div className={classes.cart__products}>
-            {products?.map(
-              ({
-                id,
-                name,
-                color,
-                size,
-                amount,
-                price,
-                discountPer,
-                image,
-                collections,
-                style,
-                route,
-                gender,
-              }) => (
-                <div className={classes.product} key={id}>
-                  <div className={classes.product__img}>
-                    <MyLink route={`/products/${route}`}>
-                      <img
-                        src={`/assets/products/${gender}/${collections}/${style}/${name}/${color}/small/${image}`}
-                        alt={`${name}-${color}-${size}`}
-                      />
-                    </MyLink>
-                  </div>
-
-                  <div className={classes.product__info}>
-                    <div className={classes.product__info_1}>
-                      <div>
-                        <h2 className={classes.name}>
-                          <MyLink route={`/products/${route}`}>{name}</MyLink>
-                        </h2>
-                        <p className={classes.color}>color: {color}</p>
-                        <p className={classes.size}>size: {size}</p>
-                      </div>
-                      <div className={classes.deleteProduct}>
-                        <button onClick={() => removeFromCart(id)}>
-                          <CloseIcon />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className={classes.product__info_2}>
-                      <AmountBtn
-                        productAmount={amount}
-                        incAmount={() => toggleCartAmount(id, 'inc')}
-                        decAmount={() => toggleCartAmount(id, 'dec')}
-                      />
-
-                      <p className={classes.price}>
-                        {formatPrice(price, discountPer, amount)} USD
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )
-            )}
-          </div>
+          <CartItems />
 
           <div className={classes.cart__subtotal}>
             <p className={classes.cart__subtotal_title}>subtotal:</p>

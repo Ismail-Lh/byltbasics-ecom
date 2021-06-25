@@ -1,28 +1,15 @@
-import { useRouter } from 'next/router';
 import classes from './AccountPageContainer.module.scss';
 
 import { useAuthContext } from '../../contexts/auth_context';
-import { Alert, Button, Loader, UserOrders } from '../../components';
+import {
+  Alert,
+  Loader,
+  UserAccountInfo,
+  UserAccountOrders,
+} from '../../components';
 
-const AccountPageContainer = ({
-  orders,
-  loading: ordersLoading,
-  err: ordersError,
-}) => {
-  const { logout, user, setErr, err, loading, setLoading } = useAuthContext();
-  const router = useRouter();
-
-  const handelLogout = async () => {
-    try {
-      setErr('');
-      setLoading(true);
-      await logout();
-      router.push('/account/login');
-      setLoading(false);
-    } catch (error) {
-      setErr(error.message);
-    }
-  };
+const AccountPageContainer = () => {
+  const { err, loading } = useAuthContext();
 
   return (
     <div className={classes.account__container}>
@@ -33,37 +20,9 @@ const AccountPageContainer = ({
           {err && <Alert error>{err}</Alert>}
 
           <div className={classes.account__grid}>
-            <div className={classes.account__user}>
-              <h2>account info</h2>
-              <div className={classes.userInfo}>
-                <p>
-                  <span>user name:</span> {user.displayName}
-                </p>
-                <p>
-                  <span>user email address:</span> {user.email}
-                </p>
-              </div>
+            <UserAccountInfo />
 
-              <Button handelClick={handelLogout}>log out</Button>
-            </div>
-
-            <div className={classes.account__orders}>
-              <h2>recent orders</h2>
-              {orders.length === 0 ? (
-                <p>you have not placed any order yet.</p>
-              ) : (
-                <>
-                  {ordersLoading === true ? (
-                    <Loader message='please wait until your orders is loaded...' />
-                  ) : (
-                    <>
-                      <p>you have {orders.length} orders.</p>
-                      <UserOrders orders={orders} />
-                    </>
-                  )}
-                </>
-              )}
-            </div>
+            <UserAccountOrders />
           </div>
         </div>
       )}

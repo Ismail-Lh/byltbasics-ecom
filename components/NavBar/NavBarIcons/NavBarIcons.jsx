@@ -1,36 +1,36 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import classes from './NavBarIcons.module.scss';
 
-import { MyLink } from '../../../components';
-import { Icons } from '../../../utils/constants';
-import { CartIcon } from '../../../Icons';
 import { useCartContext } from '../../../contexts/cart_context';
+import { useAuthContext } from '../../../contexts/auth_context';
+import { MyLink } from '../../../components';
+import { CartIcon, ContactIcon, LoginIcon, SearchIcon } from '../../../Icons';
 
 const NavBarIcons = () => {
-  const [showInput, setShowInput] = useState(false);
   const { openCart, total_products } = useCartContext();
+  const { user } = useAuthContext();
 
-  const toggleInput = () => setShowInput(!showInput);
+  const loginRoute = user ? '/account' : '/account/login';
+
+  const Icons = [
+    { id: uuidv4(), icon: <ContactIcon />, route: '/pages/contact-us' },
+    { id: uuidv4(), icon: <LoginIcon />, route: loginRoute },
+    { id: uuidv4(), icon: <CartIcon />, cartIcon: true },
+  ];
 
   return (
     <>
       <div className={classes.navbar__icons_1}>
-        {showInput && (
-          <form className={classes.navbar__form}>
-            <input type='text' placeholder='search' />
-          </form>
-        )}
-
-        {Icons.map(({ id, icon, route, search, cartIcon }) => (
-          <MyLink
-            route={route}
-            key={id}
-            handelClick={search ? toggleInput : openCart}>
+        {Icons.map(({ id, icon, route, cartIcon }) => (
+          <MyLink route={route} key={id} handelClick={cartIcon && openCart}>
             {icon}
             {cartIcon && <span>{total_products}</span>}
           </MyLink>
         ))}
       </div>
+
       <button className={classes.navbar__icons_2} onClick={openCart}>
         <CartIcon />
         <span>{total_products}</span>

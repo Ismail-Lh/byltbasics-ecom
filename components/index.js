@@ -42,10 +42,13 @@ export { default as AmountBtn } from './AmountBtn/AmountBtn';
 
 // Cart
 export { default as Cart } from './Cart/Cart';
+export { default as CartItems } from './CartItems/CartItems';
 
 // Login page
 export { default as Register } from './Register/Register';
 export { default as Login } from './Login/Login';
 
 // Account Page
+export { default as UserAccountInfo } from './UserAccountInfo/UserAccountInfo';
+export { default as UserAccountOrders } from './UserAccountOrders/UserAccountOrders';
 export { default as UserOrders } from './UserOrders/UserOrders';

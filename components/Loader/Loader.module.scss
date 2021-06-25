@@ -1,8 +1,8 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .loader {
-  display: grid;
-  place-items: center;
+  @include grid-center();
   padding: 4rem 0;
 
   @media (max-width: 425px) {

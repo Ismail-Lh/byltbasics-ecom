@@ -1,14 +1,13 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .filters {
   @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
+    @include flex-align();
     cursor: pointer;
 
     svg {
-      width: 1.5rem;
-      height: 1.5rem;
+      @include wh-hei($wh: 1.5rem, $hei: 1.5rem);
     }
   }
 
@@ -18,16 +17,12 @@
   }
 
   &__title {
-    margin-bottom: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid $light-grey-color;
+    @include mrb-pdb-brb();
   }
 
   &__title {
     @media (max-width: 768px) {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 0;
+      @include mrb-pdb-brb($mr-b: 0, $pd-b: 0, $br-b: 0);
     }
   }
 }

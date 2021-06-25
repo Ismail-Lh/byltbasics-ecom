@@ -1,10 +1,9 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .filters {
   &__clear {
-    margin-bottom: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid $light-grey-color;
+    @include mrb-pdb-brb();
 
     button {
       width: 100%;

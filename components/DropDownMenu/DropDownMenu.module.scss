@@ -1,10 +1,9 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .dropDownMenu {
   &__grid {
-    display: grid;
-    grid-template-columns: 1.5fr 3.5fr 2.5fr;
-    column-gap: 1rem;
+    @include grid-columns($columns: 1.5fr 3.5fr 2.5fr, $gap: 1rem);
     height: 100%;
     padding: 2rem;
 
@@ -13,7 +12,7 @@
       font-size: $sm-size-2;
       padding: 0;
       border-bottom: 0;
-      transition: all 0.2s ease-in-out;
+      @include transition();
 
       &:hover {
         color: $venice-blue-color;
@@ -29,14 +28,12 @@
 
   &__collections li a,
   &__categories .category__title a {
-    text-transform: uppercase;
-    font-weight: bold;
+    @include text-transform();
   }
 
   &__categories {
+    @include grid-columns($columns: repeat(3, 1fr));
     height: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     padding-left: 2rem;
     border-left: 1px solid $light-grey-color;
     margin-right: 1rem;
@@ -59,8 +56,7 @@
           margin-bottom: 1rem;
 
           a {
-            text-transform: capitalize;
-            font-weight: 300;
+            @include text-transform($transform: capitalize, $weight: 300);
           }
         }
       }
@@ -87,8 +83,7 @@
       }
 
       img {
-        max-width: 100%;
-        max-height: 100%;
+        @include wh-hei();
       }
     }
   }

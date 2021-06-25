@@ -3,8 +3,6 @@ import { formatPrice } from '../../utils/helpers';
 import classes from './UserOrders.module.scss';
 
 const UserOrders = ({ orders }) => {
-  console.log(orders);
-
   return (
     <div className={classes.orders}>
       {orders?.map(
@@ -31,6 +29,7 @@ const UserOrders = ({ orders }) => {
                     {moment.unix(timestamp).format('MMMM Do YYYY, h:mm:ss a')}
                   </p>
                 </div>
+
                 <div className={classes.order__total}>
                   <h3>total amount</h3>
                   <p className={classes.paragraph}>
@@ -38,6 +37,7 @@ const UserOrders = ({ orders }) => {
                     {formatPrice(amount_shipping)}
                   </p>
                 </div>
+
                 <div className={classes.order__items}>
                   <h3>total products</h3>
                   <p className={classes.paragraph}>
