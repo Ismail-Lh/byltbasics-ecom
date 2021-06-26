@@ -2,7 +2,7 @@
 @use '../../styles/mixin' as *;
 
 .navbar {
-  @include ps-fixed();
+  @include position($ps: fixed, $z: 100);
   height: 5.9rem;
   background-color: $white-color;
 

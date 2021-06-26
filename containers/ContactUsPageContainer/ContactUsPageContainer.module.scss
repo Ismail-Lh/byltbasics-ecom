@@ -1,18 +1,18 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .contactUs {
   margin: 5.9rem 0;
   padding: 4rem 0;
 
   @media (max-width: 768px) {
-    margin: 5.9rem 0 0 0;
+    margin-top: 5.9rem;
     padding: 2rem 0;
   }
 
   &__grid,
   &__info .form__user {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    @include grid-columns($columns: repeat(2, 1fr));
 
     @media (max-width: 768px) {
       display: block;
@@ -53,8 +53,7 @@
     .header {
       h1,
       h3 {
-        text-transform: uppercase;
-        font-weight: bold;
+        @include text-transform();
       }
 
       h1 {

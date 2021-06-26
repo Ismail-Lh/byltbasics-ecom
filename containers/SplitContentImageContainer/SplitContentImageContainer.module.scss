@@ -1,7 +1,6 @@
+@use '../../styles/mixin' as *;
+
 .split__content_img {
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  @include wh-hei();
+  @include bg-image-setup($ps: center);
 }

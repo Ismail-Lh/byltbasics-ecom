@@ -1,3 +1,5 @@
+@use '../../styles/mixin' as *;
+
 .singleProduct {
   margin-top: 7.9rem;
 
@@ -6,13 +8,10 @@
   }
 
   &_container {
-    display: grid;
-    grid-template-columns: 60% 37%;
-    column-gap: 3.5rem;
+    @include grid-columns($columns: 60% 37%, $gap: 3.5rem);
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      row-gap: 2rem;
+      @include grid-columns($columns: 1fr, $gap: 2rem);
     }
   }
 }

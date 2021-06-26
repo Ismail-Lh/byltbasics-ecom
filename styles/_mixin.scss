@@ -8,18 +8,24 @@
 }
 
 // set the flex align-item
-@mixin flex-align($align: center) {
+@mixin flex-align($align: center, $gap: 0) {
   display: flex;
   align-items: $align;
 }
 
-// center the items vr & hr
-@mixin grid-center() {
-  display: grid;
-  place-content: center;
+@mixin flex-justify($justify: center) {
+  display: flex;
+  justify-content: $justify;
 }
 
-@mixin grid-columns($columns, $rows: auto, $gap: 0) {
+// center the items vr & hr
+@mixin grid-center($gap: 0) {
+  display: grid;
+  place-content: center;
+  gap: $gap;
+}
+
+@mixin grid-columns($columns: auto, $rows: auto, $gap: 0) {
   display: grid;
   grid-template-columns: $columns;
   grid-template-rows: $rows;
@@ -32,8 +38,8 @@
 }
 
 // set the background position & repeat & size
-@mixin bg-image-setup() {
-  background-position: top;
+@mixin bg-image-setup($ps: top) {
+  background-position: $ps;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -73,11 +79,21 @@
   border-bottom: $br-b;
 }
 
-@mixin ps-fixed() {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 100;
+@mixin position($ps: absolute, $tp: 0, $rg: 0, $bt: 0, $lf: 0, $z) {
+  position: $ps;
+  top: $tp;
+  right: $rg;
+  bottom: $bt;
+  left: $lf;
+  z-index: $z;
+}
+
+@mixin mr-pd($mr: 0, $pd: 0) {
+  margin: $mr;
+  padding: $pd;
+}
+
+@mixin align-pd($align: center, $pd: 0) {
+  align-items: $align;
+  padding: $pd;
 }

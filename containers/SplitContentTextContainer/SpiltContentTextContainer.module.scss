@@ -1,15 +1,17 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .split {
   &__content {
     &_text {
-      background-color: $valhalla-color;
+      @include bg-txt-br-color(
+        $bg-color: $valhalla-color,
+        $color: $white-color
+      );
       padding: 4rem;
-      color: $white-color;
 
       @media (max-width: 1024px) {
-        display: grid;
-        place-content: center;
+        @include grid-center();
       }
 
       @media (max-width: 425px) {
@@ -23,7 +25,7 @@
         padding-bottom: 0.5rem;
         width: fit-content;
         border-bottom: 2px solid transparent;
-        transition: all 0.2s ease-in;
+        @include transition();
 
         &:hover {
           color: $white-color;

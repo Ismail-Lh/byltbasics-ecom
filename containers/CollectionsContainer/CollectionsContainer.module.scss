@@ -1,18 +1,16 @@
+@use '../../styles/mixin' as *;
+
 .collections {
   &__grid {
-    display: grid;
-    grid-template-columns: 15% auto;
-    gap: 3rem;
+    @include grid-columns($columns: 15% auto, $gap: 3rem);
     margin-top: 4rem;
 
     @media (max-width: 1024px) {
-      grid-template-columns: 20% auto;
-      gap: 1.5rem;
+      @include grid-columns($columns: 20% auto, $gap: 1.5rem);
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      @include grid-columns($columns: 1fr, $gap: 2rem);
     }
 
     @media (max-width: 425px) {
@@ -22,17 +20,14 @@
 
   &__products .products,
   &__grid .products {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    @include grid-columns($columns: repeat(3, 1fr), $gap: 3rem);
 
     @media (max-width: 1024px) {
       gap: 1.5rem;
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      @include grid-columns($columns: repeat(2, 1fr), $gap: 2rem);
     }
 
     @media (max-width: 425px) {
@@ -41,13 +36,11 @@
   }
 
   &__filters {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    @include grid-columns($columns: repeat(2, 1fr));
     align-items: center;
 
     @media (max-width: 375px) {
-      grid-template-columns: 1fr;
-      row-gap: 1rem;
+      @include grid-columns($columns: 1fr, $gap: 1rem);
     }
 
     .sorts {
@@ -61,8 +54,7 @@
   }
 
   &__products {
-    display: flex;
-    justify-content: center;
+    @include flex-justify();
     flex-direction: column;
 
     .sorts {

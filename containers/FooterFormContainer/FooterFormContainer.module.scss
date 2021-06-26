@@ -1,13 +1,11 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .footer {
   &__form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 3rem 0;
-    background-color: $valhalla-color;
-    color: $white-color;
-    padding: 6rem 0;
+    @include grid-columns($columns: repeat(2, 1fr));
+    @include bg-txt-br-color($bg-color: $valhalla-color, $color: $white-color);
+    @include mr-pd($mr: 3rem 0, $pd: 6rem 0);
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;

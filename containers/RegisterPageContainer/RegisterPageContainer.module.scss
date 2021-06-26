@@ -1,8 +1,8 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .register {
-  margin-top: 5.9rem;
-  padding: 4rem 0 2rem 0;
+  @include mr-pd($mr: 5.9rem 0 0 0, $pd: 4rem 0 2rem 0);
 
   @media (max-width: 768px) {
     padding-top: 2rem;
@@ -28,9 +28,8 @@
       font-size: $sm-size-2;
       text-transform: uppercase;
       color: $grey-color;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s ease-in;
+      @include mrb-pdb-brb($mr-b: 0, $pd-b: 4px, $br-b: 2px solid transparent);
+      @include transition();
 
       &:hover {
         color: $venice-blue-color;
@@ -40,8 +39,7 @@
   }
 
   &__title {
-    text-transform: uppercase;
-    font-weight: bold;
+    @include text-transform();
     font-size: $sm-size-1;
     margin-bottom: 2.5rem;
 
@@ -57,9 +55,8 @@
 
   &__form {
     label {
-      text-transform: capitalize;
+      @include text-transform($transform: capitalize, $weight: 300);
       font-size: $sm-size-2;
-      font-weight: 300;
       cursor: pointer;
     }
 

@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
 .backgroundImage {
   div {
@@ -17,9 +18,7 @@
 
 .aboutUs {
   margin: 7rem 0;
-  display: grid;
-  grid-template-rows: 42rem 60.7rem;
-  row-gap: 7rem;
+  @include grid-columns($rows: 42rem 60.7rem, $gap: 7rem);
 
   @media (max-width: 768px) {
     grid-template-rows: auto;
@@ -36,10 +35,8 @@
   }
 
   .splitContent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    @include grid-columns($columns: repeat(2, 1fr), $gap: 8rem);
     align-items: center;
-    gap: 8rem;
 
     @media (max-width: 980px) {
       gap: 5rem;
@@ -58,8 +55,7 @@
     &__image_1 img,
     &__image_2 img,
     .text .img img {
-      width: 100%;
-      height: 100%;
+      @include wh-hei();
     }
 
     &__image_2 {
@@ -94,8 +90,7 @@
       }
 
       .title {
-        text-transform: uppercase;
-        font-weight: bold;
+        @include text-transform();
         font-size: $md-size-2;
       }
 
