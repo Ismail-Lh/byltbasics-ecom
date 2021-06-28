@@ -2,7 +2,7 @@
 @use '../../styles/mixin' as *;
 
 .loader {
-  @include grid-center();
+  @include flex-ali-jus($direction: column);
   padding: 4rem 0;
 
   @media (max-width: 425px) {

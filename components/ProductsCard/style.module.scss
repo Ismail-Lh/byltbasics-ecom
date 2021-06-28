@@ -4,14 +4,17 @@
 .card {
   &__image {
     background-color: $light-grey-color;
-    height: 37.5rem;
-    width: 100%;
     position: relative;
+    @include wh-hei($wh: 100%, $hei: 37.5rem);
 
     &:hover {
       button {
         display: block;
       }
+    }
+
+    a {
+      display: contents;
     }
 
     img {

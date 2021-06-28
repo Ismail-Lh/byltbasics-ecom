@@ -57,11 +57,11 @@ const Login = () => {
 
   return (
     <div className={classes.login}>
-      {loading ? (
-        <Loader message='please wait until your login...' />
-      ) : (
+      {!isResetPassword ? (
         <>
-          {!isResetPassword ? (
+          {loading ? (
+            <Loader message='please wait until your login...' />
+          ) : (
             <>
               <h1>registered customers</h1>
               {err && <Alert error> {err}</Alert>}
@@ -102,43 +102,43 @@ const Login = () => {
                 </button>
               </div>
             </>
+          )}
+        </>
+      ) : (
+        <>
+          {loading ? (
+            <Loader message='please wait until your password is reset...' />
           ) : (
             <>
-              {loading ? (
-                <Loader message='please wait until your password is reset...' />
-              ) : (
-                <>
-                  <h1>reset password</h1>
-                  {err && <Alert error> {err}</Alert>}
+              <h1>reset password</h1>
+              {err && <Alert error> {err}</Alert>}
 
-                  {message && <Alert>{message}</Alert>}
-                  <p className={classes.resetText}>
-                    Please enter your email address below. You will receive a
-                    link to reset your password.
-                  </p>
+              {message && <Alert>{message}</Alert>}
+              <p className={classes.resetText}>
+                Please enter your email address below. You will receive a link
+                to reset your password.
+              </p>
 
-                  <form className={classes.login__form} onSubmit={handleReset}>
-                    <FormInput
-                      name='email'
-                      id='email'
-                      placeholder='email address'
-                      handleChange={handleChange}
-                      value={value.email}
-                      error={error.email}
-                    />
+              <form className={classes.login__form} onSubmit={handleReset}>
+                <FormInput
+                  name='email'
+                  id='email'
+                  placeholder='email address'
+                  handleChange={handleChange}
+                  value={value.email}
+                  error={error.email}
+                />
 
-                    <Button type='submit' color='black'>
-                      submit
-                    </Button>
-                  </form>
+                <Button type='submit' color='black'>
+                  submit
+                </Button>
+              </form>
 
-                  <button
-                    className={classes.btn}
-                    onClick={() => setResetPassword(false)}>
-                    cancel
-                  </button>
-                </>
-              )}
+              <button
+                className={classes.btn}
+                onClick={() => setResetPassword(false)}>
+                cancel
+              </button>
             </>
           )}
         </>

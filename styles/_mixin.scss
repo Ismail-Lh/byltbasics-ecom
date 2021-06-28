@@ -1,10 +1,11 @@
 @use './variables' as *;
 
 // set the flex align-items & justify-content
-@mixin flex-ali-jus($align: center, $justify: center) {
+@mixin flex-ali-jus($align: center, $justify: center, $direction: row) {
   display: flex;
   align-items: $align;
   justify-content: $justify;
+  flex-direction: $direction;
 }
 
 // set the flex align-item
