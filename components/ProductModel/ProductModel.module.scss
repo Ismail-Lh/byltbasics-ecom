@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
+
+.productModel {
+  &__content {
+    @include wh-hei($wh: 80%);
+    background-color: $white-color;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+
+    div:first-of-type {
+      margin-top: 0;
+    }
+
+    .closeBtn {
+      position: initial;
+    }
+  }
+}

@@ -45,15 +45,11 @@
     &_sale,
     &_name {
       font-size: $sm-size-3;
-      margin-bottom: 0.5rem;
-      @include text-transform();
-    }
-
-    &_sale {
-      color: $valencia-color;
     }
 
     &_name {
+      margin-bottom: 0.5rem;
+      @include text-transform();
       @include transition();
 
       &:hover {
@@ -75,27 +71,13 @@
       margin-top: 0.5rem;
 
       p {
-        color: $grey-color;
         font-size: $sm-size-4;
         font-style: italic;
-        @include text-transform($transform: capitalize);
       }
 
-      .colors {
-        @include flex-align();
-        flex-wrap: wrap;
-        margin-top: 1rem;
-
+      div {
         div {
-          cursor: pointer;
           margin-bottom: 3px;
-          &:not(:last-of-type) {
-            margin-right: 7px;
-          }
-
-          img {
-            border-radius: 50%;
-          }
         }
       }
     }

@@ -5,11 +5,13 @@ import { useProductsContext } from '../../contexts/products_context';
 
 import ProductsCardImage from './ProductsCardImage';
 import ProductsCardInfo from './ProductsCardInfo';
+import { ProductModel } from '..';
 
 const ProductsCard = ({ product }) => {
   const { getSingleProduct } = useProductsContext();
 
   const [color, setColor] = useState(product?.colors[0]);
+  const [openProductModel, setOpenProductModel] = useState(false);
 
   const productRoute = `/products/${product?.route}/?gender=${product?.gender}&id=${product?.id}`;
 
@@ -20,6 +22,7 @@ const ProductsCard = ({ product }) => {
         productRoute={productRoute}
         getSingleProduct={getSingleProduct}
         color={color}
+        setOpenProductModel={setOpenProductModel}
       />
 
       <ProductsCardInfo
@@ -28,6 +31,10 @@ const ProductsCard = ({ product }) => {
         setColor={setColor}
         productRoute={productRoute}
         getSingleProduct={getSingleProduct}
+      />
+      <ProductModel
+        openProductModel={openProductModel}
+        setOpenProductModel={setOpenProductModel}
       />
     </div>
   );

@@ -376,3 +376,16 @@ h1 {
     border-color: $success-color;
   }
 }
+
+// Product model compo
+.productModel {
+  @include position($ps: fixed, $z: -100);
+  @include wh-hei();
+  background-color: rgb($black-color, 0.8);
+  opacity: 0;
+
+  &__show {
+    opacity: 1;
+    z-index: 100;
+  }
+}

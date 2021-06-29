@@ -33,10 +33,14 @@ export { default as FooterLinks } from './FooterLinks/FooterLinks';
 
 // Popular Products Section
 export { default as ProductsCard } from './ProductsCard/ProductsCard';
+export { default as ProductModel } from './ProductModel/ProductModel';
 
 // Single Product
 export { default as SingleProductImages } from './SingleProductImages/SingleProductImages';
 export { default as SingleProductInfo } from './SingleProductInfo/SingleProductInfo';
+export { default as ProductPrice } from './ProductPrice/ProductPrice';
+export { default as ProductSale } from './ProductSale/ProductSale';
+export { default as ProductColors } from './ProductColors/ProductColors';
 
 export { default as AmountBtn } from './AmountBtn/AmountBtn';
 

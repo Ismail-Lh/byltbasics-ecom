@@ -33,6 +33,7 @@
 
     &:hover {
       @include bg-txt-br-color(
+        $bg-color: $white-color,
         $color: $valhalla-color,
         $br-color: $valhalla-color
       );

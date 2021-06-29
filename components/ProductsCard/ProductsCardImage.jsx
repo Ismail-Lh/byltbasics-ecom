@@ -6,7 +6,13 @@ const ProductsCardImage = ({
   productRoute,
   color,
   getSingleProduct,
+  setOpenProductModel,
 }) => {
+  const handelClick = () => {
+    getSingleProduct(product?.id, product?.gender, color);
+    setOpenProductModel(true);
+  };
+
   return (
     <div
       className={classes.card__image}
@@ -18,7 +24,7 @@ const ProductsCardImage = ({
         />
       </MyLink>
 
-      <Button>quick add</Button>
+      <Button handelClick={handelClick}>quick add</Button>
 
       {product?.discountPer && (
         <img

@@ -3,7 +3,7 @@ import classes from './SingleProductInfo.module.scss';
 
 import { useCartContext } from '../../contexts/cart_context';
 import { decAmount, formatPrice, incAmount } from '../../utils/helpers';
-import { AmountBtn } from '..';
+import { AmountBtn, ProductPrice, ProductSale, ProductColors } from '..';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
@@ -19,20 +19,14 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
   return (
     <div className={classes.singleProduct_info}>
       <div className={classes.productInfo}>
+        <div className={classes.productInfo_sale}>
+          <ProductSale product={product} />
+        </div>
+
         <h1 className={classes.productInfo_title}>{product?.name}</h1>
 
         <div className={classes.productInfo_price}>
-          <span className={classes.new}>
-            {formatPrice(product?.price, product?.discountPer)} USD
-          </span>{' '}
-          {product?.discountPer && (
-            <>
-              <span className={classes.old}>
-                {formatPrice(product?.price)} USD
-              </span>
-              <p>{product?.discountPer}% off</p>
-            </>
-          )}
+          <ProductPrice product={product} />
         </div>
       </div>
 
@@ -52,20 +46,7 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       </div>
 
       <div className={classes.productInfo_colors}>
-        <p>
-          Color: <span>{color}</span>
-        </p>
-        <div className={classes.colors}>
-          {product?.colors?.map((clr, idx) => (
-            <div key={idx} onClick={() => changeColor(clr)}>
-              <img
-                src={`/assets/products/colors/${clr}.jpg`}
-                alt={clr}
-                className={`${clr === color && 'active-color'}`}
-              />
-            </div>
-          ))}
-        </div>
+        <ProductColors product={product} color={color} setColor={changeColor} />
       </div>
 
       <div className={classes.productInfo_sizes}>

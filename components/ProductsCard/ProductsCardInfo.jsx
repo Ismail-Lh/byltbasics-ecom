@@ -1,8 +1,7 @@
 import classes from './style.module.scss';
 
 import { MyLink } from '..';
-import ProductsCardPrice from './ProductsCardPrice';
-import ProductsCardColors from './ProductsCardColors';
+import { ProductPrice, ProductSale, ProductColors } from '..';
 
 const ProductsCardInfo = ({
   product,
@@ -13,11 +12,9 @@ const ProductsCardInfo = ({
 }) => {
   return (
     <div className={classes.card__info}>
-      {product?.discountPer && (
-        <p className={classes.card__info_sale}>
-          sale {product?.discountPer}% off
-        </p>
-      )}
+      <div className={classes.card__info_sale}>
+        <ProductSale product={product} />
+      </div>
 
       <h2
         className={classes.card__info_name}
@@ -25,9 +22,13 @@ const ProductsCardInfo = ({
         <MyLink route={productRoute}>{product?.name}</MyLink>
       </h2>
 
-      <ProductsCardPrice product={product} />
+      <div className={classes.card__info_price}>
+        <ProductPrice product={product} />
+      </div>
 
-      <ProductsCardColors color={color} setColor={setColor} product={product} />
+      <div className={classes.card__info_colors}>
+        <ProductColors color={color} setColor={setColor} product={product} />
+      </div>
     </div>
   );
 };
