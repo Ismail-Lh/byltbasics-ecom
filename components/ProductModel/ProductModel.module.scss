@@ -3,17 +3,27 @@
 
 .productModel {
   &__content {
-    @include wh-hei($wh: 80%);
     background-color: $white-color;
-    margin: 0 auto;
-    padding: 1rem 1.5rem;
-
-    div:first-of-type {
-      margin-top: 0;
-    }
+    @include wh-hei($wh: 80%);
+    @include mr-pd($mr: 0 auto, $pd: 1rem 1.5rem);
 
     .closeBtn {
-      position: initial;
+      @include flex-ali-jus($justify: flex-end);
+      padding-top: 1.5rem;
+
+      svg {
+        position: static;
+      }
+    }
+
+    .product {
+      @include grid-columns($columns: repeat(2, 1fr), $gap: 4rem);
+
+      &__image {
+        img {
+          @include wh-hei();
+        }
+      }
     }
   }
 }

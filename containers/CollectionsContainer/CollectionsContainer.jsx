@@ -10,14 +10,6 @@ const CollectionsContainer = () => {
 
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
 
-  const ProductsContainer = () => (
-    <div className={classes.products}>
-      {products?.map(product => (
-        <ProductsCard product={product} key={product.id} />
-      ))}
-    </div>
-  );
-
   const FiltersContainer = () => (
     <div>
       <Filters />
@@ -39,7 +31,12 @@ const CollectionsContainer = () => {
 
             <div className={classes.collections__products}>
               <SortsContainer />
-              <ProductsContainer />
+
+              <div className={classes.products}>
+                {products?.map(product => (
+                  <ProductsCard product={product} key={product.id} />
+                ))}
+              </div>
             </div>
           </>
         ) : (
@@ -49,7 +46,11 @@ const CollectionsContainer = () => {
               <SortsContainer />
             </div>
 
-            <ProductsContainer />
+            <div className={classes.products}>
+              {products?.map(product => (
+                <ProductsCard product={product} key={product.id} />
+              ))}
+            </div>
           </>
         )}
       </div>

@@ -10,6 +10,10 @@
     &:hover {
       button {
         display: block;
+
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
     }
 
@@ -70,12 +74,14 @@
     &_colors {
       margin-top: 0.5rem;
 
-      p {
-        font-size: $sm-size-4;
-        font-style: italic;
-      }
-
       div {
+        padding: 0;
+
+        p {
+          font-size: $sm-size-4;
+          font-style: italic;
+        }
+
         div {
           margin-bottom: 3px;
         }

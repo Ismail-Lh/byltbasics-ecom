@@ -32,9 +32,13 @@ const ProductsCard = ({ product }) => {
         productRoute={productRoute}
         getSingleProduct={getSingleProduct}
       />
+
       <ProductModel
         openProductModel={openProductModel}
         setOpenProductModel={setOpenProductModel}
+        product={product}
+        color={color}
+        setColor={setColor}
       />
     </div>
   );
