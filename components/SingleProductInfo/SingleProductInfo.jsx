@@ -2,8 +2,14 @@ import { useEffect, useState } from 'react';
 import classes from './SingleProductInfo.module.scss';
 
 import { useCartContext } from '../../contexts/cart_context';
-import { decAmount, formatPrice, incAmount } from '../../utils/helpers';
-import { AmountBtn, ProductPrice, ProductSale, ProductColors } from '..';
+
+import {
+  ProductPrice,
+  ProductSale,
+  ProductColors,
+  ProductSizes,
+  ProductQuantity,
+} from '..';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
@@ -18,66 +24,53 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
 
   return (
     <div className={classes.singleProduct_info}>
-      <div className={classes.productInfo}>
-        <div className={classes.productInfo_sale}>
-          <ProductSale product={product} />
+      <div className={classes.product}>
+        <div className={classes.product__sale}>
+          <ProductSale discountPer={product?.discountPer} />
         </div>
 
-        <h1 className={classes.productInfo_title}>{product?.name}</h1>
+        <h1 className={classes.product__title}>{product?.name}</h1>
 
-        <div className={classes.productInfo_price}>
-          <ProductPrice product={product} />
-        </div>
-      </div>
-
-      <div className={classes.productInfo_payment}>
-        <p>
-          4 interest-free payments. Available for orders above $35.{' '}
-          <span>Klarna</span>.{' '}
-          <button className={classes.btn_more}>Learn more</button>
-        </p>
-      </div>
-
-      <div className={classes.productInfo_description}>
-        <p>
-          {product?.description}{' '}
-          <button className={classes.btn_more}>Learn more</button>
-        </p>
-      </div>
-
-      <div className={classes.productInfo_colors}>
-        <ProductColors product={product} color={color} setColor={changeColor} />
-      </div>
-
-      <div className={classes.productInfo_sizes}>
-        <p className={classes.left}>
-          size <button className={classes.btn_more}>size guide</button>
-        </p>
-
-        <div className={classes.right}>
-          {product?.sizes?.map((s, idx) => (
-            <button
-              key={idx}
-              className={`${s.size === size && 'active-size'}`}
-              disabled={!s.isAvailable}
-              onClick={() => setSize(s.size)}>
-              {s.size}
-            </button>
-          ))}
+        <div className={classes.product__price}>
+          <ProductPrice
+            price={product?.price}
+            discountPer={product?.discountPer}
+          />
         </div>
       </div>
 
-      <div className={classes.productInfo_qty}>
-        <p>quantity</p>
+      <p className={classes.product__payment}>
+        4 interest-free payments. Available for orders above $35.{' '}
+        <span>Klarna</span>.{' '}
+        <button className={classes.btn_more}>Learn more</button>
+      </p>
 
-        <AmountBtn
-          incAmount={() => incAmount(setAmount, product?.stock)}
-          decAmount={() => decAmount(setAmount)}
-          productAmount={amount}
+      <p className={classes.product__description}>
+        {product?.description}{' '}
+        <button className={classes.btn_more}>Learn more</button>
+      </p>
+
+      <div className={classes.product__colors}>
+        <ProductColors
+          productColors={product?.colors}
+          color={color}
+          setColor={changeColor}
         />
       </div>
 
-      <div className={classes.productInfo_addToCart}>
+      <ProductSizes
+        productSizes={product?.sizes}
+        size={size}
+        setSize={setSize}
+      />
+
+      <ProductQuantity
+        stock={product?.stock}
+        amount={amount}
+        setAmount={setAmount}
+      />
+
+      <div className={classes.product__addToCart}>
         <button
           onClick={() =>
             size && addToCart(amount, size, color, product?.id, product)

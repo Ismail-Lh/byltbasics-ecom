@@ -1,13 +1,13 @@
 import classes from './ProductColors.module.scss';
 
-const ProductColors = ({ product, color, setColor }) => {
+const ProductColors = ({ productColors, color, setColor }) => {
   return (
     <div className={classes.productColors}>
       <p>
         Color : <span>{color}</span>
       </p>
       <div className={classes.colors}>
-        {product?.colors?.map((clr, idx) => (
+        {productColors?.map((clr, idx) => (
           <div
             key={idx}
             onClick={() => setColor(clr)}

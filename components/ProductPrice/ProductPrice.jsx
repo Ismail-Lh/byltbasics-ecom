@@ -1,7 +1,7 @@
 import classes from './ProductPrice.module.scss';
 import { formatPrice } from '../../utils/helpers';
 
-const ProductPrice = ({ product }) => {
+const ProductPrice = ({ price, discountPer }) => {
   const colorStyle = discountPer => {
     let style;
 
@@ -12,11 +12,11 @@ const ProductPrice = ({ product }) => {
 
   return (
     <div className={classes.product__price}>
-      <span className={classes.new} style={colorStyle(product?.discountPer)}>
-        {formatPrice(product?.price, product?.discountPer)} USD
+      <span className={classes.new} style={colorStyle(discountPer)}>
+        {formatPrice(price, discountPer)} USD
       </span>{' '}
-      {product?.discountPer && (
-        <span className={classes.old}>{formatPrice(product?.price)} USD</span>
+      {discountPer && (
+        <span className={classes.old}>{formatPrice(price)} USD</span>
       )}
     </div>
   );

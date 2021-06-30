@@ -1,10 +1,10 @@
 import classes from './ProductSale.module.scss';
 
-const ProductSale = ({ product }) => {
+const ProductSale = ({ discountPer }) => {
   return (
     <>
-      {product?.discountPer && (
-        <p className={classes.productSale}>sale {product?.discountPer}% off</p>
+      {discountPer && (
+        <p className={classes.productSale}>sale {discountPer}% off</p>
       )}
     </>
   );

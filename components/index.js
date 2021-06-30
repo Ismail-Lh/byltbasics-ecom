@@ -41,6 +41,8 @@ export { default as SingleProductInfo } from './SingleProductInfo/SingleProductI
 export { default as ProductPrice } from './ProductPrice/ProductPrice';
 export { default as ProductSale } from './ProductSale/ProductSale';
 export { default as ProductColors } from './ProductColors/ProductColors';
+export { default as ProductSizes } from './ProductSizes/ProductSizes';
+export { default as ProductQuantity } from './ProductQuantity/ProductQuantity';
 
 export { default as AmountBtn } from './AmountBtn/AmountBtn';
 

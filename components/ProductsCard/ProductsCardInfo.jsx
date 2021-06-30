@@ -13,7 +13,7 @@ const ProductsCardInfo = ({
   return (
     <div className={classes.card__info}>
       <div className={classes.card__info_sale}>
-        <ProductSale product={product} />
+        <ProductSale discountPer={product?.discountPer} />
       </div>
 
       <h2
@@ -23,11 +23,18 @@ const ProductsCardInfo = ({
       </h2>
 
       <div className={classes.card__info_price}>
-        <ProductPrice product={product} />
+        <ProductPrice
+          price={product?.price}
+          discountPer={product?.discountPer}
+        />
       </div>
 
       <div className={classes.card__info_colors}>
-        <ProductColors color={color} setColor={setColor} product={product} />
+        <ProductColors
+          color={color}
+          setColor={setColor}
+          productColors={product?.colors}
+        />
       </div>
     </div>
   );
