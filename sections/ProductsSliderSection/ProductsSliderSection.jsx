@@ -3,17 +3,12 @@ import { useState } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
-import classes from './PopularProductsSection.module.scss';
+import classes from './ProductsSliderSection.module.scss';
 
 import { ProductsCard } from '../../components';
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
-import { useProductsContext } from '../../contexts/products_context';
 
-const PopularProductsSection = ({ gender }) => {
-  const { popular_products } = useProductsContext();
-
-  const popularProducts = popular_products?.map(products => products[gender]);
-
+const ProductsSliderSection = ({ products, title }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, slider] = useKeenSlider({
     spacing: 15,
@@ -37,23 +32,16 @@ const PopularProductsSection = ({ gender }) => {
   });
 
   return (
-    <div className={classes.popularProducts__wrapper}>
+    <div className={classes.productsSlider}>
       <div className='container'>
-        <h2 className={classes.popularProducts__title}>
-          {gender}'s popular products
-        </h2>
+        <h2 className={classes.productsSlider__title}>{title}</h2>
+
         <div ref={sliderRef} className='keen-slider'>
-          {popularProducts.map(products =>
-            products.map(product => (
-              <div className='keen-slider__slide' key={product.id}>
-                <ProductsCard
-                  key={product.id}
-                  product={product}
-                  gender={gender}
-                />
-              </div>
-            ))
-          )}
+          {products?.map(product => (
+            <div className='keen-slider__slide' key={product.id}>
+              <ProductsCard key={product.id} product={product} />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -67,4 +55,4 @@ const PopularProductsSection = ({ gender }) => {
   );
 };
 
-export default PopularProductsSection;
+export default ProductsSliderSection;

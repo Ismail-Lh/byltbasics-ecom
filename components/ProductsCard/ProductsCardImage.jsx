@@ -1,13 +1,15 @@
 import classes from './style.module.scss';
 import { Button, MyLink } from '..';
+import { useProductsContext } from '../../contexts/products_context';
 
 const ProductsCardImage = ({
   product,
   productRoute,
   color,
-  getSingleProduct,
   setOpenProductModel,
 }) => {
+  const { getSingleProduct, getSimilarProducts } = useProductsContext();
+
   const handelClick = () => {
     getSingleProduct(product?.id, product?.gender, color);
     setOpenProductModel(true);
@@ -16,7 +18,10 @@ const ProductsCardImage = ({
   return (
     <div
       className={classes.card__image}
-      onClick={() => getSingleProduct(product?.id, product?.gender, color)}>
+      onClick={() => {
+        getSingleProduct(product?.id, product?.gender, color);
+        getSimilarProducts(product?.collections, product?.gender, product?.id);
+      }}>
       <MyLink route={productRoute}>
         <img
           src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/small/${product?.images[0]}`}

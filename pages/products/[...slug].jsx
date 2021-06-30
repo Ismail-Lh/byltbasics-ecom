@@ -1,8 +1,16 @@
-import { useRouter } from 'next/router';
+import { useProductsContext } from '../../contexts/products_context';
 import { SingleProductContainer } from '../../containers';
+import { ProductsSliderSection } from '../../sections';
 
 const SingleProductPage = () => {
-  return <SingleProductContainer />;
+  const { similar_products: products } = useProductsContext();
+
+  return (
+    <>
+      <SingleProductContainer />
+      <ProductsSliderSection title='you my also like' products={products} />
+    </>
+  );
 };
 
 export default SingleProductPage;

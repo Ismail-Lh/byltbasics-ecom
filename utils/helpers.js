@@ -38,6 +38,10 @@ export const getLocalStorage = key => {
     if (key === 'collection') {
       return storage ? JSON.parse(storage) : { route: '', title: '' };
     }
+
+    if (key === 'similarProducts') {
+      return storage ? JSON.parse(storage) : [];
+    }
   }
 };
 

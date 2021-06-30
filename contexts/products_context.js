@@ -9,6 +9,7 @@ import {
   GET_PRODUCTS,
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
+  GET_SIMILAR_PRODUCTS,
 } from '../utils/actions';
 
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
@@ -22,6 +23,7 @@ const initialState = {
   loading: false,
   popular_products: [],
   single_product: getLocalStorage('singleProduct'),
+  similar_products: getLocalStorage('similarProducts'),
 };
 
 export const ProductsProvider = ({ children }) => {
@@ -67,6 +69,17 @@ export const ProductsProvider = ({ children }) => {
     setLocalStorage('singleProduct', state.single_product);
   }, [state.single_product]);
 
+  const getSimilarProducts = (collection, gender, productId) => {
+    dispatch({
+      type: GET_SIMILAR_PRODUCTS,
+      payload: { collection, gender, productId },
+    });
+  };
+
+  useEffect(() => {
+    setLocalStorage('similarProducts', state.similar_products);
+  }, [state.similar_products]);
+
   return (
     <ProductsContext.Provider
       value={{
@@ -74,6 +87,7 @@ export const ProductsProvider = ({ children }) => {
         openSidebar,
         closeSidebar,
         getSingleProduct,
+        getSimilarProducts,
       }}>
       {children}
     </ProductsContext.Provider>

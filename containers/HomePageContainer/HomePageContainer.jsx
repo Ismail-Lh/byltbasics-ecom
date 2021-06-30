@@ -1,8 +1,10 @@
+import { useProductsContext } from '../../contexts/products_context';
+
 import { HeroImage } from '../../components';
 import {
   HeroSection,
   ImagesGridSection,
-  PopularProductsSection,
+  ProductsSliderSection,
   ProductsCategorySection,
   SplitContentSection,
 } from '../../sections';
@@ -10,6 +12,16 @@ import {
 import { SplitContentImageContainer, SplitContentTextContainer } from '../';
 
 const HomePageContainer = () => {
+  const { popular_products } = useProductsContext();
+
+  const getPopularProducts = gender => {
+    const products = popular_products
+      ?.map(products => products[gender])
+      .map(products => products);
+
+    return products[0];
+  };
+
   return (
     <div>
       <HeroSection />
@@ -26,7 +38,10 @@ const HomePageContainer = () => {
         imgUrlMobile='hero-5-mobile.jpg'
       />
 
-      <PopularProductsSection gender='men' />
+      <ProductsSliderSection
+        title="men's popular products"
+        products={getPopularProducts('men')}
+      />
 
       <HeroImage
         title='snow wash collection'
@@ -48,7 +63,10 @@ const HomePageContainer = () => {
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
       </SplitContentSection>
 
-      <PopularProductsSection gender='women' />
+      <ProductsSliderSection
+        title="women's popular products"
+        products={getPopularProducts('women')}
+      />
 
       <ImagesGridSection />
 

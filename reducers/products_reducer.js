@@ -4,6 +4,7 @@ import {
   GET_PRODUCTS,
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
+  GET_SIMILAR_PRODUCTS,
 } from '../utils/actions';
 
 const ProductsReducer = (state, action) => {
@@ -67,6 +68,28 @@ const ProductsReducer = (state, action) => {
         productColor: color,
       },
     };
+  }
+
+  if (action.type === GET_SIMILAR_PRODUCTS) {
+    const { collection, gender, productId } = action.payload;
+    const { men_products, women_products } = state;
+
+    let similarProducts;
+
+    const getSimilarProducts = products =>
+      products
+        ?.filter(product => product.collections === collection)
+        .filter(product => product.id !== productId);
+
+    if (gender === 'men') {
+      similarProducts = getSimilarProducts(men_products);
+    }
+
+    if (gender === 'women') {
+      similarProducts = getSimilarProducts(women_products);
+    }
+
+    return { ...state, similar_products: similarProducts };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
