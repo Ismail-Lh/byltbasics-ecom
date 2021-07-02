@@ -1,0 +1,52 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
+
+.search {
+  width: 100%;
+  position: relative;
+
+  &__input {
+    @include flex-align();
+    position: relative;
+
+    input {
+      border: none;
+      border-radius: 4px;
+      padding: 1rem 2rem;
+      background-color: $light-grey-color;
+      font-size: $sm-size-3;
+      text-transform: capitalize;
+      width: 100%;
+    }
+
+    button {
+      svg {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+
+        @include wh-hei($wh: 2rem, $hei: 2rem);
+      }
+    }
+  }
+
+  &__results {
+    @include flex-ali-jus($align: flex-start, $direction: column);
+    background-color: $light-grey-color;
+    width: 100%;
+    position: absolute;
+    margin-top: 1rem;
+
+    a {
+      padding: 1rem 1.5rem;
+      display: block;
+      font-size: $sm-size-3;
+      text-transform: capitalize;
+
+      &:not(:last-of-type) {
+        border-bottom: 2px solid $grey-color;
+      }
+    }
+  }
+}

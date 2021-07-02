@@ -12,6 +12,7 @@ export { default as FormInput } from './FormInput/FormInput';
 export { default as NavBar } from './NavBar/NavBar';
 export { default as MobileMenu } from './MobileMenu/MobileMenu';
 export { default as DropDownMenu } from './DropDownMenu/DropDownMenu';
+export { default as SearchInput } from './SearchInput/SearchInput';
 
 // Hero Section
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';

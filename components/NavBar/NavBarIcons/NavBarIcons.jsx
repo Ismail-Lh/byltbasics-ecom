@@ -7,10 +7,13 @@ import { useCartContext } from '../../../contexts/cart_context';
 import { useAuthContext } from '../../../contexts/auth_context';
 import { MyLink } from '../../../components';
 import { CartIcon, ContactIcon, LoginIcon, SearchIcon } from '../../../Icons';
+import SearchInput from '../../SearchInput/SearchInput';
 
 const NavBarIcons = () => {
   const { openCart, total_products } = useCartContext();
   const { user } = useAuthContext();
+
+  const [openSearchInput, setOpenSearchInput] = useState(false);
 
   const loginRoute = user ? '/account' : '/account/login';
 
@@ -22,13 +25,27 @@ const NavBarIcons = () => {
 
   return (
     <>
-      <div className={classes.navbar__icons_1}>
-        {Icons.map(({ id, icon, route, cartIcon }) => (
-          <MyLink route={route} key={id} handelClick={cartIcon && openCart}>
-            {icon}
-            {cartIcon && <span>{total_products}</span>}
-          </MyLink>
-        ))}
+      <div
+        className={classes.navbar__icons_1}
+        style={{
+          justifyContent: `${openSearchInput ? 'flex-start' : 'flex-end'}`,
+        }}>
+        {openSearchInput ? (
+          <SearchInput closeSearchBar={setOpenSearchInput} />
+        ) : (
+          <>
+            <button onClick={() => setOpenSearchInput(true)}>
+              <SearchIcon />
+            </button>
+
+            {Icons.map(({ id, icon, route, cartIcon }) => (
+              <MyLink route={route} key={id} handelClick={cartIcon && openCart}>
+                {icon}
+                {cartIcon && <span>{total_products}</span>}
+              </MyLink>
+            ))}
+          </>
+        )}
       </div>
 
       <button className={classes.navbar__icons_2} onClick={openCart}>
