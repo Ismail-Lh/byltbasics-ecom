@@ -32,20 +32,33 @@
   }
 
   &__results {
-    @include flex-ali-jus($align: flex-start, $direction: column);
+    @include flex-align($align: flex-start);
+    flex-direction: column;
+    @include wh-hei($hei: auto);
     background-color: $light-grey-color;
-    width: 100%;
+    overflow-y: scroll;
     position: absolute;
     margin-top: 1rem;
 
-    a {
-      padding: 1rem 1.5rem;
-      display: block;
-      font-size: $sm-size-3;
-      text-transform: capitalize;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-      &:not(:last-of-type) {
-        border-bottom: 2px solid $grey-color;
+    .result {
+      width: 100%;
+      @include transition();
+
+      &:hover {
+        background-color: $grey-color;
+        color: $white-color;
+      }
+
+      a {
+        padding: 1rem 1.5rem;
+        display: block;
+        font-size: $sm-size-3;
+        text-transform: capitalize;
+        margin-right: 0;
       }
     }
   }
