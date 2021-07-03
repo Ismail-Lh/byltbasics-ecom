@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { useFiltersContext } from '../../contexts/filters_context';
 import { ShopPageContainer } from '../../containers';
+import { Layout } from '../../components';
 
 const Collections = () => {
   const { updateCollection } = useFiltersContext();
@@ -15,19 +16,25 @@ const Collections = () => {
 
     const strIncludes = str => route?.includes(str);
 
-    if (strIncludes('men')) title = 'all men';
-    if (strIncludes('women')) title = 'all women';
-    if (strIncludes('bundles')) title = 'bundles';
-    if (strIncludes('sales')) title = 'last call';
+    if (strIncludes('men')) title = 'All Men';
+    if (strIncludes('women')) title = 'All Women';
+    if (strIncludes('bundles')) title = 'Bundles';
+    if (strIncludes('sales')) title = 'Last Call';
 
     return title;
   };
 
+  const title = getTheCollectionTitle(slug);
+
   useEffect(() => {
-    updateCollection(slug, getTheCollectionTitle(slug));
+    updateCollection(slug, title);
   }, [slug]);
 
-  return <ShopPageContainer />;
+  return (
+    <Layout title={`${title} | BYLT Basics`}>
+      <ShopPageContainer />
+    </Layout>
+  );
 };
 
 export default Collections;

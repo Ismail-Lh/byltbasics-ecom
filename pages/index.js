@@ -1,5 +1,10 @@
+import { Layout } from '../components';
 import { HomePageContainer } from '../containers';
 
 export default function Home() {
-  return <HomePageContainer />;
+  return (
+    <Layout>
+      <HomePageContainer />
+    </Layout>
+  );
 }

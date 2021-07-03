@@ -24,6 +24,7 @@ const FiltersReducer = (state, action) => {
   if (action.type === GET_PRODUCTS_BY_COLLECTION) {
     const { men_products, women_products } = action.payload;
     const { collection } = state;
+    const route = collection.route.toLowerCase();
 
     let products = [];
 
@@ -51,81 +52,80 @@ const FiltersReducer = (state, action) => {
       prd.filter(product => product.sleeve === sleeve);
 
     // Men's products collection
-    if (collection.route === 'shop-men') products = men_products;
+    if (route === 'shop-men') products = men_products;
 
     // Men's tops products collection
-    if (collection.route === 'mens-tops')
+    if (route === 'mens-tops')
       products = getProductsByCollection('mens-tops', men_products);
 
     // Men's bottoms products collection
-    if (collection.route === 'mens-bottoms')
+    if (route === 'mens-bottoms')
       products = getProductsByCollection('mens-bottoms', men_products);
 
     // Men's outerwear products collection
-    if (collection.route === 'mens-outerwear')
+    if (route === 'mens-outerwear')
       products = getProductsByCollection('outerwear', men_products);
 
     // Men's underwear products collection
-    if (collection.route === 'mens-underwear')
+    if (route === 'mens-underwear')
       products = getProductsByCollection('underwear', men_products);
 
     // Men's & Women's accessories products collection
-    if (collection.route === 'accessories')
+    if (route === 'accessories')
       products = getProductsByCollection('hats-accessories', allProducts);
 
     // Men's henleys products collection
-    if (collection.route === 'mens-henleys')
+    if (route === 'mens-henleys')
       products = getProductsByStyle('henleys', men_products);
 
     // Men's henleys products collection
-    if (collection.route === 'mens-shorts')
+    if (route === 'mens-shorts')
       products = getProductsByStyle('shorts', men_products);
 
     // Men's pullovers products collection
-    if (collection.route === 'mens-pullovers')
+    if (route === 'mens-pullovers')
       products = getProductsByStyle('pullovers', men_products);
 
     // Men's hats products collection
-    if (collection.route === 'hats')
-      products = getProductsByStyle('hats', allProducts);
+    if (route === 'hats') products = getProductsByStyle('hats', allProducts);
 
     // Men's boxer briefs products collection
-    if (collection.route === 'boxer-briefs')
+    if (route === 'boxer-briefs')
       products = getProductsByStyle('boxer briefs', men_products);
 
     // Men's v-necks products collection
-    if (collection.route === 'mens-vnecks')
+    if (route === 'mens-vnecks')
       products = getProductsByNeck('v-necks', men_products);
 
     // Men's crews products collection
-    if (collection.route === 'mens-crews')
+    if (route === 'mens-crews')
       products = getProductsByNeck('crews', men_products);
 
     // Men's drop-cuts products collection
-    if (collection.route === 'mens-drop-cuts')
+    if (route === 'mens-drop-cuts')
       products = getProductsByCut('drop-cuts', men_products);
 
     // Men's long-sleeves products collection
-    if (collection.route === 'mens-long-sleeves')
+    if (route === 'mens-long-sleeves')
       products = getProductsBySleeve('long sleeves', men_products);
 
     // Women's products collections
-    if (collection.route === 'shop-women') products = women_products;
+    if (route === 'shop-women') products = women_products;
 
     // Women's tops products collection
-    if (collection.route === 'womens-tops')
+    if (route === 'womens-tops')
       products = getProductsByCollection('womens-tops', women_products);
 
     // Women's bottoms products collection
-    if (collection.route === 'womens-bottoms')
+    if (route === 'womens-bottoms')
       products = getProductsByCollection('womens-bottoms', women_products);
 
     // Women's joggers products collection
-    if (collection.route === 'womens-joggers')
+    if (route === 'womens-joggers')
       products = getProductsByStyle('joggers', women_products);
 
-    if (collection.route === 'bundles') products = women_products;
-    if (collection.route === 'sales') products = salesProducts;
+    if (route === 'bundles') products = women_products;
+    if (route === 'sales') products = salesProducts;
 
     return {
       ...state,

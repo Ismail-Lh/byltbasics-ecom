@@ -5,10 +5,13 @@ import 'keen-slider/keen-slider.min.css';
 
 import classes from './ProductsSliderSection.module.scss';
 
-import { ProductsCard } from '../../components';
+import { Loader, ProductsCard } from '../../components';
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
+import { useProductsContext } from '../../contexts/products_context';
 
 const ProductsSliderSection = ({ products, title }) => {
+  const { loading } = useProductsContext();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, slider] = useKeenSlider({
     spacing: 15,
@@ -34,23 +37,33 @@ const ProductsSliderSection = ({ products, title }) => {
   return (
     <div className={classes.productsSlider}>
       <div className='container'>
-        <h2 className={classes.productsSlider__title}>{title}</h2>
+        {loading ? (
+          <Loader message='products loading...' />
+        ) : (
+          <>
+            <h2 className={classes.productsSlider__title}>{title}</h2>
 
-        <div ref={sliderRef} className='keen-slider'>
-          {products?.map(product => (
-            <div className='keen-slider__slide' key={product.id}>
-              <ProductsCard key={product.id} product={product} />
+            <div ref={sliderRef} className='keen-slider'>
+              {products?.map(product => (
+                <div className='keen-slider__slide' key={product.id}>
+                  <ProductsCard key={product.id} product={product} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
 
-      {slider && (
-        <div className='arrows'>
-          <ArrowLeftIcon onClick={e => e.stopPropagation() || slider.prev()} />
-          <ArrowRightIcon onClick={e => e.stopPropagation() || slider.next()} />
-        </div>
-      )}
+            {slider && (
+              <div className='arrows'>
+                <ArrowLeftIcon
+                  onClick={e => e.stopPropagation() || slider.prev()}
+                />
+                <ArrowRightIcon
+                  onClick={e => e.stopPropagation() || slider.next()}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };

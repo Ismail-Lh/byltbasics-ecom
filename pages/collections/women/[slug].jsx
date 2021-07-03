@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Layout } from '../../../components';
 import { ShopPageContainer } from '../../../containers';
 import { useFiltersContext } from '../../../contexts/filters_context';
 
@@ -14,25 +15,31 @@ const WomensCollections = () => {
 
     const strIncludes = str => route?.includes(str);
 
-    if (strIncludes('womens-tops')) title = "women's tops";
-    if (strIncludes('tank')) title = 'essential tank';
-    if (strIncludes('tee')) title = 'essential tee';
-    if (strIncludes('crop')) title = 'crop top';
-    if (strIncludes('womens-bottoms')) title = "women's bottoms";
-    if (strIncludes('joggers')) title = "women's joggers";
-    if (strIncludes('leggings')) title = "women's leggings";
-    if (strIncludes('accessories')) title = 'hats & accessories';
-    if (strIncludes('hats')) title = 'hats';
-    if (strIncludes('gift')) title = 'gift cards';
+    if (strIncludes('womens-tops')) title = "Women's tops";
+    if (strIncludes('tank')) title = 'Essential Tank';
+    if (strIncludes('tee')) title = 'Essential Tee';
+    if (strIncludes('crop')) title = 'Crop Top';
+    if (strIncludes('womens-bottoms')) title = "Women's Bottoms";
+    if (strIncludes('joggers')) title = "Women's Joggers";
+    if (strIncludes('leggings')) title = "Women's Leggings";
+    if (strIncludes('accessories')) title = 'Hats & Accessories';
+    if (strIncludes('hats')) title = 'Hats';
+    if (strIncludes('gift')) title = 'Gift Cards';
 
     return title;
   };
 
+  const title = getTheCollectionTitle(slug);
+
   useEffect(() => {
-    updateCollection(slug, getTheCollectionTitle(slug));
+    updateCollection(slug, title);
   }, [slug]);
 
-  return <ShopPageContainer />;
+  return (
+    <Layout title={`${title} | BYLT Basics`}>
+      <ShopPageContainer />
+    </Layout>
+  );
 };
 
 export default WomensCollections;

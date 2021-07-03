@@ -45,7 +45,7 @@ export const ProductsProvider = ({ children }) => {
       type: GET_PRODUCTS,
       payload: { men, women, loading },
     });
-  }, [men, women]);
+  }, [men, women, loading]);
 
   useEffect(() => {
     setLocalStorage('menProducts', state.men_products);

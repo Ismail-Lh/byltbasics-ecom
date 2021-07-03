@@ -23,7 +23,7 @@ const ProductsReducer = (state, action) => {
       ...state,
       men_products: [...menProducts],
       women_products: [...womenProducts],
-      loading,
+      loading: loading,
     };
   }
 

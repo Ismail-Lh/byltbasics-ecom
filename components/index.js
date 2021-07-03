@@ -7,6 +7,7 @@ export { default as FiltersValue } from './FiltersValue/FiltersValue';
 export { default as FilterType } from './FilterType/FilterType';
 export { default as FiltersModel } from './FiltersModel/FiltersModel';
 export { default as FormInput } from './FormInput/FormInput';
+export { default as Layout } from './Layout/Layout';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';

@@ -25,3 +25,5 @@ export { default as RegisterPageContainer } from './RegisterPageContainer/Regist
 export { default as AccountPageContainer } from './AccountPageContainer/AccountPageContainer';
 
 export { default as SuccessCheckoutPageContainer } from './SuccessCheckoutPageContainer/SuccessCheckoutPageContainer';
+
+export { default as PageNotFoundContainer } from './PageNotFoundContainer/PageNotFoundContainer';

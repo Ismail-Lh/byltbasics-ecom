@@ -1,7 +1,12 @@
+import { Layout } from '../../components';
 import { ContactUsPageContainer } from '../../containers';
 
 const ContactUsPage = () => {
-  return <ContactUsPageContainer />;
+  return (
+    <Layout title='Customer Support | BYLT Premium'>
+      <ContactUsPageContainer />
+    </Layout>
+  );
 };
 
 export default ContactUsPage;
