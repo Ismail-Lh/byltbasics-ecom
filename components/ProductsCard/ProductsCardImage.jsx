@@ -2,17 +2,13 @@ import classes from './style.module.scss';
 import { Button, MyLink } from '..';
 import { useProductsContext } from '../../contexts/products_context';
 
-const ProductsCardImage = ({
-  product,
-  productRoute,
-  color,
-  setOpenProductModel,
-}) => {
-  const { getSingleProduct, getSimilarProducts } = useProductsContext();
+const ProductsCardImage = ({ product, productRoute, color }) => {
+  const { getSingleProduct, getSimilarProducts, openProductModal } =
+    useProductsContext();
 
   const handelClick = () => {
     getSingleProduct(product?.id, product?.gender, color);
-    setOpenProductModel(true);
+    openProductModal();
   };
 
   return (

@@ -35,7 +35,7 @@ export { default as FooterLinks } from './FooterLinks/FooterLinks';
 
 // Popular Products Section
 export { default as ProductsCard } from './ProductsCard/ProductsCard';
-export { default as ProductModel } from './ProductModel/ProductModel';
+export { default as ProductModal } from './ProductModal/ProductModal';
 
 // Single Product
 export { default as SingleProductImages } from './SingleProductImages/SingleProductImages';

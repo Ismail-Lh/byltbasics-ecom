@@ -1,3 +1,4 @@
+import { useProductsContext } from '../../contexts/products_context';
 import classes from './ProductColors.module.scss';
 
 const ProductColors = ({ productColors, color, setColor }) => {

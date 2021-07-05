@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixin' as *;
 
-.productModel {
+.productModal {
   &__content {
     background-color: $white-color;
     @include wh-hei($wh: 80%);

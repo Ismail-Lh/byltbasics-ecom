@@ -378,7 +378,7 @@ h1 {
 }
 
 // Product model compo
-.productModel {
+.productModal {
   @include position($ps: fixed, $z: -100);
   @include wh-hei();
   background-color: rgb($black-color, 0.8);

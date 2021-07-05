@@ -10,6 +10,9 @@ import {
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
   GET_SIMILAR_PRODUCTS,
+  OPEN_PRODUCT_MODAL,
+  CLOSE_PRODUCT_MODAL,
+  GET_PRODUCT_COLOR,
 } from '../utils/actions';
 
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';
@@ -18,11 +21,13 @@ const ProductsContext = createContext();
 
 const initialState = {
   isSidebarOpen: false,
+  isProductModalOpen: false,
   men_products: getLocalStorage('menProducts'),
   women_products: getLocalStorage('womenProducts'),
   loading: false,
   popular_products: [],
   single_product: getLocalStorage('singleProduct'),
+  product_color: null,
   similar_products: getLocalStorage('similarProducts'),
 };
 
@@ -37,6 +42,14 @@ export const ProductsProvider = ({ children }) => {
 
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
+  };
+
+  const openProductModal = () => {
+    dispatch({ type: OPEN_PRODUCT_MODAL });
+  };
+
+  const closeProductModal = () => {
+    dispatch({ type: CLOSE_PRODUCT_MODAL });
   };
 
   // Get menProducts && womenProducts
@@ -86,6 +99,8 @@ export const ProductsProvider = ({ children }) => {
         ...state,
         openSidebar,
         closeSidebar,
+        openProductModal,
+        closeProductModal,
         getSingleProduct,
         getSimilarProducts,
       }}>

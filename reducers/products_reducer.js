@@ -5,6 +5,9 @@ import {
   GET_POPULAR_PRODUCTS,
   GET_SINGLE_PRODUCT,
   GET_SIMILAR_PRODUCTS,
+  OPEN_PRODUCT_MODAL,
+  CLOSE_PRODUCT_MODAL,
+  GET_PRODUCT_COLOR,
 } from '../utils/actions';
 
 const ProductsReducer = (state, action) => {
@@ -14,6 +17,14 @@ const ProductsReducer = (state, action) => {
 
   if (action.type === SIDEBAR_CLOSE) {
     return { ...state, isSidebarOpen: false };
+  }
+
+  if (action.type === OPEN_PRODUCT_MODAL) {
+    return { ...state, isProductModalOpen: true };
+  }
+
+  if (action.type === CLOSE_PRODUCT_MODAL) {
+    return { ...state, isProductModalOpen: false };
   }
 
   if (action.type === GET_PRODUCTS) {

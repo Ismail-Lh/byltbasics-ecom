@@ -1,25 +1,29 @@
-import classes from './ProductModel.module.scss';
+import classes from './ProductModal.module.scss';
 import { CloseIcon } from '../../Icons';
-import { useState } from 'react';
 import { SingleProductInfo } from '..';
+import { useProductsContext } from '../../contexts/products_context';
+import { useEffect, useState } from 'react';
 
-const ProductModel = ({
-  openProductModel,
-  setOpenProductModel,
-  product,
-  color,
-  setColor,
-}) => {
-  // const [color, setColor] = useState(product?.productColor);
+const ProductModal = () => {
+  const { isProductModalOpen, closeProductModal, single_product } =
+    useProductsContext();
+
+  const { productInfo: product, productColor } = single_product;
+
+  const [color, setColor] = useState('');
+
+  useEffect(() => {
+    setColor(productColor);
+  }, [productColor]);
 
   return (
     <div
       className={`${
-        !openProductModel ? 'productModel' : 'productModel productModel__show'
+        !isProductModalOpen ? 'productModal' : 'productModal productModal__show'
       }`}>
-      <div className={classes.productModel__content}>
+      <div className={classes.productModal__content}>
         <div className={classes.closeBtn}>
-          <button onClick={() => setOpenProductModel(false)}>
+          <button onClick={closeProductModal}>
             <CloseIcon />
           </button>
         </div>
@@ -43,4 +47,4 @@ const ProductModel = ({
   );
 };
 
-export default ProductModel;
+export default ProductModal;

@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 
-import { NavBar } from '../components';
+import { NavBar, ProductModal } from '../components';
 import { FooterSection } from '../sections';
 
 import { AuthProvider } from '../contexts/auth_context';
@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }) {
           <FiltersProvider>
             <CartProvider>
               <NavBar />
+              <ProductModal />
               <Component {...pageProps} />
               <FooterSection />
             </CartProvider>

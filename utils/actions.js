@@ -1,6 +1,8 @@
 // Products Context & Reducer Actions
 export const SIDEBAR_OPEN = 'SIDEBAR_OPEN';
 export const SIDEBAR_CLOSE = 'SIDEBAR_CLOSE';
+export const OPEN_PRODUCT_MODAL = 'OPEN_PRODUCT_MODAL';
+export const CLOSE_PRODUCT_MODAL = 'CLOSE_PRODUCT_MODAL';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_WOMEN_PRODUCTS = 'GET_WOMEN_PRODUCTS';
 export const GET_POPULAR_PRODUCTS = 'GET_POPULAR_PRODUCTS';
