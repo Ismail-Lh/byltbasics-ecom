@@ -1,11 +1,19 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixin' as *;
 
-.productsSlider {
+.products {
   margin: 3rem 0;
   position: relative;
 
   @media (max-width: 768px) {
     margin: 2rem 0;
+  }
+
+  .title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: $md-size-2;
+    margin-bottom: 2rem;
   }
 
   svg {
@@ -31,10 +39,9 @@
     }
   }
 
-  &__title {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: $md-size-2;
-    margin-bottom: 2rem;
+  &__grid {
+    .products {
+      @include grid-columns($columns: repeat(4, 1fr), $gap: 2rem);
+    }
   }
 }

@@ -3,9 +3,11 @@ import classes from './SingleProductContainer.module.scss';
 
 import { useProductsContext } from '../../contexts/products_context';
 import { SingleProductImages, SingleProductInfo } from '../../components';
+import { ProductsSliderSection } from '../../sections';
 
 const SingleProductContainer = () => {
-  const { single_product: product } = useProductsContext();
+  const { single_product: product, similar_products: products } =
+    useProductsContext();
 
   const [color, setColor] = useState(product?.productColor);
 
@@ -20,6 +22,8 @@ const SingleProductContainer = () => {
             changeColor={setColor}
           />
         </div>
+
+        <ProductsSliderSection title='you my also like' products={products} />
       </div>
     </div>
   );

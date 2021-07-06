@@ -35,30 +35,44 @@ const ProductsSliderSection = ({ products, title }) => {
   });
 
   return (
-    <div className={classes.productsSlider}>
+    <div className={classes.products}>
       <div className='container'>
         {loading ? (
           <Loader message='products loading...' />
         ) : (
           <>
-            <h2 className={classes.productsSlider__title}>{title}</h2>
+            {products?.length <= 4 ? (
+              <div className={classes.products__grid}>
+                <h2 className={classes.title}>{title}</h2>
 
-            <div ref={sliderRef} className='keen-slider'>
-              {products?.map(product => (
-                <div className='keen-slider__slide' key={product.id}>
-                  <ProductsCard key={product.id} product={product} />
+                <div className={classes.products}>
+                  {products?.map(product => (
+                    <ProductsCard key={product.id} product={product} />
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className={classes.products__slider}>
+                <h2 className={classes.title}>{title}</h2>
 
-            {slider && (
-              <div className='arrows'>
-                <ArrowLeftIcon
-                  onClick={e => e.stopPropagation() || slider.prev()}
-                />
-                <ArrowRightIcon
-                  onClick={e => e.stopPropagation() || slider.next()}
-                />
+                <div ref={sliderRef} className='keen-slider'>
+                  {products?.map(product => (
+                    <div className='keen-slider__slide' key={product.id}>
+                      <ProductsCard key={product.id} product={product} />
+                    </div>
+                  ))}
+                </div>
+
+                {slider && (
+                  <div className='arrows'>
+                    <ArrowLeftIcon
+                      onClick={e => e.stopPropagation() || slider.prev()}
+                    />
+                    <ArrowRightIcon
+                      onClick={e => e.stopPropagation() || slider.next()}
+                    />
+                  </div>
+                )}
               </div>
             )}
           </>
