@@ -24,7 +24,7 @@ const FiltersReducer = (state, action) => {
   if (action.type === GET_PRODUCTS_BY_COLLECTION) {
     const { men_products, women_products } = action.payload;
     const { collection } = state;
-    const route = collection.route.toLowerCase();
+    const route = collection?.route?.toLowerCase();
 
     let products = [];
 
@@ -108,6 +108,24 @@ const FiltersReducer = (state, action) => {
     // Men's long-sleeves products collection
     if (route === 'mens-long-sleeves')
       products = getProductsBySleeve('long sleeves', men_products);
+
+    // Men's new releases
+    if (route === 'new')
+      products = men_products.sort((curr, next) => next.date - curr.date);
+
+    // Men's Snow wash collection
+    if (route === 'snow-wash')
+      products = men_products.filter(
+        product => product.snowWashCollection === true
+      );
+
+    // Men's Performance collection
+    if (route === 'performance-collection')
+      products = men_products.filter(
+        product => product.performanceCollection === true
+      );
+
+    //---------------------------------------------------------------------------------
 
     // Women's products collections
     if (route === 'shop-women') products = women_products;

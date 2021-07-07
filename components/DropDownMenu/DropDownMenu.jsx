@@ -18,16 +18,14 @@ const DropDownMenu = ({
       <div className='container'>
         <div className={classes.dropDownMenu__grid}>
           <ul className={classes.dropDownMenu__collections}>
-            {collections.map(({ id, collection }) => (
+            {collections.map(({ id, collection, route }) => (
               <li
                 key={id}
                 onClick={e => {
                   e.stopPropagation();
                   updateCollection(collection, collection);
                 }}>
-                <MyLink route={`/collections/${collection}`}>
-                  {collection}
-                </MyLink>
+                <MyLink route={`/collections/${route}`}>{collection}</MyLink>
               </li>
             ))}
           </ul>

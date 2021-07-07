@@ -18,8 +18,14 @@ const Collections = () => {
 
     if (strIncludes('men')) title = 'All Men';
     if (strIncludes('women')) title = 'All Women';
-    if (strIncludes('bundles')) title = 'Bundles';
+    if (strIncludes('mens-bundles')) title = "Men's Bundles";
+    if (strIncludes('womens-bundles')) title = "Women's Bundles";
     if (strIncludes('sales')) title = 'Last Call';
+    if (strIncludes('new')) title = 'New';
+    if (strIncludes('snow')) title = 'Snow Wash';
+    if (strIncludes('performance')) title = 'Performance Collection';
+    if (strIncludes('executive')) title = 'Executive Collection';
+    if (strIncludes('kids')) title = '#ByltForKids';
 
     return title;
   };

@@ -347,6 +347,181 @@ export const addDataBase = firebase => {
   //   popularity: false,
   // });
 
+  // SNOW WASH COLLECTION
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'snow wash drop-cut',
+  //   route: 'snow-wash-drop-cut',
+  //   collections: 'mens-tops',
+  //   snowWashCollection: true,
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'lux blend',
+  //   date: new Date().getTime(),
+  //   price: 2899,
+  //   description:
+  //     'As soft as fresh powder, our Snow Wash is made with a unique dye effect that adds a subtle dusted textured look all with an even softer hand feel.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['forest', 'maroon', 'olive', 'navy', 'charcoal'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: false },
+  //     { size: 'xl', isAvailable: false },
+  //     { size: 'xxl', isAvailable: false },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'snow wash drop-cut long sleeve',
+  //   route: 'snow-wash-drop-cut-long-sleeve',
+  //   collections: 'mens-tops',
+  //   snowWashCollection: true,
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'long sleeves',
+  //   fabric: 'bylt blend',
+  //   date: new Date().getTime(),
+  //   price: 3699,
+  //   discountPer: 20,
+  //   description:
+  //     'As soft as fresh powder, our Snow Wash is made with a unique dye effect that adds a subtle dusted textured look all with an even softer hand feel. Please note - This item is EXCHANGE ONLY and not eligible for return.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['olive', 'forest', 'maroon', 'navy', 'charcoal'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // PERFORMANCE COLLECTION
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'circuit tank',
+  //   route: 'circuit-tank',
+  //   collections: 'mens-tops',
+  //   performanceCollection: true,
+  //   style: 'tanks',
+  //   cut: 'drop-cuts',
+  //   neck: 'hooded',
+  //   sleeve: 'no sleeves',
+  //   fabric: 'performance',
+  //   date: new Date().getTime(),
+  //   price: 4499,
+  //   discountPer: 20,
+  //   description:
+  //     'A Hooded Henley style lighter than ever before, the Circuit Tank is a defining style to take your active looks, and results, to the next level.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['black', 'dark olive', 'asphalt camo'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'the circuit hoodie',
+  //   route: 'the-circuit-hoodie',
+  //   collections: 'mens-tops',
+  //   performanceCollection: true,
+  //   style: 'henleys',
+  //   cut: 'drop-cuts',
+  //   neck: 'henleys',
+  //   sleeve: 'long sleeves',
+  //   fabric: 'performance',
+  //   date: new Date().getTime(),
+  //   price: 6999,
+  //   description:
+  //     'Our best selling Hooded Henley has been taken to a completely new level with durable, lightweight, ultra-stretch performance grade fit and fabric.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['storm', 'black', 'dark olive', 'asphalt camo'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: "men's elite+ jogger shorts",
+  //   route: 'mens-elite-jogger-shorts',
+  //   collections: 'mens-bottoms',
+  //   performanceCollection: true,
+  //   style: 'shorts',
+  //   fabric: 'premium',
+  //   date: new Date().getTime(),
+  //   price: 6999,
+  //   description:
+  //     'The perfect combination of performance and comfort, the Elite+ Jogger Shorts offer an athletic fit with all the qualities you need in our most easy to wear style.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['heather grey', 'black', 'dark olive', 'gunmetal'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'performance drop-cut long sleeve shirt',
+  //   route: 'performance-drop-cut-long-sleeve shirt',
+  //   collections: 'mens-tops',
+  //   performanceCollection: true,
+  //   style: 'drop-cuts',
+  //   cut: 'drop-cuts',
+  //   neck: 'crews',
+  //   sleeve: 'long sleeves',
+  //   fabric: 'performance',
+  //   date: new Date().getTime(),
+  //   price: 4099,
+  //   description:
+  //     'Your favorite Drop-Cut Long Sleeve style now in an entirely enhanced fabric. Made from our new lightweight, breathable and ultra-stretch Performance Blend fabric, the Performance Drop-Cut Long Sleeve is built to withstand your all weather active days.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['storm', 'black'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
   /* women
     ============================================ */
 
