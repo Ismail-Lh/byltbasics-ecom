@@ -522,6 +522,116 @@ export const addDataBase = firebase => {
   //   popularity: false,
   // });
 
+  // Men's Executive Collection
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'executive polo',
+  //   route: 'executive-polo',
+  //   collections: 'mens-tops',
+  //   executiveCollection: true,
+  //   style: 'polos',
+  //   cut: 'drop-cuts',
+  //   neck: 'polos',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'executive',
+  //   date: new Date().getTime(),
+  //   price: 6499,
+  //   description:
+  //     'We’ve completely reinvented our most sophisticated styles in every way now perfected for the modern man. From the course to the afternoon out, our fully upgraded Executive Collection offers a new definition to an all around refined comfort style.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['olive', 'black', 'white', 'navy'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: true },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'drop tech polo',
+  //   route: 'drop-tech-polo',
+  //   collections: 'mens-tops',
+  //   executiveCollection: true,
+  //   style: 'polos',
+  //   cut: 'drop-cuts',
+  //   neck: 'polos',
+  //   sleeve: 'short sleeves',
+  //   fabric: 'tech',
+  //   date: new Date().getTime(),
+  //   price: 6499,
+  //   description:
+  //     'Designed for both performance and ultimate comfort, featuring a sweat resistant outer layer and a super soft inner layer.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg'],
+  //   colors: ['gunmetal', 'black', 'navy'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: false },
+  //     { size: 'xl', isAvailable: false },
+  //     { size: 'xxl', isAvailable: false },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'everyday pant 2.0',
+  //   route: 'everyday-pant-2.0',
+  //   collections: 'mens-bottoms',
+  //   executiveCollection: true,
+  //   style: 'pants',
+  //   fabric: 'elite+',
+  //   date: new Date().getTime(),
+  //   price: 10999,
+  //   description:
+  //     'The best selling Everyday Pant is back and better than ever before. Improved in every way with our ultra-stretch Elite+ Fabric for the highest level of all day comfort and an all around upgraded fit.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['storm', 'black', 'charcoal', 'navy'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: false },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
+  // dataBase.collection('men').add({
+  //   id: uuidv4(),
+  //   gender: 'men',
+  //   name: 'kinetic shorts',
+  //   route: 'kinetic-shorts',
+  //   collections: 'mens-bottoms',
+  //   executiveCollection: true,
+  //   style: 'shorts',
+  //   date: new Date().getTime(),
+  //   price: 8499,
+  //   description:
+  //     'Your everyday casual shorts elevated to a whole new level of premium comfort. Perfect for an afternoon out or while on the course, The Kinetic Shorts offer flexibility and versatility making them your new go-to for any occasion.',
+  //   images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+  //   colors: ['iron', 'storm', 'navy', 'dark olive'],
+  //   sizes: [
+  //     { size: 's', isAvailable: true },
+  //     { size: 'm', isAvailable: false },
+  //     { size: 'l', isAvailable: true },
+  //     { size: 'xl', isAvailable: true },
+  //     { size: 'xxl', isAvailable: true },
+  //   ],
+  //   stock: 25,
+  //   popularity: false,
+  // });
+
   /* women
     ============================================ */
 

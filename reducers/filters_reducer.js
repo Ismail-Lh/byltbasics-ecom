@@ -115,15 +115,15 @@ const FiltersReducer = (state, action) => {
 
     // Men's Snow wash collection
     if (route === 'snow-wash')
-      products = men_products.filter(
-        product => product.snowWashCollection === true
-      );
+      products = men_products.filter(product => product.snowWash === true);
 
     // Men's Performance collection
     if (route === 'performance-collection')
-      products = men_products.filter(
-        product => product.performanceCollection === true
-      );
+      products = men_products.filter(product => product.performance === true);
+
+    // Men's Executive collection
+    if (route === 'executive-collection')
+      products = men_products.filter(product => product.exect === true);
 
     //---------------------------------------------------------------------------------
 
