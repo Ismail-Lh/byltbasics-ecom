@@ -29,13 +29,13 @@ const HomePageContainer = () => {
       <ProductsCategorySection />
 
       <HeroImage
-        title='executive collection'
-        subtitle='made for the modern man.'
-        position='right'
+        title="women's essential collection"
+        subtitle='Empowered Style. Essential Comfort.'
+        position='center'
         color='#fff'
-        route='/collections/executive-collection'
-        imgUrlDesktop='hero-5.jpg'
-        imgUrlMobile='hero-5-mobile.jpg'
+        route='/collections/womens-essential-collection'
+        imgUrlDesktop='hero__desktop-womens-essential-collection.jpg'
+        imgUrlMobile='hero__mobile-womens-essential-collection.jpg'
       />
 
       <ProductsSliderSection
@@ -44,13 +44,13 @@ const HomePageContainer = () => {
       />
 
       <HeroImage
-        title='snow wash collection'
-        subtitle='vintage grade. custom made.'
+        title='performance collection'
+        subtitle='Pushing The Limits'
         position='center'
         color='#fff'
-        route='/collections/snow-wash'
-        imgUrlDesktop='hero-6.jpg'
-        imgUrlMobile='hero-6-mobile.jpg'
+        route='/collections/performance-collection'
+        imgUrlDesktop='hero__desktop-performance-collection.jpg'
+        imgUrlMobile='hero__mobile-performance-collection.jpg'
       />
 
       <SplitContentSection isTextFirst={true} order='2'>
@@ -69,6 +69,16 @@ const HomePageContainer = () => {
       />
 
       <ImagesGridSection />
+
+      <HeroImage
+        title='executive collection'
+        subtitle='Made for the Modern Man.'
+        position='center'
+        color='#fff'
+        route='/collections/executive-collection'
+        imgUrlDesktop='hero__desktop-executive-collection.jpg'
+        imgUrlMobile='hero__mobile-executive-collection.jpg'
+      />
 
       <SplitContentSection isTextFirst={false} order='-1'>
         <SplitContentImageContainer imgUrl='/assets/split-content-img-2.jpg' />

@@ -25,7 +25,6 @@ const Collections = () => {
     if (strIncludes('snow')) title = 'Snow Wash';
     if (strIncludes('performance')) title = 'Performance Collection';
     if (strIncludes('executive')) title = 'Executive Collection';
-    if (strIncludes('kids')) title = '#ByltForKids';
 
     return title;
   };
