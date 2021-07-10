@@ -632,6 +632,65 @@ export const addDataBase = firebase => {
   //   popularity: false,
   // });
 
+  // Men's Summer Dye Collection
+  dataBase.collection('men').add({
+    id: uuidv4(),
+    gender: 'men',
+    name: 'cloud dye drop-cut',
+    route: 'cloud-dye-drop-cut',
+    collections: 'mens-tops',
+    summerDye: true,
+    style: 'drop-cuts',
+    cut: 'drop-cuts',
+    neck: 'crews',
+    sleeve: 'short sleeve',
+    fabric: 'lux blend',
+    date: new Date().getTime(),
+    price: 3199,
+    description:
+      'A step away from our traditional solids and joining our catalog of unique prints, patterns and washes comes the latest addition to our Drop-Cut Lineup: Meet the Cloud Dye Tee.',
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+    colors: ['charcoal-cloud', 'sand-cloud', 'black-cloud', 'sky-blue-cloud'],
+    sizes: [
+      { size: 's', isAvailable: true },
+      { size: 'm', isAvailable: true },
+      { size: 'l', isAvailable: true },
+      { size: 'xl', isAvailable: true },
+      { size: 'xxl', isAvailable: true },
+    ],
+    stock: 25,
+    popularity: false,
+  });
+
+  dataBase.collection('men').add({
+    id: uuidv4(),
+    gender: 'men',
+    name: 'prism dye drop-cut',
+    route: 'prism-dye-drop-cut',
+    collections: 'mens-tops',
+    summerDye: true,
+    style: 'drop-cuts',
+    cut: 'drop-cuts',
+    neck: 'crews',
+    sleeve: 'short sleeve',
+    fabric: 'lux blend',
+    date: new Date().getTime(),
+    price: 3199,
+    description:
+      'A step away from our traditional solids and joining our catalog of unique prints, patterns and washes comes the latest addition to our Drop-Cut Lineup: Meet the Prism Dye Tee.',
+    images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+    colors: ['white-storm-prism', 'black-charcoal-prism', 'navy-bone-prism'],
+    sizes: [
+      { size: 's', isAvailable: true },
+      { size: 'm', isAvailable: true },
+      { size: 'l', isAvailable: true },
+      { size: 'xl', isAvailable: true },
+      { size: 'xxl', isAvailable: true },
+    ],
+    stock: 25,
+    popularity: false,
+  });
+
   /* women
     ============================================ */
 

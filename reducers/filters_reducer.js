@@ -125,6 +125,10 @@ const FiltersReducer = (state, action) => {
     if (route === 'executive-collection')
       products = men_products.filter(product => product.exect === true);
 
+    // Men's Summer Dye collection
+    if (route === 'summer-dye-collection')
+      products = men_products.filter(product => product.summerDye === true);
+
     //---------------------------------------------------------------------------------
 
     // Women's products collections

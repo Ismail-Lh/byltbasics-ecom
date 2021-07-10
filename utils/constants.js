@@ -236,13 +236,13 @@ export const HeroData = [
     id: uuidv4(),
   },
   {
-    title: 'summer 2021 collection',
-    subtitle: 'newly refreshed. refined comfort.',
-    imgUrlDesktop: 'hero__desktop-summer-collection.jpg',
-    imgUrlMobile: 'hero__mobile-summer-collection.jpg',
+    title: 'summer dye collection',
+    subtitle: 'Meet the Cloud and Prism Dye Tees',
+    imgUrlDesktop: 'hero__desktop-summer-dye-collection.jpg',
+    imgUrlMobile: 'hero__mobile-summer-dye-collection.jpg',
     position: 'center',
     color: '#fff',
-    route: '/collections/summer-collection',
+    route: '/collections/summer-dye-collection',
     id: uuidv4(),
   },
   {
