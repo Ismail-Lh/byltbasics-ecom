@@ -262,7 +262,7 @@ export const HeroData = [
     imgUrlMobile: 'hero__mobile-new-core-collection.jpg',
     position: 'center',
     color: '#fff',
-    route: '/collection/new-core-collection',
+    route: '/collections/new-core-collection',
     id: uuidv4(),
   },
 ];
@@ -270,26 +270,26 @@ export const HeroData = [
 export const ProductsCategoryData_1 = [
   {
     category: 'long sleeves',
-    imgUrl: '/assets/long-sleeves.jpg',
-    route: '/collections/long-sleeves',
+    imgUrl: '/assets/long-sleeves-1.jpg',
+    route: '/collections/men/mens-long-sleeves',
     id: uuidv4(),
   },
   {
-    category: 'board shorts',
+    category: 'shorts',
     imgUrl: '/assets/board-shorts.jpg',
-    route: '/products/coastal-board-shorts',
+    route: '/collections/men/mens-shorts',
     id: uuidv4(),
   },
   {
     category: 'tanks',
-    imgUrl: '/assets/tanks.jpg',
-    route: '/collections/tanks',
+    imgUrl: '/assets/tanks-1.jpg',
+    route: '/collections/men/mens-tanks',
     id: uuidv4(),
   },
   {
-    category: 'weekender shorts',
-    imgUrl: '/assets/weekender-shorts.jpg',
-    route: '/products/weekender-shorts',
+    category: 'drop-cuts',
+    imgUrl: '/assets/drop-cuts-2.jpg',
+    route: '/collections/men/mens-drop-cuts',
     id: uuidv4(),
   },
 ];
@@ -297,32 +297,26 @@ export const ProductsCategoryData_1 = [
 export const ProductsCategoryData_2 = [
   {
     category: 'drop-cuts',
-    imgUrl: '/assets/drop-cuts.jpg',
-    route: '/collections/drop-cuts',
+    imgUrl: '/assets/drop-cuts-1.jpg',
+    route: '/collections/men/mens-drop-cuts',
     id: uuidv4(),
   },
   {
     category: 'split helms',
-    imgUrl: '/assets/split-helms.jpg',
+    imgUrl: '/assets/split-helms-1.jpg',
     route: '/products/lux-basic-crew-split-hem',
     id: uuidv4(),
   },
   {
     category: 'v-neck',
-    imgUrl: '/assets/v-neck.jpg',
-    route: '/collections/v-neck',
-    id: uuidv4(),
-  },
-  {
-    category: 'henleys',
-    imgUrl: '/assets/henley.jpg',
-    route: '/collections/henley',
+    imgUrl: '/assets/v-neck-1.jpg',
+    route: '/collections/men/mens-vnecks',
     id: uuidv4(),
   },
   {
     category: 'tanks',
     imgUrl: '/assets/tanks-2.jpg',
-    route: '/collections/tanks',
+    route: '/collections/men/mens-tanks',
     id: uuidv4(),
   },
 ];

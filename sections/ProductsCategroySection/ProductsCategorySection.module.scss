@@ -1,18 +1,21 @@
+@use '../../styles/mixin' as *;
+
 .products {
   &__category {
     &_1,
     &_2 {
-      display: grid;
-      gap: 2rem;
+      @include grid-columns($columns: repeat(4, 1fr), $gap: 2rem);
       margin: 3rem 0;
-    }
-
-    &_1 {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 25rem;
 
       @media (max-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &_1 {
+      grid-template-rows: 25rem;
+
+      @media (max-width: 768px) {
         grid-template-rows: repeat(2, 25rem);
       }
 
@@ -28,11 +31,8 @@
 
     &_2 {
       padding-top: 2rem;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: 26.6rem;
 
       @media (max-width: 768px) {
-        grid-template-columns: repeat((3, 1fr));
         margin: 0;
       }
 
@@ -40,13 +40,8 @@
         gap: 1.5rem;
       }
 
-      @media (max-width: 600px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       @media (max-width: 375px) {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
         padding: 0;
       }
     }

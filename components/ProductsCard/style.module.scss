@@ -19,6 +19,10 @@
 
     a {
       display: contents;
+
+      span {
+        display: block !important;
+      }
     }
 
     img {

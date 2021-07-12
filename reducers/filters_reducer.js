@@ -78,6 +78,10 @@ const FiltersReducer = (state, action) => {
     if (route === 'mens-henleys')
       products = getProductsByStyle('henleys', men_products);
 
+    // Men's Tanks products collection
+    if (route === 'mens-tanks')
+      products = getProductsByStyle('tanks', men_products);
+
     // Men's henleys products collection
     if (route === 'mens-shorts')
       products = getProductsByStyle('shorts', men_products);
@@ -128,6 +132,10 @@ const FiltersReducer = (state, action) => {
     // Men's Summer Dye collection
     if (route === 'summer-dye-collection')
       products = men_products.filter(product => product.summerDye === true);
+
+    // Men's New Core collection
+    if (route === 'new-core-collection')
+      products = men_products.filter(product => product.newCore === true);
 
     //---------------------------------------------------------------------------------
 

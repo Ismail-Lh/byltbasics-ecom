@@ -26,6 +26,7 @@ const Collections = () => {
     if (strIncludes('performance')) title = 'Performance Collection';
     if (strIncludes('executive')) title = 'Executive Collection';
     if (strIncludes('summer-dye-collection')) title = 'Summer Dye Collection';
+    if (strIncludes('new-core-collection')) title = 'New Core Collection';
 
     return title;
   };
