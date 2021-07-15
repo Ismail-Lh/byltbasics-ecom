@@ -1,6 +1,10 @@
+import dynamic from 'next/dynamic';
+
 import PrivateRoute from '../../HOC/PrivateRoute';
 
-import { AccountPageContainer } from '../../containers';
+const AccountPageContainer = dynamic(() =>
+  import('../../containers/AccountPageContainer/AccountPageContainer')
+);
 
 const AccountPage = () => {
   return <AccountPageContainer />;

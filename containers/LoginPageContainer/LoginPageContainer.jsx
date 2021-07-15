@@ -1,5 +1,8 @@
+import dynamic from 'next/dynamic';
+
 import classes from './LoginPageContainer.module.scss';
-import { Login, Register } from '../../components';
+
+const Login = dynamic(() => import('../../components/Login/Login'));
 
 const LoginPageContainer = () => {
   return (

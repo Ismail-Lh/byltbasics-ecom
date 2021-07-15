@@ -1,15 +1,32 @@
+import dynamic from 'next/dynamic';
 import { useProductsContext } from '../../contexts/products_context';
 
-import { HeroImage } from '../../components';
-import {
-  HeroSection,
-  ImagesGridSection,
-  ProductsSliderSection,
-  ProductsCategorySection,
-  SplitContentSection,
-} from '../../sections';
+const HeroImage = dynamic(() =>
+  import('../../components/Hero/HeroImage/HeroImage')
+);
 
-import { SplitContentImageContainer, SplitContentTextContainer } from '../';
+const HeroSection = dynamic(() =>
+  import('../../sections/HeroSection/HeroSection')
+);
+const ProductsSliderSection = dynamic(() =>
+  import('../../sections/ProductsSliderSection/ProductsSliderSection')
+);
+const ImagesGridSection = dynamic(() =>
+  import('../../sections/ImagesGridSection/ImagesGridSection')
+);
+const ProductsCategorySection = dynamic(() =>
+  import('../../sections/ProductsCategorySection/ProductsCategorySection')
+);
+const SplitContentSection = dynamic(() =>
+  import('../../sections/SplitContentSection/SplitContentSection')
+);
+
+const SplitContentImageContainer = dynamic(() =>
+  import('../SplitContentImageContainer/SplitContentImageContainer')
+);
+const SplitContentTextContainer = dynamic(() =>
+  import('../SplitContentTextContainer/SplitContentTextContainer')
+);
 
 const HomePageContainer = () => {
   const { popular_products } = useProductsContext();
@@ -77,7 +94,6 @@ const HomePageContainer = () => {
         color='#fff'
         route='/collections/executive-collection'
         imgUrlDesktop='hero__desktop-executive-collection.jpg'
-        imgUrlMobile='hero__mobile-executive-collection.jpg'
       />
 
       <SplitContentSection isTextFirst={false} order='-1'>

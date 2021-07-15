@@ -1,5 +1,10 @@
-import { HeroImage } from '../../components';
+import dynamic from 'next/dynamic';
+
 import classes from './ImagesGridSection.module.scss';
+
+const HeroImage = dynamic(() =>
+  import('../../components/Hero/HeroImage/HeroImage')
+);
 
 const ImagesGridSection = () => {
   const heroContent = [

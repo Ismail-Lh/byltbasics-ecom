@@ -1,12 +1,17 @@
+import dynamic from 'next/dynamic';
+
 import classes from './AccountPageContainer.module.scss';
 
 import { useAuthContext } from '../../contexts/auth_context';
-import {
-  Alert,
-  Loader,
-  UserAccountInfo,
-  UserAccountOrders,
-} from '../../components';
+
+const Alert = dynamic(() => import('../../components/Alert/Alert'));
+const Loader = dynamic(() => import('../../components/Loader/Loader'));
+const UserAccountInfo = dynamic(() =>
+  import('../../components/UserAccountInfo/UserAccountInfo')
+);
+const UserAccountOrders = dynamic(() =>
+  import('../../components/UserAccountOrders/UserAccountOrders')
+);
 
 const AccountPageContainer = () => {
   const { err, loading } = useAuthContext();

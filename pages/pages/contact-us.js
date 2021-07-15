@@ -1,5 +1,9 @@
+import dynamic from 'next/dynamic';
 import { Layout } from '../../components';
-import { ContactUsPageContainer } from '../../containers';
+
+const ContactUsPageContainer = dynamic(() =>
+  import('../../containers/ContactUsPageContainer/ContactUsPageContainer')
+);
 
 const ContactUsPage = () => {
   return (

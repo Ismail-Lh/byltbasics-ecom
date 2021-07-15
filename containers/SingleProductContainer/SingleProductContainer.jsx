@@ -1,9 +1,18 @@
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import classes from './SingleProductContainer.module.scss';
 
 import { useProductsContext } from '../../contexts/products_context';
-import { SingleProductImages, SingleProductInfo } from '../../components';
-import { ProductsSliderSection } from '../../sections';
+
+const SingleProductImages = dynamic(() =>
+  import('../../components/SingleProductImages/SingleProductImages')
+);
+const SingleProductInfo = dynamic(() =>
+  import('../../components/SingleProductInfo/SingleProductInfo')
+);
+const ProductsSliderSection = dynamic(() =>
+  import('../../sections/ProductsSliderSection/ProductsSliderSection')
+);
 
 const SingleProductContainer = () => {
   const { single_product: product, similar_products: products } =

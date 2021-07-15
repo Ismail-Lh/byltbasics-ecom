@@ -1,7 +1,11 @@
+import dynamic from 'next/dynamic';
 import classes from './ContactUsPageContainer.module.scss';
-import { Button, FormInput } from '../../components';
 
 import useForm from '../../hooks/useForm';
+
+const FormInput = dynamic(() => import('../../components/FormInput/FormInput'));
+const Button = dynamic(() => import('../../components/Button/Button'));
+const LazyImage = dynamic(() => import('../../components/LazyImage/LazyImage'));
 
 const ContactUsPageContainer = () => {
   const { value, handleChange, handleSubmit, error } = useForm();
@@ -11,7 +15,7 @@ const ContactUsPageContainer = () => {
       <div className='container'>
         <div className={classes.contactUs__grid}>
           <div className={classes.contactUs__img}>
-            <img src='/assets/contact-page.jpg' alt='contact us' />
+            <LazyImage imgSrc='/assets/contact-page.jpg' imgAlt='contact us' />
           </div>
 
           <div className={classes.contactUs__info}>

@@ -1,8 +1,13 @@
+import dynamic from 'next/dynamic';
 import { v4 as uuidv4 } from 'uuid';
 
 import classes from './FooterLinksContainer.module.scss';
 
-import { FooterLinks, MyLink } from '../../components';
+const FooterLinks = dynamic(() =>
+  import('../../components/FooterLinks/FooterLinks')
+);
+const MyLink = dynamic(() => import('../../components/MyLink/MyLink'));
+
 import { FacebookIcon, InstagramIcon } from '../../Icons';
 
 const FooterLinksContainer = () => {

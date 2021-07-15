@@ -1,13 +1,17 @@
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
 import classes from './ProductsSliderSection.module.scss';
-
-import { Loader, ProductsCard } from '../../components';
-import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
 import { useProductsContext } from '../../contexts/products_context';
+
+import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
+const Loader = dynamic(() => import('../../components/Loader/Loader'));
+const ProductsCard = dynamic(() =>
+  import('../../components/ProductsCard/ProductsCard')
+);
 
 const ProductsSliderSection = ({ products, title }) => {
   const { loading } = useProductsContext();

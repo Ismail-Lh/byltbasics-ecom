@@ -1,10 +1,19 @@
+import dynamic from 'next/dynamic';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './CollectionsContainer.module.scss';
 
-import { ProductsCard, SortProducts, Filters, Loader } from '../../components';
 import { useFiltersContext } from '../../contexts/filters_context';
 import { useProductsContext } from '../../contexts/products_context';
+
+const ProductsCard = dynamic(() =>
+  import('../../components/ProductsCard/ProductsCard')
+);
+const SortProducts = dynamic(() =>
+  import('../../components/SortProducts/SortProducts')
+);
+const Filters = dynamic(() => import('../../components/Filters/Filters'));
+const Loader = dynamic(() => import('../../components/Loader/Loader'));
 
 const CollectionsContainer = () => {
   const { loading } = useProductsContext();

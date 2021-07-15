@@ -1,8 +1,13 @@
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
-import { Layout } from '../../../components';
-import { ShopPageContainer } from '../../../containers';
 import { useFiltersContext } from '../../../contexts/filters_context';
+
+import { Layout } from '../../../components';
+
+const ShopPageContainer = dynamic(() =>
+  import('../../../containers/ShopPageContainer/ShopPageContainer')
+);
 
 const WomensCollections = () => {
   const { updateCollection } = useFiltersContext();

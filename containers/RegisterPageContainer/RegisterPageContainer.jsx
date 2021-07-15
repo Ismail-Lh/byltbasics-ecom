@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
 import classes from './RegisterPageContainer.module.scss';
 
 import useForm from '../../hooks/useForm';
 import { useAuthContext } from '../../contexts/auth_context';
-import { Alert, Button, FormInput, Loader, MyLink } from '../../components';
+
+const Alert = dynamic(() => import('../../components/Alert/Alert'));
+const Button = dynamic(() => import('../../components/Button/Button'));
+const FormInput = dynamic(() => import('../../components/FormInput/FormInput'));
+const Loader = dynamic(() => import('../../components/Loader/Loader'));
+const MyLink = dynamic(() => import('../../components/MyLink/MyLink'));
 
 const RegisterPageContainer = () => {
   const { value, error, handleChange, handleSubmit } = useForm();

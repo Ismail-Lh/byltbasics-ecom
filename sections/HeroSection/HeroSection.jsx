@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
+import { useState, useEffect, useRef } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
 import classes from './HeroSection.module.scss';
 import { HeroData } from '../../utils/constants';
-import { HeroImage } from '../../components';
+
+const HeroImage = dynamic(() =>
+  import('../../components/Hero/HeroImage/HeroImage')
+);
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
 
 const HeroSection = () => {
