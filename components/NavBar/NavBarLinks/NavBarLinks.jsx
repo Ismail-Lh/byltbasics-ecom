@@ -40,9 +40,18 @@ const NavBarLinks = () => {
           <li
             className={classes.navbar__links}
             key={id}
-            onClick={() => handelClick(link)}
-            onMouseEnter={() => handelHover(link, true)}
-            onMouseLeave={() => handelHover(link, false)}>
+            onClick={e => {
+              e.stopPropagation();
+              handelClick(link);
+            }}
+            onMouseEnter={e => {
+              e.stopPropagation();
+              handelHover(link, true);
+            }}
+            onMouseLeave={e => {
+              e.stopPropagation();
+              handelHover(link, false);
+            }}>
             <Link href={`/collections/${route}`}>{link}</Link>
 
             {link === 'men' && (

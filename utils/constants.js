@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 export const NavbarLinks = [
   { id: uuidv4(), link: 'men', route: 'shop-men' },
   { id: uuidv4(), link: 'women', route: 'shop-women' },
-  { id: uuidv4(), link: 'bundles', route: 'bundles' },
   { id: uuidv4(), link: 'last call', route: 'sales' },
 ];
 

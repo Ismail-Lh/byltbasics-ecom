@@ -8,7 +8,6 @@ export { default as FilterType } from './FilterType/FilterType';
 export { default as FiltersModel } from './FiltersModel/FiltersModel';
 export { default as FormInput } from './FormInput/FormInput';
 export { default as Layout } from './Layout/Layout';
-export { default as LazyImage } from './LazyImage/LazyImage';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';
