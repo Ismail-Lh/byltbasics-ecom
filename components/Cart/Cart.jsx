@@ -1,6 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
-import { useClickOutside } from 'react-click-outside-hook';
 
 import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
@@ -8,7 +7,6 @@ import { useAuthContext } from '../../contexts/auth_context';
 
 import { Button, CartItems } from '..';
 import { CloseIcon } from '../../Icons';
-import { useEffect } from 'react';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -24,8 +22,6 @@ const Cart = () => {
   } = useCartContext();
 
   const { user } = useAuthContext();
-
-  const [ref, isClickedOutside] = useClickOutside();
 
   const createCheckoutSession = async () => {
     //  Get Stripe.js instance
@@ -44,10 +40,6 @@ const Cart = () => {
 
     if (result.error) alert(result.error.message);
   };
-
-  // useEffect(() => {
-  //   isClickedOutside && closeCart();
-  // }, [isClickedOutside]);
 
   return (
     <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
