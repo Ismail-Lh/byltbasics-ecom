@@ -45,12 +45,12 @@ const Cart = () => {
     if (result.error) alert(result.error.message);
   };
 
-  useEffect(() => {
-    closeCart();
-  }, [isClickedOutside]);
+  // useEffect(() => {
+  //   isClickedOutside && closeCart();
+  // }, [isClickedOutside]);
 
   return (
-    <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`} ref={ref}>
+    <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
       <div className={classes.cart__header}>
         <div className={classes.close}>
           <button onClick={closeCart}>
