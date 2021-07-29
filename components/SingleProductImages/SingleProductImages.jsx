@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
+import { motion } from 'framer-motion';
 
 const SingleProductImages = ({ product, color }) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -12,10 +14,14 @@ const SingleProductImages = ({ product, color }) => {
     return (
       <>
         {product?.images?.map((img, idx) => (
-          <div key={idx} onClick={() => handelClick && handelClick(idx)}>
-            <img
+          <div
+            key={idx}
+            onClick={() => handelClick && handelClick(idx)}
+            className={classes.imgContainer}>
+            <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${img}`}
               alt={`${product?.name}-${color}-${idx}`}
+              layout='fill'
             />
           </div>
         ))}
@@ -32,9 +38,10 @@ const SingleProductImages = ({ product, color }) => {
       ) : (
         <div className={classes.singleProductImages_mobile}>
           <div className={classes.big_image}>
-            <img
+            <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
               alt={`${product?.name}-${color}-${imageIndex}`}
+              layout='fill'
             />
           </div>
 

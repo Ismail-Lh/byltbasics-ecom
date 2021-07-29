@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useProductsContext } from '../../contexts/products_context';
+import { stagger } from '../../utils/animations';
 
 const HeroImage = dynamic(() =>
   import('../../components/Hero/HeroImage/HeroImage')
@@ -40,7 +42,7 @@ const HomePageContainer = () => {
   };
 
   return (
-    <div>
+    <>
       <HeroSection />
 
       <ProductsCategorySection />
@@ -105,7 +107,7 @@ const HomePageContainer = () => {
           route='/pages/rewards'
         />
       </SplitContentSection>
-    </div>
+    </>
   );
 };
 

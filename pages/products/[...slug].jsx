@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
 import { Layout } from '../../components';
@@ -13,7 +14,9 @@ const SingleProductPage = () => {
 
   return (
     <Layout title={`${name.toUpperCase()} | BYLT Premium`}>
-      <SingleProductContainer />
+      <motion.div exit={{ opacity: 0 }}>
+        <SingleProductContainer />
+      </motion.div>
     </Layout>
   );
 };

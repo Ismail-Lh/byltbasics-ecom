@@ -1,3 +1,5 @@
+import { AnimatePresence } from 'framer-motion';
+
 import '../styles/globals.scss';
 
 import { NavBar, ProductModal } from '../components';
@@ -12,17 +14,19 @@ import { CartProvider } from '../contexts/cart_context';
 // import { firebase } from '../lib/firebase.prod';
 // import { addDataBase } from '../productsData';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
   return (
     <AuthProvider>
       <FirebaseProvider>
         <ProductsProvider>
           <FiltersProvider>
             <CartProvider>
-              <NavBar />
-              <ProductModal />
-              <Component {...pageProps} />
-              <FooterSection />
+              <AnimatePresence exitBeforeEnter>
+                <NavBar />
+                <ProductModal />
+                <Component {...pageProps} key={router.route} />
+                <FooterSection />
+              </AnimatePresence>
             </CartProvider>
           </FiltersProvider>
         </ProductsProvider>

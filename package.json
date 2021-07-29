@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "firebase": "^8.4.3",
     "firebase-admin": "^9.9.0",
+    "framer-motion": "^4.1.17",
     "keen-slider": "^5.4.0",
     "micro": "^9.3.4",
     "moment": "^2.29.1",

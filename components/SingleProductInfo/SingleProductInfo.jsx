@@ -10,6 +10,8 @@ import {
   ProductSizes,
   ProductQuantity,
 } from '..';
+import { fadeInUp, stagger } from '../../utils/animations';
+import { motion } from 'framer-motion';
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
   const [size, setSize] = useState('');
@@ -23,60 +25,70 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
   }, [color]);
 
   return (
-    <div className={classes.singleProduct_info}>
+    <motion.div
+      className={classes.singleProduct_info}
+      initial='initial'
+      animate='animate'
+      variants={stagger}>
       <div className={classes.product}>
-        <div className={classes.product__sale}>
+        <motion.div variants={fadeInUp} className={classes.product__sale}>
           <ProductSale discountPer={product?.discountPer} />
-        </div>
+        </motion.div>
 
-        <h1 className={classes.product__title}>{product?.name}</h1>
+        <motion.h1 variants={fadeInUp} className={classes.product__title}>
+          {product?.name}
+        </motion.h1>
 
-        <div className={classes.product__price}>
+        <motion.div variants={fadeInUp} className={classes.product__price}>
           <ProductPrice
             price={product?.price}
             discountPer={product?.discountPer}
           />
-        </div>
+        </motion.div>
       </div>
 
-      <p className={classes.product__payment}>
+      <motion.p variants={fadeInUp} className={classes.product__payment}>
         4 interest-free payments. Available for orders above $35.{' '}
         <span>Klarna</span>.{' '}
         <button className={classes.btn_more}>Learn more</button>
-      </p>
+      </motion.p>
 
-      <p className={classes.product__description}>
+      <motion.p variants={fadeInUp} className={classes.product__description}>
         {product?.description}{' '}
         <button className={classes.btn_more}>Learn more</button>
-      </p>
+      </motion.p>
 
-      <div className={classes.product__colors}>
+      <motion.div variants={fadeInUp} className={classes.product__colors}>
         <ProductColors
           productColors={product?.colors}
           color={color}
           setColor={changeColor}
         />
-      </div>
+      </motion.div>
 
-      <ProductSizes
-        productSizes={product?.sizes}
-        size={size}
-        setSize={setSize}
-      />
+      <motion.div variants={fadeInUp}>
+        <ProductSizes
+          productSizes={product?.sizes}
+          size={size}
+          setSize={setSize}
+        />
+      </motion.div>
 
-      <ProductQuantity
-        stock={product?.stock}
-        amount={amount}
-        setAmount={setAmount}
-      />
+      <motion.div variants={fadeInUp}>
+        <ProductQuantity
+          stock={product?.stock}
+          amount={amount}
+          setAmount={setAmount}
+        />
+      </motion.div>
 
-      <div className={classes.product__addToCart}>
+      <motion.div variants={fadeInUp} className={classes.product__addToCart}>
         <button
           onClick={() =>
             size && addToCart(amount, size, color, product?.id, product)
           }>{`${size ? 'add to cart' : 'select a size'}`}</button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

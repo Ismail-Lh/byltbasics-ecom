@@ -8,6 +8,8 @@ import classes from './ProductsSliderSection.module.scss';
 import { useProductsContext } from '../../contexts/products_context';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
+import { stagger } from '../../utils/animations';
+import { motion } from 'framer-motion';
 const Loader = dynamic(() => import('../../components/Loader/Loader'));
 const ProductsCard = dynamic(() =>
   import('../../components/ProductsCard/ProductsCard')
@@ -49,23 +51,26 @@ const ProductsSliderSection = ({ products, title }) => {
               <div className={classes.products__grid}>
                 <h2 className={classes.title}>{title}</h2>
 
-                <div className={classes.products}>
+                <motion.div variants={stagger} className={classes.products}>
                   {products?.map(product => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
-                </div>
+                </motion.div>
               </div>
             ) : (
               <div className={classes.products__slider}>
                 <h2 className={classes.title}>{title}</h2>
 
-                <div ref={sliderRef} className='keen-slider'>
+                <motion.div
+                  variants={stagger}
+                  ref={sliderRef}
+                  className='keen-slider'>
                   {products?.map(product => (
                     <div className='keen-slider__slide' key={product.id}>
                       <ProductsCard key={product.id} product={product} />
                     </div>
                   ))}
-                </div>
+                </motion.div>
 
                 {slider && (
                   <div className='arrows'>
