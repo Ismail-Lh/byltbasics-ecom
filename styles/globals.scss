@@ -8,12 +8,22 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: $primary-font-family;
   background-color: $white-color;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+    background-color: $white-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $venice-blue-color;
+  }
 }
 
 a,

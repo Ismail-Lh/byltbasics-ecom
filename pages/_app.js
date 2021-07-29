@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import '../styles/globals.scss';
 
-import { NavBar, ProductModal } from '../components';
+import { NavBar, ProductModal, ScrollToTop } from '../components';
 import { FooterSection } from '../sections';
 
 import { AuthProvider } from '../contexts/auth_context';
@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps, router }) {
           <FiltersProvider>
             <CartProvider>
               <AnimatePresence exitBeforeEnter>
+                <ScrollToTop />
                 <NavBar />
                 <ProductModal />
                 <Component {...pageProps} key={router.route} />
