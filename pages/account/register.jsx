@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { Layout } from '../../components';
+import { pageAnimation } from '../../utils/animations';
 
 const RegisterPageContainer = dynamic(() =>
   import('../../containers/RegisterPageContainer/RegisterPageContainer')
@@ -8,7 +10,13 @@ const RegisterPageContainer = dynamic(() =>
 const RegisterPage = () => {
   return (
     <Layout title='Create Account | BYLT Basics'>
-      <RegisterPageContainer />
+      <motion.div
+        variants={pageAnimation}
+        initial='initial'
+        animate='animate'
+        exit='exit'>
+        <RegisterPageContainer />
+      </motion.div>
     </Layout>
   );
 };

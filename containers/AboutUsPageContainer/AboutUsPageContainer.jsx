@@ -6,7 +6,7 @@ const AboutUsPageContainer = () => {
   return (
     <div>
       <div className={classes.backgroundImage}>
-        <BackgroundImage imgSrc='about-us-bg.jpg' title='our story' />
+        <BackgroundImage srcImg='about-us-bg' titleBg='our story' />
       </div>
       <div className='container'>
         <div className={classes.aboutUs}>
@@ -33,8 +33,8 @@ const AboutUsPageContainer = () => {
             {/* ------------------------------ */}
             <div className={classes.splitContent__image_1}>
               <img
-                src='/assets/about-us-split-content-img-1.jpg'
-                alt='about-us-split-content-img-1'
+                src='/assets/about-us-split-content-img.jpg'
+                alt='about-us-split-content-img'
               />
             </div>
           </div>
