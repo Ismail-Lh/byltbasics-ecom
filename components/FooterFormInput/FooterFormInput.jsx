@@ -1,8 +1,10 @@
+import { motion } from 'framer-motion';
+import { fadeInUp } from '../../utils/animations';
 import classes from './FooterFormInput.module.scss';
 
 const FooterFormInput = () => {
   return (
-    <div className={classes.footer__form_input}>
+    <motion.div variants={fadeInUp} className={classes.footer__form_input}>
       <p className={classes.text}>
         Upgrade your style with Premium Basics. Sign up now for up to 20% Off!
       </p>
@@ -16,7 +18,7 @@ const FooterFormInput = () => {
           submit
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

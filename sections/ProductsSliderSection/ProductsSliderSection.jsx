@@ -8,8 +8,9 @@ import classes from './ProductsSliderSection.module.scss';
 import { useProductsContext } from '../../contexts/products_context';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
-import { stagger } from '../../utils/animations';
+import { fadeInUp, heroImageAnimation, stagger } from '../../utils/animations';
 import { motion } from 'framer-motion';
+import useScroll from '../../hooks/useScroll';
 const Loader = dynamic(() => import('../../components/Loader/Loader'));
 const ProductsCard = dynamic(() =>
   import('../../components/ProductsCard/ProductsCard')
@@ -40,26 +41,37 @@ const ProductsSliderSection = ({ products, title }) => {
     },
   });
 
+  const [element, controls] = useScroll();
+
   return (
-    <div className={classes.products}>
-      <div className='container'>
+    <motion.div className={classes.products} ref={element}>
+      <motion.div
+        className='container'
+        variants={heroImageAnimation}
+        animate={controls}>
         {loading ? (
           <Loader message='products loading...' />
         ) : (
           <>
             {products?.length <= 4 ? (
-              <div className={classes.products__grid}>
-                <h2 className={classes.title}>{title}</h2>
+              <motion.div variants={stagger} className={classes.products__grid}>
+                <motion.h2 variants={fadeInUp} className={classes.title}>
+                  {title}
+                </motion.h2>
 
                 <motion.div variants={stagger} className={classes.products}>
                   {products?.map(product => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
                 </motion.div>
-              </div>
+              </motion.div>
             ) : (
-              <div className={classes.products__slider}>
-                <h2 className={classes.title}>{title}</h2>
+              <motion.div
+                variants={stagger}
+                className={classes.products__slider}>
+                <motion.h2 variants={fadeInUp} className={classes.title}>
+                  {title}
+                </motion.h2>
 
                 <motion.div
                   variants={stagger}
@@ -82,12 +94,12 @@ const ProductsSliderSection = ({ products, title }) => {
                     />
                   </div>
                 )}
-              </div>
+              </motion.div>
             )}
           </>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

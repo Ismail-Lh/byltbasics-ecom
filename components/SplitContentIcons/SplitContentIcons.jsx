@@ -7,35 +7,45 @@ import {
   FriendsIcon,
   MoneyIcon,
 } from '../../Icons';
+import { motion } from 'framer-motion';
+import { fadeInUp, stagger } from '../../utils/animations';
 
 const SplitContentIcons = ({ isTextFirst }) => {
   return (
-    <div className={classes.split__content_icons}>
+    <motion.div variants={stagger} className={classes.split__content_icons}>
       {isTextFirst ? (
         <>
-          <div className={classes.split__content_icon_1}>
+          <motion.div
+            variants={fadeInUp}
+            className={classes.split__content_icon_1}>
             <WrinkleIcon />
             <span>wrinkle free</span>
-          </div>
+          </motion.div>
 
-          <div className={classes.split__content_icon_1}>
+          <motion.div
+            variants={fadeInUp}
+            className={classes.split__content_icon_1}>
             <ShrinkIcon />
             <span>no shrink</span>
-          </div>
+          </motion.div>
 
-          <div className={classes.split__content_icon_1}>
+          <motion.div
+            variants={fadeInUp}
+            className={classes.split__content_icon_1}>
             <AthleticIcon />
             <span>athletic fit</span>
-          </div>
+          </motion.div>
         </>
       ) : (
-        <div className={classes.split__content_icon_2}>
+        <motion.div
+          variants={fadeInUp}
+          className={classes.split__content_icon_2}>
           <FriendsIcon />
           <p> =</p>
           <MoneyIcon />
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

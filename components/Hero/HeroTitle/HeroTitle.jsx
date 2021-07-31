@@ -1,10 +1,15 @@
+import { motion } from 'framer-motion';
+import { fadeInUp } from '../../../utils/animations';
 import classes from './HeroTitle.module.scss';
 
 const HeroTitle = ({ title, color }) => {
   return (
-    <h1 className={classes.hero__title} style={{ color: color }}>
+    <motion.h1
+      variants={fadeInUp}
+      className={classes.hero__title}
+      style={{ color: color }}>
       {title}
-    </h1>
+    </motion.h1>
   );
 };
 

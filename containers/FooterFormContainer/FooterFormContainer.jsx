@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { heroImageAnimation, stagger } from '../../utils/animations';
 
 import classes from './FooterFormContainer.module.scss';
 
@@ -11,10 +13,12 @@ const FooterFormInput = dynamic(() =>
 
 const FooterFormContainer = () => {
   return (
-    <div className={classes.footer__form}>
-      <FooterFormText />
-      <FooterFormInput />
-    </div>
+    <motion.div variants={heroImageAnimation}>
+      <motion.div variants={stagger} className={classes.footer__form}>
+        <FooterFormText />
+        <FooterFormInput />
+      </motion.div>
+    </motion.div>
   );
 };
 

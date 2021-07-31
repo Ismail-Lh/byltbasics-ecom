@@ -1,11 +1,17 @@
+import { motion } from 'framer-motion';
+import { fadeInUp, stagger } from '../../utils/animations';
 import classes from './SplitContentText.module.scss';
 
 const SplitContentText = ({ title, text }) => {
   return (
-    <>
-      <h2 className={classes.split__content_title}>{title}</h2>
-      <p className={classes.split__content_text}>{text}</p>
-    </>
+    <motion.div variants={stagger}>
+      <motion.h2 variants={fadeInUp} className={classes.split__content_title}>
+        {title}
+      </motion.h2>
+      <motion.p variants={fadeInUp} className={classes.split__content_text}>
+        {text}
+      </motion.p>
+    </motion.div>
   );
 };
 

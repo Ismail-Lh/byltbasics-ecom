@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -10,6 +11,8 @@ const HeroImage = dynamic(() =>
   import('../../components/Hero/HeroImage/HeroImage')
 );
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
+import { heroAnimation, heroImageAnimation } from '../../utils/animations';
+import useScroll from '../../hooks/useScroll';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,6 +32,8 @@ const HeroSection = () => {
       setPause(false);
     },
   });
+
+  const [element, controls] = useScroll();
 
   useEffect(() => {
     sliderRef.current.addEventListener('mouseover', () => {
@@ -51,7 +56,7 @@ const HeroSection = () => {
   }, [pause, slider]);
 
   return (
-    <div className={classes.hero__section}>
+    <div className={classes.hero__section} ref={element}>
       <div ref={sliderRef} className='keen-slider'>
         {HeroData.map(
           ({
@@ -64,7 +69,11 @@ const HeroSection = () => {
             route,
             position,
           }) => (
-            <div className='keen-slider__slide' key={id}>
+            <motion.div
+              key={id}
+              className='keen-slider__slide'
+              variants={heroImageAnimation}
+              animate={controls}>
               <HeroImage
                 key={id}
                 title={title}
@@ -75,7 +84,7 @@ const HeroSection = () => {
                 color={color}
                 route={route}
               />
-            </div>
+            </motion.div>
           )
         )}
       </div>

@@ -20,7 +20,7 @@ import {
 } from '../containers';
 
 // UTILS
-import { pageAnimation } from '../utils/animations';
+import { leftToRight, pageAnimation, rightToLeft } from '../utils/animations';
 
 export default function Home() {
   const { popular_products } = useProductsContext();
@@ -75,8 +75,12 @@ export default function Home() {
             text='Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear.'
             isTextFirst={true}
             route='/pages/bylt-apparel-sizing-guide'
+            variants={leftToRight}
           />
-          <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
+
+          <motion.div variants={rightToLeft}>
+            <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
+          </motion.div>
         </SplitContentSection>
 
         <ProductsSliderSection
