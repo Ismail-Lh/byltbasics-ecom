@@ -1,25 +1,19 @@
 import dynamic from 'next/dynamic';
 
-import classes from './ProductsCategorySection.module.scss';
-import {
-  ProductsCategoryData_1,
-  ProductsCategoryData_2,
-} from '../../utils/constants';
+import classes from './ProductsCategorySection_1.module.scss';
+import { ProductsCategoryData_1 } from '../../utils/constants';
 import { motion } from 'framer-motion';
-import { stagger, leftToRight, rightToLeft } from '../../utils/animations';
+import { leftToRight } from '../../utils/animations';
 import useScroll from '../../hooks/useScroll';
 
 const ProductsCategoryCard1 = dynamic(() =>
   import('../../components/ProductsCategoryCard1/ProductsCategoryCard1')
 );
-const ProductsCategoryCard2 = dynamic(() =>
-  import('../../components/ProductsCategoryCard2/ProductsCategoryCard2')
-);
 
 const ProductsCategorySection = () => {
   const [element, controls] = useScroll();
   return (
-    <div className='container' variants={stagger} ref={element}>
+    <div className='container' ref={element}>
       <motion.div
         variants={leftToRight}
         animate={controls}
@@ -34,7 +28,7 @@ const ProductsCategorySection = () => {
         ))}
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         variants={rightToLeft}
         animate={controls}
         className={classes.products__category_2}>
@@ -46,7 +40,7 @@ const ProductsCategorySection = () => {
             route={route}
           />
         ))}
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };

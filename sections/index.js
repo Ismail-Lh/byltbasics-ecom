@@ -1,6 +1,8 @@
 export { default as HeroSection } from './HeroSection/HeroSection';
 
-export { default as ProductsCategorySection } from './ProductsCategorySection/ProductsCategorySection';
+export { default as ProductsCategorySection_1 } from './ProductsCategorySection_1/ProductsCategorySection_1';
+
+export { default as ProductsCategorySection_2 } from './ProductsCategorySection_2/ProductsCategorySection_2';
 
 export { default as ProductsSliderSection } from './ProductsSliderSection/ProductsSliderSection';
 

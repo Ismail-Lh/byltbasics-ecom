@@ -9,7 +9,8 @@ import {
   HeroSection,
   ImagesGridSection,
   ProductsSliderSection,
-  ProductsCategorySection,
+  ProductsCategorySection_1,
+  ProductsCategorySection_2,
   SplitContentSection,
 } from '../sections';
 
@@ -42,7 +43,7 @@ export default function Home() {
         exit='exit'>
         <HeroSection />
 
-        <ProductsCategorySection />
+        <ProductsCategorySection_1 />
 
         <HeroImage
           title="women's essential collection"
@@ -69,6 +70,8 @@ export default function Home() {
           imgUrlMobile='hero__mobile-performance-collection.jpg'
         />
 
+        <ProductsCategorySection_2 />
+
         <SplitContentSection isTextFirst={true} order='2'>
           <SplitContentTextContainer
             title='basics to last a lifetime'
@@ -83,12 +86,7 @@ export default function Home() {
           </motion.div>
         </SplitContentSection>
 
-        <ProductsSliderSection
-          title="women's popular products"
-          products={getPopularProducts('women')}
-        />
-
-        <ImagesGridSection />
+        {/* <ImagesGridSection /> */}
 
         <HeroImage
           title='executive collection'
@@ -97,6 +95,11 @@ export default function Home() {
           color='#fff'
           route='/collections/executive-collection'
           imgUrlDesktop='hero__desktop-executive-collection.jpg'
+        />
+
+        <ProductsSliderSection
+          title="women's popular products"
+          products={getPopularProducts('women')}
         />
 
         <SplitContentSection isTextFirst={false} order='-1'>

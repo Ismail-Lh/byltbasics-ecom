@@ -13,13 +13,13 @@ const FooterLinksContainer = dynamic(() =>
 const FooterSection = () => {
   const [element, controls] = useScroll();
   return (
-    <motion.div ref={element}>
+    <div ref={element}>
       <motion.div variants={stagger} animate={controls} className='container'>
         <FooterFormContainer />
 
         <FooterLinksContainer />
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

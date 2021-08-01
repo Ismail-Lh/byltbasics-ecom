@@ -36,26 +36,26 @@ const HeroImage = ({
   const [element, controls] = useScroll();
 
   return (
-    <motion.div variants={stagger} ref={element}>
-      <motion.div variants={heroImageAnimation} animate={controls}>
-        <Wrapper
-          imgUrlDesktop={imgUrlDesktop}
-          imgUrlMobile={imgUrlMobile}
-          className='hero__slide'>
-          <div className={positionStyle(position)}>
-            <HeroSubtitle subtitle={subtitle} color={color} />
+    <div ref={element}>
+      <Wrapper
+        variants={heroImageAnimation}
+        animate={controls}
+        imgUrlDesktop={imgUrlDesktop}
+        imgUrlMobile={imgUrlMobile}
+        className='hero__slide'>
+        <motion.div variants={stagger} className={positionStyle(position)}>
+          <HeroSubtitle subtitle={subtitle} color={color} />
 
-            <HeroTitle title={title} color={color} />
+          <HeroTitle title={title} color={color} />
 
-            <motion.div variants={fadeInUp}>
-              <Button route={route} color={color}>
-                shop now
-              </Button>
-            </motion.div>
-          </div>
-        </Wrapper>
-      </motion.div>
-    </motion.div>
+          <motion.div variants={fadeInUp}>
+            <Button route={route} color={color}>
+              shop now
+            </Button>
+          </motion.div>
+        </motion.div>
+      </Wrapper>
+    </div>
   );
 };
 
