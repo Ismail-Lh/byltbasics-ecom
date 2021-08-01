@@ -1,9 +1,16 @@
+import dynamic from 'next/dynamic';
 import { AnimatePresence } from 'framer-motion';
 
 import '../styles/globals.scss';
 
-import { NavBar, ProductModal, ScrollToTop } from '../components';
-import { FooterSection } from '../sections';
+const DynamicProductModal = dynamic(() =>
+  import('../components/ProductModal/ProductModal')
+);
+const DynamicFooterSection = dynamic(() =>
+  import('../sections/FooterSection/FooterSection')
+);
+
+import { NavBar, ScrollToTop } from '../components';
 
 import { AuthProvider } from '../contexts/auth_context';
 import { FirebaseProvider } from '../contexts/firebase_context';
@@ -22,11 +29,11 @@ function MyApp({ Component, pageProps, router }) {
           <FiltersProvider>
             <CartProvider>
               <AnimatePresence exitBeforeEnter>
-                <ScrollToTop />
-                <NavBar />
-                <ProductModal />
+                <ScrollToTop key='scrollToTop' />
+                <NavBar key='navBar' />
+                <DynamicProductModal key='productModal' />
                 <Component {...pageProps} key={router.route} />
-                <FooterSection />
+                <DynamicFooterSection key='footer' />
               </AnimatePresence>
             </CartProvider>
           </FiltersProvider>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
@@ -14,14 +13,10 @@ const SingleProductImages = ({ product, color }) => {
     return (
       <>
         {product?.images?.map((img, idx) => (
-          <div
-            key={idx}
-            onClick={() => handelClick && handelClick(idx)}
-            className={classes.imgContainer}>
-            <Image
+          <div key={idx} onClick={() => handelClick && handelClick(idx)}>
+            <img
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${img}`}
               alt={`${product?.name}-${color}-${idx}`}
-              layout='fill'
             />
           </div>
         ))}
@@ -38,10 +33,9 @@ const SingleProductImages = ({ product, color }) => {
       ) : (
         <div className={classes.singleProductImages_mobile}>
           <div className={classes.big_image}>
-            <Image
+            <img
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
               alt={`${product?.name}-${color}-${imageIndex}`}
-              layout='fill'
             />
           </div>
 
