@@ -4,13 +4,6 @@ import HeroTitle from '../HeroTitle/HeroTitle';
 import HeroSubtitle from '../HeroSubtitle/HeroSubtitle';
 
 import { Button } from '../../../components';
-import { motion } from 'framer-motion';
-import {
-  fadeInUp,
-  heroImageAnimation,
-  stagger,
-} from '../../../utils/animations';
-import useScroll from '../../../hooks/useScroll';
 
 const HeroImage = ({
   title,
@@ -33,27 +26,21 @@ const HeroImage = ({
     return CLASS_NAME;
   };
 
-  const [element, controls] = useScroll();
-
   return (
-    <div ref={element}>
+    <div>
       <Wrapper
-        variants={heroImageAnimation}
-        animate={controls}
         imgUrlDesktop={imgUrlDesktop}
         imgUrlMobile={imgUrlMobile}
         className='hero__slide'>
-        <motion.div variants={stagger} className={positionStyle(position)}>
+        <div className={positionStyle(position)}>
           <HeroSubtitle subtitle={subtitle} color={color} />
 
           <HeroTitle title={title} color={color} />
 
-          <motion.div variants={fadeInUp}>
-            <Button route={route} color={color}>
-              shop now
-            </Button>
-          </motion.div>
-        </motion.div>
+          <Button route={route} color={color}>
+            shop now
+          </Button>
+        </div>
       </Wrapper>
     </div>
   );

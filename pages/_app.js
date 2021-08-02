@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { AnimatePresence } from 'framer-motion';
 
 import '../styles/globals.scss';
 
@@ -28,13 +27,11 @@ function MyApp({ Component, pageProps, router }) {
         <ProductsProvider>
           <FiltersProvider>
             <CartProvider>
-              <AnimatePresence exitBeforeEnter>
-                <ScrollToTop key='scrollToTop' />
-                <NavBar key='navBar' />
-                <DynamicProductModal key='productModal' />
-                <Component {...pageProps} key={router.route} />
-                <DynamicFooterSection key='footer' />
-              </AnimatePresence>
+              <ScrollToTop />
+              <NavBar />
+              <DynamicProductModal />
+              <Component {...pageProps} key={router.route} />
+              <DynamicFooterSection />
             </CartProvider>
           </FiltersProvider>
         </ProductsProvider>

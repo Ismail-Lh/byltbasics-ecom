@@ -10,7 +10,6 @@ import {
 } from '../../sections';
 
 import { SplitContentImageContainer, SplitContentTextContainer } from '../';
-import { leftToRight } from '../../utils/animations';
 
 const HomePageContainer = () => {
   const { popular_products } = useProductsContext();
@@ -24,7 +23,7 @@ const HomePageContainer = () => {
   };
 
   return (
-    <>
+    <div>
       <HeroSection />
 
       <ProductsCategorySection_1 />
@@ -62,7 +61,6 @@ const HomePageContainer = () => {
           text='Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear.'
           isTextFirst={true}
           route='/pages/bylt-apparel-sizing-guide'
-          variants={leftToRight}
         />
 
         <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
@@ -93,7 +91,7 @@ const HomePageContainer = () => {
           route='/pages/rewards'
         />
       </SplitContentSection>
-    </>
+    </div>
   );
 };
 

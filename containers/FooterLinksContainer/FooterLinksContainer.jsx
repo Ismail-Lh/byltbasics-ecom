@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 
 import classes from './FooterLinksContainer.module.scss';
@@ -10,130 +9,117 @@ const FooterLinks = dynamic(() =>
 const MyLink = dynamic(() => import('../../components/MyLink/MyLink'));
 
 import { FacebookIcon, InstagramIcon } from '../../Icons';
-import { fadeInUp, heroImageAnimation, stagger } from '../../utils/animations';
 
 const FooterLinksContainer = () => {
   return (
-    <motion.div variants={heroImageAnimation} className='container'>
-      <motion.div variants={stagger} className={classes.footer__links}>
-        <motion.div variants={stagger} className={classes.footer__links_1}>
-          <motion.img
-            variants={fadeInUp}
-            src='/assets/Bylt-Logo.png'
-            alt='Bylt-Logo'
-          />
+    <div className='container'>
+      <div className={classes.footer__links}>
+        <div className={classes.footer__links_1}>
+          <img src='/assets/Bylt-Logo.png' alt='Bylt-Logo' />
 
-          <motion.div variants={fadeInUp}>
+          <div>
             <MyLink route='https://www.facebook.com/BYLTbasics/'>
               <FacebookIcon />
             </MyLink>
             <MyLink route='https://www.instagram.com/byltbasics/'>
               <InstagramIcon />
             </MyLink>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div variants={fadeInUp}>
-          <FooterLinks
-            links={[
-              { link: 'our story', route: 'pages/about-us', id: uuidv4() },
-              {
-                link: 'our fabrics',
-                route: 'pages/fabric-technology',
-                id: uuidv4(),
-              },
-              {
-                link: 'gift cards',
-                route: 'products/bylt-gift-card',
-                id: uuidv4(),
-              },
-              {
-                link: 'bylt fresh',
-                route: 'products/bylt-fresh',
-                id: uuidv4(),
-              },
-            ]}
-          />
-        </motion.div>
+        <FooterLinks
+          links={[
+            { link: 'our story', route: 'pages/about-us', id: uuidv4() },
+            {
+              link: 'our fabrics',
+              route: 'pages/fabric-technology',
+              id: uuidv4(),
+            },
+            {
+              link: 'gift cards',
+              route: 'products/bylt-gift-card',
+              id: uuidv4(),
+            },
+            {
+              link: 'bylt fresh',
+              route: 'products/bylt-fresh',
+              id: uuidv4(),
+            },
+          ]}
+        />
 
-        <motion.div variants={fadeInUp}>
-          <FooterLinks
-            links={[
-              {
-                link: 'frequently asked questions',
-                route: 'pages/frequently-asked-questions',
-                id: uuidv4(),
-              },
-              {
-                link: 'returns & exchanges',
-                route: 'pages/returns-exchanges',
-                id: uuidv4(),
-              },
-              {
-                link: 'contact us',
-                route: 'products/contact-us',
-                id: uuidv4(),
-              },
-              {
-                link: 'bylt rewards',
-                route: 'products/rewards',
-                id: uuidv4(),
-              },
-            ]}
-          />
-        </motion.div>
+        <FooterLinks
+          links={[
+            {
+              link: 'frequently asked questions',
+              route: 'pages/frequently-asked-questions',
+              id: uuidv4(),
+            },
+            {
+              link: 'returns & exchanges',
+              route: 'pages/returns-exchanges',
+              id: uuidv4(),
+            },
+            {
+              link: 'contact us',
+              route: 'products/contact-us',
+              id: uuidv4(),
+            },
+            {
+              link: 'bylt rewards',
+              route: 'products/rewards',
+              id: uuidv4(),
+            },
+          ]}
+        />
 
-        <motion.div variants={fadeInUp}>
-          <FooterLinks
-            links={[
-              {
-                link: 'shipping policy',
-                route: 'pages/shipping-policies-new',
-                id: uuidv4(),
-              },
-              {
-                link: 'returns policy',
-                route: 'pages/returns-exchanges-new',
-                id: uuidv4(),
-              },
-              {
-                link: 'terms of use',
-                route: 'products/terms-and-conditions',
-                id: uuidv4(),
-              },
-              {
-                link: 'privacy policy',
-                route: 'products/privacy-policy',
-                id: uuidv4(),
-              },
-            ]}
-          />
-        </motion.div>
+        <FooterLinks
+          links={[
+            {
+              link: 'shipping policy',
+              route: 'pages/shipping-policies-new',
+              id: uuidv4(),
+            },
+            {
+              link: 'returns policy',
+              route: 'pages/returns-exchanges-new',
+              id: uuidv4(),
+            },
+            {
+              link: 'terms of use',
+              route: 'products/terms-and-conditions',
+              id: uuidv4(),
+            },
+            {
+              link: 'privacy policy',
+              route: 'products/privacy-policy',
+              id: uuidv4(),
+            },
+          ]}
+        />
 
-        <motion.div variants={fadeInUp}>
-          <FooterLinks
-            links={[
-              {
-                link: 'cookie policy',
-                route: 'pages/cookie-policy',
-                id: uuidv4(),
-              },
-              {
-                link: 'accessibility statement',
-                route: 'pages/accessibility',
-                id: uuidv4(),
-              },
-              {
-                link: 'california privacy statement',
-                route: 'products/california-privacy-statement',
-                id: uuidv4(),
-              },
-            ]}
-          />
-        </motion.div>
-      </motion.div>
+        <FooterLinks
+          links={[
+            {
+              link: 'cookie policy',
+              route: 'pages/cookie-policy',
+              id: uuidv4(),
+            },
+            {
+              link: 'accessibility statement',
+              route: 'pages/accessibility',
+              id: uuidv4(),
+            },
+            {
+              link: 'california privacy statement',
+              route: 'products/california-privacy-statement',
+              id: uuidv4(),
+            },
+          ]}
+        />
+      </div>
 
-      <motion.div variants={fadeInUp} className={classes.footer__copyright}>
+      <div className={classes.footer__copyright}>
         <p className={classes.footer__copyright_1}>
           COPYRIGHT © 2021, BYLT BASICS. ALL RIGHTS RESERVED.
         </p>
@@ -143,8 +129,8 @@ const FooterLinksContainer = () => {
             ISMAIL LAHBIYEB
           </MyLink>
         </p>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

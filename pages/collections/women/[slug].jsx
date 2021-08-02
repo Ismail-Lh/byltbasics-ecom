@@ -4,8 +4,6 @@ import { useEffect } from 'react';
 import { useFiltersContext } from '../../../contexts/filters_context';
 
 import { Layout } from '../../../components';
-import { motion } from 'framer-motion';
-import { pageAnimation } from '../../../utils/animations';
 
 const ShopPageContainer = dynamic(() =>
   import('../../../containers/ShopPageContainer/ShopPageContainer')
@@ -44,13 +42,7 @@ const WomensCollections = () => {
 
   return (
     <Layout title={`${title} | BYLT Basics`}>
-      <motion.div
-        variants={pageAnimation}
-        initial='initial'
-        animate='animate'
-        exit='exit'>
-        <ShopPageContainer />
-      </motion.div>
+      <ShopPageContainer />
     </Layout>
   );
 };

@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: ${props =>
     props.isTextFirst ? '40% 60%' : '60% 40%'};

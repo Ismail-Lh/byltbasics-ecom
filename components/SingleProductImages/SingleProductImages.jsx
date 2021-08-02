@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
-import { motion } from 'framer-motion';
 
 const SingleProductImages = ({ product, color }) => {
   const [imageIndex, setImageIndex] = useState(0);

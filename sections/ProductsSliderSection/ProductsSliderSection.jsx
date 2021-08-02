@@ -8,9 +8,6 @@ import classes from './ProductsSliderSection.module.scss';
 import { useProductsContext } from '../../contexts/products_context';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
-import { fadeInUp, heroImageAnimation, stagger } from '../../utils/animations';
-import { motion } from 'framer-motion';
-import useScroll from '../../hooks/useScroll';
 const Loader = dynamic(() => import('../../components/Loader/Loader'));
 const ProductsCard = dynamic(() =>
   import('../../components/ProductsCard/ProductsCard')
@@ -41,48 +38,38 @@ const ProductsSliderSection = ({ products, title }) => {
     },
   });
 
-  const [element, controls] = useScroll();
-
   return (
-    <motion.div className={classes.products} ref={element}>
-      <motion.div
-        className='container'
-        variants={heroImageAnimation}
-        animate={controls}>
+    <div className={classes.products}>
+      <div className='container'>
         {loading ? (
           <Loader message='products loading...' />
         ) : (
           <>
             {products?.length <= 4 ? (
-              <motion.div variants={stagger} className={classes.products__grid}>
-                <motion.h2 variants={fadeInUp} className={classes.title}>
+              <div className={classes.products__grid}>
+                <h2  className={classes.title}>
                   {title}
-                </motion.h2>
+                </h2>
 
-                <motion.div variants={stagger} className={classes.products}>
+                <div className={classes.products}>
                   {products?.map(product => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             ) : (
-              <motion.div
-                variants={stagger}
-                className={classes.products__slider}>
-                <motion.h2 variants={fadeInUp} className={classes.title}>
+              <div className={classes.products__slider}>
+                <h2  className={classes.title}>
                   {title}
-                </motion.h2>
+                </h2>
 
-                <motion.div
-                  variants={stagger}
-                  ref={sliderRef}
-                  className='keen-slider'>
+                <div ref={sliderRef} className='keen-slider'>
                   {products?.map(product => (
                     <div className='keen-slider__slide' key={product.id}>
                       <ProductsCard key={product.id} product={product} />
                     </div>
                   ))}
-                </motion.div>
+                </div>
 
                 {slider && (
                   <div className='arrows'>
@@ -94,12 +81,12 @@ const ProductsSliderSection = ({ products, title }) => {
                     />
                   </div>
                 )}
-              </motion.div>
+              </div>
             )}
           </>
         )}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
