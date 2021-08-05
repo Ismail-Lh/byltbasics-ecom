@@ -1,15 +1,4 @@
-import dynamic from 'next/dynamic';
-
 import '../styles/globals.scss';
-
-const DynamicProductModal = dynamic(() =>
-  import('../components/ProductModal/ProductModal')
-);
-const DynamicFooterSection = dynamic(() =>
-  import('../sections/FooterSection/FooterSection')
-);
-
-import { NavBar, ScrollToTop } from '../components';
 
 import { AuthProvider } from '../contexts/auth_context';
 import { FirebaseProvider } from '../contexts/firebase_context';
@@ -27,11 +16,7 @@ function MyApp({ Component, pageProps, router }) {
         <ProductsProvider>
           <FiltersProvider>
             <CartProvider>
-              <ScrollToTop />
-              <NavBar />
-              <DynamicProductModal />
               <Component {...pageProps} key={router.route} />
-              <DynamicFooterSection />
             </CartProvider>
           </FiltersProvider>
         </ProductsProvider>

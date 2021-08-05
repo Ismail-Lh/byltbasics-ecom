@@ -1,4 +1,15 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
+
+const DynamicNavBar = dynamic(() => import('../NavBar/NavBar'));
+const DynamicScrollToTop = dynamic(() => import('../ScrollToTop/ScrollToTop'));
+
+const DynamicProductModal = dynamic(() =>
+  import('../ProductModal/ProductModal')
+);
+const DynamicFooterSection = dynamic(() =>
+  import('../../sections/FooterSection/FooterSection')
+);
 
 const Layout = ({ title, children, description }) => {
   return (
@@ -80,8 +91,11 @@ const Layout = ({ title, children, description }) => {
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-
-      {children}
+      <DynamicScrollToTop />
+      <DynamicNavBar />
+      <DynamicProductModal />
+      <div>{children}</div>
+      <DynamicFooterSection />
     </div>
   );
 };

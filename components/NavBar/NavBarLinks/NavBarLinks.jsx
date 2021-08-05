@@ -1,9 +1,11 @@
-import Link from 'next/link';
 import { useState } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import classes from './NavBarLinks.module.scss';
 
 import { useProductsContext } from '../../../contexts/products_context';
 import { useFiltersContext } from '../../../contexts/filters_context';
+
 import {
   menCategories,
   menCollections,
@@ -11,8 +13,12 @@ import {
   womenCategories,
   womenCollections,
 } from '../../../utils/constants';
+
 import { MenuIcon } from '../../../Icons';
-import { DropDownMenu } from '../../';
+
+const DynamicDropDownMenu = dynamic(() =>
+  import('../../DropDownMenu/DropDownMenu')
+);
 
 const NavBarLinks = () => {
   const { openSidebar } = useProductsContext();
@@ -54,8 +60,8 @@ const NavBarLinks = () => {
             }}>
             <Link href={`/collections/${route}`}>{link}</Link>
 
-            {link === 'men' && (
-              <DropDownMenu
+            {link === 'men' && showMenDropMenu && (
+              <DynamicDropDownMenu
                 collections={menCollections}
                 productsCategories={menCategories}
                 gender='men'
@@ -68,9 +74,8 @@ const NavBarLinks = () => {
                 showDropMenu={showMenDropMenu}
               />
             )}
-
-            {link === 'women' && (
-              <DropDownMenu
+            {link === 'women' && showWomenDropMenu && (
+              <DynamicDropDownMenu
                 collections={womenCollections}
                 productsCategories={womenCategories}
                 gender='women'

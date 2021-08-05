@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
@@ -5,8 +6,9 @@ import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
 import { useAuthContext } from '../../contexts/auth_context';
 
-import { Button, CartItems } from '..';
-import { CloseIcon } from '../../Icons';
+const DynamicButton = dynamic(() => import('../Button/Button'));
+const DynamicCartItems = dynamic(() => import('../CartItems/CartItems'));
+const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -46,7 +48,7 @@ const Cart = () => {
       <div className={classes.cart__header}>
         <div className={classes.close}>
           <button onClick={closeCart}>
-            <CloseIcon />
+            <DynamicCloseIcon />
           </button>
         </div>
 
@@ -61,7 +63,7 @@ const Cart = () => {
         <p className={classes.cart__empty}>Your cart is currently empty.</p>
       ) : (
         <>
-          <CartItems />
+          <DynamicCartItems />
 
           <div className={classes.cart__subtotal}>
             <p className={classes.cart__subtotal_title}>subtotal:</p>
@@ -69,16 +71,18 @@ const Cart = () => {
           </div>
 
           <div className={classes.cart__clear}>
-            <Button handelClick={clearCart}>Clear cart</Button>
+            <DynamicButton handelClick={clearCart}>Clear cart</DynamicButton>
           </div>
 
           <div className={classes.cart__checkout}>
             {!user ? (
-              <Button route='/account/login'>sign in to checkout</Button>
+              <DynamicButton route='/account/login'>
+                sign in to checkout
+              </DynamicButton>
             ) : (
-              <Button role='link' handelClick={createCheckoutSession}>
+              <DynamicButton role='link' handelClick={createCheckoutSession}>
                 proceed to checkout
-              </Button>
+              </DynamicButton>
             )}
           </div>
         </>

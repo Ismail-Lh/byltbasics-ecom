@@ -26,23 +26,23 @@ const HeroImage = ({
     return CLASS_NAME;
   };
 
+  // const { observe, inView } = useScroll();
+
   return (
-    <div>
-      <Wrapper
-        imgUrlDesktop={imgUrlDesktop}
-        imgUrlMobile={imgUrlMobile}
-        className='hero__slide'>
-        <div className={positionStyle(position)}>
-          <HeroSubtitle subtitle={subtitle} color={color} />
+    <Wrapper
+      imgUrlDesktop={imgUrlDesktop}
+      imgUrlMobile={imgUrlMobile}
+      className='hero__slide'>
+      <div className={positionStyle(position)}>
+        <HeroSubtitle subtitle={subtitle} color={color} />
 
-          <HeroTitle title={title} color={color} />
+        <HeroTitle title={title} color={color} />
 
-          <Button route={route} color={color}>
-            shop now
-          </Button>
-        </div>
-      </Wrapper>
-    </div>
+        <Button route={route} color={color}>
+          shop now
+        </Button>
+      </div>
+    </Wrapper>
   );
 };
 

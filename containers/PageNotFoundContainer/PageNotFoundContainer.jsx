@@ -1,5 +1,7 @@
-import { Button } from '../../components';
+import dynamic from 'next/dynamic';
 import classes from './PageNotFoundContainer.module.scss';
+
+const Button = dynamic(() => import('../../components/Button/Button'));
 
 const PageNotFoundContainer = () => {
   return (

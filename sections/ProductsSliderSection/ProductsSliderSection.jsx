@@ -47,9 +47,7 @@ const ProductsSliderSection = ({ products, title }) => {
           <>
             {products?.length <= 4 ? (
               <div className={classes.products__grid}>
-                <h2  className={classes.title}>
-                  {title}
-                </h2>
+                <h2 className={classes.title}>{title}</h2>
 
                 <div className={classes.products}>
                   {products?.map(product => (
@@ -59,9 +57,7 @@ const ProductsSliderSection = ({ products, title }) => {
               </div>
             ) : (
               <div className={classes.products__slider}>
-                <h2  className={classes.title}>
-                  {title}
-                </h2>
+                <h2 className={classes.title}>{title}</h2>
 
                 <div ref={sliderRef} className='keen-slider'>
                   {products?.map(product => (

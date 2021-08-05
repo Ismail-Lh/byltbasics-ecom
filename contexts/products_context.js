@@ -12,7 +12,6 @@ import {
   GET_SIMILAR_PRODUCTS,
   OPEN_PRODUCT_MODAL,
   CLOSE_PRODUCT_MODAL,
-  GET_PRODUCT_COLOR,
 } from '../utils/actions';
 
 import { getLocalStorage, setLocalStorage } from '../utils/helpers';

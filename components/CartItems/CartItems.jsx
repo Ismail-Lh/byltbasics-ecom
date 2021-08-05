@@ -1,8 +1,11 @@
 import classes from './CartItems.module.scss';
-import { AmountBtn, MyLink } from '..';
 import { formatPrice } from '../../utils/helpers';
 import { useCartContext } from '../../contexts/cart_context';
-import { CloseIcon } from '../../Icons';
+import dynamic from 'next/dynamic';
+
+const DynamicAmountBtn = dynamic(() => import('../AmountBtn/AmountBtn'));
+const DynamicMyLink = dynamic(() => import('../MyLink/MyLink'));
+const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
 
 const CartItems = () => {
   const { cart: products, removeFromCart, toggleCartAmount } = useCartContext();
@@ -26,12 +29,12 @@ const CartItems = () => {
         }) => (
           <div className={classes.product} key={id}>
             <div className={classes.product__img}>
-              <MyLink route={`/products/${route}`}>
+              <DynamicMyLink route={`/products/${route}`}>
                 <img
                   src={`/assets/products/${gender}/${collections}/${style}/${name}/${color}/small/${image}`}
                   alt={`${name}-${color}-${size}`}
                 />
-              </MyLink>
+              </DynamicMyLink>
             </div>
 
             <div className={classes.product__info}>
@@ -45,13 +48,13 @@ const CartItems = () => {
                 </div>
                 <div className={classes.deleteProduct}>
                   <button onClick={() => removeFromCart(id)}>
-                    <CloseIcon />
+                    <DynamicCloseIcon />
                   </button>
                 </div>
               </div>
 
               <div className={classes.product__info_2}>
-                <AmountBtn
+                <DynamicAmountBtn
                   productAmount={amount}
                   incAmount={() => toggleCartAmount(id, 'inc')}
                   decAmount={() => toggleCartAmount(id, 'dec')}

@@ -49,15 +49,3 @@ const MobileMenu = () => {
 };
 
 export default MobileMenu;
-
-{
-  /* <div className={classes.mobile__menu} onClick={() => hideMenu()}>
-      <div className='overlay'></div>
-      <div
-        className={`${
-          showMenu ? classes.mobile__menu_show : classes.mobile__menu_hide
-        }`}>
-        
-      </div>
-    </div> */
-}

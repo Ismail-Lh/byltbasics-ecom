@@ -10,7 +10,7 @@
     a {
       display: inline-block;
       font-size: $sm-size-2;
-      padding: 0;
+      padding: 0 !important;
       border-bottom: 0;
       @include transition();
 

@@ -1,13 +1,19 @@
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { v4 as uuidv4 } from 'uuid';
 
 import classes from './NavBarIcons.module.scss';
 
 import { useCartContext } from '../../../contexts/cart_context';
 import { useAuthContext } from '../../../contexts/auth_context';
-import { MyLink } from '../../../components';
-import { CartIcon, ContactIcon, LoginIcon, SearchIcon } from '../../../Icons';
-import SearchInput from '../../SearchInput/SearchInput';
+
+import { MyLink } from '../..';
+
+const DynamicSearchInput = dynamic(() =>
+  import('../../SearchInput/SearchInput')
+);
+
+import { CartIcon, LoginIcon, ContactIcon, SearchIcon } from '../../../Icons';
 
 const NavBarIcons = () => {
   const { openCart, total_products } = useCartContext();
@@ -31,7 +37,7 @@ const NavBarIcons = () => {
           justifyContent: `${openSearchInput ? 'flex-start' : 'flex-end'}`,
         }}>
         {openSearchInput ? (
-          <SearchInput closeSearchBar={setOpenSearchInput} />
+          <DynamicSearchInput closeSearchBar={setOpenSearchInput} />
         ) : (
           <>
             <button onClick={() => setOpenSearchInput(true)}>

@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useCartContext } from '../../contexts/cart_context';
+import { useProductsContext } from '../../contexts/products_context';
+
 import classes from './NavBar.module.scss';
 
-import { Cart, MobileMenu } from '..';
+import NavBarLogo from './NavBarLogo/NavBarLogo';
 import NavBarIcons from './NavBarIcons/NavBarIcons';
 import NavBarLinks from './NavBarLinks/NavBarLinks';
-import NavBarLogo from './NavBarLogo/NavBarLogo';
+
+const DynamicCart = dynamic(() => import('../Cart/Cart'));
+const DynamicMobileMenu = dynamic(() => import('../MobileMenu/MobileMenu'));
 
 const NavBar = () => {
+  const { isSidebarOpen } = useProductsContext();
+  const { isCartOpen } = useCartContext();
+
   return (
     <nav className={classes.navbar}>
       <div className='container'>
@@ -19,8 +27,8 @@ const NavBar = () => {
         </div>
       </div>
 
-      <MobileMenu />
-      <Cart />
+      {isSidebarOpen && <DynamicMobileMenu />}
+      {isCartOpen && <DynamicCart />}
     </nav>
   );
 };

@@ -1,18 +1,24 @@
-// import { useInView } from 'react-intersection-observer';
-// import { useAnimation } from 'framer-motion';
+import { useCallback, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-// const useScroll = (thresh = 0.4) => {
-//   const controls = useAnimation();
+function useScroll() {
+  const ref = useRef();
+  const [inViewRef, inView] = useInView({
+    triggerOnce: true,
+  });
 
-//   const [element, view] = useInView({ threshold: thresh });
+  // Use `useCallback` so we don't recreate the function on each render - Could result in infinite loop
+  const setRefs = useCallback(
+    node => {
+      // Ref's from useRef needs to have the node assigned to `current`
+      ref.current = node;
+      // Callback refs, like the one from `useInView`, is a function that takes the node as an argument
+      inViewRef(node);
+    },
+    [inViewRef]
+  );
 
-//   if (view) {
-//     controls.start('animate');
-//   } else {
-//     controls.start('initial');
-//   }
+  return { setRefs, inView };
+}
 
-//   return [element, controls];
-// };
-
-// export default useScroll;
+export default useScroll;
