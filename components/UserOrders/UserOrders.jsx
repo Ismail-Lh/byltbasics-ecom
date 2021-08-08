@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { formatPrice } from '../../utils/helpers';
 import classes from './UserOrders.module.scss';
 
@@ -25,9 +24,7 @@ const UserOrders = ({ orders }) => {
               <div className={classes.order__header_grid}>
                 <div className={classes.order__date}>
                   <h3>order placed</h3>
-                  <p>
-                    {moment.unix(timestamp).format('MMMM Do YYYY, h:mm:ss a')}
-                  </p>
+                  <p>{timestamp}</p>
                 </div>
 
                 <div className={classes.order__total}>

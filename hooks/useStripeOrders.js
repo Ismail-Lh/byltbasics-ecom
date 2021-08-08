@@ -1,5 +1,6 @@
-import moment from 'moment';
 import { useEffect, useState } from 'react';
+import { format } from 'date-fns';
+
 import { useAuthContext } from '../contexts/auth_context';
 import { useFirebaseContext } from '../contexts/firebase_context';
 
@@ -28,7 +29,10 @@ const useStripeOrders = () => {
 
         const allOrders = content.docs.map(doc => ({
           ...doc.data(),
-          timestamp: moment(doc.data().timestamp.toDate()).unix(),
+          timestamp: format(
+            doc.data().timestamp.toDate(),
+            'do MMM yyy - HH:mm:ss a'
+          ),
           docId: doc.id,
         }));
 
