@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import classes from './FilterType.module.scss';
 
 import { useFiltersContext } from '../../contexts/filters_context';
+import { AngleDownIcon, AngleUpIcon } from '../../Icons';
 
 const FilterType = ({ title, products }) => {
   const { updateFilters } = useFiltersContext();
@@ -16,7 +16,7 @@ const FilterType = ({ title, products }) => {
         className={classes.filter__type_title}
         onClick={() => setToggleAccordion(!toggleAccordion)}>
         <h3>{title}</h3>
-        {!toggleAccordion ? <FaAngleDown /> : <FaAngleUp />}
+        {!toggleAccordion ? <AngleDownIcon /> : <AngleUpIcon />}
       </div>
 
       {toggleAccordion && (

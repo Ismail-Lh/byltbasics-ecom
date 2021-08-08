@@ -1,9 +1,9 @@
 import { useMediaQuery } from '@react-hook/media-query';
-import { FaAngleRight } from 'react-icons/fa';
 
 import classes from './Filters.module.scss';
 import { FiltersModel, FiltersValue } from '..';
 import { useState } from 'react';
+import { AngleRightIcon } from '../../Icons';
 
 const Filters = () => {
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
@@ -28,7 +28,7 @@ const Filters = () => {
       ) : (
         <>
           <FiltersContainer handelClick={() => setOpenFiltersModel(true)}>
-            <FaAngleRight />
+            <AngleRightIcon />
           </FiltersContainer>
 
           <FiltersModel

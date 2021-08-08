@@ -13,3 +13,8 @@ export { default as FriendsIcon } from './FriendsIcon';
 export { default as MoneyIcon } from './MoneyIcon';
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as InstagramIcon } from './InstagramIcon';
+export { default as AngleRightIcon } from './AngleRightIcon';
+export { default as AngleUpIcon } from './AngleUpIcon';
+export { default as AngleDownIcon } from './AngleDownIcon';
+export { default as BiUpArrowIcon } from './BiUpArrowIcon';
+export { default as CheckCircleIcon } from './CheckCircleIcon';

@@ -1,7 +1,7 @@
 import classes from './SuccessCheckoutPageContainer.module.scss';
 
-import { FaCheckCircle } from 'react-icons/fa';
 import { Button } from '../../components';
+import { CheckCircleIcon } from '../../Icons';
 
 const SuccessCheckoutPageContainer = () => {
   return (
@@ -9,7 +9,7 @@ const SuccessCheckoutPageContainer = () => {
       <div className='container'>
         <div className={classes.successCheckout__container}>
           <div className={classes.confirmationMsg}>
-            <FaCheckCircle />
+            <CheckCircleIcon />
             <h1>Thank you, your order has been confirmed!</h1>
           </div>
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BiUpArrow } from 'react-icons/bi';
+import { BiUpArrowIcon } from '../../Icons';
 import classes from './ScrollToTop.module.scss';
 
 const ScrollToTop = () => {
@@ -27,7 +27,7 @@ const ScrollToTop = () => {
     <>
       {visible && (
         <div className={classes.scrollToTop} onClick={scrollToTop}>
-          <BiUpArrow />
+          <BiUpArrowIcon />
         </div>
       )}
     </>
