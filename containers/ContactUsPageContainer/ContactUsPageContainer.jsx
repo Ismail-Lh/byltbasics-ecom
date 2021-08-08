@@ -14,11 +14,14 @@ const ContactUsPageContainer = () => {
     <div className={classes.contactUs}>
       <div className='container'>
         <div className={classes.contactUs__grid}>
-          <div className={classes.contactUs__img}>
+          <div
+            className={classes.contactUs__img}
+            style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Image
               src='/assets/contact-page.jpg'
               alt='contact us'
               layout='fill'
+              quality={100}
             />
           </div>
 

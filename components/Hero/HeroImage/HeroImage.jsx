@@ -1,4 +1,6 @@
-import { Wrapper } from './HeroImageStyles';
+import Image from 'next/image';
+import { useMediaQuery } from '@react-hook/media-query';
+import classes from './HeroImage.module.scss';
 
 import HeroTitle from '../HeroTitle/HeroTitle';
 import HeroSubtitle from '../HeroSubtitle/HeroSubtitle';
@@ -10,30 +12,25 @@ const HeroImage = ({
   subtitle,
   imgUrlDesktop,
   imgUrlMobile,
-  position,
   color,
   route,
 }) => {
-  const positionStyle = p => {
-    let CLASS_NAME;
-
-    if (p === 'right') CLASS_NAME = 'hero__content hero__content-right';
-
-    if (p === 'left') CLASS_NAME = 'hero__content hero__content-left';
-
-    if (p === 'center') CLASS_NAME = 'hero__content hero__content-center';
-
-    return CLASS_NAME;
-  };
-
-  // const { observe, inView } = useScroll();
+  const matchesMedia = useMediaQuery('only screen and (max-width: 500px)');
+  const imgSrc = !matchesMedia ? imgUrlDesktop : imgUrlMobile;
 
   return (
-    <Wrapper
-      imgUrlDesktop={imgUrlDesktop}
-      imgUrlMobile={imgUrlMobile}
-      className='hero__slide'>
-      <div className={positionStyle(position)}>
+    <div className={classes.hero__container}>
+      <div
+        className={classes.hero__img}
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          zIndex: '-1',
+        }}>
+        <Image src={imgSrc} alt={title} layout='fill' priority quality={100} />
+      </div>
+      <div className={classes.hero__content}>
         <HeroSubtitle subtitle={subtitle} color={color} />
 
         <HeroTitle title={title} color={color} />
@@ -42,7 +39,7 @@ const HeroImage = ({
           shop now
         </Button>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

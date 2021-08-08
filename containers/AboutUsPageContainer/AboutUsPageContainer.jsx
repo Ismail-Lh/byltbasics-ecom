@@ -1,12 +1,22 @@
+import Image from 'next/image';
 import classes from './AboutUsPageContainer.module.scss';
-
-import { BackgroundImage } from '../../components';
 
 const AboutUsPageContainer = () => {
   return (
     <div>
       <div className={classes.backgroundImage}>
-        <BackgroundImage srcImg='about-us-bg' titleBg='our story' />
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <Image
+            src='/assets/about-us-bg.jpg'
+            alt='about-us'
+            // width={1125}
+            // height={525}
+            layout='fill'
+            priority
+            quality={100}
+          />
+        </div>
+        <h1 className={classes.backgroundImage__title}>our story</h1>
       </div>
       <div className='container'>
         <div className={classes.aboutUs}>

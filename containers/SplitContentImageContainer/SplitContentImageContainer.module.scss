@@ -1,6 +1,9 @@
 @use '../../styles/mixin' as *;
 
-.split__content_img {
+.imgContainer {
   @include wh-hei();
-  @include bg-image-setup($ps: center);
+
+  img {
+    @include wh-hei();
+  }
 }

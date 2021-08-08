@@ -222,39 +222,31 @@ h1 {
   }
 }
 
-// Hero Image styles
-.hero {
-  &__content {
-    @include flex-justify();
-    flex-direction: column;
-    height: 100%;
+// // Hero Image styles
+// .hero {
+//   &__content {
+//     &-right {
+//       @include align-pd($align: flex-end, $pd: 0 8rem 0 0);
+//     }
 
-    &-right {
-      @include align-pd($align: flex-end, $pd: 0 8rem 0 0);
-    }
+//     &-left {
+//       @include align-pd($align: flex-start, $pd: 0 0 0 8rem);
+//     }
 
-    &-left {
-      @include align-pd($align: flex-start, $pd: 0 0 0 8rem);
-    }
+//     &-right,
+//     &-left {
+//       @media (max-width: 700px) {
+//         @include align-pd();
+//       }
+//     }
 
-    &-right,
-    &-left {
-      @media (max-width: 700px) {
-        @include align-pd();
-      }
-    }
+//     &-center {
+//       align-items: center;
+//       text-align: center;
+//     }
 
-    &-center {
-      align-items: center;
-      text-align: center;
-    }
-
-    @media (max-width: 700px) {
-      @include flex-ali-jus($justify: flex-end, $direction: column);
-      padding-bottom: 4rem;
-    }
-  }
-}
+//   }
+// }
 
 // Hero Slider
 .hero {

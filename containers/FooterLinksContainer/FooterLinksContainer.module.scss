@@ -21,20 +21,24 @@
 
     &_1 {
       img {
-        display: block;
-        margin-bottom: 2rem;
-        max-width: 18rem;
-
         @media (max-width: 375px) {
-          display: none;
+          display: none !important;
         }
       }
 
-      a {
-        margin-right: 1rem;
+      div {
+        margin-top: 2rem;
 
-        svg {
-          @include wh-hei($wh: 2rem, $hei: 2rem);
+        @media (max-width: 375px) {
+          margin-top: 2rem;
+        }
+
+        a {
+          margin-right: 1rem;
+
+          svg {
+            @include wh-hei($wh: 2rem, $hei: 2rem);
+          }
         }
       }
     }

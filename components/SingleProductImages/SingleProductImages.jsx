@@ -2,20 +2,27 @@ import { useState } from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
+import Image from 'next/image';
 
 const SingleProductImages = ({ product, color }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
 
-  const Images = ({ handelClick }) => {
+  const Images = ({ handelClick, wh }) => {
     return (
       <>
         {product?.images?.map((img, idx) => (
-          <div key={idx} onClick={() => handelClick && handelClick(idx)}>
-            <img
+          <div
+            key={idx}
+            onClick={() => handelClick && handelClick(idx)}
+            style={{ position: 'relative', width: `${wh}`, height: '100%' }}>
+            <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${img}`}
               alt={`${product?.name}-${color}-${idx}`}
+              layout='responsive'
+              width={540}
+              height={675}
             />
           </div>
         ))}
@@ -27,19 +34,22 @@ const SingleProductImages = ({ product, color }) => {
     <>
       {!matchesMedia ? (
         <div className={classes.singleProductImages_desktop}>
-          <Images />
+          <Images wh='100%' />
         </div>
       ) : (
         <div className={classes.singleProductImages_mobile}>
           <div className={classes.big_image}>
-            <img
+            <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
               alt={`${product?.name}-${color}-${imageIndex}`}
+              layout='responsive'
+              width={540}
+              height={675}
             />
           </div>
 
           <div className={classes.small_images}>
-            <Images handelClick={setImageIndex} />
+            <Images handelClick={setImageIndex} wh='10rem' />
           </div>
         </div>
       )}

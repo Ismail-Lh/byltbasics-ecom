@@ -10,15 +10,6 @@
 
   &_desktop {
     @include grid-columns($columns: repeat(2, 1fr), $rows: 47.2rem, $gap: 1rem);
-
-    // .imgContainer {
-    //   div,
-    //   div img {
-    //     position: initial !important;
-    //     width: 100% !important;
-    //     height: 100% !important;
-    //   }
-    // }
   }
 
   &_mobile {
@@ -30,10 +21,8 @@
       cursor: pointer;
 
       div {
-        width: 10rem;
-
         @media (max-width: 425px) {
-          width: 7rem;
+          width: 7rem !important;
         }
 
         img {

@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-const DynamicNavBar = dynamic(() => import('../NavBar/NavBar'));
+import { NavBar } from '..';
+
 const DynamicScrollToTop = dynamic(() => import('../ScrollToTop/ScrollToTop'));
 
 const DynamicProductModal = dynamic(() =>
@@ -92,7 +93,7 @@ const Layout = ({ title, children, description }) => {
         <meta name='theme-color' content='#ffffff' />
       </Head>
       <DynamicScrollToTop />
-      <DynamicNavBar />
+      <NavBar />
       <DynamicProductModal />
       <div>{children}</div>
       <DynamicFooterSection />

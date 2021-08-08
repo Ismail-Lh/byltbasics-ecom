@@ -1,11 +1,18 @@
+import Image from 'next/image';
 import classes from './SplitContentImageContainer.module.scss';
 
-const SplitContentImageContainer = ({ imgUrl }) => {
+const SplitContentImageContainer = ({ imgUrl, imgAlt }) => {
   return (
-    <div
-      style={{ backgroundImage: `url(${imgUrl})` }}
-      className={classes.split__content_img}
-    />
+    <div className={classes.imgContainer} style={{ position: 'relative' }}>
+      <Image
+        src={imgUrl}
+        alt={imgAlt}
+        width={900}
+        height={600}
+        priority
+        layout='responsive'
+      />
+    </div>
   );
 };
 

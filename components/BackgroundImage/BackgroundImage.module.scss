@@ -2,14 +2,15 @@
 @use '../../styles/mixin' as *;
 
 .backgroundImage {
-  @include grid-center();
-  @include bg-image-setup();
-
-  width: 100%;
   margin-top: 5.9rem;
   color: $white-color;
 
   &__title {
     @include text-transform();
+    z-index: 10;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }

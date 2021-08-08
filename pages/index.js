@@ -4,22 +4,24 @@ import dynamic from 'next/dynamic';
 import { Layout } from '../components';
 
 import { useProductsContext } from '../contexts/products_context';
+import {
+  ProductsCategoryData_1,
+  ProductsCategoryData_2,
+} from '../utils/constants';
+
+import { HeroSection } from '../sections';
 
 const HeroImage = dynamic(() =>
   import('../components/Hero/HeroImage/HeroImage')
 );
-const HeroSection = dynamic(() =>
-  import('../sections/HeroSection/HeroSection')
-);
+
 const ProductsSliderSection = dynamic(() =>
   import('../sections/ProductsSliderSection/ProductsSliderSection')
 );
-const ProductsCategorySection_1 = dynamic(() =>
-  import('../sections/ProductsCategorySection_1/ProductsCategorySection_1')
+const ProductsCategorySection = dynamic(() =>
+  import('../sections/ProductsCategorySection/ProductsCategorySection')
 );
-const ProductsCategorySection_2 = dynamic(() =>
-  import('../sections/ProductsCategorySection_2/ProductsCategorySection_2')
-);
+
 const SplitContentSection = dynamic(() =>
   import('../sections/SplitContentSection/SplitContentSection')
 );
@@ -46,7 +48,8 @@ export default function Home() {
     <Layout>
       <>
         <HeroSection />
-        <ProductsCategorySection_1 />
+
+        <ProductsCategorySection categories={ProductsCategoryData_1} />
 
         <HeroImage
           title="women's essential collection"
@@ -54,8 +57,8 @@ export default function Home() {
           position='center'
           color='#fff'
           route='/collections/womens-essential-collection'
-          imgUrlDesktop='hero__desktop-womens-essential-collection.jpg'
-          imgUrlMobile='hero__mobile-womens-essential-collection.jpg'
+          imgUrlDesktop='/assets/hero__desktop-womens-essential-collection.jpg'
+          imgUrlMobile='/assets/hero__mobile-womens-essential-collection.jpg'
         />
 
         <ProductsSliderSection
@@ -69,10 +72,12 @@ export default function Home() {
           position='center'
           color='#fff'
           route='/collections/performance-collection'
-          imgUrlDesktop='hero__desktop-performance-collection.jpg'
-          imgUrlMobile='hero__mobile-performance-collection.jpg'
+          imgUrlDesktop='/assets/hero__desktop-performance-collection.jpg'
+          imgUrlMobile='/assets/hero__mobile-performance-collection.jpg'
         />
-        <ProductsCategorySection_2 />
+
+        <ProductsCategorySection categories={ProductsCategoryData_2} />
+
         <SplitContentSection isTextFirst={true} order='2'>
           <SplitContentTextContainer
             title='basics to last a lifetime'
@@ -81,7 +86,10 @@ export default function Home() {
             route='/pages/bylt-apparel-sizing-guide'
           />
 
-          <SplitContentImageContainer imgUrl='/assets/split-content-img-1.jpg' />
+          <SplitContentImageContainer
+            imgUrl='/assets/split-content-img-1.jpg'
+            imgAlt='split-content-img-1'
+          />
         </SplitContentSection>
 
         <HeroImage
@@ -90,7 +98,8 @@ export default function Home() {
           position='center'
           color='#fff'
           route='/collections/executive-collection'
-          imgUrlDesktop='hero__desktop-executive-collection.jpg'
+          imgUrlDesktop='/assets/hero__desktop-executive-collection.jpg'
+          imgUrlMobile='/assets/hero__mobile-executive-collection.jpg'
         />
 
         <ProductsSliderSection
@@ -99,7 +108,10 @@ export default function Home() {
         />
 
         <SplitContentSection isTextFirst={false} order='-1'>
-          <SplitContentImageContainer imgUrl='/assets/split-content-img-2.jpg' />
+          <SplitContentImageContainer
+            imgUrl='/assets/split-content-img-2.jpg'
+            imgAlt='split-content-img-2'
+          />
           <SplitContentTextContainer
             title='give $10, get $10'
             text='Give your friends $10 off their first purchase and get $10 in points when they spend $50 or more.'

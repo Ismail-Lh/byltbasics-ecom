@@ -227,8 +227,8 @@ export const HeroData = [
   {
     title: 'shop new styles',
     subtitle: 'experience premium basics',
-    imgUrlDesktop: 'hero__desktop-new-collection.jpg',
-    imgUrlMobile: 'hero__mobile-new-collection.jpg',
+    imgUrlDesktop: '/assets/hero__desktop-new-collection.jpg',
+    imgUrlMobile: '/assets/hero__mobile-new-collection.jpg',
     position: 'center',
     color: '#fff',
     route: '/collections/new',
@@ -237,8 +237,8 @@ export const HeroData = [
   {
     title: 'summer dye collection',
     subtitle: 'Meet the Cloud and Prism Dye Tees',
-    imgUrlDesktop: 'hero__desktop-summer-dye-collection.jpg',
-    imgUrlMobile: 'hero__mobile-summer-dye-collection.jpg',
+    imgUrlDesktop: '/assets/hero__desktop-summer-dye-collection.jpg',
+    imgUrlMobile: '/assets/hero__mobile-summer-dye-collection.jpg',
     position: 'center',
     color: '#fff',
     route: '/collections/summer-dye-collection',
@@ -247,8 +247,8 @@ export const HeroData = [
   {
     title: 'final summer markdowns',
     subtitle: 'shop up 40% off',
-    imgUrlDesktop: 'hero__desktop-summer-markdowns.jpg',
-    imgUrlMobile: 'hero__mobile-summer-markdowns.jpg',
+    imgUrlDesktop: '/assets/hero__desktop-summer-markdowns.jpg',
+    imgUrlMobile: '/assets/hero__mobile-summer-markdowns.jpg',
     position: 'center',
     color: '#fff',
     route: '/collections/finale-summer-markdowns',
@@ -257,8 +257,8 @@ export const HeroData = [
   {
     title: 'new core collection',
     subtitle: 'reinvented closet staples',
-    imgUrlDesktop: 'hero__desktop-new-core-collection.jpg',
-    imgUrlMobile: 'hero__mobile-new-core-collection.jpg',
+    imgUrlDesktop: '/assets/hero__desktop-new-core-collection.jpg',
+    imgUrlMobile: '/assets/hero__mobile-new-core-collection.jpg',
     position: 'center',
     color: '#fff',
     route: '/collections/new-core-collection',

@@ -9,6 +9,8 @@ export { default as FiltersModel } from './FiltersModel/FiltersModel';
 export { default as FormInput } from './FormInput/FormInput';
 export { default as Layout } from './Layout/Layout';
 export { default as ScrollToTop } from './ScrollToTop/ScrollToTop';
+export { default as Alert } from './Alert/Alert.jsx';
+export { default as Loader } from './Loader/Loader.jsx';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';
@@ -20,10 +22,7 @@ export { default as SearchInput } from './SearchInput/SearchInput';
 export { default as HeroImage } from './Hero/HeroImage/HeroImage';
 
 // Products Category Section
-export { default as ProductsCategoryCard1 } from './ProductsCategoryCard1/ProductsCategoryCard1';
-export { default as ProductsCategoryCard2 } from './ProductsCategoryCard2/ProductsCategoryCard2';
-export { default as Alert } from './Alert/Alert.jsx';
-export { default as Loader } from './Loader/Loader.jsx';
+export { default as ProductsCategoryCard } from './ProductsCategoryCard/ProductsCategoryCard';
 
 // Split Content Section
 export { default as SplitContentText } from './SplitContentText/SplitContentText';
