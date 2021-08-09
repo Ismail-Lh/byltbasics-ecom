@@ -39,6 +39,28 @@
     }
   }
 
+  &__slider {
+    ul {
+      gap: 1rem;
+
+      @media (max-width: 1024px) {
+        gap: 2rem;
+      }
+
+      @media (max-width: 464px) {
+        gap: 0;
+      }
+
+      button {
+        top: initial;
+      }
+    }
+
+    button {
+      top: 18rem;
+    }
+  }
+
   &__grid {
     .products {
       @include grid-columns($columns: repeat(4, 1fr), $gap: 2rem);

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
-import { useState, useEffect, useRef } from 'react';
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import classes from './HeroSection.module.scss';
 import { HeroData } from '../../utils/constants';
@@ -9,50 +9,23 @@ import { HeroData } from '../../utils/constants';
 const HeroImage = dynamic(() =>
   import('../../components/Hero/HeroImage/HeroImage')
 );
-import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
 
 const HeroSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [pause, setPause] = useState(false);
-  const timer = useRef();
-  const [sliderRef, slider] = useKeenSlider({
-    initial: 0,
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 0 },
+      items: 1,
     },
-    loop: true,
-    duration: 1000,
-    dragStart: () => {
-      setPause(true);
-    },
-    dragEnd: () => {
-      setPause(false);
-    },
-  });
-
-  useEffect(() => {
-    sliderRef.current.addEventListener('mouseover', () => {
-      setPause(true);
-    });
-    sliderRef.current.addEventListener('mouseout', () => {
-      setPause(false);
-    });
-  }, [sliderRef]);
-
-  useEffect(() => {
-    timer.current = setInterval(() => {
-      if (!pause && slider) {
-        slider.next();
-      }
-    }, 5000);
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, [pause, slider]);
+  };
 
   return (
     <div className={classes.hero__section}>
-      <div ref={sliderRef} className='keen-slider'>
+      <Carousel
+        ssr={false}
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}>
         {HeroData.map(
           ({
             id,
@@ -64,34 +37,20 @@ const HeroSection = () => {
             route,
             position,
           }) => (
-            <div key={id} className='keen-slider__slide'>
-              <HeroImage
-                key={id}
-                title={title}
-                subtitle={subtitle}
-                imgUrlDesktop={imgUrlDesktop}
-                imgUrlMobile={imgUrlMobile}
-                position={position}
-                color={color}
-                route={route}
-                priority={true}
-              />
-            </div>
+            <HeroImage
+              key={id}
+              title={title}
+              subtitle={subtitle}
+              imgUrlDesktop={imgUrlDesktop}
+              imgUrlMobile={imgUrlMobile}
+              position={position}
+              color={color}
+              route={route}
+              priority={true}
+            />
           )
         )}
-      </div>
-      {slider && (
-        <div className='arrows'>
-          <ArrowLeftIcon
-            onClick={e => e.stopPropagation() || slider.prev()}
-            disabled={currentSlide === 0}
-          />
-          <ArrowRightIcon
-            onClick={e => e.stopPropagation() || slider.next()}
-            disabled={currentSlide === slider.details().size - 1}
-          />
-        </div>
-      )}
+      </Carousel>
     </div>
   );
 };

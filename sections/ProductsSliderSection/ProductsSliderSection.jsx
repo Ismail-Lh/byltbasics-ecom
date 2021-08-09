@@ -1,13 +1,11 @@
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
 
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 import classes from './ProductsSliderSection.module.scss';
 import { useProductsContext } from '../../contexts/products_context';
 
-import { ArrowLeftIcon, ArrowRightIcon } from '../../Icons';
 const Loader = dynamic(() => import('../../components/Loader/Loader'));
 const ProductsCard = dynamic(() =>
   import('../../components/ProductsCard/ProductsCard')
@@ -16,27 +14,20 @@ const ProductsCard = dynamic(() =>
 const ProductsSliderSection = ({ products, title }) => {
   const { loading } = useProductsContext();
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [sliderRef, slider] = useKeenSlider({
-    spacing: 15,
-    slidesPerView: 4,
-    centered: false,
-    loop: true,
-    mode: 'snap',
-    slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide);
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
     },
-    breakpoints: {
-      '(max-width: 768px)': {
-        slidesPerView: 2,
-        mode: 'snap',
-      },
-      '(max-width: 425px)': {
-        slidesPerView: 1,
-        mode: 'snap',
-      },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
     },
-  });
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
     <div className={classes.products}>
@@ -59,24 +50,11 @@ const ProductsSliderSection = ({ products, title }) => {
               <div className={classes.products__slider}>
                 <h2 className={classes.title}>{title}</h2>
 
-                <div ref={sliderRef} className='keen-slider'>
+                <Carousel ssr={false} infinite={true} responsive={responsive}>
                   {products?.map(product => (
-                    <div className='keen-slider__slide' key={product.id}>
-                      <ProductsCard key={product.id} product={product} />
-                    </div>
+                    <ProductsCard key={product.id} product={product} />
                   ))}
-                </div>
-
-                {slider && (
-                  <div className='arrows'>
-                    <ArrowLeftIcon
-                      onClick={e => e.stopPropagation() || slider.prev()}
-                    />
-                    <ArrowRightIcon
-                      onClick={e => e.stopPropagation() || slider.next()}
-                    />
-                  </div>
-                )}
+                </Carousel>
               </div>
             )}
           </>
