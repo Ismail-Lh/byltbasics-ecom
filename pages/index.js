@@ -1,37 +1,23 @@
-import dynamic from 'next/dynamic';
-
-// COMPONENTS
-import { Layout } from '../components';
-
 import { useProductsContext } from '../contexts/products_context';
 import {
   ProductsCategoryData_1,
   ProductsCategoryData_2,
 } from '../utils/constants';
 
-import { HeroSection } from '../sections';
+// COMPONENTS
+import { Layout, HeroImage } from '../components';
 
-const HeroImage = dynamic(() =>
-  import('../components/Hero/HeroImage/HeroImage')
-);
+import {
+  HeroSection,
+  ProductsSliderSection,
+  ProductsCategorySection,
+  SplitContentSection,
+} from '../sections';
 
-const ProductsSliderSection = dynamic(() =>
-  import('../sections/ProductsSliderSection/ProductsSliderSection')
-);
-const ProductsCategorySection = dynamic(() =>
-  import('../sections/ProductsCategorySection/ProductsCategorySection')
-);
-
-const SplitContentSection = dynamic(() =>
-  import('../sections/SplitContentSection/SplitContentSection')
-);
-
-const SplitContentImageContainer = dynamic(() =>
-  import('../containers/SplitContentImageContainer/SplitContentImageContainer')
-);
-const SplitContentTextContainer = dynamic(() =>
-  import('../containers/SplitContentTextContainer/SplitContentTextContainer')
-);
+import {
+  SplitContentImageContainer,
+  SplitContentTextContainer,
+} from '../containers';
 
 export default function Home() {
   const { popular_products } = useProductsContext();
@@ -46,7 +32,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <>
+      <main>
         <HeroSection />
 
         <ProductsCategorySection categories={ProductsCategoryData_1} />
@@ -119,7 +105,7 @@ export default function Home() {
             route='/pages/rewards'
           />
         </SplitContentSection>
-      </>
+      </main>
     </Layout>
   );
 }

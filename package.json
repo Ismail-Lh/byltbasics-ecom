@@ -15,7 +15,7 @@
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "date-fns": "^2.23.0",
-    "firebase": "^8.4.3",
+    "firebase": "^9.0.0-beta.7",
     "firebase-admin": "^9.9.0",
     "framer-motion": "^4.1.17",
     "micro": "^9.3.4",

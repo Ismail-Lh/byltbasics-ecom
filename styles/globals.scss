@@ -104,7 +104,6 @@ h1 {
 }
 
 .mobileMenu,
-.cart,
 .filtersModel {
   position: fixed;
   top: 0;
@@ -192,26 +191,6 @@ h1 {
   }
 }
 
-// Shopping cart
-.cart {
-  right: 0;
-  width: 40%;
-  transform: translateX(100%);
-  overflow-y: scroll;
-
-  @media (max-width: 768px) {
-    width: 60%;
-  }
-
-  @media (max-width: 500px) {
-    width: 100%;
-  }
-
-  &__show {
-    transform: translate(0);
-  }
-}
-
 // FiltersModel style
 .filtersModel {
   width: 100%;
@@ -221,32 +200,6 @@ h1 {
     font-size: $sm-size-3;
   }
 }
-
-// // Hero Image styles
-// .hero {
-//   &__content {
-//     &-right {
-//       @include align-pd($align: flex-end, $pd: 0 8rem 0 0);
-//     }
-
-//     &-left {
-//       @include align-pd($align: flex-start, $pd: 0 0 0 8rem);
-//     }
-
-//     &-right,
-//     &-left {
-//       @media (max-width: 700px) {
-//         @include align-pd();
-//       }
-//     }
-
-//     &-center {
-//       align-items: center;
-//       text-align: center;
-//     }
-
-//   }
-// }
 
 // Hero Slider
 .hero {

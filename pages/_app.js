@@ -1,7 +1,6 @@
 import '../styles/globals.scss';
 
 import { AuthProvider } from '../contexts/auth_context';
-import { FirebaseProvider } from '../contexts/firebase_context';
 import { ProductsProvider } from '../contexts/products_context';
 import { FiltersProvider } from '../contexts/filters_context';
 import { CartProvider } from '../contexts/cart_context';
@@ -12,15 +11,13 @@ import { CartProvider } from '../contexts/cart_context';
 function MyApp({ Component, pageProps, router }) {
   return (
     <AuthProvider>
-      <FirebaseProvider>
-        <ProductsProvider>
-          <FiltersProvider>
-            <CartProvider>
-              <Component {...pageProps} key={router.route} />
-            </CartProvider>
-          </FiltersProvider>
-        </ProductsProvider>
-      </FirebaseProvider>
+      <ProductsProvider>
+        <FiltersProvider>
+          <CartProvider>
+            <Component {...pageProps} key={router.route} />
+          </CartProvider>
+        </FiltersProvider>
+      </ProductsProvider>
     </AuthProvider>
   );
 }

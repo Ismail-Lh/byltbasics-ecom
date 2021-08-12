@@ -28,6 +28,7 @@ const NavBar = () => {
       </div>
 
       {isSidebarOpen && <DynamicMobileMenu />}
+
       {isCartOpen && <DynamicCart />}
     </nav>
   );

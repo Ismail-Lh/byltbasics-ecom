@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore/lite';
 
-import { useFirebaseContext } from '../contexts/firebase_context';
+import { db } from '../lib/firebase.prod';
 
 const useFirebaseData = gender => {
-  const { firebase } = useFirebaseContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -12,11 +12,9 @@ const useFirebaseData = gender => {
       const firebaseData = async () => {
         setLoading(true);
 
-        const res = firebase.firestore().collection(gender);
+        const res = await getDocs(collection(db, gender));
 
-        const content = await res.get();
-
-        const allData = content.docs.map(doc => ({
+        const allData = res.docs.map(doc => ({
           ...doc.data(),
           docId: doc.id,
         }));
