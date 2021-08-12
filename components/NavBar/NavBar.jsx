@@ -1,6 +1,4 @@
 import dynamic from 'next/dynamic';
-import { useCartContext } from '../../contexts/cart_context';
-import { useProductsContext } from '../../contexts/products_context';
 
 import classes from './NavBar.module.scss';
 
@@ -12,9 +10,6 @@ const DynamicCart = dynamic(() => import('../Cart/Cart'));
 const DynamicMobileMenu = dynamic(() => import('../MobileMenu/MobileMenu'));
 
 const NavBar = () => {
-  const { isSidebarOpen } = useProductsContext();
-  const { isCartOpen } = useCartContext();
-
   return (
     <nav className={classes.navbar}>
       <div className='container'>
@@ -27,9 +22,9 @@ const NavBar = () => {
         </div>
       </div>
 
-      {isSidebarOpen && <DynamicMobileMenu />}
+      <DynamicMobileMenu />
 
-      {isCartOpen && <DynamicCart />}
+      <DynamicCart />
     </nav>
   );
 };
