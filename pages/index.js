@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { useProductsContext } from '../contexts/products_context';
 import {
   ProductsCategoryData_1,
@@ -5,19 +6,47 @@ import {
 } from '../utils/constants';
 
 // COMPONENTS
-import { Layout, HeroImage } from '../components';
+const Layout = dynamic(() => import('../components/Layout/Layout'));
+const HeroImage = dynamic(() =>
+  import('../components/Hero/HeroImage/HeroImage')
+);
 
-import {
-  HeroSection,
-  ProductsSliderSection,
-  ProductsCategorySection,
-  SplitContentSection,
-} from '../sections';
+// SECTIONS
+const HeroSection = dynamic(() =>
+  import('../sections/HeroSection/HeroSection')
+);
+const ProductsSliderSection = dynamic(() =>
+  import('../sections/ProductsSliderSection/ProductsSliderSection')
+);
+const ProductsCategorySection = dynamic(() =>
+  import('../sections/ProductsCategorySection/ProductsCategorySection')
+);
+const SplitContentSection = dynamic(() =>
+  import('../sections/SplitContentSection/SplitContentSection')
+);
 
-import {
-  SplitContentImageContainer,
-  SplitContentTextContainer,
-} from '../containers';
+// CONTAINERS
+const SplitContentImageContainer = dynamic(() =>
+  import('../containers/SplitContentImageContainer/SplitContentImageContainer')
+);
+const SplitContentTextContainer = dynamic(() =>
+  import('../containers/SplitContentTextContainer/SplitContentTextContainer')
+);
+
+// // COMPONENTS
+// import { Layout, HeroImage } from '../components';
+
+// import {
+//   HeroSection,
+//   ProductsSliderSection,
+//   ProductsCategorySection,
+//   SplitContentSection,
+// } from '../sections';
+
+// import {
+//   SplitContentImageContainer,
+//   SplitContentTextContainer,
+// } from '../containers';
 
 export default function Home() {
   const { popular_products } = useProductsContext();

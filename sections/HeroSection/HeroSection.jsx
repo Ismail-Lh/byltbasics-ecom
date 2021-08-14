@@ -36,6 +36,8 @@ const HeroSection = () => {
             color,
             route,
             position,
+            imgWidth,
+            imgHeight,
           }) => (
             <HeroImage
               key={id}
@@ -47,6 +49,8 @@ const HeroSection = () => {
               color={color}
               route={route}
               priority={true}
+              imgWidth={imgWidth}
+              imgHeight={imgHeight}
             />
           )
         )}

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
-import { Layout } from '../../components';
+
+const Layout = dynamic(() => import('../../components/Layout/Layout'));
 
 const SuccessCheckoutPageContainer = dynamic(() =>
   import(

@@ -16,6 +16,7 @@ const HeroImage = ({
   route,
 }) => {
   const matchesMedia = useMediaQuery('only screen and (max-width: 500px)');
+
   const imgSrc = !matchesMedia ? imgUrlDesktop : imgUrlMobile;
 
   return (

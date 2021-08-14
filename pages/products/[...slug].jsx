@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 
-import { Layout } from '../../components';
 import { useProductsContext } from '../../contexts/products_context';
+
+const Layout = dynamic(() => import('../../components/Layout/Layout'));
 
 const SingleProductContainer = dynamic(() =>
   import('../../containers/SingleProductContainer/SingleProductContainer')

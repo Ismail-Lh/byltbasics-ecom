@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 
-import { Layout } from '../../components';
+const Layout = dynamic(() => import('../../components/Layout/Layout'));
+
 const LoginPageContainer = dynamic(() =>
   import('../../containers/LoginPageContainer/LoginPageContainer')
 );
