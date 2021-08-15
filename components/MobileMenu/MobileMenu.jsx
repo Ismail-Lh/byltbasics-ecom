@@ -1,4 +1,7 @@
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+
+import classes from './MobileMenu.module.scss';
 import { useFiltersContext } from '../../contexts/filters_context';
 
 import { useProductsContext } from '../../contexts/products_context';
@@ -9,12 +12,17 @@ const MobileMenu = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
+  const menuVariants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: '-100%' },
+  };
+
   return (
-    <div
-      className={`${
-        isSidebarOpen ? 'mobileMenu mobileMenu__show' : 'mobileMenu'
-      }`}>
-      <div className='mobileMenu__icons'>
+    <motion.div
+      className={classes.mobileMenu}
+      variants={menuVariants}
+      animate={`${isSidebarOpen ? 'open' : 'closed'}`}>
+      <div className={classes.mobileMenu__icons}>
         <button type='button' onClick={closeSidebar}>
           <CloseIcon />
         </button>
@@ -23,16 +31,15 @@ const MobileMenu = () => {
         </button>
       </div>
 
-      <form className='mobileMenu__form'>
+      <form className={classes.mobileMenu__form}>
         <input type='text' placeholder='search' />
         <SearchIcon />
       </form>
 
-      <ul className='mobileMenu__list'>
+      <ul className={classes.mobileMenu__list}>
         {NavbarLinks.map(({ id, link, route }) => (
           <li
             key={id}
-            className='mobileMenu__list-items'
             onClick={() => {
               updateCollection(link);
               closeSidebar();
@@ -40,11 +47,11 @@ const MobileMenu = () => {
             <Link href={`/collections/${route}`}>{link}</Link>
           </li>
         ))}
-        <li onClick={closeSidebar} className='mobileMenu__list-items'>
+        <li onClick={closeSidebar}>
           <Link href='/account/login'>login</Link>
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 };
 
