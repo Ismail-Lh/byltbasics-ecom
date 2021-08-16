@@ -105,11 +105,13 @@ const Layout = ({ title, children, description }) => {
         <meta name='msapplication-TileImage' content='/ms-icon-144x144.png' />
         <meta name='theme-color' content='#ffffff' />
       </Head>
-      <DynamicScrollToTop />
-      <NavBar />
-      <DynamicProductModal />
-      <div>{children}</div>
-      <DynamicFooterSection />
+      <div>
+        <NavBar />
+        <DynamicProductModal />
+        <main>{children}</main>
+        <DynamicFooterSection />
+        <DynamicScrollToTop />
+      </div>
     </div>
   );
 };

@@ -11,6 +11,7 @@ export { default as Layout } from './Layout/Layout';
 export { default as ScrollToTop } from './ScrollToTop/ScrollToTop';
 export { default as Alert } from './Alert/Alert.jsx';
 export { default as Loader } from './Loader/Loader.jsx';
+export { default as PageTransition } from './PageTransition/PageTransition.jsx';
 
 // Navbar
 export { default as NavBar } from './NavBar/NavBar';

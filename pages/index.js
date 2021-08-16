@@ -1,4 +1,6 @@
 import dynamic from 'next/dynamic';
+
+import { PageTransition } from '../components';
 import { useProductsContext } from '../contexts/products_context';
 import {
   ProductsCategoryData_1,
@@ -33,21 +35,6 @@ const SplitContentTextContainer = dynamic(() =>
   import('../containers/SplitContentTextContainer/SplitContentTextContainer')
 );
 
-// // COMPONENTS
-// import { Layout, HeroImage } from '../components';
-
-// import {
-//   HeroSection,
-//   ProductsSliderSection,
-//   ProductsCategorySection,
-//   SplitContentSection,
-// } from '../sections';
-
-// import {
-//   SplitContentImageContainer,
-//   SplitContentTextContainer,
-// } from '../containers';
-
 export default function Home() {
   const { popular_products } = useProductsContext();
 
@@ -61,7 +48,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <main>
+      <PageTransition>
         <HeroSection />
 
         <ProductsCategorySection categories={ProductsCategoryData_1} />
@@ -134,7 +121,7 @@ export default function Home() {
             route='/pages/rewards'
           />
         </SplitContentSection>
-      </main>
+      </PageTransition>
     </Layout>
   );
 }

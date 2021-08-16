@@ -5,7 +5,6 @@ import axios from 'axios';
 import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
 import { useAuthContext } from '../../contexts/auth_context';
-import { motion } from 'framer-motion';
 
 const Button = dynamic(() => import('../Button/Button'));
 const CartItems = dynamic(() => import('../CartItems/CartItems'));
@@ -44,16 +43,8 @@ const Cart = () => {
     if (result.error) alert(result.error.message);
   };
 
-  const cartVariants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: '100%' },
-  };
-
   return (
-    <motion.div
-      className={classes.cart}
-      variants={cartVariants}
-      animate={isCartOpen ? 'open' : 'closed'}>
+    <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
       <div className={classes.cart__header}>
         <div className={classes.close}>
           <button onClick={closeCart}>
@@ -94,7 +85,7 @@ const Cart = () => {
           </div>
         </>
       )}
-    </motion.div>
+    </div>
   );
 };
 

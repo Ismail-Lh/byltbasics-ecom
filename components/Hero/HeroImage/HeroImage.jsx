@@ -29,7 +29,13 @@ const HeroImage = ({
           height: '100%',
           zIndex: '-1',
         }}>
-        <Image src={imgSrc} alt={title} layout='fill' priority quality={100} />
+        <Image
+          src={imgSrc}
+          alt={title}
+          layout='fill'
+          priority={true}
+          quality={100}
+        />
       </div>
       <div className={classes.hero__content}>
         <HeroSubtitle subtitle={subtitle} color={color} />

@@ -1,15 +1,26 @@
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
 
 import classes from './NavBar.module.scss';
+
+import { useCartContext } from '../../contexts/cart_context';
+import { useProductsContext } from '../../contexts/products_context';
+import { cartVariants } from '../../utils/animations';
+import { useAnimationHook } from '../../hooks/useAnimationHook';
 
 import NavBarLogo from './NavBarLogo/NavBarLogo';
 import NavBarIcons from './NavBarIcons/NavBarIcons';
 import NavBarLinks from './NavBarLinks/NavBarLinks';
 
-const DynamicCart = dynamic(() => import('../Cart/Cart'));
 const DynamicMobileMenu = dynamic(() => import('../MobileMenu/MobileMenu'));
+const DynamicCart = dynamic(() => import('../Cart/Cart'));
 
 const NavBar = () => {
+  const { isCartOpen } = useCartContext();
+  const { isSidebarOpen } = useProductsContext();
+
+  const controls = useAnimationHook(isCartOpen);
+
   return (
     <nav className={classes.navbar}>
       <div className='container'>

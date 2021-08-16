@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 
 import { useProductsContext } from '../../contexts/products_context';
 
+import { PageTransition } from '../../components';
 const Layout = dynamic(() => import('../../components/Layout/Layout'));
 
 const SingleProductContainer = dynamic(() =>
@@ -14,7 +15,9 @@ const SingleProductPage = () => {
 
   return (
     <Layout title={`${name.toUpperCase()} | BYLT Premium`}>
-      <SingleProductContainer />
+      <PageTransition>
+        <SingleProductContainer />
+      </PageTransition>
     </Layout>
   );
 };

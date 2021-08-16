@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { PageTransition } from '../components';
 
 const Layout = dynamic(() => import('../components/Layout/Layout'));
 
@@ -9,7 +10,9 @@ const PageNotFoundContainer = dynamic(() =>
 const PageNotFound = () => {
   return (
     <Layout title='404 Not Found | BYLT Basics'>
-      <PageNotFoundContainer />
+      <PageTransition>
+        <PageNotFoundContainer />
+      </PageTransition>
     </Layout>
   );
 };

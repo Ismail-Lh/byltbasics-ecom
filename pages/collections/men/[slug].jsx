@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { useFiltersContext } from '../../../contexts/filters_context';
 
+import { PageTransition } from '../../../components';
+
 const Layout = dynamic(() => import('../../../components/Layout/Layout'));
 
 const ShopPageContainer = dynamic(() =>
@@ -65,7 +67,9 @@ const MensCollections = () => {
 
   return (
     <Layout title={`${title} | BYLT Basics`}>
-      <ShopPageContainer />
+      <PageTransition>
+        <ShopPageContainer />
+      </PageTransition>
     </Layout>
   );
 };

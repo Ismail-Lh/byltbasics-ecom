@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 import classes from './MobileMenu.module.scss';
@@ -12,16 +11,11 @@ const MobileMenu = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
-  const menuVariants = {
-    open: { opacity: 1, x: 0 },
-    closed: { opacity: 0, x: '-100%' },
-  };
-
   return (
-    <motion.div
-      className={classes.mobileMenu}
-      variants={menuVariants}
-      animate={`${isSidebarOpen ? 'open' : 'closed'}`}>
+    <div
+      className={`${
+        isSidebarOpen ? 'mobileMenu mobileMenu__show' : 'mobileMenu'
+      }`}>
       <div className={classes.mobileMenu__icons}>
         <button type='button' onClick={closeSidebar}>
           <CloseIcon />
@@ -51,7 +45,7 @@ const MobileMenu = () => {
           <Link href='/account/login'>login</Link>
         </li>
       </ul>
-    </motion.div>
+    </div>
   );
 };
 

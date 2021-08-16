@@ -1,20 +1,14 @@
 export const easing = [0.6, -0.05, 0.01, 0.99];
 
 export const pageAnimation = {
-  initial: { x: '100vw', opacity: 0 },
+  initial: { opacity: 0 },
   animate: {
-    x: 0,
     opacity: 1,
     transition: {
-      type: 'spring',
-      delay: 0.25,
       duration: 0.25,
+      ease: easing,
       when: 'beforeChildren',
     },
-  },
-  exit: {
-    x: '-100vw',
-    transition: { ease: easing },
   },
 };
 
@@ -60,4 +54,30 @@ export const leftToRight = {
 export const rightToLeft = {
   initial: { opacity: 0, x: '100vw' },
   animate: { opacity: 1, x: 0, transition: { delay: 0.4, duration: 0.25 } },
+};
+
+export const cartVariants = {
+  closed: { opacity: 0, x: '100%' },
+  open: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 30,
+      ease: easing,
+    },
+  },
+};
+
+export const menuVariants = {
+  closed: { opacity: 0, x: '-100%' },
+  open: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 30,
+      ease: easing,
+    },
+  },
 };
