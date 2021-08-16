@@ -6,9 +6,11 @@ import 'react-multi-carousel/lib/styles.css';
 import classes from './HeroSection.module.scss';
 import { HeroData } from '../../utils/constants';
 
-const HeroImage = dynamic(() =>
-  import('../../components/Hero/HeroImage/HeroImage')
-);
+import { HeroImage } from '../../components';
+
+// const HeroImage = dynamic(() =>
+//   import('../../components/Hero/HeroImage/HeroImage')
+// );
 
 const HeroSection = () => {
   const responsive = {

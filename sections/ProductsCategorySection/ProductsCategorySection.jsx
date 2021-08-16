@@ -2,9 +2,11 @@ import dynamic from 'next/dynamic';
 
 import classes from './ProductsCategorySection.module.scss';
 
-const ProductsCategoryCard = dynamic(() =>
-  import('../../components/ProductsCategoryCard/ProductsCategoryCard')
-);
+// const ProductsCategoryCard = dynamic(() =>
+//   import('../../components/ProductsCategoryCard/ProductsCategoryCard')
+// );
+
+import { ProductsCategoryCard } from '../../components';
 
 const ProductsCategorySection = ({ categories }) => {
   return (

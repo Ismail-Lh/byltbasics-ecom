@@ -27,14 +27,6 @@ const SplitContentSection = dynamic(() =>
   import('../sections/SplitContentSection/SplitContentSection')
 );
 
-// CONTAINERS
-const SplitContentImageContainer = dynamic(() =>
-  import('../containers/SplitContentImageContainer/SplitContentImageContainer')
-);
-const SplitContentTextContainer = dynamic(() =>
-  import('../containers/SplitContentTextContainer/SplitContentTextContainer')
-);
-
 export default function Home() {
   const { popular_products } = useProductsContext();
 
@@ -80,19 +72,7 @@ export default function Home() {
 
         <ProductsCategorySection categories={ProductsCategoryData_2} />
 
-        <SplitContentSection isTextFirst={true} order='2'>
-          <SplitContentTextContainer
-            title='basics to last a lifetime'
-            text='Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear.'
-            isTextFirst={true}
-            route='/pages/bylt-apparel-sizing-guide'
-          />
-
-          <SplitContentImageContainer
-            imgUrl='/assets/split-content-img-1.jpg'
-            imgAlt='split-content-img-1'
-          />
-        </SplitContentSection>
+        <SplitContentSection isTextFirst={true} />
 
         <HeroImage
           title='executive collection'
@@ -109,18 +89,7 @@ export default function Home() {
           products={getPopularProducts('women')}
         />
 
-        <SplitContentSection isTextFirst={false} order='-1'>
-          <SplitContentImageContainer
-            imgUrl='/assets/split-content-img-2.jpg'
-            imgAlt='split-content-img-2'
-          />
-          <SplitContentTextContainer
-            title='give $10, get $10'
-            text='Give your friends $10 off their first purchase and get $10 in points when they spend $50 or more.'
-            isTextFirst={false}
-            route='/pages/rewards'
-          />
-        </SplitContentSection>
+        <SplitContentSection isTextFirst={false} />
       </PageTransition>
     </Layout>
   );

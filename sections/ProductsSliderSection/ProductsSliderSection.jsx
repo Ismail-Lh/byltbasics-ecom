@@ -7,9 +7,12 @@ import classes from './ProductsSliderSection.module.scss';
 import { useProductsContext } from '../../contexts/products_context';
 
 const Loader = dynamic(() => import('../../components/Loader/Loader'));
-const ProductsCard = dynamic(() =>
-  import('../../components/ProductsCard/ProductsCard')
-);
+
+import { ProductsCard } from '../../components';
+
+// const ProductsCard = dynamic(() =>
+//   import('../../components/ProductsCard/ProductsCard')
+// );
 
 const ProductsSliderSection = ({ products, title }) => {
   const { loading } = useProductsContext();
