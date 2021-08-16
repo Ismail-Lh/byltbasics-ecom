@@ -3,9 +3,11 @@ import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { useFiltersContext } from '../../../contexts/filters_context';
 
-import { PageTransition } from '../../../components';
-
 const Layout = dynamic(() => import('../../../components/Layout/Layout'));
+
+const PageTransition = dynamic(() =>
+  import('../../../components/PageTransition/PageTransition')
+);
 
 const ShopPageContainer = dynamic(() =>
   import('../../../containers/ShopPageContainer/ShopPageContainer')

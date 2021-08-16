@@ -1,9 +1,12 @@
 import dynamic from 'next/dynamic';
 
 import PrivateRoute from '../../HOC/PrivateRoute';
-import { PageTransition } from '../../components';
 
 const Layout = dynamic(() => import('../../components/Layout/Layout'));
+
+const PageTransition = dynamic(() =>
+  import('../../components/PageTransition/PageTransition')
+);
 
 const AccountPageContainer = dynamic(() =>
   import('../../containers/AccountPageContainer/AccountPageContainer')

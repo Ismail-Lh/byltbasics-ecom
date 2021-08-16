@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 
-import { PageTransition } from '../components';
 import { useProductsContext } from '../contexts/products_context';
 import {
   ProductsCategoryData_1,
@@ -9,6 +8,11 @@ import {
 
 // COMPONENTS
 const Layout = dynamic(() => import('../components/Layout/Layout'));
+
+const PageTransition = dynamic(() =>
+  import('../components/PageTransition/PageTransition')
+);
+
 const HeroImage = dynamic(() =>
   import('../components/Hero/HeroImage/HeroImage')
 );

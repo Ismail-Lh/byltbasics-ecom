@@ -1,5 +1,8 @@
 import dynamic from 'next/dynamic';
-import { PageTransition } from '../components';
+
+const PageTransition = dynamic(() =>
+  import('../components/PageTransition/PageTransition')
+);
 
 const Layout = dynamic(() => import('../components/Layout/Layout'));
 
