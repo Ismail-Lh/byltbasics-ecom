@@ -2,6 +2,18 @@
 @use '../../styles/mixin' as *;
 
 .cart {
+  @include modalStyles($wh: 40%, $animation: rightToLeft);
+  right: 0;
+  overflow-y: scroll;
+
+  @media (max-width: 768px) {
+    width: 60%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+
   &__header,
   &__freeShipping,
   &__subtotal {
@@ -70,5 +82,16 @@
 
   &__subtotal {
     justify-content: space-between;
+  }
+}
+
+@keyframes rightToLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

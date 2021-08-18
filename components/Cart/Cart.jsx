@@ -15,13 +15,7 @@ const CloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
 const Cart = () => {
-  const {
-    isCartOpen,
-    closeCart,
-    cart: products,
-    clearCart,
-    subTotal,
-  } = useCartContext();
+  const { closeCart, cart: products, clearCart, subTotal } = useCartContext();
 
   const { user } = useAuthContext();
 
@@ -44,7 +38,7 @@ const Cart = () => {
   };
 
   return (
-    <div className={`${isCartOpen ? 'cart cart__show' : 'cart'}`}>
+    <div className={classes.cart}>
       <div className={classes.cart__header}>
         <div className={classes.close}>
           <button onClick={closeCart}>

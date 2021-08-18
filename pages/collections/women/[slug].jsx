@@ -6,10 +6,6 @@ import { useFiltersContext } from '../../../contexts/filters_context';
 
 const Layout = dynamic(() => import('../../../components/Layout/Layout'));
 
-const PageTransition = dynamic(() =>
-  import('../../../components/PageTransition/PageTransition')
-);
-
 const ShopPageContainer = dynamic(() =>
   import('../../../containers/ShopPageContainer/ShopPageContainer')
 );
@@ -47,9 +43,7 @@ const WomensCollections = () => {
 
   return (
     <Layout title={`${title} | BYLT Basics`}>
-      <PageTransition>
-        <ShopPageContainer />
-      </PageTransition>
+      <ShopPageContainer />
     </Layout>
   );
 };

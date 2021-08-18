@@ -2,6 +2,12 @@
 @use '../../styles/mixin' as *;
 
 .productModal {
+  @include position($ps: fixed, $z: -100);
+  @include wh-hei();
+  background-color: rgb($black-color, 0.8);
+  opacity: 1;
+  z-index: 100;
+
   &__content {
     background-color: $white-color;
     @include wh-hei($wh: 80%);
@@ -18,6 +24,7 @@
 
     .product {
       @include grid-columns($columns: repeat(2, 1fr), $gap: 4rem);
+      height: 90%;
 
       &__image {
         img {

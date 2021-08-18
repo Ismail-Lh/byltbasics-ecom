@@ -1,7 +1,16 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixin' as *;
 
-.filtersModel {
+.filtersModal {
+  @include modalStyles();
+  left: 0;
+  z-index: 1000;
+
+  h3 {
+    text-transform: uppercase;
+    font-size: $sm-size-3;
+  }
+
   &__header {
     @include flex-ali-jus($justify: space-between);
     @include mrb-pdb-brb();
@@ -16,5 +25,16 @@
         @include wh-hei($wh: 1.75rem, $hei: 1.75rem);
       }
     }
+  }
+}
+
+@keyframes leftToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

@@ -6,21 +6,15 @@ import {
   ProductsCategoryData_2,
 } from '../utils/constants';
 
+import { HeroSection } from '../sections';
+
 // COMPONENTS
 const Layout = dynamic(() => import('../components/Layout/Layout'));
-
-const PageTransition = dynamic(() =>
-  import('../components/PageTransition/PageTransition')
-);
 
 const HeroImage = dynamic(() =>
   import('../components/Hero/HeroImage/HeroImage')
 );
 
-// SECTIONS
-const HeroSection = dynamic(() =>
-  import('../sections/HeroSection/HeroSection')
-);
 const ProductsSliderSection = dynamic(() =>
   import('../sections/ProductsSliderSection/ProductsSliderSection')
 );
@@ -44,57 +38,55 @@ export default function Home() {
 
   return (
     <Layout>
-      <PageTransition>
-        <HeroSection />
+      <HeroSection />
 
-        <ProductsCategorySection categories={ProductsCategoryData_1} />
+      <ProductsCategorySection categories={ProductsCategoryData_1} />
 
-        <HeroImage
-          title="women's essential collection"
-          subtitle='Empowered Style. Essential Comfort.'
-          position='center'
-          color='#fff'
-          route='/collections/womens-essential-collection'
-          imgUrlDesktop='/assets/hero__desktop-womens-essential-collection.jpg'
-          imgUrlMobile='/assets/hero__mobile-womens-essential-collection.jpg'
-        />
+      <HeroImage
+        title="women's essential collection"
+        subtitle='Empowered Style. Essential Comfort.'
+        position='center'
+        color='#fff'
+        route='/collections/womens-essential-collection'
+        imgUrlDesktop='/assets/hero__desktop-womens-essential-collection.jpg'
+        imgUrlMobile='/assets/hero__mobile-womens-essential-collection.jpg'
+      />
 
-        <ProductsSliderSection
-          title="men's popular products"
-          products={getPopularProducts('men')}
-        />
+      <ProductsSliderSection
+        title="men's popular products"
+        products={getPopularProducts('men')}
+      />
 
-        <HeroImage
-          title='performance collection'
-          subtitle='Pushing The Limits'
-          position='center'
-          color='#fff'
-          route='/collections/performance-collection'
-          imgUrlDesktop='/assets/hero__desktop-performance-collection.jpg'
-          imgUrlMobile='/assets/hero__mobile-performance-collection.jpg'
-        />
+      <HeroImage
+        title='performance collection'
+        subtitle='Pushing The Limits'
+        position='center'
+        color='#fff'
+        route='/collections/performance-collection'
+        imgUrlDesktop='/assets/hero__desktop-performance-collection.jpg'
+        imgUrlMobile='/assets/hero__mobile-performance-collection.jpg'
+      />
 
-        <ProductsCategorySection categories={ProductsCategoryData_2} />
+      <ProductsCategorySection categories={ProductsCategoryData_2} />
 
-        <SplitContentSection isTextFirst={true} />
+      <SplitContentSection isTextFirst={true} />
 
-        <HeroImage
-          title='executive collection'
-          subtitle='Made for the Modern Man.'
-          position='center'
-          color='#fff'
-          route='/collections/executive-collection'
-          imgUrlDesktop='/assets/hero__desktop-executive-collection.jpg'
-          imgUrlMobile='/assets/hero__mobile-executive-collection.jpg'
-        />
+      <HeroImage
+        title='executive collection'
+        subtitle='Made for the Modern Man.'
+        position='center'
+        color='#fff'
+        route='/collections/executive-collection'
+        imgUrlDesktop='/assets/hero__desktop-executive-collection.jpg'
+        imgUrlMobile='/assets/hero__mobile-executive-collection.jpg'
+      />
 
-        <ProductsSliderSection
-          title="women's popular products"
-          products={getPopularProducts('women')}
-        />
+      <ProductsSliderSection
+        title="women's popular products"
+        products={getPopularProducts('women')}
+      />
 
-        <SplitContentSection isTextFirst={false} />
-      </PageTransition>
+      <SplitContentSection isTextFirst={false} />
     </Layout>
   );
 }

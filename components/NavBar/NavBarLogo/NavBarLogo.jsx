@@ -3,22 +3,20 @@ import Image from 'next/image';
 
 import classes from './NavBarLogo.module.scss';
 
-const DynamicMyLink = dynamic(() =>
-  import('../../../components/MyLink/MyLink')
-);
+import { MyLink } from '../../../components';
 
 const NavBarLogo = () => {
   return (
     <div className={classes.navbar__logo}>
-      <DynamicMyLink route='/'>
+      <MyLink route='/'>
         <Image
           src='/assets/Bylt-Logo.png'
           alt='Bylt-Logo'
           width={130}
           height={36.53}
-          priority
+          priority={true}
         />
-      </DynamicMyLink>
+      </MyLink>
     </div>
   );
 };

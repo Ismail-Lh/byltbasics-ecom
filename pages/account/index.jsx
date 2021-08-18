@@ -4,10 +4,6 @@ import PrivateRoute from '../../HOC/PrivateRoute';
 
 const Layout = dynamic(() => import('../../components/Layout/Layout'));
 
-const PageTransition = dynamic(() =>
-  import('../../components/PageTransition/PageTransition')
-);
-
 const AccountPageContainer = dynamic(() =>
   import('../../containers/AccountPageContainer/AccountPageContainer')
 );
@@ -15,9 +11,7 @@ const AccountPageContainer = dynamic(() =>
 const AccountPage = () => {
   return (
     <Layout title='Account | BYLT Basics'>
-      <PageTransition>
-        <AccountPageContainer />
-      </PageTransition>
+      <AccountPageContainer />
     </Layout>
   );
 };

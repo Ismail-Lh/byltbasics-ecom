@@ -2,6 +2,12 @@
 @use '../../styles/mixin' as *;
 
 .mobileMenu {
+  @include modalStyles($wh: 50%);
+  left: 0;
+
+  @media (max-width: 425px) {
+    width: 100%;
+  }
   &__icons {
     @include flex-ali-jus($justify: space-between);
     margin-bottom: 1.5rem;
@@ -51,5 +57,16 @@
         display: block;
       }
     }
+  }
+}
+
+@keyframes leftToRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

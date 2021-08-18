@@ -1,14 +1,21 @@
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './Filters.module.scss';
-import { FiltersModel, FiltersValue } from '..';
-import { useState } from 'react';
+
 import { AngleRightIcon } from '../../Icons';
+
+const DynamicFiltersModal = dynamic(() =>
+  import('../FiltersModal/FiltersModal')
+);
+
+import { FiltersValue } from '..';
 
 const Filters = () => {
   const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
 
-  const [openFiltersModel, setOpenFiltersModel] = useState(false);
+  const [openFiltersModal, setOpenFiltersModal] = useState(false);
 
   const FiltersContainer = ({ children, handelClick }) => (
     <div
@@ -27,14 +34,13 @@ const Filters = () => {
         </FiltersContainer>
       ) : (
         <>
-          <FiltersContainer handelClick={() => setOpenFiltersModel(true)}>
+          <FiltersContainer handelClick={() => setOpenFiltersModal(true)}>
             <AngleRightIcon />
           </FiltersContainer>
 
-          <FiltersModel
-            openFiltersModel={openFiltersModel}
-            setOpenFiltersModel={setOpenFiltersModel}
-          />
+          {openFiltersModal && (
+            <DynamicFiltersModal setOpenFiltersModal={setOpenFiltersModal} />
+          )}
         </>
       )}
     </>

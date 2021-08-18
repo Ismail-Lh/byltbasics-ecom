@@ -8,14 +8,11 @@ import { CartIcon, CloseIcon, SearchIcon } from '../../Icons';
 import { NavbarLinks } from '../../utils/constants';
 
 const MobileMenu = () => {
-  const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { closeSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
   return (
-    <div
-      className={`${
-        isSidebarOpen ? 'mobileMenu mobileMenu__show' : 'mobileMenu'
-      }`}>
+    <div className={classes.mobileMenu}>
       <div className={classes.mobileMenu__icons}>
         <button type='button' onClick={closeSidebar}>
           <CloseIcon />

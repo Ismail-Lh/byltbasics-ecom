@@ -2,10 +2,6 @@ import dynamic from 'next/dynamic';
 
 const Layout = dynamic(() => import('../../components/Layout/Layout'));
 
-const PageTransition = dynamic(() =>
-  import('../../components/PageTransition/PageTransition')
-);
-
 const LoginPageContainer = dynamic(() =>
   import('../../containers/LoginPageContainer/LoginPageContainer')
 );
@@ -13,9 +9,7 @@ const LoginPageContainer = dynamic(() =>
 const LoginPage = () => {
   return (
     <Layout title='Login | BYLT Premium'>
-      <PageTransition>
-        <LoginPageContainer />
-      </PageTransition>
+      <LoginPageContainer />
     </Layout>
   );
 };

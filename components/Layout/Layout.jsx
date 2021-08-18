@@ -1,18 +1,22 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
 
-import { NavBar } from '..';
-
-const DynamicScrollToTop = dynamic(() => import('../ScrollToTop/ScrollToTop'));
+import { useProductsContext } from '../../contexts/products_context';
 
 const DynamicProductModal = dynamic(() =>
   import('../ProductModal/ProductModal')
 );
-const DynamicFooterSection = dynamic(() =>
-  import('../../sections/FooterSection/FooterSection')
-);
 
 const Layout = ({ title, children, description }) => {
+  const { isProductModalOpen } = useProductsContext();
+
+  const variants = {
+    hidden: { opacity: 0, x: -200, y: 0 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: -100 },
+  };
+
   return (
     <div>
       <Head>
@@ -22,11 +26,15 @@ const Layout = ({ title, children, description }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div>
-        <NavBar />
-        <DynamicProductModal />
-        <main>{children}</main>
-        <DynamicFooterSection />
-        <DynamicScrollToTop />
+        {isProductModalOpen && <DynamicProductModal />}
+        <motion.main
+          variants={variants}
+          initial='hidden'
+          animate='enter'
+          exit='exit'
+          transition={{ type: 'linear' }}>
+          {children}
+        </motion.main>
       </div>
     </div>
   );

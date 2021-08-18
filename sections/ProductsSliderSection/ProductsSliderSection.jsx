@@ -10,10 +10,6 @@ const Loader = dynamic(() => import('../../components/Loader/Loader'));
 
 import { ProductsCard } from '../../components';
 
-// const ProductsCard = dynamic(() =>
-//   import('../../components/ProductsCard/ProductsCard')
-// );
-
 const ProductsSliderSection = ({ products, title }) => {
   const { loading } = useProductsContext();
 

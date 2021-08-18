@@ -103,73 +103,6 @@ h1 {
   }
 }
 
-.mobileMenu,
-.cart,
-.filtersModel {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  background-color: $white-color;
-  padding: 4rem 2rem;
-  z-index: -1000;
-  opacity: 0;
-  @include transition();
-
-  &__show {
-    z-index: 1000;
-    opacity: 1;
-  }
-}
-
-// Mobile Menu
-.mobileMenu,
-.filtersModel {
-  left: 0;
-  transform: translateX(-100%);
-
-  &__show {
-    transform: translate(0);
-  }
-}
-
-.mobileMenu {
-  width: 50%;
-
-  @media (max-width: 425px) {
-    width: 100%;
-  }
-}
-
-// Shopping cart
-.cart {
-  right: 0;
-  width: 40%;
-  transform: translateX(100%);
-  overflow-y: scroll;
-
-  @media (max-width: 768px) {
-    width: 60%;
-  }
-
-  @media (max-width: 500px) {
-    width: 100%;
-  }
-
-  &__show {
-    transform: translate(0);
-  }
-}
-
-// FiltersModel style
-.filtersModel {
-  width: 100%;
-
-  h3 {
-    text-transform: uppercase;
-    font-size: $sm-size-3;
-  }
-}
-
 // Hero Slider
 .hero {
   &__slide {
@@ -312,14 +245,14 @@ h1 {
 }
 
 // Product model compo
-.productModal {
-  @include position($ps: fixed, $z: -100);
-  @include wh-hei();
-  background-color: rgb($black-color, 0.8);
-  opacity: 0;
+// .productModal {
+//   @include position($ps: fixed, $z: -100);
+//   @include wh-hei();
+//   background-color: rgb($black-color, 0.8);
+//   opacity: 0;
 
-  &__show {
-    opacity: 1;
-    z-index: 100;
-  }
-}
+//   &__show {
+//     opacity: 1;
+//     z-index: 100;
+//   }
+// }

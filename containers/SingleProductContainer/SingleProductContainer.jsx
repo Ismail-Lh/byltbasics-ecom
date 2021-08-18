@@ -4,12 +4,8 @@ import classes from './SingleProductContainer.module.scss';
 
 import { useProductsContext } from '../../contexts/products_context';
 
-const SingleProductImages = dynamic(() =>
-  import('../../components/SingleProductImages/SingleProductImages')
-);
-const SingleProductInfo = dynamic(() =>
-  import('../../components/SingleProductInfo/SingleProductInfo')
-);
+import { SingleProductImages, SingleProductInfo } from '../../components';
+
 const ProductsSliderSection = dynamic(() =>
   import('../../sections/ProductsSliderSection/ProductsSliderSection')
 );

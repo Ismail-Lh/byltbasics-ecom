@@ -98,3 +98,14 @@
   align-items: $align;
   padding: $pd;
 }
+
+@mixin modalStyles($wh: 100%, $animation: leftToRight) {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: $wh;
+  background-color: $white-color;
+  padding: 4rem 2rem;
+  transform: translate(0);
+  animation: $animation 0.5s ease-in-out;
+}

@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { useMediaQuery } from '@react-hook/media-query';
 
 import classes from './SingleProductImages.module.scss';
-import Image from 'next/image';
 
 const SingleProductImages = ({ product, color }) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -23,6 +23,7 @@ const SingleProductImages = ({ product, color }) => {
               layout='responsive'
               width={540}
               height={675}
+              priority={true}
             />
           </div>
         ))}
@@ -45,6 +46,7 @@ const SingleProductImages = ({ product, color }) => {
               layout='responsive'
               width={540}
               height={675}
+              priority={true}
             />
           </div>
 
