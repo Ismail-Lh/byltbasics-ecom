@@ -9,13 +9,10 @@
     width: 100%;
   }
   &__icons {
-    @include flex-ali-jus($justify: space-between);
     margin-bottom: 1.5rem;
 
     svg {
-      &:first-of-type {
-        @include wh-hei($wh: 1.9rem, $hei: 1.9rem);
-      }
+      @include wh-hei($wh: 1.9rem, $hei: 1.9rem);
     }
   }
 

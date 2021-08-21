@@ -2,19 +2,11 @@ import { MyLink } from '..';
 import { useFiltersContext } from '../../contexts/filters_context';
 import classes from './DropDownMenu.module.scss';
 
-const DropDownMenu = ({
-  showDropMenu,
-  collections,
-  productsCategories,
-  imageInfo,
-}) => {
+const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
   const { updateCollection } = useFiltersContext();
 
   return (
-    <div
-      className={`${
-        !showDropMenu ? 'dropDownMenu' : 'dropDownMenu dropDownMenu__show'
-      }`}>
+    <div className={classes.dropDownMenu}>
       <div className='container'>
         <div className={classes.dropDownMenu__grid}>
           <ul className={classes.dropDownMenu__collections}>

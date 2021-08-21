@@ -6,8 +6,6 @@ import {
   ProductsCategoryData_2,
 } from '../utils/constants';
 
-import { HeroSection } from '../sections';
-
 // COMPONENTS
 const Layout = dynamic(() => import('../components/Layout/Layout'));
 
@@ -15,6 +13,9 @@ const HeroImage = dynamic(() =>
   import('../components/Hero/HeroImage/HeroImage')
 );
 
+const HeroSection = dynamic(() =>
+  import('../sections/HeroSection/HeroSection')
+);
 const ProductsSliderSection = dynamic(() =>
   import('../sections/ProductsSliderSection/ProductsSliderSection')
 );

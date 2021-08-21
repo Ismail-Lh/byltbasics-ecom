@@ -71,9 +71,9 @@ const NavBarLinks = () => {
                   subtitle: 'shop the latest styles',
                   title: 'gear up for summer',
                 }}
-                showDropMenu={showMenDropMenu}
               />
             )}
+
             {link === 'women' && showWomenDropMenu && (
               <DynamicDropDownMenu
                 collections={womenCollections}
@@ -85,7 +85,6 @@ const NavBarLinks = () => {
                   subtitle: 'ultimate comfort. premium style.',
                   title: "women's elite + joggers",
                 }}
-                showDropMenu={showWomenDropMenu}
               />
             )}
           </li>

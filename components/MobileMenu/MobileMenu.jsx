@@ -17,9 +17,6 @@ const MobileMenu = () => {
         <button type='button' onClick={closeSidebar}>
           <CloseIcon />
         </button>
-        <button type='button'>
-          <CartIcon />
-        </button>
       </div>
 
       <form className={classes.mobileMenu__form}>

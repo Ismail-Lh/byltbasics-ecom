@@ -6,9 +6,8 @@ import { AuthProvider } from '../contexts/auth_context';
 import { ProductsProvider } from '../contexts/products_context';
 import { FiltersProvider } from '../contexts/filters_context';
 import { CartProvider } from '../contexts/cart_context';
-import useScroll from '../hooks/useScroll';
 
-import { NavBar } from '../components';
+const DynamicNavBar = dynamic(() => import('../components/NavBar/NavBar'));
 
 const DynamicScrollToTop = dynamic(() =>
   import('../components/ScrollToTop/ScrollToTop')
@@ -22,14 +21,12 @@ const DynamicFooterSection = dynamic(() =>
 // import { addDataBase } from '../productsData';
 
 function MyApp({ Component, pageProps, router }) {
-  const { ref, inView } = useScroll();
-
   return (
     <AuthProvider>
       <ProductsProvider>
         <FiltersProvider>
           <CartProvider>
-            <NavBar />
+            <DynamicNavBar />
             <AnimatePresence
               exitBeforeEnter
               initial={false}
@@ -37,7 +34,7 @@ function MyApp({ Component, pageProps, router }) {
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
             <DynamicScrollToTop />
-            <div ref={ref}>{inView && <DynamicFooterSection />}</div>
+            <DynamicFooterSection />
           </CartProvider>
         </FiltersProvider>
       </ProductsProvider>

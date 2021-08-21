@@ -171,28 +171,6 @@ h1 {
   opacity: 0.8;
 }
 
-// Drop Down Menu styles
-.dropDownMenu {
-  background-color: $white-color;
-  @include position($tp: 5.9rem, $z: -1);
-  height: 58vh;
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-  @include transition();
-
-  .container {
-    height: 100%;
-  }
-
-  &__show {
-    opacity: 1;
-    z-index: 1;
-    display: block;
-    visibility: visible;
-  }
-}
-
 // Form Input Compo
 .formIpt,
 .textarea {

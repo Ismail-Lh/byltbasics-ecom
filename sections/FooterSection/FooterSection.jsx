@@ -11,7 +11,6 @@ const FooterSection = () => {
   return (
     <div className='container'>
       <FooterFormContainer />
-
       <FooterLinksContainer />
     </div>
   );
