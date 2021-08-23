@@ -9,7 +9,6 @@ const SplitContentImageContainer = ({ imgUrl, imgAlt }) => {
         alt={imgAlt}
         width={900}
         height={600}
-        priority
         layout='responsive'
       />
     </div>

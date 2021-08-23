@@ -51,6 +51,7 @@ export default function Home() {
         route='/collections/womens-essential-collection'
         imgUrlDesktop='/assets/hero__desktop-womens-essential-collection.jpg'
         imgUrlMobile='/assets/hero__mobile-womens-essential-collection.jpg'
+        priority={false}
       />
 
       <ProductsSliderSection
@@ -66,6 +67,7 @@ export default function Home() {
         route='/collections/performance-collection'
         imgUrlDesktop='/assets/hero__desktop-performance-collection.jpg'
         imgUrlMobile='/assets/hero__mobile-performance-collection.jpg'
+        priority={false}
       />
 
       <ProductsCategorySection categories={ProductsCategoryData_2} />

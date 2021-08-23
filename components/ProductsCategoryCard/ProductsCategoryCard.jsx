@@ -9,7 +9,7 @@ const ProductsCategoryCard = ({ category, imgUrl, route }) => {
       <div
         className={classes.card__img}
         style={{ position: 'relative', width: '100%', height: '100%' }}>
-        <Image src={imgUrl} alt={category} layout='fill' priority />
+        <Image src={imgUrl} alt={category} layout='fill' />
       </div>
 
       <div className={classes.card__content}>

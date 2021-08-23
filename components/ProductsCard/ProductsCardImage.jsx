@@ -24,7 +24,6 @@ const ProductsCardImage = ({ product, productRoute, color }) => {
         <Image
           src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/small/${product?.images[0]}`}
           alt={`${product?.name}-${color}`}
-          priority={true}
           layout='fill'
         />
       </MyLink>

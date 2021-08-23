@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic';
-
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -7,10 +5,6 @@ import classes from './HeroSection.module.scss';
 import { HeroData } from '../../utils/constants';
 
 import { HeroImage } from '../../components';
-
-// const HeroImage = dynamic(() =>
-//   import('../../components/Hero/HeroImage/HeroImage')
-// );
 
 const HeroSection = () => {
   const responsive = {
@@ -38,8 +32,6 @@ const HeroSection = () => {
             color,
             route,
             position,
-            imgWidth,
-            imgHeight,
           }) => (
             <HeroImage
               key={id}
@@ -51,8 +43,6 @@ const HeroSection = () => {
               color={color}
               route={route}
               priority={true}
-              imgWidth={imgWidth}
-              imgHeight={imgHeight}
             />
           )
         )}

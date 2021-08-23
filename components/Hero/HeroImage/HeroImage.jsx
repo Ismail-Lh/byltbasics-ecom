@@ -14,6 +14,7 @@ const HeroImage = ({
   imgUrlMobile,
   color,
   route,
+  priority,
 }) => {
   const matchesMedia = useMediaQuery('only screen and (max-width: 500px)');
 
@@ -33,7 +34,7 @@ const HeroImage = ({
           src={imgSrc}
           alt={title}
           layout='fill'
-          priority={true}
+          priority={priority}
           quality={100}
         />
       </div>

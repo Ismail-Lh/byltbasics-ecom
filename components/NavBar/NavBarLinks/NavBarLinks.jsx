@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import classes from './NavBarLinks.module.scss';
 
@@ -15,6 +14,7 @@ import {
 } from '../../../utils/constants';
 
 import { MenuIcon } from '../../../Icons';
+import { MyLink } from '../../';
 
 const DynamicDropDownMenu = dynamic(() =>
   import('../../DropDownMenu/DropDownMenu')
@@ -58,7 +58,7 @@ const NavBarLinks = () => {
               e.stopPropagation();
               handelHover(link, false);
             }}>
-            <Link href={`/collections/${route}`}>{link}</Link>
+            <MyLink route={`/collections/${route}`}>{link}</MyLink>
 
             {link === 'men' && showMenDropMenu && (
               <DynamicDropDownMenu
