@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { useProductsContext } from '../../contexts/products_context';
+import { pageTransition } from '../../utils/animations';
 
 const DynamicProductModal = dynamic(() =>
   import('../ProductModal/ProductModal')
@@ -10,12 +11,6 @@ const DynamicProductModal = dynamic(() =>
 
 const Layout = ({ title, children, description }) => {
   const { isProductModalOpen } = useProductsContext();
-
-  const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
-  };
 
   return (
     <div>
@@ -26,9 +21,11 @@ const Layout = ({ title, children, description }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div>
-        {isProductModalOpen && <DynamicProductModal />}
+        <AnimatePresence initial={false}>
+          {isProductModalOpen && <DynamicProductModal />}
+        </AnimatePresence>
         <motion.main
-          variants={variants}
+          variants={pageTransition}
           initial='hidden'
           animate='enter'
           exit='exit'

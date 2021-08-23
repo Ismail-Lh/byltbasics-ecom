@@ -2,7 +2,7 @@
 @use '../../styles/mixin' as *;
 
 .cart {
-  @include modalStyles($wh: 40%, $animation: rightToLeft);
+  @include modalStyles($wh: 40%);
   right: 0;
   overflow-y: scroll;
 

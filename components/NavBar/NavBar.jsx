@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import classes from './NavBar.module.scss';
 
@@ -29,9 +29,13 @@ const NavBar = () => {
         </div>
       </div>
 
-      {isSidebarOpen && <DynamicMobileMenu />}
+      <AnimatePresence initial={false}>
+        {isSidebarOpen && <DynamicMobileMenu />}
+      </AnimatePresence>
 
-      {isCartOpen && <DynamicCart />}
+      <AnimatePresence initial={false}>
+        {isCartOpen && <DynamicCart />}
+      </AnimatePresence>
     </nav>
   );
 };

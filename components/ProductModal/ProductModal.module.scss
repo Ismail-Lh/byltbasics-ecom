@@ -2,11 +2,9 @@
 @use '../../styles/mixin' as *;
 
 .productModal {
-  @include position($ps: fixed, $z: -100);
+  @include position($ps: fixed);
   @include wh-hei();
   background-color: rgb($black-color, 0.8);
-  opacity: 1;
-  z-index: 100;
 
   &__content {
     background-color: $white-color;

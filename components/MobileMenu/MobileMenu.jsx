@@ -1,18 +1,25 @@
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 import classes from './MobileMenu.module.scss';
 import { useFiltersContext } from '../../contexts/filters_context';
-
 import { useProductsContext } from '../../contexts/products_context';
-import { CartIcon, CloseIcon, SearchIcon } from '../../Icons';
 import { NavbarLinks } from '../../utils/constants';
+import { sideBarVariants } from '../../utils/animations';
+
+import { CloseIcon, SearchIcon } from '../../Icons';
 
 const MobileMenu = () => {
   const { closeSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
   return (
-    <div className={classes.mobileMenu}>
+    <motion.div
+      variants={sideBarVariants}
+      initial='initial'
+      animate='animate'
+      exit='initial'
+      className={classes.mobileMenu}>
       <div className={classes.mobileMenu__icons}>
         <button type='button' onClick={closeSidebar}>
           <CloseIcon />
@@ -39,7 +46,7 @@ const MobileMenu = () => {
           <Link href='/account/login'>login</Link>
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 };
 

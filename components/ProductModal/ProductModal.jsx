@@ -1,9 +1,12 @@
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+
 import classes from './ProductModal.module.scss';
 import { CloseIcon } from '../../Icons';
 import { SingleProductInfo } from '..';
 import { useProductsContext } from '../../contexts/products_context';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { productModalVariants } from '../../utils/animations';
 
 const ProductModal = () => {
   const { closeProductModal, single_product } = useProductsContext();
@@ -17,7 +20,12 @@ const ProductModal = () => {
   }, [productColor]);
 
   return (
-    <div className={classes.productModal}>
+    <motion.div
+      variants={productModalVariants}
+      initial='initial'
+      animate='animate'
+      exit='initial'
+      className={classes.productModal}>
       <div className={classes.productModal__content}>
         <div className={classes.closeBtn}>
           <button onClick={closeProductModal}>
@@ -44,7 +52,7 @@ const ProductModal = () => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

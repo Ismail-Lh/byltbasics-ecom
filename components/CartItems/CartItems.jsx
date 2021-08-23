@@ -1,11 +1,15 @@
+import dynamic from 'next/dynamic';
+
 import classes from './CartItems.module.scss';
 import { formatPrice } from '../../utils/helpers';
 import { useCartContext } from '../../contexts/cart_context';
-import dynamic from 'next/dynamic';
 
-const DynamicAmountBtn = dynamic(() => import('../AmountBtn/AmountBtn'));
-const DynamicMyLink = dynamic(() => import('../MyLink/MyLink'));
-const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
+// const DynamicAmountBtn = dynamic(() => import('../AmountBtn/AmountBtn'));
+// const DynamicMyLink = dynamic(() => import('../MyLink/MyLink'));
+// const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
+
+import { AmountBtn, MyLink } from '..';
+import { CloseIcon } from '../../Icons';
 
 const CartItems = () => {
   const { cart: products, removeFromCart, toggleCartAmount } = useCartContext();
@@ -29,12 +33,12 @@ const CartItems = () => {
         }) => (
           <div className={classes.product} key={id}>
             <div className={classes.product__img}>
-              <DynamicMyLink route={`/products/${route}`}>
+              <MyLink route={`/products/${route}`}>
                 <img
                   src={`/assets/products/${gender}/${collections}/${style}/${name}/${color}/small/${image}`}
                   alt={`${name}-${color}-${size}`}
                 />
-              </DynamicMyLink>
+              </MyLink>
             </div>
 
             <div className={classes.product__info}>
@@ -48,13 +52,13 @@ const CartItems = () => {
                 </div>
                 <div className={classes.deleteProduct}>
                   <button onClick={() => removeFromCart(id)}>
-                    <DynamicCloseIcon />
+                    <CloseIcon />
                   </button>
                 </div>
               </div>
 
               <div className={classes.product__info_2}>
-                <DynamicAmountBtn
+                <AmountBtn
                   productAmount={amount}
                   incAmount={() => toggleCartAmount(id, 'inc')}
                   decAmount={() => toggleCartAmount(id, 'dec')}

@@ -1,14 +1,17 @@
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
 import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
 import { useAuthContext } from '../../contexts/auth_context';
+import { cartVariants } from '../../utils/animations';
 
-const Button = dynamic(() => import('../Button/Button'));
 const CartItems = dynamic(() => import('../CartItems/CartItems'));
-const CloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
+
+import { Button } from '..';
+import { CloseIcon } from '../../Icons';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -38,7 +41,12 @@ const Cart = () => {
   };
 
   return (
-    <div className={classes.cart}>
+    <motion.div
+      variants={cartVariants}
+      initial='initial'
+      animate='animate'
+      exit='initial'
+      className={classes.cart}>
       <div className={classes.cart__header}>
         <div className={classes.close}>
           <button onClick={closeCart}>
@@ -79,7 +87,7 @@ const Cart = () => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
 
