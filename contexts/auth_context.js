@@ -4,6 +4,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { auth } from '../lib/firebase.prod';
@@ -19,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (email, password, firstName, lastName) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
 
-    const user = res.user.updateProfile({
+    const user = updateProfile(res.user, {
       displayName: `${firstName} ${lastName}`,
     });
 
