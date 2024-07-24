@@ -56,7 +56,7 @@ const NavBarIcons = () => {
 
       <button className={classes.navbar__icons_2} onClick={openCart}>
         <CartIcon />
-        <span>{total_products}</span>
+        {total_products > 0 && <span>{total_products}</span>}
       </button>
     </>
   );
