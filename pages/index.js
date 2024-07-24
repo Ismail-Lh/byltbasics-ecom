@@ -35,7 +35,6 @@ export default function Home() {
         route='/collections/womens-essential-collection'
         imgUrlDesktop='/assets/hero__desktop-womens-essential-collection.jpg'
         imgUrlMobile='/assets/hero__mobile-womens-essential-collection.jpg'
-        priority={false}
       />
 
       <ProductsSliderSection
@@ -51,12 +50,17 @@ export default function Home() {
         route='/collections/performance-collection'
         imgUrlDesktop='/assets/hero__desktop-performance-collection.jpg'
         imgUrlMobile='/assets/hero__mobile-performance-collection.jpg'
-        priority={false}
       />
 
       <ProductsCategorySection productsCategories={productsCategories.slice(4, )} />
 
-      <SplitContentSection isTextFirst={true} />
+      <SplitContentSection 
+      isTextFirst={true} 
+      title="basics to last a lifetime"
+      text="Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear."
+      route="/pages/bylt-apparel-sizing-guide"
+      imgUrl="/assets/split-content-img-1.jpg"
+      />
 
       <HeroImage
         title='executive collection'
@@ -73,7 +77,13 @@ export default function Home() {
         products={getPopularProducts('women')}
       />
 
-      <SplitContentSection isTextFirst={false} />
+      <SplitContentSection 
+      isTextFirst={false} 
+      title="give $10, get $10"
+      text="Give your friends $10 off their first purchase and get $10 in points when they spend $50 or more."
+      route="/pages/rewards"
+      imgUrl="/assets/split-content-img-2.jpg"
+      />
     </Layout>
   );
 }

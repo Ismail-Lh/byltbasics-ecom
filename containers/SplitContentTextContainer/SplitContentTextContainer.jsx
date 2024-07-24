@@ -1,13 +1,6 @@
-import dynamic from 'next/dynamic';
 import classes from './SpiltContentTextContainer.module.scss';
 
-const SplitContentText = dynamic(() =>
-  import('../../components/SplitContentText/SplitContentText')
-);
-const SplitContentIcons = dynamic(() =>
-  import('../../components/SplitContentIcons/SplitContentIcons')
-);
-const MyLink = dynamic(() => import('../../components/MyLink/MyLink'));
+import { SplitContentText, SplitContentIcons, MyLink } from '../../components';
 
 const SplitContentTextContainer = ({ title, text, isTextFirst, route }) => {
   return (
