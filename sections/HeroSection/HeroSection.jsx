@@ -42,7 +42,6 @@ const HeroSection = () => {
               position={position}
               color={color}
               route={route}
-              priority={true}
             />
           )
         )}

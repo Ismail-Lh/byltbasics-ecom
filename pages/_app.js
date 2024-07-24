@@ -7,7 +7,7 @@ import { ProductsProvider } from '../contexts/products_context';
 import { FiltersProvider } from '../contexts/filters_context';
 import { CartProvider } from '../contexts/cart_context';
 
-const DynamicNavBar = dynamic(() => import('../components/NavBar/NavBar'));
+import { NavBar } from '../components';
 
 const DynamicScrollToTop = dynamic(() =>
   import('../components/ScrollToTop/ScrollToTop')
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps, router }) {
       <ProductsProvider>
         <FiltersProvider>
           <CartProvider>
-            <DynamicNavBar />
+            <NavBar />
             <AnimatePresence
               exitBeforeEnter
               initial={false}

@@ -7,15 +7,15 @@ import {
 } from '../utils/constants';
 
 // COMPONENTS
+import HeroSection from '../sections/HeroSection/HeroSection';
+
 const Layout = dynamic(() => import('../components/Layout/Layout'));
 
 const HeroImage = dynamic(() =>
   import('../components/Hero/HeroImage/HeroImage')
 );
 
-const HeroSection = dynamic(() =>
-  import('../sections/HeroSection/HeroSection')
-);
+
 const ProductsSliderSection = dynamic(() =>
   import('../sections/ProductsSliderSection/ProductsSliderSection')
 );
