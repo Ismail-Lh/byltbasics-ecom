@@ -266,7 +266,7 @@ export const HeroData = [
   },
 ];
 
-export const ProductsCategoryData_1 = [
+export const productsCategories = [
   {
     category: 'long sleeves',
     imgUrl: '/assets/long-sleeves-1.jpg',
@@ -291,9 +291,6 @@ export const ProductsCategoryData_1 = [
     route: '/collections/men/mens-drop-cuts',
     id: uuidv4(),
   },
-];
-
-export const ProductsCategoryData_2 = [
   {
     category: 'drop-cuts',
     imgUrl: '/assets/drop-cuts-1.jpg',

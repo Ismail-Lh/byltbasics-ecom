@@ -2,29 +2,13 @@ import dynamic from 'next/dynamic';
 
 import { useProductsContext } from '../contexts/products_context';
 import {
-  ProductsCategoryData_1,
-  ProductsCategoryData_2,
+  productsCategories
 } from '../utils/constants';
 
 // COMPONENTS
-import HeroSection from '../sections/HeroSection/HeroSection';
+import {HeroSection, ProductsCategorySection, ProductsSliderSection, SplitContentSection} from '../sections';
 
-const Layout = dynamic(() => import('../components/Layout/Layout'));
-
-const HeroImage = dynamic(() =>
-  import('../components/Hero/HeroImage/HeroImage')
-);
-
-
-const ProductsSliderSection = dynamic(() =>
-  import('../sections/ProductsSliderSection/ProductsSliderSection')
-);
-const ProductsCategorySection = dynamic(() =>
-  import('../sections/ProductsCategorySection/ProductsCategorySection')
-);
-const SplitContentSection = dynamic(() =>
-  import('../sections/SplitContentSection/SplitContentSection')
-);
+import {Layout, HeroImage} from '../components'
 
 export default function Home() {
   const { popular_products } = useProductsContext();
@@ -41,7 +25,7 @@ export default function Home() {
     <Layout>
       <HeroSection />
 
-      <ProductsCategorySection categories={ProductsCategoryData_1} />
+      <ProductsCategorySection productsCategories={productsCategories.slice(4)} />
 
       <HeroImage
         title="women's essential collection"
@@ -70,7 +54,7 @@ export default function Home() {
         priority={false}
       />
 
-      <ProductsCategorySection categories={ProductsCategoryData_2} />
+      <ProductsCategorySection productsCategories={productsCategories.slice(4, )} />
 
       <SplitContentSection isTextFirst={true} />
 

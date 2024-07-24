@@ -1,18 +1,12 @@
-import dynamic from 'next/dynamic';
-
 import classes from './ProductsCategorySection.module.scss';
-
-// const ProductsCategoryCard = dynamic(() =>
-//   import('../../components/ProductsCategoryCard/ProductsCategoryCard')
-// );
 
 import { ProductsCategoryCard } from '../../components';
 
-const ProductsCategorySection = ({ categories }) => {
+const ProductsCategorySection = ({ productsCategories }) => {
   return (
     <div className='container'>
       <div className={classes.products__category_1}>
-        {categories.map(({ id, category, imgUrl, route }) => (
+        {productsCategories.map(({ id, category, imgUrl, route }) => (
           <ProductsCategoryCard
             key={id}
             category={category}

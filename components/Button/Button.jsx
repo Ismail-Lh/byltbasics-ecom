@@ -21,9 +21,9 @@ const Button = ({
           }`}
           role={role}
           type={type}
-          onClick={handelClick && handelClick}
-          onSubmit={handelSubmit && handelSubmit}
-          disabled={disabled && disabled}>
+          onClick={handelClick}
+          onSubmit={handelSubmit}
+          disabled={disabled}>
           {children}
         </button>
       ) : (
