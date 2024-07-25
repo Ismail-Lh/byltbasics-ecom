@@ -1,12 +1,14 @@
-const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  env: {
-    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
-  },
+  // env: {
+  //   stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+  // },
 };
 
-module.exports = withPlugins([[withBundleAnalyzer], nextConfig]);
+const config = withBundleAnalyzer(nextConfig);
+
+module.exports = config;
