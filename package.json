@@ -9,27 +9,27 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^11.0.1",
+    "@next/bundle-analyzer": "^14.2.5",
     "@react-hook/media-query": "^1.1.1",
-    "@stripe/stripe-js": "^1.15.1",
-    "axios": "^0.21.1",
+    "@stripe/stripe-js": "^4.1.0",
+    "axios": "^1.7.2",
     "cross-env": "^7.0.3",
-    "date-fns": "^2.23.0",
-    "firebase": "^9.0.0-beta.7",
-    "firebase-admin": "^9.9.0",
-    "framer-motion": "^4.1.17",
-    "micro": "^9.3.4",
+    "date-fns": "^3.6.0",
+    "firebase": "^10.12.4",
+    "firebase-admin": "^12.3.0",
+    "framer-motion": "^11.3.17",
+    "micro": "^10.0.1",
     "next-compose-plugins": "^2.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "next": "^13.4.0",
-    "react-multi-carousel": "^2.6.3",
-    "react-spinners": "^0.11.0",
-    "stripe": "^8.156.0",
-    "styled-components": "^5.2.3"
+    "react-multi-carousel": "^2.8.5",
+    "react-spinners": "^0.14.1",
+    "stripe": "^16.4.0",
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
-    "sass": "^1.32.8",
-    "uuid": "^8.3.2"
+    "sass": "^1.77.8",
+    "uuid": "^10.0.0"
   }
 }
