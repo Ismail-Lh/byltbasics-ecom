@@ -14,7 +14,6 @@ const NavBarLogo = () => {
           alt='Bylt-Logo'
           width={130}
           height={36.53}
-          priority={true}
         />
       </MyLink>
     </div>

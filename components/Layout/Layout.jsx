@@ -9,7 +9,7 @@ const DynamicProductModal = dynamic(() =>
   import('../ProductModal/ProductModal')
 );
 
-const Layout = ({ title, children, description }) => {
+const Layout = ({ children, title="BYLT Basics™ - Premium Basics",    description="Men's Basics are evolving. BYLT Underwear and BYLT Shirts. Get BYLT's new line of Men's Premium Basics online at a fair price. BYLT™ - Confidence starts here™" }) => {
   const { isProductModalOpen } = useProductsContext();
 
   return (
@@ -35,12 +35,6 @@ const Layout = ({ title, children, description }) => {
       </div>
     </div>
   );
-};
-
-Layout.defaultProps = {
-  title: 'BYLT Basics™ - Premium Basics',
-  description:
-    "Men's Basics are evolving. BYLT Underwear and BYLT Shirts. Get BYLT's new line of Men's Premium Basics online at a fair price. BYLT™ - Confidence starts here™",
 };
 
 export default Layout;

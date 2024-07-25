@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps, router }) {
           <CartProvider>
             <NavBar />
             <AnimatePresence
-              exitBeforeEnter
+              mode="wait"
               initial={false}
               onExitComplete={() => window.scrollTo(0, 0)}>
               <Component {...pageProps} key={router.route} />

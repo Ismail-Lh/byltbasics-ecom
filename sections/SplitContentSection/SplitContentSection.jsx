@@ -5,18 +5,18 @@ import {
   SplitContentImageContainer,
 } from '../../containers';
 
-const SplitContentSection = ({ isTextFirst, ...textProps }) => {
+const SplitContentSection = ({ istextfirst, ...textProps }) => {
   return (
-    <Wrapper isTextFirst={isTextFirst} order={isTextFirst ? '2' : '-1'}>
-      {isTextFirst ? (
+    <Wrapper istextfirst={istextfirst} order={istextfirst ? '2' : '-1'}>
+      {istextfirst ? (
         <>
-          <SplitContentTextContainer {...textProps} isTextFirst />
+          <SplitContentTextContainer {...textProps} istextfirst={istextfirst} />
           <SplitContentImageContainer imgUrl={textProps.imgUrl} imgAlt={textProps.title} />
         </>
       ) : (
         <>
           <SplitContentImageContainer imgUrl={textProps.imgUrl} imgAlt={textProps.title} />
-          <SplitContentTextContainer {...textProps} isTextFirst={false} />
+          <SplitContentTextContainer {...textProps} istextfirst={istextfirst} />
         </>
       )}
     </Wrapper>

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
-import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
+// import { loadStripe } from '@stripe/stripe-js';
+// import axios from 'axios';
 
 import classes from './Cart.module.scss';
 import { useCartContext } from '../../contexts/cart_context';
@@ -15,7 +15,7 @@ import { CloseIcon } from '../../Icons';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(process.env.stripe_public_key);
+// const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 const Cart = () => {
   const { closeCart, cart: products, clearCart, subTotal } = useCartContext();
@@ -23,21 +23,21 @@ const Cart = () => {
   const { user } = useAuthContext();
 
   const createCheckoutSession = async () => {
-    //  Get Stripe.js instance
-    const stripe = await stripePromise;
+    // //  Get Stripe.js instance
+    // const stripe = await stripePromise;
 
-    // Call the backend to create the checkout session
-    const checkoutSession = await axios.post('/api/create-checkout-session', {
-      items: products,
-      email: user.email,
-    });
+    // // Call the backend to create the checkout session
+    // const checkoutSession = await axios.post('/api/create-checkout-session', {
+    //   items: products,
+    //   email: user.email,
+    // });
 
-    // When the customer clicks on the button, redirect them to Stripe Checkout.
-    const result = await stripe.redirectToCheckout({
-      sessionId: checkoutSession.data.id,
-    });
+    // // When the customer clicks on the button, redirect them to Stripe Checkout.
+    // const result = await stripe.redirectToCheckout({
+    //   sessionId: checkoutSession.data.id,
+    // });
 
-    if (result.error) alert(result.error.message);
+    // if (result.error) alert(result.error.message);
   };
 
   return (

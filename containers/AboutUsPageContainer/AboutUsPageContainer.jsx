@@ -12,7 +12,6 @@ const AboutUsPageContainer = () => {
             // width={1125}
             // height={525}
             layout='fill'
-            priority
             quality={100}
           />
         </div>

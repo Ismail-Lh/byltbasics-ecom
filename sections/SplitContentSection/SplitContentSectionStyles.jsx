@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: ${props =>
-    props.isTextFirst ? '40% 60%' : '60% 40%'};
+    props.istextfirst ? '40% 60%' : '60% 40%'};
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;

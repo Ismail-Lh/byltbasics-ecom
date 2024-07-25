@@ -24,7 +24,6 @@ const BackgroundImage = ({ srcImg, titleBg }) => {
         width={1440}
         height={350}
         layout='responsive'
-        priority
         quality={100}
       />
       <h1 className={classes.backgroundImage__title}>{title || titleBg}</h1>

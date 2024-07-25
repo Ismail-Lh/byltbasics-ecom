@@ -8,10 +8,10 @@ import {
   MoneyIcon,
 } from '../../Icons';
 
-const SplitContentIcons = ({ isTextFirst }) => {
+const SplitContentIcons = ({ istextfirst }) => {
   return (
     <div className={classes.split__content_icons}>
-      {isTextFirst ? (
+      {istextfirst ? (
         <>
           <div className={classes.split__content_icon_1}>
             <WrinkleIcon />

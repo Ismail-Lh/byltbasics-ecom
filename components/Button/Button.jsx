@@ -27,13 +27,10 @@ const Button = ({
           {children}
         </button>
       ) : (
-        <Link href={route}>
-          <a
-            className={`${
+        <Link href={route} className={`${
               color === 'white' ? classes.btn__white : classes.btn__black
             }`}>
             {children}
-          </a>
         </Link>
       )}
     </>

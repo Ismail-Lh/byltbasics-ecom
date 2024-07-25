@@ -16,13 +16,13 @@ const HeroSection = () => {
 
   return (
     <div className={classes.hero__section}>
-      <Carousel
+      {/* <Carousel
         ssr={false}
         responsive={responsive}
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={3000}>
-        {HeroData.map(
+        {HeroData?.map(
           ({
             id,
             title,
@@ -45,7 +45,7 @@ const HeroSection = () => {
             />
           )
         )}
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 };

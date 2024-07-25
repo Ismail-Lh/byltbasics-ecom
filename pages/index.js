@@ -55,7 +55,7 @@ export default function Home() {
       <ProductsCategorySection productsCategories={productsCategories.slice(4, )} />
 
       <SplitContentSection 
-      isTextFirst={true} 
+      istextfirst={true} 
       title="basics to last a lifetime"
       text="Our pre-wash and wrinkle-free technology protect your new favorite shirt from everyday wear and tear."
       route="/pages/bylt-apparel-sizing-guide"
@@ -78,7 +78,7 @@ export default function Home() {
       />
 
       <SplitContentSection 
-      isTextFirst={false} 
+      istextfirst={false} 
       title="give $10, get $10"
       text="Give your friends $10 off their first purchase and get $10 in points when they spend $50 or more."
       route="/pages/rewards"

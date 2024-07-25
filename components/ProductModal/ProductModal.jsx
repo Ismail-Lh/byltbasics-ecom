@@ -40,7 +40,6 @@ const ProductModal = () => {
             <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[0]}`}
               alt={`${product?.name}-${color}`}
-              priority={true}
               layout='fill'
             />
           </div>

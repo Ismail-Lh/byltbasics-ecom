@@ -21,7 +21,6 @@ const HeroImageBackground = ({ imgUrlDesktop, imgUrlMobile, title }) => {
           src={imgSrc}
           alt={title}
           layout='fill'
-          priority={true}
           quality={100}
         />
       </div>

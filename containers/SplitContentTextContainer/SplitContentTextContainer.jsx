@@ -2,7 +2,7 @@ import classes from './SpiltContentTextContainer.module.scss';
 
 import { SplitContentText, SplitContentIcons, MyLink } from '../../components';
 
-const SplitContentTextContainer = ({ title, text, isTextFirst, route }) => {
+const SplitContentTextContainer = ({ title, text, istextfirst, route }) => {
   return (
     <div className={classes.split__content_text}>
       <div>
@@ -10,7 +10,7 @@ const SplitContentTextContainer = ({ title, text, isTextFirst, route }) => {
 
         <MyLink route={route}>load more</MyLink>
 
-        <SplitContentIcons isTextFirst={isTextFirst} />
+        <SplitContentIcons istextfirst={istextfirst} />
       </div>
     </div>
   );

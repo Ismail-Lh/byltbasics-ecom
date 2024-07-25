@@ -23,7 +23,6 @@ const SingleProductImages = ({ product, color }) => {
               layout='responsive'
               width={540}
               height={675}
-              priority={true}
             />
           </div>
         ))}
@@ -46,7 +45,6 @@ const SingleProductImages = ({ product, color }) => {
               layout='responsive'
               width={540}
               height={675}
-              priority={true}
             />
           </div>
 
