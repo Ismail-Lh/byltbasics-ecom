@@ -53,11 +53,11 @@ const ProductsSliderSection = ({ products, title }) => {
               <div className={classes.products__slider}>
                 <h2 className={classes.title}>{title}</h2>
 
-                {/* <Carousel ssr={false} infinite={true} responsive={responsive}>
+                <Carousel ssr={false} infinite={true} responsive={responsive}>
                   {products?.map(product => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
-                </Carousel> */}
+                </Carousel>
               </div>
             )}
           </>

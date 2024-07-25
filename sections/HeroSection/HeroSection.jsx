@@ -16,7 +16,7 @@ const HeroSection = () => {
 
   return (
     <div className={classes.hero__section}>
-      {/* <Carousel
+      <Carousel
         ssr={false}
         responsive={responsive}
         infinite={true}
@@ -45,7 +45,7 @@ const HeroSection = () => {
             />
           )
         )}
-      </Carousel> */}
+      </Carousel>
     </div>
   );
 };
