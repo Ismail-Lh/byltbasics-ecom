@@ -29,7 +29,7 @@ const ProductModal = () => {
     >
       <div className={classes.productModal__content}>
         <div className={classes.closeBtn}>
-          <button onClick={closeProductModal}>
+          <button type="button" onClick={closeProductModal}>
             <CloseIcon />
           </button>
         </div>

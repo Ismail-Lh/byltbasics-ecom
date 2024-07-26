@@ -41,7 +41,7 @@ const SearchInput = ({ closeSearchBar }) => {
           onChange={handelSearch}
         />
 
-        <button onClick={() => closeSearchBar(false)}>
+        <button type="button" onClick={() => closeSearchBar(false)}>
           <CloseIcon />
         </button>
       </div>

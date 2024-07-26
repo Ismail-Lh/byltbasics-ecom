@@ -27,31 +27,29 @@ const CartReducer = (state, action) => {
           }
 
           return { ...cartItem, amount: newAmount };
-        } else {
-          return cartItem;
         }
+        return cartItem;
       });
 
       return { ...state, cart: tempCart };
-    } else {
-      const newItem = {
-        id: id + color + size,
-        name: product.name,
-        style: product.style,
-        collections: product.collections,
-        route: product.route,
-        gender: product.gender,
-        color,
-        price: product.price,
-        discountPer: product.discountPer,
-        image: product.images[0],
-        size,
-        amount,
-        max: product.stock,
-      };
-
-      return { ...state, cart: [...state.cart, newItem] };
     }
+    const newItem = {
+      id: id + color + size,
+      name: product.name,
+      style: product.style,
+      collections: product.collections,
+      route: product.route,
+      gender: product.gender,
+      color,
+      price: product.price,
+      discountPer: product.discountPer,
+      image: product.images[0],
+      size,
+      amount,
+      max: product.stock,
+    };
+
+    return { ...state, cart: [...state.cart, newItem] };
   }
 
   if (action.type === OPEN_CART) {
@@ -111,7 +109,9 @@ const CartReducer = (state, action) => {
           }
 
           return { ...item, amount: newAmount };
-        } else if (value === "dec") {
+        }
+
+        if (value === "dec") {
           newAmount = item.amount - 1;
 
           if (newAmount < 1) {

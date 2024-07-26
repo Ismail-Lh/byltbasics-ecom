@@ -7,6 +7,7 @@ const useFirebaseData = (gender) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     try {
       const firebaseData = async () => {

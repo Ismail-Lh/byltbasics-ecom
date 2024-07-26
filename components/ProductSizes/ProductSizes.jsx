@@ -4,13 +4,17 @@ const ProductSizes = ({ productSizes, size, setSize }) => {
   return (
     <div className={classes.product__sizes}>
       <p className={classes.left}>
-        size <button className={classes.btn_more}>size guide</button>
+        size{" "}
+        <button type="button" className={classes.btn_more}>
+          size guide
+        </button>
       </p>
 
       <div className={classes.right}>
-        {productSizes?.map((s, idx) => (
+        {productSizes?.map((s) => (
           <button
-            key={idx}
+            key={s.size}
+            type="button"
             className={`${s.size === size && "active-size"}`}
             disabled={!s.isAvailable}
             onClick={() => setSize(s.size)}

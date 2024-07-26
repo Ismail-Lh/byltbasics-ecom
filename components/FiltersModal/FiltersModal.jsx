@@ -8,6 +8,7 @@ const FiltersModal = ({ setOpenFiltersModal }) => {
       <div className={classes.filtersModal__header}>
         <h3 className={classes.title}>filters</h3>
         <button
+          type="button"
           className={classes.closeBtn}
           onClick={() => setOpenFiltersModal(false)}
         >

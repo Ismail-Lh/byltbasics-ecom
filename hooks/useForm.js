@@ -19,7 +19,7 @@ const useForm = () => {
     if (Object.keys(error).length === 0 && isSubmitting) {
       console.log("error");
     }
-  }, [error]);
+  }, [error, isSubmitting]);
 
   const validate = (value) => {
     const error = {};

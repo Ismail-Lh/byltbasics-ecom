@@ -172,9 +172,9 @@ const FiltersReducer = (state, action) => {
     const { sort, filtered_products } = state;
     let tempProducts = [...filtered_products];
 
-    if (sort === "sort-by") {
-      tempProducts = tempProducts;
-    }
+    // if (sort === "sort-by") {
+    //   tempProducts = tempProducts;
+    // }
 
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort(

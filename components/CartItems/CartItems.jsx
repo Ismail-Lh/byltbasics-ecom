@@ -51,7 +51,7 @@ const CartItems = () => {
                   <p className={classes.size}>size: {size}</p>
                 </div>
                 <div className={classes.deleteProduct}>
-                  <button onClick={() => removeFromCart(id)}>
+                  <button type="button" onClick={() => removeFromCart(id)}>
                     <CloseIcon />
                   </button>
                 </div>

@@ -12,7 +12,7 @@ const ShrinkIcon = () => {
         fill="#FFF"
         stroke="#FFF"
         strokeWidth=".5"
-      ></path>
+      />
     </svg>
   );
 };

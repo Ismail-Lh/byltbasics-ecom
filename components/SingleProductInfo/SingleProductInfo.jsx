@@ -17,6 +17,7 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
 
   const [amount, setAmount] = useState(1);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setSize("");
     setAmount(1);
@@ -42,12 +43,16 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       <p className={classes.product__payment}>
         4 interest-free payments. Available for orders above $35.{" "}
         <span>Klarna</span>.{" "}
-        <button className={classes.btn_more}>Learn more</button>
+        <button type="button" className={classes.btn_more}>
+          Learn more
+        </button>
       </p>
 
       <p className={classes.product__description}>
         {product?.description}{" "}
-        <button className={classes.btn_more}>Learn more</button>
+        <button type="button" className={classes.btn_more}>
+          Learn more
+        </button>
       </p>
 
       <div className={classes.product__colors}>
@@ -76,6 +81,7 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
 
       <div className={classes.product__addToCart}>
         <button
+          type="button"
           onClick={() =>
             size && addToCart(amount, size, color, product?.id, product)
           }

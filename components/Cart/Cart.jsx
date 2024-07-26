@@ -47,7 +47,7 @@ const Cart = () => {
     >
       <div className={classes.cart__header}>
         <div className={classes.close}>
-          <button onClick={closeCart}>
+          <button type="button" onClick={closeCart}>
             <CloseIcon />
           </button>
         </div>

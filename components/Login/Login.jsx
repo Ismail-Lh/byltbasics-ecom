@@ -98,6 +98,7 @@ const Login = () => {
                 </MyLink>
                 <button
                   className={classes.btn}
+                  type="button"
                   onClick={() => setResetPassword(true)}
                 >
                   forgot your password?
@@ -138,6 +139,7 @@ const Login = () => {
 
               <button
                 className={classes.btn}
+                type="button"
                 onClick={() => setResetPassword(false)}
               >
                 cancel

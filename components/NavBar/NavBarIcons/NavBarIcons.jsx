@@ -41,7 +41,7 @@ const NavBarIcons = () => {
           <DynamicSearchInput closeSearchBar={setOpenSearchInput} />
         ) : (
           <>
-            <button onClick={() => setOpenSearchInput(true)}>
+            <button type="button" onClick={() => setOpenSearchInput(true)}>
               <SearchIcon />
             </button>
 
@@ -55,7 +55,11 @@ const NavBarIcons = () => {
         )}
       </div>
 
-      <button className={classes.navbar__icons_2} onClick={openCart}>
+      <button
+        type="button"
+        className={classes.navbar__icons_2}
+        onClick={openCart}
+      >
         <CartIcon />
         {total_products > 0 && <span>{total_products}</span>}
       </button>
