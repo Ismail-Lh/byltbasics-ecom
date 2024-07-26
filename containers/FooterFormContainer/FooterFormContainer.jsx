@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import classes from './FooterFormContainer.module.scss';
+import classes from "./FooterFormContainer.module.scss";
 
-const FooterFormText = dynamic(() =>
-  import('../../components/FooterFormText/FooterFormText')
+const FooterFormText = dynamic(
+  () => import("../../components/FooterFormText/FooterFormText"),
 );
-const FooterFormInput = dynamic(() =>
-  import('../../components/FooterFormInput/FooterFormInput')
+const FooterFormInput = dynamic(
+  () => import("../../components/FooterFormInput/FooterFormInput"),
 );
 
 const FooterFormContainer = () => {

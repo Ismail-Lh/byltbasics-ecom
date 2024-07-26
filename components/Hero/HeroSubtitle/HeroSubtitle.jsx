@@ -1,4 +1,4 @@
-import classes from './HeroSubtitle.module.scss';
+import classes from "./HeroSubtitle.module.scss";
 
 const HeroSubtitle = ({ subtitle, color }) => {
   return (

@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import classes from './AccountPageContainer.module.scss';
+import classes from "./AccountPageContainer.module.scss";
 
-import { useAuthContext } from '../../contexts/auth_context';
+import { useAuthContext } from "../../contexts/auth_context";
 
-const DynamicLoader = dynamic(() => import('../../components/Loader/Loader'));
-const DynamicUserAccount = dynamic(() =>
-  import('../../components/UserAccount/UserAccount')
+const DynamicLoader = dynamic(() => import("../../components/Loader/Loader"));
+const DynamicUserAccount = dynamic(
+  () => import("../../components/UserAccount/UserAccount"),
 );
 
 const AccountPageContainer = () => {
@@ -15,7 +15,7 @@ const AccountPageContainer = () => {
   return (
     <div className={classes.account__container}>
       {loading ? (
-        <DynamicLoader message='please until your log out...' />
+        <DynamicLoader message="please until your log out..." />
       ) : (
         <DynamicUserAccount />
       )}

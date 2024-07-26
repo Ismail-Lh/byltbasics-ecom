@@ -1,14 +1,14 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-import classes from './ProductsSliderSection.module.scss';
-import { useProductsContext } from '../../contexts/products_context';
+import { useProductsContext } from "../../contexts/products_context";
+import classes from "./ProductsSliderSection.module.scss";
 
-const Loader = dynamic(() => import('../../components/Loader/Loader'));
+const Loader = dynamic(() => import("../../components/Loader/Loader"));
 
-import { ProductsCard } from '../../components';
+import { ProductsCard } from "../../components";
 
 const ProductsSliderSection = ({ products, title }) => {
   const { loading } = useProductsContext();
@@ -34,9 +34,9 @@ const ProductsSliderSection = ({ products, title }) => {
 
   return (
     <div className={classes.products}>
-      <div className='container'>
+      <div className="container">
         {loading ? (
-          <Loader message='products loading...' />
+          <Loader message="products loading..." />
         ) : (
           <>
             {products?.length <= 4 ? (
@@ -44,7 +44,7 @@ const ProductsSliderSection = ({ products, title }) => {
                 <h2 className={classes.title}>{title}</h2>
 
                 <div className={classes.products}>
-                  {products?.map(product => (
+                  {products?.map((product) => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
                 </div>
@@ -54,7 +54,7 @@ const ProductsSliderSection = ({ products, title }) => {
                 <h2 className={classes.title}>{title}</h2>
 
                 <Carousel ssr={false} infinite={true} responsive={responsive}>
-                  {products?.map(product => (
+                  {products?.map((product) => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
                 </Carousel>

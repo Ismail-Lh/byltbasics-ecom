@@ -1,4 +1,4 @@
-import classes from './ProductSale.module.scss';
+import classes from "./ProductSale.module.scss";
 
 const ProductSale = ({ discountPer }) => {
   return (

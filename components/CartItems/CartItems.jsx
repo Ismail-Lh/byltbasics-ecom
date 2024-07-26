@@ -1,15 +1,15 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import classes from './CartItems.module.scss';
-import { formatPrice } from '../../utils/helpers';
-import { useCartContext } from '../../contexts/cart_context';
+import { useCartContext } from "../../contexts/cart_context";
+import { formatPrice } from "../../utils/helpers";
+import classes from "./CartItems.module.scss";
 
 // const DynamicAmountBtn = dynamic(() => import('../AmountBtn/AmountBtn'));
 // const DynamicMyLink = dynamic(() => import('../MyLink/MyLink'));
 // const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
 
-import { AmountBtn, MyLink } from '..';
-import { CloseIcon } from '../../Icons';
+import { AmountBtn, MyLink } from "..";
+import { CloseIcon } from "../../Icons";
 
 const CartItems = () => {
   const { cart: products, removeFromCart, toggleCartAmount } = useCartContext();
@@ -60,8 +60,8 @@ const CartItems = () => {
               <div className={classes.product__info_2}>
                 <AmountBtn
                   productAmount={amount}
-                  incAmount={() => toggleCartAmount(id, 'inc')}
-                  decAmount={() => toggleCartAmount(id, 'dec')}
+                  incAmount={() => toggleCartAmount(id, "inc")}
+                  decAmount={() => toggleCartAmount(id, "dec")}
                 />
 
                 <p className={classes.price}>
@@ -70,7 +70,7 @@ const CartItems = () => {
               </div>
             </div>
           </div>
-        )
+        ),
       )}
     </div>
   );

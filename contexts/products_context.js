@@ -1,39 +1,39 @@
-import React, { useContext, createContext, useReducer, useEffect } from 'react';
-import useFirebaseData from '../hooks/useFirebaseData';
+import React, { useContext, createContext, useReducer, useEffect } from "react";
+import useFirebaseData from "../hooks/useFirebaseData";
 
-import ProductsReducer from '../reducers/products_reducer';
+import ProductsReducer from "../reducers/products_reducer";
 
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
-  GET_PRODUCTS,
-  GET_POPULAR_PRODUCTS,
-  GET_SINGLE_PRODUCT,
-  GET_SIMILAR_PRODUCTS,
-  OPEN_PRODUCT_MODAL,
   CLOSE_PRODUCT_MODAL,
-} from '../utils/actions';
+  GET_POPULAR_PRODUCTS,
+  GET_PRODUCTS,
+  GET_SIMILAR_PRODUCTS,
+  GET_SINGLE_PRODUCT,
+  OPEN_PRODUCT_MODAL,
+  SIDEBAR_CLOSE,
+  SIDEBAR_OPEN,
+} from "../utils/actions";
 
-import { getLocalStorage, setLocalStorage } from '../utils/helpers';
+import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
 const ProductsContext = createContext();
 
 const initialState = {
   isSidebarOpen: false,
   isProductModalOpen: false,
-  men_products: getLocalStorage('menProducts'),
-  women_products: getLocalStorage('womenProducts'),
+  men_products: getLocalStorage("menProducts"),
+  women_products: getLocalStorage("womenProducts"),
   loading: false,
   popular_products: [],
-  single_product: getLocalStorage('singleProduct'),
+  single_product: getLocalStorage("singleProduct"),
   product_color: null,
-  similar_products: getLocalStorage('similarProducts'),
+  similar_products: getLocalStorage("similarProducts"),
 };
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
-  const { men, loading } = useFirebaseData('men');
-  const { women } = useFirebaseData('women');
+  const { men, loading } = useFirebaseData("men");
+  const { women } = useFirebaseData("women");
 
   const openSidebar = () => {
     dispatch({ type: SIDEBAR_OPEN });
@@ -60,8 +60,8 @@ export const ProductsProvider = ({ children }) => {
   }, [men, women, loading]);
 
   useEffect(() => {
-    setLocalStorage('menProducts', state.men_products);
-    setLocalStorage('womenProducts', state.women_products);
+    setLocalStorage("menProducts", state.men_products);
+    setLocalStorage("womenProducts", state.women_products);
   }, [state.men_products, state.women_products]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setLocalStorage('singleProduct', state.single_product);
+    setLocalStorage("singleProduct", state.single_product);
   }, [state.single_product]);
 
   const getSimilarProducts = (collection, gender, productId) => {
@@ -89,7 +89,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setLocalStorage('similarProducts', state.similar_products);
+    setLocalStorage("similarProducts", state.similar_products);
   }, [state.similar_products]);
 
   return (
@@ -102,7 +102,8 @@ export const ProductsProvider = ({ children }) => {
         closeProductModal,
         getSingleProduct,
         getSimilarProducts,
-      }}>
+      }}
+    >
       {children}
     </ProductsContext.Provider>
   );

@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: ${props =>
-    props.istextfirst ? '40% 60%' : '60% 40%'};
+  grid-template-columns: ${(props) =>
+    props.istextfirst ? "40% 60%" : "60% 40%"};
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     grid-template-rows: 60rem 50rem;
 
     div:first-child {
-      order: ${props => props.order};
+      order: ${(props) => props.order};
     }
   }
 

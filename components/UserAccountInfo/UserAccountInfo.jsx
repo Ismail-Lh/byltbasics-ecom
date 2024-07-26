@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router';
-import classes from './UserAccountInfo.module.scss';
+import { useRouter } from "next/router";
+import classes from "./UserAccountInfo.module.scss";
 
-import { useAuthContext } from '../../contexts/auth_context';
-import { Button } from '..';
+import { Button } from "..";
+import { useAuthContext } from "../../contexts/auth_context";
 
 const UserAccountInfo = () => {
   const { logout, user, setErr, setLoading } = useAuthContext();
@@ -10,10 +10,10 @@ const UserAccountInfo = () => {
 
   const handelLogout = async () => {
     try {
-      setErr('');
+      setErr("");
       setLoading(true);
       await logout();
-      router.push('/account/login');
+      router.push("/account/login");
       setLoading(false);
     } catch (error) {
       setErr(error.message);

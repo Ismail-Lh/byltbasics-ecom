@@ -1,4 +1,4 @@
-import classes from './FooterFormText.module.scss';
+import classes from "./FooterFormText.module.scss";
 
 const FooterFormText = () => {
   return (

@@ -1,33 +1,33 @@
-import React, { useContext, createContext, useReducer, useEffect } from 'react';
+import React, { useContext, createContext, useReducer, useEffect } from "react";
 
-import FiltersReducer from '../reducers/filters_reducer';
-import { useProductsContext } from './products_context';
-import { getLocalStorage, setLocalStorage } from '../utils/helpers';
+import FiltersReducer from "../reducers/filters_reducer";
+import { getLocalStorage, setLocalStorage } from "../utils/helpers";
+import { useProductsContext } from "./products_context";
 
 import {
-  UPDATE_COLLECTION,
-  GET_PRODUCTS_BY_COLLECTION,
-  UPDATE_SORT,
-  SORT_PRODUCTS,
-  UPDATE_FILTERS,
-  FILTER_PRODUCTS,
   CLEAR_FILTERS,
-} from '../utils/actions';
+  FILTER_PRODUCTS,
+  GET_PRODUCTS_BY_COLLECTION,
+  SORT_PRODUCTS,
+  UPDATE_COLLECTION,
+  UPDATE_FILTERS,
+  UPDATE_SORT,
+} from "../utils/actions";
 
 const FiltersContext = createContext();
 
 const initialState = {
-  collection: getLocalStorage('collection'),
+  collection: getLocalStorage("collection"),
   products: [],
   filtered_products: [],
-  sort: 'sort by',
+  sort: "sort by",
   filters: {
-    collections: 'all',
-    style: 'all',
-    cut: 'all',
-    neck: 'all',
-    sleeve: 'all',
-    fabric: 'all',
+    collections: "all",
+    style: "all",
+    cut: "all",
+    neck: "all",
+    sleeve: "all",
+    fabric: "all",
   },
 };
 
@@ -45,10 +45,10 @@ export const FiltersProvider = ({ children }) => {
       payload: { men_products, women_products },
     });
 
-    setLocalStorage('collection', state.collection);
+    setLocalStorage("collection", state.collection);
   }, [state.collection, men_products, women_products]);
 
-  const updateSort = e => {
+  const updateSort = (e) => {
     const { value } = e.target;
 
     dispatch({ type: UPDATE_SORT, payload: value });
@@ -78,7 +78,8 @@ export const FiltersProvider = ({ children }) => {
         updateSort,
         updateFilters,
         clearFilters,
-      }}>
+      }}
+    >
       {children}
     </FiltersContext.Provider>
   );

@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router';
-import { useAuthContext } from '../contexts/auth_context';
+import { useRouter } from "next/router";
+import { useAuthContext } from "../contexts/auth_context";
 
-const PrivateRoute = Component => {
-  return props => {
+const PrivateRoute = (Component) => {
+  return (props) => {
     const { user } = useAuthContext();
 
     // checks whether we are on client / browser or server.
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const Router = useRouter();
 
       // If there is no user redirect to "/account/login" page.
       if (!user) {
-        Router.push('/account/login');
+        Router.push("/account/login");
         return null;
       }
 

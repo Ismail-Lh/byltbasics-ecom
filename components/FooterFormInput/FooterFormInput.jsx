@@ -1,4 +1,4 @@
-import classes from './FooterFormInput.module.scss';
+import classes from "./FooterFormInput.module.scss";
 
 const FooterFormInput = () => {
   return (
@@ -8,11 +8,11 @@ const FooterFormInput = () => {
       </p>
       <form className={classes.form}>
         <input
-          type='text'
-          placeholder='Email address'
+          type="text"
+          placeholder="Email address"
           className={classes.form__ipt}
         />
-        <button type='submit' className={classes.form__btn}>
+        <button type="submit" className={classes.form__btn}>
           submit
         </button>
       </form>

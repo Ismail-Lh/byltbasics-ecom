@@ -1,10 +1,10 @@
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-import classes from './HeroSection.module.scss';
-import { HeroData } from '../../utils/constants';
+import { HeroData } from "../../utils/constants";
+import classes from "./HeroSection.module.scss";
 
-import { HeroImage } from '../../components';
+import { HeroImage } from "../../components";
 
 const HeroSection = () => {
   const responsive = {
@@ -21,7 +21,8 @@ const HeroSection = () => {
         responsive={responsive}
         infinite={true}
         autoPlay={true}
-        autoPlaySpeed={3000}>
+        autoPlaySpeed={3000}
+      >
         {HeroData?.map(
           ({
             id,
@@ -43,7 +44,7 @@ const HeroSection = () => {
               color={color}
               route={route}
             />
-          )
+          ),
         )}
       </Carousel>
     </div>

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import classes from './style.module.scss';
+import { useState } from "react";
+import classes from "./style.module.scss";
 
-import ProductsCardImage from './ProductsCardImage';
-import ProductsCardInfo from './ProductsCardInfo';
+import ProductsCardImage from "./ProductsCardImage";
+import ProductsCardInfo from "./ProductsCardInfo";
 
 const ProductsCard = ({ product }) => {
   const [color, setColor] = useState(product?.colors[0]);

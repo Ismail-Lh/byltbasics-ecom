@@ -1,7 +1,7 @@
-import classes from './FiltersValue.module.scss';
+import classes from "./FiltersValue.module.scss";
 
-import { useFiltersContext } from '../../contexts/filters_context';
-import { Button, FilterType } from '..';
+import { Button, FilterType } from "..";
+import { useFiltersContext } from "../../contexts/filters_context";
 
 const FiltersValue = () => {
   const { products, clearFilters } = useFiltersContext();
@@ -11,19 +11,19 @@ const FiltersValue = () => {
   const productsKey = Object.keys(productsObject);
 
   const substrings = [
-    'collections',
-    'style',
-    'cut',
-    'fabric',
-    'sleeve',
-    'neck',
+    "collections",
+    "style",
+    "cut",
+    "fabric",
+    "sleeve",
+    "neck",
   ];
 
   const containsAny = (keys, substrings) => {
-    const key = keys.map(key => {
+    const key = keys.map((key) => {
       for (let i = 0; i != substrings.length; i++) {
-        let filtersTitle = [];
-        let str = substrings[i];
+        const filtersTitle = [];
+        const str = substrings[i];
 
         if (key.includes(str)) {
           filtersTitle.push(key);
@@ -37,7 +37,7 @@ const FiltersValue = () => {
   };
 
   const filtersTitle = containsAny(productsKey, substrings)
-    .filter(key => key !== undefined)
+    .filter((key) => key !== undefined)
     .sort((a, b) => a.localeCompare(b));
 
   return (
@@ -47,7 +47,7 @@ const FiltersValue = () => {
       ))}
 
       <div className={classes.filters__clear}>
-        <Button color='black' handelClick={clearFilters}>
+        <Button color="black" handelClick={clearFilters}>
           clear filters
         </Button>
       </div>

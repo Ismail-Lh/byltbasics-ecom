@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react';
-import classes from './SingleProductInfo.module.scss';
+import { useEffect, useState } from "react";
+import classes from "./SingleProductInfo.module.scss";
 
-import { useCartContext } from '../../contexts/cart_context';
+import { useCartContext } from "../../contexts/cart_context";
 
 import {
-  ProductPrice,
-  ProductSale,
   ProductColors,
-  ProductSizes,
+  ProductPrice,
   ProductQuantity,
-} from '..';
+  ProductSale,
+  ProductSizes,
+} from "..";
 
 const SingleProductInfo = ({ product, color, changeColor }) => {
-  const [size, setSize] = useState('');
+  const [size, setSize] = useState("");
   const { addToCart } = useCartContext();
 
   const [amount, setAmount] = useState(1);
 
   useEffect(() => {
-    setSize('');
+    setSize("");
     setAmount(1);
   }, [color]);
 
@@ -40,13 +40,13 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
       </div>
 
       <p className={classes.product__payment}>
-        4 interest-free payments. Available for orders above $35.{' '}
-        <span>Klarna</span>.{' '}
+        4 interest-free payments. Available for orders above $35.{" "}
+        <span>Klarna</span>.{" "}
         <button className={classes.btn_more}>Learn more</button>
       </p>
 
       <p className={classes.product__description}>
-        {product?.description}{' '}
+        {product?.description}{" "}
         <button className={classes.btn_more}>Learn more</button>
       </p>
 
@@ -78,7 +78,8 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
         <button
           onClick={() =>
             size && addToCart(amount, size, color, product?.id, product)
-          }>{`${size ? 'add to cart' : 'select a size'}`}</button>
+          }
+        >{`${size ? "add to cart" : "select a size"}`}</button>
       </div>
     </div>
   );

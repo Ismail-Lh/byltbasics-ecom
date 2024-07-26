@@ -1,4 +1,4 @@
-import classes from './ProductSizes.module.scss';
+import classes from "./ProductSizes.module.scss";
 
 const ProductSizes = ({ productSizes, size, setSize }) => {
   return (
@@ -11,9 +11,10 @@ const ProductSizes = ({ productSizes, size, setSize }) => {
         {productSizes?.map((s, idx) => (
           <button
             key={idx}
-            className={`${s.size === size && 'active-size'}`}
+            className={`${s.size === size && "active-size"}`}
             disabled={!s.isAvailable}
-            onClick={() => setSize(s.size)}>
+            onClick={() => setSize(s.size)}
+          >
             {s.size}
           </button>
         ))}

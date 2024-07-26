@@ -1,5 +1,5 @@
-import { MyLink } from '..';
-import classes from './FooterLinks.module.scss';
+import { MyLink } from "..";
+import classes from "./FooterLinks.module.scss";
 
 const FooterLinks = ({ links }) => {
   return (

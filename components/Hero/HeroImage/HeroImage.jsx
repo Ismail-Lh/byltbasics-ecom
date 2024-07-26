@@ -1,6 +1,6 @@
-import HeroImageBackground from '../HeroImageBackground';
-import HeroImageContent from '../HeroImageContent';
-import classes from './HeroImage.module.scss';
+import HeroImageBackground from "../HeroImageBackground";
+import HeroImageContent from "../HeroImageContent";
+import classes from "./HeroImage.module.scss";
 
 const HeroImage = ({
   title,
@@ -12,8 +12,17 @@ const HeroImage = ({
 }) => {
   return (
     <div className={classes.hero__container}>
-      <HeroImageBackground imgUrlDesktop={imgUrlDesktop} imgUrlMobile={imgUrlMobile} title={title}/>
-      <HeroImageContent title={title} subtitle={subtitle} color={color} route={route} />
+      <HeroImageBackground
+        imgUrlDesktop={imgUrlDesktop}
+        imgUrlMobile={imgUrlMobile}
+        title={title}
+      />
+      <HeroImageContent
+        title={title}
+        subtitle={subtitle}
+        color={color}
+        route={route}
+      />
     </div>
   );
 };

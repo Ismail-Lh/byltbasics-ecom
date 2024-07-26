@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import classes from './NavBarLinks.module.scss';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import classes from "./NavBarLinks.module.scss";
 
-import { useProductsContext } from '../../../contexts/products_context';
-import { useFiltersContext } from '../../../contexts/filters_context';
+import { useFiltersContext } from "../../../contexts/filters_context";
+import { useProductsContext } from "../../../contexts/products_context";
 
 import {
+  NavbarLinks,
   menCategories,
   menCollections,
-  NavbarLinks,
   womenCategories,
   womenCollections,
-} from '../../../utils/constants';
+} from "../../../utils/constants";
 
-import { MenuIcon } from '../../../Icons';
-import { MyLink } from '../../';
+import { MyLink } from "../../";
+import { MenuIcon } from "../../../Icons";
 
-const DynamicDropDownMenu = dynamic(() =>
-  import('../../DropDownMenu/DropDownMenu')
+const DynamicDropDownMenu = dynamic(
+  () => import("../../DropDownMenu/DropDownMenu"),
 );
 
 const NavBarLinks = () => {
@@ -28,15 +28,15 @@ const NavBarLinks = () => {
   const [showWomenDropMenu, setShowWomenDropMenu] = useState(false);
 
   const handelHover = (link, state) => {
-    link === 'men' && setShowMenDropMenu(state);
-    link === 'women' && setShowWomenDropMenu(state);
+    link === "men" && setShowMenDropMenu(state);
+    link === "women" && setShowWomenDropMenu(state);
   };
 
-  const handelClick = link => {
-    link === 'men' && updateCollection('shop-men', 'all men');
-    link === 'women' && updateCollection('shop-women', 'all women');
-    link === 'bundles' && updateCollection('bundles', 'bundles');
-    link === 'last call' && updateCollection('sales', 'last call');
+  const handelClick = (link) => {
+    link === "men" && updateCollection("shop-men", "all men");
+    link === "women" && updateCollection("shop-women", "all women");
+    link === "bundles" && updateCollection("bundles", "bundles");
+    link === "last call" && updateCollection("sales", "last call");
   };
 
   return (
@@ -46,43 +46,44 @@ const NavBarLinks = () => {
           <li
             className={classes.navbar__links}
             key={id}
-            onClick={e => {
+            onClick={(e) => {
               e.stopPropagation();
               handelClick(link);
             }}
-            onMouseEnter={e => {
+            onMouseEnter={(e) => {
               e.stopPropagation();
               handelHover(link, true);
             }}
-            onMouseLeave={e => {
+            onMouseLeave={(e) => {
               e.stopPropagation();
               handelHover(link, false);
-            }}>
+            }}
+          >
             <MyLink route={`/collections/${route}`}>{link}</MyLink>
 
-            {link === 'men' && showMenDropMenu && (
+            {link === "men" && showMenDropMenu && (
               <DynamicDropDownMenu
                 collections={menCollections}
                 productsCategories={menCategories}
-                gender='men'
+                gender="men"
                 imageInfo={{
-                  imgUrl: 'men-drop-down-img.jpg',
-                  route: '/collections/spring-collection',
-                  subtitle: 'shop the latest styles',
-                  title: 'gear up for summer',
+                  imgUrl: "men-drop-down-img.jpg",
+                  route: "/collections/spring-collection",
+                  subtitle: "shop the latest styles",
+                  title: "gear up for summer",
                 }}
               />
             )}
 
-            {link === 'women' && showWomenDropMenu && (
+            {link === "women" && showWomenDropMenu && (
               <DynamicDropDownMenu
                 collections={womenCollections}
                 productsCategories={womenCategories}
-                gender='women'
+                gender="women"
                 imageInfo={{
-                  imgUrl: 'women-drop-down-img.jpg',
-                  route: '/products/womens-elite-joggers',
-                  subtitle: 'ultimate comfort. premium style.',
+                  imgUrl: "women-drop-down-img.jpg",
+                  route: "/products/womens-elite-joggers",
+                  subtitle: "ultimate comfort. premium style.",
                   title: "women's elite + joggers",
                 }}
               />
@@ -91,7 +92,7 @@ const NavBarLinks = () => {
         ))}
       </ul>
       <div className={classes.menu__icon}>
-        <button type='button' onClick={openSidebar}>
+        <button type="button" onClick={openSidebar}>
           <MenuIcon />
         </button>
       </div>

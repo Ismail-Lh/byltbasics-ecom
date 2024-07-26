@@ -1,23 +1,23 @@
-import Image from 'next/image';
-import classes from './AboutUsPageContainer.module.scss';
+import Image from "next/image";
+import classes from "./AboutUsPageContainer.module.scss";
 
 const AboutUsPageContainer = () => {
   return (
     <div>
       <div className={classes.backgroundImage}>
-        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+        <div style={{ position: "relative", width: "100%", height: "100%" }}>
           <Image
-            src='/assets/about-us-bg.jpg'
-            alt='about-us'
+            src="/assets/about-us-bg.jpg"
+            alt="about-us"
             // width={1125}
             // height={525}
-            layout='fill'
+            layout="fill"
             quality={100}
           />
         </div>
         <h1 className={classes.backgroundImage__title}>our story</h1>
       </div>
-      <div className='container'>
+      <div className="container">
         <div className={classes.aboutUs}>
           {/* ------------------------------ */}
           <div className={classes.splitContent}>
@@ -42,8 +42,8 @@ const AboutUsPageContainer = () => {
             {/* ------------------------------ */}
             <div className={classes.splitContent__image_1}>
               <img
-                src='/assets/about-us-split-content-img.jpg'
-                alt='about-us-split-content-img'
+                src="/assets/about-us-split-content-img.jpg"
+                alt="about-us-split-content-img"
               />
             </div>
           </div>
@@ -51,8 +51,8 @@ const AboutUsPageContainer = () => {
           <div className={classes.splitContent}>
             <div className={classes.splitContent__image_2}>
               <img
-                src='/assets/about-us-split-content-img-2.jpg'
-                alt='about-us-split-content-img-2'
+                src="/assets/about-us-split-content-img-2.jpg"
+                alt="about-us-split-content-img-2"
               />
             </div>
             {/* ------------------------------ */}
@@ -61,7 +61,7 @@ const AboutUsPageContainer = () => {
               {/* -------------------------- */}
               <div className={classes.content}>
                 <div className={classes.img}>
-                  <img src='/assets/sales.png' alt='sales' />
+                  <img src="/assets/sales.png" alt="sales" />
                 </div>
                 <p>
                   By skipping high-cost retailers, BYLT Basics™ can invest in
@@ -73,7 +73,7 @@ const AboutUsPageContainer = () => {
               {/* -------------------------- */}
               <div className={classes.content}>
                 <div className={classes.img}>
-                  <img src='/assets/checkmark.png' alt='checkmark' />
+                  <img src="/assets/checkmark.png" alt="checkmark" />
                 </div>
                 <p>
                   Each of our garments undergoes a development process where
@@ -86,7 +86,7 @@ const AboutUsPageContainer = () => {
               {/* -------------------------- */}
               <div className={classes.content}>
                 <div className={classes.img}>
-                  <img src='/assets/shipping.png' alt='shipping' />
+                  <img src="/assets/shipping.png" alt="shipping" />
                 </div>
                 <p>
                   Most orders will ship from our warehouse in 1-2 business days

@@ -1,8 +1,8 @@
-import classes from './style.module.scss';
+import classes from "./style.module.scss";
 
-import { MyLink } from '..';
-import { ProductPrice, ProductSale, ProductColors } from '..';
-import { useProductsContext } from '../../contexts/products_context';
+import { MyLink } from "..";
+import { ProductColors, ProductPrice, ProductSale } from "..";
+import { useProductsContext } from "../../contexts/products_context";
 
 const ProductsCardInfo = ({ product, productRoute, color, setColor }) => {
   const { getSingleProduct, getSimilarProducts } = useProductsContext();

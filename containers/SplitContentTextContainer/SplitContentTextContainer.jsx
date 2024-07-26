@@ -1,6 +1,6 @@
-import classes from './SpiltContentTextContainer.module.scss';
+import classes from "./SpiltContentTextContainer.module.scss";
 
-import { SplitContentText, SplitContentIcons, MyLink } from '../../components';
+import { MyLink, SplitContentIcons, SplitContentText } from "../../components";
 
 const SplitContentTextContainer = ({ title, text, istextfirst, route }) => {
   return (

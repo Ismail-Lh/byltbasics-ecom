@@ -1,13 +1,13 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import classes from './Button.module.scss';
+import classes from "./Button.module.scss";
 
 const Button = ({
   route,
   color,
   handelClick,
   handelSubmit,
-  type = 'button',
+  type = "button",
   children,
   disabled,
   role,
@@ -17,20 +17,24 @@ const Button = ({
       {!route ? (
         <button
           className={`${
-            color === 'white' ? classes.btn__white : classes.btn__black
+            color === "white" ? classes.btn__white : classes.btn__black
           }`}
           role={role}
           type={type}
           onClick={handelClick}
           onSubmit={handelSubmit}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           {children}
         </button>
       ) : (
-        <Link href={route} className={`${
-              color === 'white' ? classes.btn__white : classes.btn__black
-            }`}>
-            {children}
+        <Link
+          href={route}
+          className={`${
+            color === "white" ? classes.btn__white : classes.btn__black
+          }`}
+        >
+          {children}
         </Link>
       )}
     </>

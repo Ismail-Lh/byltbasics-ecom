@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore/lite';
+import { collection, getDocs } from "firebase/firestore/lite";
+import { useEffect, useState } from "react";
 
-import { db } from '../lib/firebase.prod';
+import { db } from "../lib/firebase.prod";
 
-const useFirebaseData = gender => {
+const useFirebaseData = (gender) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ const useFirebaseData = gender => {
 
         const res = await getDocs(collection(db, gender));
 
-        const allData = res.docs.map(doc => ({
+        const allData = res.docs.map((doc) => ({
           ...doc.data(),
           docId: doc.id,
         }));

@@ -1,25 +1,25 @@
-import dynamic from 'next/dynamic';
-import { useMediaQuery } from '@react-hook/media-query';
+import { useMediaQuery } from "@react-hook/media-query";
+import dynamic from "next/dynamic";
 
-import classes from './CollectionsContainer.module.scss';
+import classes from "./CollectionsContainer.module.scss";
 
-import { useFiltersContext } from '../../contexts/filters_context';
-import { useProductsContext } from '../../contexts/products_context';
+import { useFiltersContext } from "../../contexts/filters_context";
+import { useProductsContext } from "../../contexts/products_context";
 
-const ProductsCard = dynamic(() =>
-  import('../../components/ProductsCard/ProductsCard')
+const ProductsCard = dynamic(
+  () => import("../../components/ProductsCard/ProductsCard"),
 );
-const SortProducts = dynamic(() =>
-  import('../../components/SortProducts/SortProducts')
+const SortProducts = dynamic(
+  () => import("../../components/SortProducts/SortProducts"),
 );
-const Filters = dynamic(() => import('../../components/Filters/Filters'));
-const Loader = dynamic(() => import('../../components/Loader/Loader'));
+const Filters = dynamic(() => import("../../components/Filters/Filters"));
+const Loader = dynamic(() => import("../../components/Loader/Loader"));
 
 const CollectionsContainer = () => {
   const { loading } = useProductsContext();
   const { filtered_products: products } = useFiltersContext();
 
-  const matchesMedia = useMediaQuery('only screen and (max-width: 768px)');
+  const matchesMedia = useMediaQuery("only screen and (max-width: 768px)");
 
   const FiltersContainer = () => (
     <div>
@@ -34,9 +34,9 @@ const CollectionsContainer = () => {
   );
 
   return (
-    <div className='container'>
+    <div className="container">
       {loading ? (
-        <Loader message='products loading...' />
+        <Loader message="products loading..." />
       ) : (
         <div className={classes.collections__grid}>
           {!matchesMedia ? (
@@ -47,7 +47,7 @@ const CollectionsContainer = () => {
                 <SortsContainer />
 
                 <div className={classes.products}>
-                  {products?.map(product => (
+                  {products?.map((product) => (
                     <ProductsCard product={product} key={product.id} />
                   ))}
                 </div>
@@ -61,7 +61,7 @@ const CollectionsContainer = () => {
               </div>
 
               <div className={classes.products}>
-                {products?.map(product => (
+                {products?.map((product) => (
                   <ProductsCard product={product} key={product.id} />
                 ))}
               </div>

@@ -1,14 +1,14 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const Layout = dynamic(() => import('../../components/Layout/Layout'));
+const Layout = dynamic(() => import("../../components/Layout/Layout"));
 
-const AboutUsPageContainer = dynamic(() =>
-  import('../../containers/AboutUsPageContainer/AboutUsPageContainer')
+const AboutUsPageContainer = dynamic(
+  () => import("../../containers/AboutUsPageContainer/AboutUsPageContainer"),
 );
 
 const AboutUsPage = () => {
   return (
-    <Layout title='Our Story | BYLT Premium'>
+    <Layout title="Our Story | BYLT Premium">
       <AboutUsPageContainer />
     </Layout>
   );

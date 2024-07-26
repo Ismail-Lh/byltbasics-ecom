@@ -2,7 +2,7 @@ const easing = [0.6, -0.05, 0.01, 0.99];
 
 const transition = {
   transition: {
-    type: 'spring',
+    type: "spring",
     bounce: 0,
     ease: easing,
   },
@@ -39,27 +39,27 @@ export const heroImageAnimation = {
   animate: {
     opacity: 1,
     transition: {
-      type: 'spring',
+      type: "spring",
       delay: 0.2,
       duration: 0.3,
       ease: easing,
-      when: 'beforeChildren',
+      when: "beforeChildren",
     },
   },
 };
 
 export const leftToRight = {
-  initial: { opacity: 0, x: '-100vw' },
+  initial: { opacity: 0, x: "-100vw" },
   animate: { opacity: 1, x: 0, transition: { duration: 0.25 } },
 };
 
 export const rightToLeft = {
-  initial: { opacity: 0, x: '100vw' },
+  initial: { opacity: 0, x: "100vw" },
   animate: { opacity: 1, x: 0, transition: { delay: 0.4, duration: 0.25 } },
 };
 
 export const cartVariants = {
-  initial: { opacity: 0, x: '100%', transition: transition },
+  initial: { opacity: 0, x: "100%", transition: transition },
   animate: {
     opacity: 1,
     x: 0,
@@ -68,7 +68,7 @@ export const cartVariants = {
 };
 
 export const sideBarVariants = {
-  initial: { opacity: 0, x: '-100%', transition: transition },
+  initial: { opacity: 0, x: "-100%", transition: transition },
   animate: {
     opacity: 1,
     x: 0,
@@ -77,6 +77,6 @@ export const sideBarVariants = {
 };
 
 export const productModalVariants = {
-  initial: { opacity: 0, zIndex: '-100', transition: transition },
-  animate: { opacity: 1, zIndex: '100', x: 0, transition: transition },
+  initial: { opacity: 0, zIndex: "-100", transition: transition },
+  animate: { opacity: 1, zIndex: "100", x: 0, transition: transition },
 };

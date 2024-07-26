@@ -1,4 +1,4 @@
-import classes from './AmountBtn.module.scss';
+import classes from "./AmountBtn.module.scss";
 
 const AmountBtn = ({ incAmount, decAmount, productAmount }) => {
   return (

@@ -1,5 +1,5 @@
-import { formatPrice } from '../../utils/helpers';
-import classes from './UserOrders.module.scss';
+import { formatPrice } from "../../utils/helpers";
+import classes from "./UserOrders.module.scss";
 
 const UserOrders = ({ orders }) => {
   return (
@@ -30,7 +30,7 @@ const UserOrders = ({ orders }) => {
                 <div className={classes.order__total}>
                   <h3>total amount</h3>
                   <p className={classes.paragraph}>
-                    {formatPrice(amount)} - <span>next day delivery</span>{' '}
+                    {formatPrice(amount)} - <span>next day delivery</span>{" "}
                     {formatPrice(amount_shipping)}
                   </p>
                 </div>
@@ -40,7 +40,7 @@ const UserOrders = ({ orders }) => {
                   <p className={classes.paragraph}>
                     {stripe_info
                       .map(({ quantity }) => quantity)
-                      .reduce((acc, curr) => acc + curr, 0)}{' '}
+                      .reduce((acc, curr) => acc + curr, 0)}{" "}
                     <span>products</span>
                   </p>
                 </div>
@@ -56,7 +56,7 @@ const UserOrders = ({ orders }) => {
               ))}
             </div>
           </div>
-        )
+        ),
       )}
     </div>
   );

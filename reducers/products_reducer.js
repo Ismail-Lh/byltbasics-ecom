@@ -1,14 +1,14 @@
 import {
-  SIDEBAR_OPEN,
-  SIDEBAR_CLOSE,
-  GET_PRODUCTS,
-  GET_POPULAR_PRODUCTS,
-  GET_SINGLE_PRODUCT,
-  GET_SIMILAR_PRODUCTS,
-  OPEN_PRODUCT_MODAL,
   CLOSE_PRODUCT_MODAL,
+  GET_POPULAR_PRODUCTS,
+  GET_PRODUCTS,
   GET_PRODUCT_COLOR,
-} from '../utils/actions';
+  GET_SIMILAR_PRODUCTS,
+  GET_SINGLE_PRODUCT,
+  OPEN_PRODUCT_MODAL,
+  SIDEBAR_CLOSE,
+  SIDEBAR_OPEN,
+} from "../utils/actions";
 
 const ProductsReducer = (state, action) => {
   if (action.type === SIDEBAR_OPEN) {
@@ -41,8 +41,8 @@ const ProductsReducer = (state, action) => {
   if (action.type === GET_POPULAR_PRODUCTS) {
     const { men_products, women_products } = state;
 
-    const popularProducts = products =>
-      products?.filter(product => product.popularity === true);
+    const popularProducts = (products) =>
+      products?.filter((product) => product.popularity === true);
 
     return {
       ...state,
@@ -61,14 +61,14 @@ const ProductsReducer = (state, action) => {
 
     let singleProduct = {};
 
-    const getSingleProduct = products =>
-      products?.filter(product => product.id === productId);
+    const getSingleProduct = (products) =>
+      products?.filter((product) => product.id === productId);
 
-    if (gender === 'men') {
+    if (gender === "men") {
       singleProduct = getSingleProduct(men_products);
     }
 
-    if (gender === 'women') {
+    if (gender === "women") {
       singleProduct = getSingleProduct(women_products);
     }
 
@@ -87,16 +87,16 @@ const ProductsReducer = (state, action) => {
 
     let similarProducts;
 
-    const getSimilarProducts = products =>
+    const getSimilarProducts = (products) =>
       products
-        ?.filter(product => product.collections === collection)
-        .filter(product => product.id !== productId);
+        ?.filter((product) => product.collections === collection)
+        .filter((product) => product.id !== productId);
 
-    if (gender === 'men') {
+    if (gender === "men") {
       similarProducts = getSimilarProducts(men_products);
     }
 
-    if (gender === 'women') {
+    if (gender === "women") {
       similarProducts = getSimilarProducts(women_products);
     }
 

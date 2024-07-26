@@ -5,16 +5,16 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-} from 'firebase/auth';
-import { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from '../lib/firebase.prod';
+} from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../lib/firebase.prod";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [load, setLoad] = useState(true);
-  const [err, setErr] = useState('');
+  const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
   const signUp = async (email, password, firstName, lastName) => {
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     return res;
   };
 
-  const resetPassword = async email => {
+  const resetPassword = async (email) => {
     const res = await sendPasswordResetEmail(auth, email);
 
     return res;
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   // };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
 
       setLoad(false);
@@ -79,7 +79,8 @@ export const AuthProvider = ({ children }) => {
         setErr,
         loading,
         setLoading,
-      }}>
+      }}
+    >
       {!load && children}
     </AuthContext.Provider>
   );

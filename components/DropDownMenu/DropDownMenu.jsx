@@ -1,22 +1,23 @@
-import { MyLink } from '..';
-import { useFiltersContext } from '../../contexts/filters_context';
-import classes from './DropDownMenu.module.scss';
+import { MyLink } from "..";
+import { useFiltersContext } from "../../contexts/filters_context";
+import classes from "./DropDownMenu.module.scss";
 
 const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
   const { updateCollection } = useFiltersContext();
 
   return (
     <div className={classes.dropDownMenu}>
-      <div className='container'>
+      <div className="container">
         <div className={classes.dropDownMenu__grid}>
           <ul className={classes.dropDownMenu__collections}>
             {collections.map(({ id, collection, route }) => (
               <li
                 key={id}
-                onClick={e => {
+                onClick={(e) => {
                   e.stopPropagation();
                   updateCollection(collection, collection);
-                }}>
+                }}
+              >
                 <MyLink route={`/collections/${route}`}>{collection}</MyLink>
               </li>
             ))}
@@ -27,15 +28,17 @@ const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
                 <div className={classes.category} key={id}>
                   <h2
                     className={classes.category__title}
-                    onClick={e => {
+                    onClick={(e) => {
                       e.stopPropagation();
                       updateCollection(
                         productCategory.collection,
-                        productCategory.category
+                        productCategory.category,
                       );
-                    }}>
+                    }}
+                  >
                     <MyLink
-                      route={`/collections/${gender}/${productCategory.collection}`}>
+                      route={`/collections/${gender}/${productCategory.collection}`}
+                    >
                       {productCategory.category}
                     </MyLink>
                   </h2>
@@ -43,10 +46,11 @@ const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
                     {productTypes?.map(({ id, type, collection }) => (
                       <li
                         key={id}
-                        onClick={e => {
+                        onClick={(e) => {
                           e.stopPropagation();
                           updateCollection(collection, type);
-                        }}>
+                        }}
+                      >
                         <MyLink route={`/collections/${gender}/${collection}`}>
                           {type}
                         </MyLink>
@@ -54,7 +58,7 @@ const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
                     ))}
                   </ul>
                 </div>
-              )
+              ),
             )}
           </div>
           <div className={classes.dropDownMenu__image}>

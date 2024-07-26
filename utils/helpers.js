@@ -7,52 +7,52 @@ export const formatPrice = (price, discountPer, product_amount = 1) => {
     finalPrice = (price - (price * discountPer) / 100) * product_amount;
   }
 
-  const newPrice = Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const newPrice = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
   }).format(finalPrice / 100);
 
   return newPrice;
 };
 
-export const getLocalStorage = key => {
-  if (typeof window !== 'undefined') {
-    let storage = localStorage?.getItem(key);
+export const getLocalStorage = (key) => {
+  if (typeof window !== "undefined") {
+    const storage = localStorage?.getItem(key);
 
-    if (key === 'menProducts') {
+    if (key === "menProducts") {
       return storage ? JSON.parse(storage) : [];
     }
 
-    if (key === 'womenProducts') {
+    if (key === "womenProducts") {
       return storage ? JSON.parse(storage) : [];
     }
 
-    if (key === 'singleProduct') {
+    if (key === "singleProduct") {
       return storage ? JSON.parse(storage) : {};
     }
 
-    if (key === 'cart') {
+    if (key === "cart") {
       return storage ? JSON.parse(storage) : [];
     }
 
-    if (key === 'collection') {
-      return storage ? JSON.parse(storage) : { route: '', title: '' };
+    if (key === "collection") {
+      return storage ? JSON.parse(storage) : { route: "", title: "" };
     }
 
-    if (key === 'similarProducts') {
+    if (key === "similarProducts") {
       return storage ? JSON.parse(storage) : [];
     }
   }
 };
 
 export const setLocalStorage = (key, value) => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     localStorage?.setItem(key, JSON.stringify(value));
   }
 };
 
 export const incAmount = (setAmount, stock) => {
-  setAmount(oldAmount => {
+  setAmount((oldAmount) => {
     let newAmount = oldAmount + 1;
 
     if (newAmount > stock) {
@@ -63,8 +63,8 @@ export const incAmount = (setAmount, stock) => {
   });
 };
 
-export const decAmount = setAmount => {
-  setAmount(oldAmount => {
+export const decAmount = (setAmount) => {
+  setAmount((oldAmount) => {
     let newAmount = oldAmount - 1;
 
     if (newAmount < 1) {

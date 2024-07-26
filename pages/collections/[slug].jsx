@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-import { useFiltersContext } from '../../contexts/filters_context';
+import { useFiltersContext } from "../../contexts/filters_context";
 
-const Layout = dynamic(() => import('../../components/Layout/Layout'));
+const Layout = dynamic(() => import("../../components/Layout/Layout"));
 
-const ShopPageContainer = dynamic(() =>
-  import('../../containers/ShopPageContainer/ShopPageContainer')
+const ShopPageContainer = dynamic(
+  () => import("../../containers/ShopPageContainer/ShopPageContainer"),
 );
 
 const Collections = () => {
@@ -16,22 +16,22 @@ const Collections = () => {
   const router = useRouter();
   const { slug } = router.query;
 
-  const getTheCollectionTitle = route => {
-    let title = '';
+  const getTheCollectionTitle = (route) => {
+    let title = "";
 
-    const strIncludes = str => route?.includes(str);
+    const strIncludes = (str) => route?.includes(str);
 
-    if (strIncludes('men')) title = 'All Men';
-    if (strIncludes('women')) title = 'All Women';
-    if (strIncludes('mens-bundles')) title = "Men's Bundles";
-    if (strIncludes('womens-bundles')) title = "Women's Bundles";
-    if (strIncludes('sales')) title = 'Last Call';
-    if (strIncludes('new')) title = 'New';
-    if (strIncludes('snow')) title = 'Snow Wash';
-    if (strIncludes('performance')) title = 'Performance Collection';
-    if (strIncludes('executive')) title = 'Executive Collection';
-    if (strIncludes('summer-dye-collection')) title = 'Summer Dye Collection';
-    if (strIncludes('new-core-collection')) title = 'New Core Collection';
+    if (strIncludes("men")) title = "All Men";
+    if (strIncludes("women")) title = "All Women";
+    if (strIncludes("mens-bundles")) title = "Men's Bundles";
+    if (strIncludes("womens-bundles")) title = "Women's Bundles";
+    if (strIncludes("sales")) title = "Last Call";
+    if (strIncludes("new")) title = "New";
+    if (strIncludes("snow")) title = "Snow Wash";
+    if (strIncludes("performance")) title = "Performance Collection";
+    if (strIncludes("executive")) title = "Executive Collection";
+    if (strIncludes("summer-dye-collection")) title = "Summer Dye Collection";
+    if (strIncludes("new-core-collection")) title = "New Core Collection";
 
     return title;
   };

@@ -1,14 +1,14 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const Layout = dynamic(() => import('../../components/Layout/Layout'));
+const Layout = dynamic(() => import("../../components/Layout/Layout"));
 
-const RegisterPageContainer = dynamic(() =>
-  import('../../containers/RegisterPageContainer/RegisterPageContainer')
+const RegisterPageContainer = dynamic(
+  () => import("../../containers/RegisterPageContainer/RegisterPageContainer"),
 );
 
 const RegisterPage = () => {
   return (
-    <Layout title='Create Account | BYLT Basics'>
+    <Layout title="Create Account | BYLT Basics">
       <RegisterPageContainer />
     </Layout>
   );

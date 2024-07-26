@@ -1,12 +1,12 @@
-import classes from './SuccessCheckoutPageContainer.module.scss';
+import classes from "./SuccessCheckoutPageContainer.module.scss";
 
-import { Button } from '../../components';
-import { CheckCircleIcon } from '../../Icons';
+import { CheckCircleIcon } from "../../Icons";
+import { Button } from "../../components";
 
 const SuccessCheckoutPageContainer = () => {
   return (
     <div className={classes.successCheckout}>
-      <div className='container'>
+      <div className="container">
         <div className={classes.successCheckout__container}>
           <div className={classes.confirmationMsg}>
             <CheckCircleIcon />
@@ -19,7 +19,7 @@ const SuccessCheckoutPageContainer = () => {
             order(s) please go to your account.
           </p>
 
-          <Button route='/account'>go to my account</Button>
+          <Button route="/account">go to my account</Button>
         </div>
       </div>
     </div>

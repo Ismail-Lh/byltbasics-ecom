@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import classes from './FilterType.module.scss';
+import { useState } from "react";
+import classes from "./FilterType.module.scss";
 
-import { useFiltersContext } from '../../contexts/filters_context';
-import { AngleDownIcon, AngleUpIcon } from '../../Icons';
+import { AngleDownIcon, AngleUpIcon } from "../../Icons";
+import { useFiltersContext } from "../../contexts/filters_context";
 
 const FilterType = ({ title, products }) => {
   const { updateFilters } = useFiltersContext();
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
-  const filtersValue = [...new Set(products?.map(product => product[title]))];
+  const filtersValue = [...new Set(products?.map((product) => product[title]))];
 
   return (
     <div className={classes.filter__type}>
       <div
         className={classes.filter__type_title}
-        onClick={() => setToggleAccordion(!toggleAccordion)}>
+        onClick={() => setToggleAccordion(!toggleAccordion)}
+      >
         <h3>{title}</h3>
         {!toggleAccordion ? <AngleDownIcon /> : <AngleUpIcon />}
       </div>

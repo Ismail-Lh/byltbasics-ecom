@@ -1,7 +1,7 @@
-import classes from './ProductQuantity.module.scss';
+import classes from "./ProductQuantity.module.scss";
 
-import { decAmount, incAmount } from '../../utils/helpers';
-import { AmountBtn } from '..';
+import { AmountBtn } from "..";
+import { decAmount, incAmount } from "../../utils/helpers";
 
 const ProductQuantity = ({ stock, amount, setAmount }) => {
   return (

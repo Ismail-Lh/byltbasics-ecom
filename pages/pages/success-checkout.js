@@ -1,16 +1,17 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-const Layout = dynamic(() => import('../../components/Layout/Layout'));
+const Layout = dynamic(() => import("../../components/Layout/Layout"));
 
-const SuccessCheckoutPageContainer = dynamic(() =>
-  import(
-    '../../containers/SuccessCheckoutPageContainer/SuccessCheckoutPageContainer'
-  )
+const SuccessCheckoutPageContainer = dynamic(
+  () =>
+    import(
+      "../../containers/SuccessCheckoutPageContainer/SuccessCheckoutPageContainer"
+    ),
 );
 
 const SuccessCheckoutPage = () => {
   return (
-    <Layout title='Checkout Success | BYLT Premium'>
+    <Layout title="Checkout Success | BYLT Premium">
       <SuccessCheckoutPageContainer />
     </Layout>
   );

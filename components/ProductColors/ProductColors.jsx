@@ -1,5 +1,5 @@
-import { useProductsContext } from '../../contexts/products_context';
-import classes from './ProductColors.module.scss';
+import { useProductsContext } from "../../contexts/products_context";
+import classes from "./ProductColors.module.scss";
 
 const ProductColors = ({ productColors, color, setColor }) => {
   return (
@@ -12,11 +12,12 @@ const ProductColors = ({ productColors, color, setColor }) => {
           <div
             key={idx}
             onClick={() => setColor(clr)}
-            className={classes.imgContainer}>
+            className={classes.imgContainer}
+          >
             <img
               src={`/assets/products/colors/${clr}.jpg`}
               alt={clr}
-              className={`${clr === color && 'active-color'}`}
+              className={`${clr === color && "active-color"}`}
             />
           </div>
         ))}

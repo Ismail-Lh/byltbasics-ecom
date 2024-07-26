@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic';
-import { useState } from 'react';
-import classes from './SingleProductContainer.module.scss';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import classes from "./SingleProductContainer.module.scss";
 
-import { useProductsContext } from '../../contexts/products_context';
+import { useProductsContext } from "../../contexts/products_context";
 
-import { SingleProductImages, SingleProductInfo } from '../../components';
+import { SingleProductImages, SingleProductInfo } from "../../components";
 
-const ProductsSliderSection = dynamic(() =>
-  import('../../sections/ProductsSliderSection/ProductsSliderSection')
+const ProductsSliderSection = dynamic(
+  () => import("../../sections/ProductsSliderSection/ProductsSliderSection"),
 );
 
 const SingleProductContainer = () => {
@@ -18,7 +18,7 @@ const SingleProductContainer = () => {
 
   return (
     <div className={classes.singleProduct}>
-      <div className='container'>
+      <div className="container">
         <div className={classes.singleProduct_container}>
           <SingleProductImages product={product?.productInfo} color={color} />
           <SingleProductInfo
@@ -28,7 +28,7 @@ const SingleProductContainer = () => {
           />
         </div>
 
-        <ProductsSliderSection title='you my also like' products={products} />
+        <ProductsSliderSection title="you my also like" products={products} />
       </div>
     </div>
   );

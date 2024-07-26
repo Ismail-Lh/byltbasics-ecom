@@ -1,4 +1,4 @@
-import classes from './HeroTitle.module.scss';
+import classes from "./HeroTitle.module.scss";
 
 const HeroTitle = ({ title, color }) => {
   return (

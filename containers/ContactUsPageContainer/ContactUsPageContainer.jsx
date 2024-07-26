@@ -1,26 +1,27 @@
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import classes from './ContactUsPageContainer.module.scss';
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import classes from "./ContactUsPageContainer.module.scss";
 
-import useForm from '../../hooks/useForm';
+import useForm from "../../hooks/useForm";
 
-const FormInput = dynamic(() => import('../../components/FormInput/FormInput'));
-const Button = dynamic(() => import('../../components/Button/Button'));
+const FormInput = dynamic(() => import("../../components/FormInput/FormInput"));
+const Button = dynamic(() => import("../../components/Button/Button"));
 
 const ContactUsPageContainer = () => {
   const { value, handleChange, handleSubmit, error } = useForm();
 
   return (
     <div className={classes.contactUs}>
-      <div className='container'>
+      <div className="container">
         <div className={classes.contactUs__grid}>
           <div
             className={classes.contactUs__img}
-            style={{ position: 'relative', width: '100%', height: '100%' }}>
+            style={{ position: "relative", width: "100%", height: "100%" }}
+          >
             <Image
-              src='/assets/contact-page.jpg'
-              alt='contact us'
-              layout='fill'
+              src="/assets/contact-page.jpg"
+              alt="contact us"
+              layout="fill"
               quality={100}
             />
           </div>
@@ -40,7 +41,7 @@ const ContactUsPageContainer = () => {
                 <span>
                   *Please note, due to our high order volume, responses from our
                   customer support team may take up to 3 business days.
-                </span>{' '}
+                </span>{" "}
                 Once your order is placed, order processing will take 5 - 7
                 business days. Expedited shipping does not affect order
                 processing time. Once your items have shipped, they will be
@@ -58,31 +59,31 @@ const ContactUsPageContainer = () => {
             <form className={classes.form} onSubmit={handleSubmit}>
               <div className={classes.form__user}>
                 <FormInput
-                  name='name'
-                  id='name'
-                  placeholder='name'
+                  name="name"
+                  id="name"
+                  placeholder="name"
                   handleChange={handleChange}
                   value={value.name}
                   error={error.name}
                 />
 
                 <FormInput
-                  name='email'
-                  id='email'
-                  placeholder='email'
+                  name="email"
+                  id="email"
+                  placeholder="email"
                   handleChange={handleChange}
                   value={value.email}
                   error={error.email}
                 />
 
                 <FormInput
-                  type='textarea'
-                  name='message'
-                  id='message'
-                  placeholder='message'
+                  type="textarea"
+                  name="message"
+                  id="message"
+                  placeholder="message"
                 />
               </div>
-              <Button type='submit' color='black'>
+              <Button type="submit" color="black">
                 send
               </Button>
             </form>

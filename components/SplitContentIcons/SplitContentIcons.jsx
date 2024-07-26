@@ -1,12 +1,12 @@
-import classes from './SplitContentIcons.module.scss';
+import classes from "./SplitContentIcons.module.scss";
 
 import {
   AthleticIcon,
-  ShrinkIcon,
-  WrinkleIcon,
   FriendsIcon,
   MoneyIcon,
-} from '../../Icons';
+  ShrinkIcon,
+  WrinkleIcon,
+} from "../../Icons";
 
 const SplitContentIcons = ({ istextfirst }) => {
   return (

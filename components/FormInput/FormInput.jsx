@@ -1,5 +1,5 @@
 const FormInput = ({
-  type = 'text',
+  type = "text",
   name,
   id,
   placeholder,
@@ -8,15 +8,15 @@ const FormInput = ({
   error,
   label,
 }) => {
-  if (type === 'textarea')
+  if (type === "textarea")
     return (
       <textarea
-        className='textarea'
+        className="textarea"
         name={name}
         id={id}
         placeholder={placeholder}
-        cols='30'
-        rows='10'
+        cols="30"
+        rows="10"
       />
     );
 
@@ -24,7 +24,7 @@ const FormInput = ({
     <div>
       {label && <label htmlFor={id}>{label}</label>}
       <input
-        className={`${!error ? 'formIpt' : 'formIpt formIpt__error'}`}
+        className={`${!error ? "formIpt" : "formIpt formIpt__error"}`}
         type={type}
         name={name}
         id={id}
@@ -32,7 +32,7 @@ const FormInput = ({
         onChange={handleChange}
         value={value}
       />
-      <p className={`${error && 'formIpt__errorMsg'}`}>{error}</p>
+      <p className={`${error && "formIpt__errorMsg"}`}>{error}</p>
     </div>
   );
 };

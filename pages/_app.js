@@ -1,20 +1,20 @@
-import dynamic from 'next/dynamic';
-import { AnimatePresence } from 'framer-motion';
-import '../styles/globals.scss';
+import { AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+import "../styles/globals.scss";
 
-import { AuthProvider } from '../contexts/auth_context';
-import { ProductsProvider } from '../contexts/products_context';
-import { FiltersProvider } from '../contexts/filters_context';
-import { CartProvider } from '../contexts/cart_context';
+import { AuthProvider } from "../contexts/auth_context";
+import { CartProvider } from "../contexts/cart_context";
+import { FiltersProvider } from "../contexts/filters_context";
+import { ProductsProvider } from "../contexts/products_context";
 
-import { NavBar } from '../components';
+import { NavBar } from "../components";
 
-const DynamicScrollToTop = dynamic(() =>
-  import('../components/ScrollToTop/ScrollToTop')
+const DynamicScrollToTop = dynamic(
+  () => import("../components/ScrollToTop/ScrollToTop"),
 );
 
-const DynamicFooterSection = dynamic(() =>
-  import('../sections/FooterSection/FooterSection')
+const DynamicFooterSection = dynamic(
+  () => import("../sections/FooterSection/FooterSection"),
 );
 
 // import { firebase } from '../lib/firebase.prod';
@@ -30,7 +30,8 @@ function MyApp({ Component, pageProps, router }) {
             <AnimatePresence
               mode="wait"
               initial={false}
-              onExitComplete={() => window.scrollTo(0, 0)}>
+              onExitComplete={() => window.scrollTo(0, 0)}
+            >
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
             <DynamicScrollToTop />

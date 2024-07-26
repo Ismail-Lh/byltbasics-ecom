@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const MyLink = ({ route, children, handelClick }) => {
   if (!route) return <button onClick={handelClick}>{children}</button>;

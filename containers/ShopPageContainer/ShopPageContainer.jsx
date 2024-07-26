@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
-import classes from './ShopPageContainer.module.scss';
+import classes from "./ShopPageContainer.module.scss";
 
-const BackgroundImage = dynamic(() =>
-  import('../../components/BackgroundImage/BackgroundImage')
+const BackgroundImage = dynamic(
+  () => import("../../components/BackgroundImage/BackgroundImage"),
 );
-const CollectionsContainer = dynamic(() =>
-  import('../CollectionsContainer/CollectionsContainer')
+const CollectionsContainer = dynamic(
+  () => import("../CollectionsContainer/CollectionsContainer"),
 );
 
 const ShopPageContainer = () => {

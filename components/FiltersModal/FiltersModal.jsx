@@ -1,6 +1,6 @@
-import classes from './FiltersModal.module.scss';
-import { CloseIcon } from '../../Icons';
-import { FiltersValue } from '..';
+import { FiltersValue } from "..";
+import { CloseIcon } from "../../Icons";
+import classes from "./FiltersModal.module.scss";
 
 const FiltersModal = ({ setOpenFiltersModal }) => {
   return (
@@ -9,7 +9,8 @@ const FiltersModal = ({ setOpenFiltersModal }) => {
         <h3 className={classes.title}>filters</h3>
         <button
           className={classes.closeBtn}
-          onClick={() => setOpenFiltersModal(false)}>
+          onClick={() => setOpenFiltersModal(false)}
+        >
           <CloseIcon />
         </button>
       </div>

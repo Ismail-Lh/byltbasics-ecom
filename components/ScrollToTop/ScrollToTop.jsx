@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { BiUpArrowIcon } from '../../Icons';
-import classes from './ScrollToTop.module.scss';
+import { useState } from "react";
+import { BiUpArrowIcon } from "../../Icons";
+import classes from "./ScrollToTop.module.scss";
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -21,7 +21,7 @@ const ScrollToTop = () => {
     });
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  window.addEventListener("scroll", toggleVisible);
 
   return (
     <>

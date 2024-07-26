@@ -1,5 +1,5 @@
-import useStripeOrders from '../../hooks/useStripeOrders';
-import { Alert, Loader, UserOrders } from '../';
+import { Alert, Loader, UserOrders } from "../";
+import useStripeOrders from "../../hooks/useStripeOrders";
 
 const UserAccountOrders = () => {
   const {
@@ -16,7 +16,7 @@ const UserAccountOrders = () => {
       ) : (
         <>
           {ordersLoading === true ? (
-            <Loader message='please wait until your orders is loaded...' />
+            <Loader message="please wait until your orders is loaded..." />
           ) : (
             <>
               {ordersError && <Alert error>{ordersError}</Alert>}

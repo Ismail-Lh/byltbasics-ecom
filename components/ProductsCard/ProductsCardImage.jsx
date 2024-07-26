@@ -1,8 +1,8 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import classes from './style.module.scss';
-import { Button, MyLink } from '..';
-import { useProductsContext } from '../../contexts/products_context';
+import { Button, MyLink } from "..";
+import { useProductsContext } from "../../contexts/products_context";
+import classes from "./style.module.scss";
 
 const ProductsCardImage = ({ product, productRoute, color }) => {
   const { getSingleProduct, getSimilarProducts, openProductModal } =
@@ -19,12 +19,13 @@ const ProductsCardImage = ({ product, productRoute, color }) => {
       onClick={() => {
         getSingleProduct(product?.id, product?.gender, color);
         getSimilarProducts(product?.collections, product?.gender, product?.id);
-      }}>
+      }}
+    >
       <MyLink route={productRoute}>
         <Image
           src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/small/${product?.images[0]}`}
           alt={`${product?.name}-${color}`}
-          layout='fill'
+          layout="fill"
         />
       </MyLink>
 
@@ -32,8 +33,8 @@ const ProductsCardImage = ({ product, productRoute, color }) => {
 
       {product?.discountPer && (
         <img
-          src='/assets/sale-badge.svg'
-          alt='sale-badge'
+          src="/assets/sale-badge.svg"
+          alt="sale-badge"
           className={classes.sale_badge}
         />
       )}

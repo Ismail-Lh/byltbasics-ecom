@@ -1,10 +1,10 @@
-import classes from './ProductsCategorySection.module.scss';
+import classes from "./ProductsCategorySection.module.scss";
 
-import { ProductsCategoryCard } from '../../components';
+import { ProductsCategoryCard } from "../../components";
 
 const ProductsCategorySection = ({ productsCategories }) => {
   return (
-    <div className='container'>
+    <div className="container">
       <div className={classes.products__category_1}>
         {productsCategories.map(({ id, category, imgUrl, route }) => (
           <ProductsCategoryCard

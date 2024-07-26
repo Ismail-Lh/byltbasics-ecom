@@ -1,4 +1,4 @@
-import classes from './SplitContentText.module.scss';
+import classes from "./SplitContentText.module.scss";
 
 const SplitContentText = ({ title, text }) => {
   return (

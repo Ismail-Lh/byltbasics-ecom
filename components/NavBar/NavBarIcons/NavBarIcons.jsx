@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import { v4 as uuidv4 } from 'uuid';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import classes from './NavBarIcons.module.scss';
+import classes from "./NavBarIcons.module.scss";
 
-import { useCartContext } from '../../../contexts/cart_context';
-import { useAuthContext } from '../../../contexts/auth_context';
+import { useAuthContext } from "../../../contexts/auth_context";
+import { useCartContext } from "../../../contexts/cart_context";
 
-import { MyLink } from '../..';
+import { MyLink } from "../..";
 
-const DynamicSearchInput = dynamic(() =>
-  import('../../SearchInput/SearchInput')
+const DynamicSearchInput = dynamic(
+  () => import("../../SearchInput/SearchInput"),
 );
 
-import { CartIcon, LoginIcon, ContactIcon, SearchIcon } from '../../../Icons';
+import { CartIcon, ContactIcon, LoginIcon, SearchIcon } from "../../../Icons";
 
 const NavBarIcons = () => {
   const { openCart, total_products } = useCartContext();
@@ -21,10 +21,10 @@ const NavBarIcons = () => {
 
   const [openSearchInput, setOpenSearchInput] = useState(false);
 
-  const loginRoute = user ? '/account' : '/account/login';
+  const loginRoute = user ? "/account" : "/account/login";
 
   const Icons = [
-    { id: uuidv4(), icon: <ContactIcon />, route: '/pages/contact-us' },
+    { id: uuidv4(), icon: <ContactIcon />, route: "/pages/contact-us" },
     { id: uuidv4(), icon: <LoginIcon />, route: loginRoute },
     { id: uuidv4(), icon: <CartIcon />, cartIcon: true },
   ];
@@ -34,8 +34,9 @@ const NavBarIcons = () => {
       <div
         className={classes.navbar__icons_1}
         style={{
-          justifyContent: `${openSearchInput ? 'flex-start' : 'flex-end'}`,
-        }}>
+          justifyContent: `${openSearchInput ? "flex-start" : "flex-end"}`,
+        }}
+      >
         {openSearchInput ? (
           <DynamicSearchInput closeSearchBar={setOpenSearchInput} />
         ) : (
