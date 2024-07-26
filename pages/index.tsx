@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-
 import { useProductsContext } from "../contexts/products_context";
 import { productsCategories } from "../utils/constants";
 
@@ -12,17 +10,18 @@ import {
 } from "../sections";
 
 import { HeroImage, Layout } from "../components";
+import type { Product } from "../types";
 
 export default function Home() {
-  const { popular_products } = useProductsContext();
+  // const { popular_products } = useProductsContext();
 
-  const getPopularProducts = (gender) => {
-    const products = popular_products
-      ?.map((products) => products[gender])
-      .map((products) => products);
+  // const getPopularProducts = (gender: "men" | "women") => {
+  //   const products: Product[] = popular_products
+  //     ?.map((products: Product[]) => products[gender])
+  //     .map((products: Product[]) => products);
 
-    return products[0];
-  };
+  //   return products[0];
+  // };
 
   return (
     <Layout>
@@ -42,10 +41,10 @@ export default function Home() {
         imgUrlMobile="/assets/hero__mobile-womens-essential-collection.jpg"
       />
 
-      <ProductsSliderSection
+      {/* <ProductsSliderSection
         title="men's popular products"
         products={getPopularProducts("men")}
-      />
+      /> */}
 
       <HeroImage
         title="performance collection"
@@ -79,10 +78,10 @@ export default function Home() {
         imgUrlMobile="/assets/hero__mobile-executive-collection.jpg"
       />
 
-      <ProductsSliderSection
+      {/* <ProductsSliderSection
         title="women's popular products"
         products={getPopularProducts("women")}
-      />
+      /> */}
 
       <SplitContentSection
         istextfirst={false}

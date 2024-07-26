@@ -3,7 +3,17 @@ import classes from "./ProductsCategoryCard.module.scss";
 import Image from "next/image";
 import { Button } from "..";
 
-const ProductsCategoryCard = ({ category, imgUrl, route }) => {
+type ProductsCategoryCardProps = {
+  category: string;
+  imgUrl: string;
+  route: string;
+};
+
+const ProductsCategoryCard = ({
+  category,
+  imgUrl,
+  route,
+}: ProductsCategoryCardProps) => {
   return (
     <div className={classes.card}>
       <div

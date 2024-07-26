@@ -14,7 +14,7 @@ const ProductColors = ({ productColors, color, setColor }) => {
             className={classes.imgContainer}
           >
             <img
-              src={`/assets/products/colors/${clr}.jpg`}
+              src={`/assets/products/colors/${color}.jpg`}
               alt={clr}
               className={`${clr === color && "active-color"}`}
             />

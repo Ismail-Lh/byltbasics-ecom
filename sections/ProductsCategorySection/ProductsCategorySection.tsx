@@ -1,8 +1,15 @@
 import classes from "./ProductsCategorySection.module.scss";
 
 import { ProductsCategoryCard } from "../../components";
+import type { ProductsCategories } from "../../types";
 
-const ProductsCategorySection = ({ productsCategories }) => {
+type ProductsCategorySectionProps = {
+  productsCategories: ProductsCategories[];
+};
+
+const ProductsCategorySection = ({
+  productsCategories,
+}: ProductsCategorySectionProps) => {
   return (
     <div className="container">
       <div className={classes.products__category_1}>
