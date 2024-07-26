@@ -1,6 +1,12 @@
 import classes from "./AmountBtn.module.scss";
 
-const AmountBtn = ({ incAmount, decAmount, productAmount }) => {
+type AmountBtnProps = {
+  incAmount: () => void;
+  decAmount: () => void;
+  productAmount: number;
+};
+
+function AmountBtn({ incAmount, decAmount, productAmount }: AmountBtnProps) {
   return (
     <div className={classes.amountBtn}>
       <button type="button" onClick={decAmount}>
@@ -12,6 +18,6 @@ const AmountBtn = ({ incAmount, decAmount, productAmount }) => {
       </button>
     </div>
   );
-};
+}
 
 export default AmountBtn;

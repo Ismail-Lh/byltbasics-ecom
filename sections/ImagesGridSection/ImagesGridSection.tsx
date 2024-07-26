@@ -44,7 +44,6 @@ const ImagesGridSection = () => {
             <HeroImage
               title={title}
               subtitle={subtitle}
-              position={position}
               color={color}
               route={route}
               imgUrlDesktop={imgUrlDesktop}

@@ -1,4 +1,21 @@
-const FormInput = ({
+type FormInputProps = {
+  type?: string;
+  name: string;
+  id: string;
+  placeholder: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+  error: string;
+  label?: string;
+};
+
+/**
+ * Renders a form input component.
+ *
+ * @param {FormInputProps} props - The props for the FormInput component.
+ * @returns {JSX.Element} The rendered FormInput component.
+ */
+function FormInput({
   type = "text",
   name,
   id,
@@ -7,7 +24,7 @@ const FormInput = ({
   value,
   error,
   label,
-}) => {
+}: FormInputProps): JSX.Element {
   if (type === "textarea")
     return (
       <textarea
@@ -15,8 +32,8 @@ const FormInput = ({
         name={name}
         id={id}
         placeholder={placeholder}
-        cols="30"
-        rows="10"
+        cols={30}
+        rows={10}
       />
     );
 
@@ -35,6 +52,6 @@ const FormInput = ({
       <p className={`${error && "formIpt__errorMsg"}`}>{error}</p>
     </div>
   );
-};
+}
 
 export default FormInput;

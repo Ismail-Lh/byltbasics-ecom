@@ -1,7 +1,15 @@
-import { MyLink } from "..";
+import MyLink from "../MyLink/MyLink";
 import classes from "./FooterLinks.module.scss";
 
-const FooterLinks = ({ links }) => {
+type FooterLinksProps = {
+  links: {
+    link: string;
+    route: string;
+    id: number;
+  }[];
+};
+
+function FooterLinks({ links }: FooterLinksProps) {
   return (
     <ul className={classes.footer__list}>
       {links.map(({ link, route, id }) => (
@@ -11,6 +19,6 @@ const FooterLinks = ({ links }) => {
       ))}
     </ul>
   );
-};
+}
 
 export default FooterLinks;

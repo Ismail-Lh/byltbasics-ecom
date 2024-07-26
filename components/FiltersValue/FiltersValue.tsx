@@ -1,9 +1,13 @@
 import classes from "./FiltersValue.module.scss";
 
-import { Button, FilterType } from "..";
 import { useFiltersContext } from "../../contexts/filters_context";
+import Button from "../Button/Button";
+import FilterType from "../FilterType/FilterType";
 
-const FiltersValue = () => {
+/**
+ * Renders the filters and clear filters button.
+ */
+function FiltersValue() {
   const { products, clearFilters } = useFiltersContext();
 
   const productsObject = Object.assign({}, ...products);
@@ -19,7 +23,7 @@ const FiltersValue = () => {
     "neck",
   ];
 
-  const containsAny = (keys, substrings) => {
+  const containsAny = (keys: string[], substrings: string[]) => {
     const key = keys.map((key) => {
       for (let i = 0; i !== substrings.length; i++) {
         const filtersTitle = [];
@@ -37,8 +41,8 @@ const FiltersValue = () => {
   };
 
   const filtersTitle = containsAny(productsKey, substrings)
-    .filter((key) => key !== undefined)
-    .sort((a, b) => a.localeCompare(b));
+    .filter((key: string) => key !== undefined)
+    .sort((a: string, b: string) => a.localeCompare(b));
 
   return (
     <>
@@ -53,6 +57,6 @@ const FiltersValue = () => {
       </div>
     </>
   );
-};
+}
 
 export default FiltersValue;

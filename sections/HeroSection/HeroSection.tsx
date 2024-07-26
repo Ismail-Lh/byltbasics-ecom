@@ -1,10 +1,12 @@
+import React from "react";
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import { HeroData } from "../../utils/constants";
-import classes from "./HeroSection.module.scss";
 
-import { HeroImage } from "../../components";
+import HeroImage from "../../components/Hero/HeroImage/HeroImage";
+import classes from "./HeroSection.module.scss";
 
 const HeroSection = () => {
   const responsive = {
@@ -40,7 +42,6 @@ const HeroSection = () => {
               subtitle={subtitle}
               imgUrlDesktop={imgUrlDesktop}
               imgUrlMobile={imgUrlMobile}
-              position={position}
               color={color}
               route={route}
             />

@@ -30,3 +30,31 @@ export type ProductsCategories = {
   imgUrl: string;
   route: string;
 };
+
+export type CartProduct = {
+  id: string;
+  name: string;
+  color: string;
+  size: string;
+  amount: number;
+  price: number;
+  discountPer: number;
+  image: string;
+  collections: string;
+  style: string;
+  route: string;
+  gender: "men" | "women";
+};
+
+export type Collection = {
+  id: number;
+  collection: string;
+  route: string;
+};
+
+export type ImageInfo = {
+  route: string;
+  imgUrl: string;
+  subtitle: string;
+  title: string;
+};

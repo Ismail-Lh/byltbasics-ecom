@@ -1,8 +1,39 @@
-import { MyLink } from "..";
 import { useFiltersContext } from "../../contexts/filters_context";
+import type { Collection, ImageInfo } from "../../types";
+import MyLink from "../MyLink/MyLink";
 import classes from "./DropDownMenu.module.scss";
 
-const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
+type ProductTypes = {
+  id: number;
+  type: string;
+  collection: string;
+};
+
+type DropDownMenuProps = {
+  collections: Collection[];
+  productsCategories: {
+    id: number;
+    productCategory: {
+      category: string;
+      collection: string;
+    };
+    productTypes: ProductTypes[];
+    gender: string;
+  }[];
+  imageInfo: ImageInfo;
+};
+
+/**
+ * Renders a dropdown menu component.
+ *
+ * @param {DropDownMenuProps} props - The props for the DropDownMenu component.
+ * @returns {JSX.Element} The rendered dropdown menu.
+ */
+function DropDownMenu({
+  collections,
+  productsCategories,
+  imageInfo,
+}: DropDownMenuProps): JSX.Element {
   const { updateCollection } = useFiltersContext();
 
   return (
@@ -75,6 +106,6 @@ const DropDownMenu = ({ collections, productsCategories, imageInfo }) => {
       </div>
     </div>
   );
-};
+}
 
 export default DropDownMenu;

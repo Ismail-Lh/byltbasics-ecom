@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import { useFiltersContext } from "../../contexts/filters_context";
 import classes from "./BackgroundImage.module.scss";
 
-const BackgroundImage = ({ srcImg, titleBg }) => {
+type BackgroundImageProps = {
+  srcImg: string;
+  titleBg: string;
+};
+
+function BackgroundImage({ srcImg, titleBg }: BackgroundImageProps) {
   const { collection } = useFiltersContext();
 
   const [imgSrc, setImgSrc] = useState("");
@@ -30,6 +35,6 @@ const BackgroundImage = ({ srcImg, titleBg }) => {
       <h1 className={classes.backgroundImage__title}>{title || titleBg}</h1>
     </div>
   );
-};
+}
 
 export default BackgroundImage;

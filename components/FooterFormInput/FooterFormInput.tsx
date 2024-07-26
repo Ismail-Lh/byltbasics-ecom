@@ -1,6 +1,11 @@
 import classes from "./FooterFormInput.module.scss";
 
-const FooterFormInput = () => {
+/**
+ * Renders a form input component for the footer.
+ *
+ * @returns The rendered form input component.
+ */
+function FooterFormInput() {
   return (
     <div className={classes.footer__form_input}>
       <p className={classes.text}>
@@ -18,6 +23,6 @@ const FooterFormInput = () => {
       </form>
     </div>
   );
-};
+}
 
 export default FooterFormInput;

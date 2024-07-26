@@ -1,16 +1,6 @@
+import Layout from "../components/Layout/Layout";
 import { useProductsContext } from "../contexts/products_context";
 import { productsCategories } from "../utils/constants";
-
-// COMPONENTS
-import {
-  HeroSection,
-  ProductsCategorySection,
-  ProductsSliderSection,
-  SplitContentSection,
-} from "../sections";
-
-import { HeroImage, Layout } from "../components";
-import type { Product } from "../types";
 
 export default function Home() {
   // const { popular_products } = useProductsContext();
@@ -34,7 +24,6 @@ export default function Home() {
       <HeroImage
         title="women's essential collection"
         subtitle="Empowered Style. Essential Comfort."
-        position="center"
         color="#fff"
         route="/collections/womens-essential-collection"
         imgUrlDesktop="/assets/hero__desktop-womens-essential-collection.jpg"
@@ -49,7 +38,6 @@ export default function Home() {
       <HeroImage
         title="performance collection"
         subtitle="Pushing The Limits"
-        position="center"
         color="#fff"
         route="/collections/performance-collection"
         imgUrlDesktop="/assets/hero__desktop-performance-collection.jpg"
@@ -71,7 +59,6 @@ export default function Home() {
       <HeroImage
         title="executive collection"
         subtitle="Made for the Modern Man."
-        position="center"
         color="#fff"
         route="/collections/executive-collection"
         imgUrlDesktop="/assets/hero__desktop-executive-collection.jpg"

@@ -3,21 +3,25 @@ import dynamic from "next/dynamic";
 // import { loadStripe } from '@stripe/stripe-js';
 // import axios from 'axios';
 
+import CloseIcon from "../../Icons/CloseIcon";
 import { useAuthContext } from "../../contexts/auth_context";
 import { useCartContext } from "../../contexts/cart_context";
 import { cartVariants } from "../../utils/animations";
+import Button from "../Button/Button";
 import classes from "./Cart.module.scss";
 
 const CartItems = dynamic(() => import("../CartItems/CartItems"));
-
-import { Button } from "..";
-import { CloseIcon } from "../../Icons";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 // const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
-const Cart = () => {
+/**
+ * Renders the Cart component.
+ *
+ * @returns JSX.Element representing the Cart component.
+ */
+function Cart() {
   const { closeCart, cart: products, clearCart, subTotal } = useCartContext();
 
   const { user } = useAuthContext();
@@ -87,6 +91,6 @@ const Cart = () => {
       )}
     </motion.div>
   );
-};
+}
 
 export default Cart;

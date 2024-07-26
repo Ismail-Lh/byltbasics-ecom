@@ -1,17 +1,15 @@
-import dynamic from "next/dynamic";
-
+import CloseIcon from "../../Icons/CloseIcon";
 import { useCartContext } from "../../contexts/cart_context";
+import type { CartProduct, Product } from "../../types";
 import { formatPrice } from "../../utils/helpers";
+import AmountBtn from "../AmountBtn/AmountBtn";
+import MyLink from "../MyLink/MyLink";
 import classes from "./CartItems.module.scss";
 
-// const DynamicAmountBtn = dynamic(() => import('../AmountBtn/AmountBtn'));
-// const DynamicMyLink = dynamic(() => import('../MyLink/MyLink'));
-// const DynamicCloseIcon = dynamic(() => import('../../Icons/CloseIcon'));
-
-import { AmountBtn, MyLink } from "..";
-import { CloseIcon } from "../../Icons";
-
-const CartItems = () => {
+/**
+ * Renders the list of items in the cart.
+ */
+function CartItems() {
   const { cart: products, removeFromCart, toggleCartAmount } = useCartContext();
 
   return (
@@ -30,7 +28,7 @@ const CartItems = () => {
           style,
           route,
           gender,
-        }) => (
+        }: CartProduct) => (
           <div className={classes.product} key={id}>
             <div className={classes.product__img}>
               <MyLink route={`/products/${route}`}>
@@ -74,6 +72,6 @@ const CartItems = () => {
       )}
     </div>
   );
-};
+}
 
 export default CartItems;
