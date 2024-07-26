@@ -49,7 +49,7 @@ const UserOrders = ({ orders }) => {
 
             <div className={classes.order__products}>
               {images.map((imgSrc, idx) => (
-                <div className={classes.order__products_images} key={idx}>
+                <div className={classes.order__products_images} key={imgSrc}>
                   <img src={imgSrc} alt={imgSrc} className={classes.img} />
                   <p>product qty: {stripe_info[idx].quantity}</p>
                 </div>

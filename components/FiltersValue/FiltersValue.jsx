@@ -21,7 +21,7 @@ const FiltersValue = () => {
 
   const containsAny = (keys, substrings) => {
     const key = keys.map((key) => {
-      for (let i = 0; i != substrings.length; i++) {
+      for (let i = 0; i !== substrings.length; i++) {
         const filtersTitle = [];
         const str = substrings[i];
 
@@ -42,8 +42,8 @@ const FiltersValue = () => {
 
   return (
     <>
-      {filtersTitle.map((title, idx) => (
-        <FilterType key={idx} title={title} products={products} />
+      {filtersTitle.map((title) => (
+        <FilterType key={title} title={title} products={products} />
       ))}
 
       <div className={classes.filters__clear}>

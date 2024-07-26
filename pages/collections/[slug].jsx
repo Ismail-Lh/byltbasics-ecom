@@ -40,7 +40,7 @@ const Collections = () => {
 
   useEffect(() => {
     updateCollection(slug, title);
-  }, [slug]);
+  }, [slug, title, updateCollection]);
 
   return (
     <Layout title={`${title} | BYLT Basics`}>

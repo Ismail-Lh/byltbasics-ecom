@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check . --apply",
+    "lint:unsafe": "biome check --fix --unsafe",
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {

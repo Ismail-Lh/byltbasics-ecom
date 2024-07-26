@@ -52,6 +52,7 @@ const SearchInput = ({ closeSearchBar }) => {
             .slice(0, 10)
             .map(({ name, id, route, gender, colors }) => (
               <div
+                key={id}
                 onClick={() => handelClick(id, gender, colors[0])}
                 className={classes.result}
               >

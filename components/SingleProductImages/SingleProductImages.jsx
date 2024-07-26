@@ -12,10 +12,10 @@ const SingleProductImages = ({ product, color }) => {
   const Images = ({ handelClick, wh }) => {
     return (
       <>
-        {product?.images?.map((img, idx) => (
+        {product?.images?.map((img) => (
           <div
-            key={idx}
-            onClick={() => handelClick && handelClick(idx)}
+            key={img}
+            onClick={() => handelClick?.(idx)}
             style={{ position: "relative", width: `${wh}`, height: "100%" }}
           >
             <Image

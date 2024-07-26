@@ -18,10 +18,7 @@ const Filters = () => {
   const [openFiltersModal, setOpenFiltersModal] = useState(false);
 
   const FiltersContainer = ({ children, handelClick }) => (
-    <div
-      className={classes.filters}
-      onClick={() => handelClick && handelClick()}
-    >
+    <div className={classes.filters} onClick={() => handelClick?.()}>
       <h3 className={classes.filters__title}>filters</h3>
       {children}
     </div>

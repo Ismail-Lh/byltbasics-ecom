@@ -1,4 +1,3 @@
-import { useProductsContext } from "../../contexts/products_context";
 import classes from "./ProductColors.module.scss";
 
 const ProductColors = ({ productColors, color, setColor }) => {
@@ -8,10 +7,10 @@ const ProductColors = ({ productColors, color, setColor }) => {
         Color : <span>{color}</span>
       </p>
       <div className={classes.colors}>
-        {productColors?.map((clr, idx) => (
+        {productColors?.map((color) => (
           <div
-            key={idx}
-            onClick={() => setColor(clr)}
+            key={color}
+            onClick={() => setColor(color)}
             className={classes.imgContainer}
           >
             <img

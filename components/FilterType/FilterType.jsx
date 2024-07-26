@@ -22,10 +22,10 @@ const FilterType = ({ title, products }) => {
 
       {toggleAccordion && (
         <div className={classes.filter__type_value}>
-          {filtersValue.map((value, idx) => (
-            <>
+          {filtersValue.map((value) => (
+            <Fragment key={value}>
               {value !== undefined && (
-                <div key={idx} onClick={() => updateFilters(title, value)}>
+                <div onClick={() => updateFilters(title, value)}>
                   <img
                     src={`/assets/filters/${title}/${value}.png`}
                     alt={value}
@@ -33,7 +33,7 @@ const FilterType = ({ title, products }) => {
                   <h4>{value}</h4>
                 </div>
               )}
-            </>
+            </Fragment>
           ))}
         </div>
       )}
