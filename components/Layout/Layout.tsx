@@ -15,11 +15,20 @@ type LayoutProps = {
   description?: string;
 };
 
-const Layout = ({
+/**
+ * Renders the layout component for the BYLT Basics website.
+ *
+ * @param {LayoutProps} props - The props for the Layout component.
+ * @param {ReactNode} props.children - The content to be rendered inside the layout.
+ * @param {string} [props.title="BYLT Basics™ - Premium Basics"] - The title of the page.
+ * @param {string} [props.description="Men's Basics are evolving. BYLT Underwear and BYLT Shirts. Get BYLT's new line of Men's Premium Basics online at a fair price. BYLT™ - Confidence starts here™"] - The description of the page.
+ * @returns {JSX.Element} The rendered layout component.
+ */
+function Layout({
   children,
   title = "BYLT Basics™ - Premium Basics",
   description = "Men's Basics are evolving. BYLT Underwear and BYLT Shirts. Get BYLT's new line of Men's Premium Basics online at a fair price. BYLT™ - Confidence starts here™",
-}: LayoutProps) => {
+}: LayoutProps): JSX.Element {
   const { isProductModalOpen } = useProductsContext();
 
   return (
@@ -46,6 +55,6 @@ const Layout = ({
       </div>
     </div>
   );
-};
+}
 
 export default Layout;

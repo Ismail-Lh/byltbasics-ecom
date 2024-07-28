@@ -1,4 +1,5 @@
-import React, { useContext, createContext, useReducer, useEffect } from "react";
+import type React from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import useFirebaseData from "../hooks/useFirebaseData";
 
 import ProductsReducer from "../reducers/products_reducer";
@@ -14,9 +15,44 @@ import {
   SIDEBAR_OPEN,
 } from "../utils/actions";
 
+import type { Gender, Product } from "../types";
 import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
-const ProductsContext = createContext();
+type SingleProduct = {
+  productId: string;
+  gender: Gender;
+  color: string;
+};
+
+type SimilarProduct = {
+  productId: string;
+  collection: string;
+  gender: Gender;
+};
+
+type ProductsProviderProps = {
+  children: React.ReactNode;
+};
+
+type ProductsContextType = {
+  isSidebarOpen: boolean;
+  isProductModalOpen: boolean;
+  openSidebar: () => void;
+  loading: boolean;
+  closeSidebar: () => void;
+  openProductModal: () => void;
+  closeProductModal: () => void;
+  getSingleProduct: (singleProduct: SingleProduct) => void;
+  getSimilarProducts: (similarProduct: SimilarProduct) => void;
+  men_products: Product[] | null;
+  women_products: Product[] | null;
+  popular_products: Product[] | null;
+  single_product: Product | null;
+  similar_products: Product[];
+  product_color: string | null;
+};
+
+const ProductsContext = createContext<ProductsContextType | null>(null);
 
 const initialState = {
   isSidebarOpen: false,
@@ -30,7 +66,7 @@ const initialState = {
   similar_products: getLocalStorage("similarProducts"),
 };
 
-export const ProductsProvider = ({ children }) => {
+export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
   const { men, loading } = useFirebaseData("men");
   const { women } = useFirebaseData("women");
@@ -64,29 +100,34 @@ export const ProductsProvider = ({ children }) => {
     setLocalStorage("womenProducts", state.women_products);
   }, [state.men_products, state.women_products]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     dispatch({
       type: GET_POPULAR_PRODUCTS,
     });
   }, [state.women_products, state.men_products]);
 
-  const getSingleProduct = (productId, gender, color) => {
+  const getSingleProduct = ({ productId, gender, color }: SingleProduct) => {
     dispatch({
       type: GET_SINGLE_PRODUCT,
       payload: { productId, gender, color },
     });
   };
 
-  useEffect(() => {
-    setLocalStorage("singleProduct", state.single_product);
-  }, [state.single_product]);
-
-  const getSimilarProducts = (collection, gender, productId) => {
+  const getSimilarProducts = ({
+    collection,
+    gender,
+    productId,
+  }: SimilarProduct) => {
     dispatch({
       type: GET_SIMILAR_PRODUCTS,
       payload: { collection, gender, productId },
     });
   };
+
+  useEffect(() => {
+    setLocalStorage("singleProduct", state.single_product);
+  }, [state.single_product]);
 
   useEffect(() => {
     setLocalStorage("similarProducts", state.similar_products);
@@ -110,5 +151,12 @@ export const ProductsProvider = ({ children }) => {
 };
 
 export const useProductsContext = () => {
-  return useContext(ProductsContext);
+  const context = useContext(ProductsContext);
+  // Throw an error if the hook is used outside of the ProductsProvider
+  if (!context)
+    throw new Error(
+      "useProductsContext must be used within the ProductsProvider!",
+    );
+
+  return context;
 };

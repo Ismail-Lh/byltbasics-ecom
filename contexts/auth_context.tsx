@@ -9,15 +9,59 @@ import {
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../lib/firebase.prod";
 
-const AuthContext = createContext();
+type AuthContextType = {
+  user: User | null;
+  signUp: ({
+    email,
+    password,
+    firstName,
+    lastName,
+  }: SignUpProps) => Promise<void>;
+  login: ({ email, password }: LoginProps) => Promise<User>;
+  logout: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  err: string;
+  setErr: (err: string) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+};
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+type SignUpProps = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+};
+
+type LoginProps = {
+  email: string;
+  password: string;
+};
+
+type User = {
+  email: string;
+  firstName: string;
+  lastName: string;
+};
+
+type AuthProviderProps = {
+  children: React.ReactNode;
+};
+
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<User | null>(null);
   const [load, setLoad] = useState(true);
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const signUp = async (email, password, firstName, lastName) => {
+  const signUp = async ({
+    email,
+    password,
+    firstName,
+    lastName,
+  }: SignUpProps) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
 
     const user = updateProfile(res.user, {
@@ -27,7 +71,7 @@ export const AuthProvider = ({ children }) => {
     return user;
   };
 
-  const login = async (email, password) => {
+  const login = async ({ email, password }: LoginProps) => {
     const res = await signInWithEmailAndPassword(auth, email, password);
 
     return res;
@@ -39,7 +83,7 @@ export const AuthProvider = ({ children }) => {
     return res;
   };
 
-  const resetPassword = async (email) => {
+  const resetPassword = async (email: string) => {
     const res = await sendPasswordResetEmail(auth, email);
 
     return res;

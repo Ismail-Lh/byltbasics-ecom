@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+import CloseIcon from "../../Icons/CloseIcon";
+import SearchIcon from "../../Icons/SearchIcon";
 import { useFiltersContext } from "../../contexts/filters_context";
 import { useProductsContext } from "../../contexts/products_context";
 import { sideBarVariants } from "../../utils/animations";
 import { NavbarLinks } from "../../utils/constants";
 import classes from "./MobileMenu.module.scss";
 
-import { CloseIcon, SearchIcon } from "../../Icons";
-
-const MobileMenu = () => {
+/**
+ * Renders the mobile menu component.
+ *
+ * @returns The mobile menu component.
+ */
+function MobileMenu() {
   const { closeSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
@@ -50,6 +55,6 @@ const MobileMenu = () => {
       </ul>
     </motion.div>
   );
-};
+}
 
 export default MobileMenu;

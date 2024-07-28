@@ -2,8 +2,9 @@ import { collection, getDocs } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
 
 import { db } from "../lib/firebase.prod";
+import type { Gender } from "../types";
 
-const useFirebaseData = (gender) => {
+const useFirebaseData = (gender: Gender) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 

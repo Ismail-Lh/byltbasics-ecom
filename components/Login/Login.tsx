@@ -2,57 +2,61 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import classes from "./Login.module.scss";
 
-import { Alert, Button, FormInput, Loader, MyLink } from "..";
 import { useAuthContext } from "../../contexts/auth_context";
 import useForm from "../../hooks/useForm";
+import Alert from "../Alert/Alert";
+import Button from "../Button/Button";
+import FormInput from "../FormInput/FormInput";
+import Loader from "../Loader/Loader";
+import MyLink from "../MyLink/MyLink";
 
-const Login = () => {
-  const { value, error, handleChange, handleSubmit } = useForm();
-  const { login, resetPassword, err, setErr, loading, setLoading } =
-    useAuthContext();
+/**
+ * Renders the login component.
+ *
+ * @returns The login component.
+ */
+function Login() {
+  const { value, error, handleChange } = useForm();
+  const loading = false;
+  // const { login, resetPassword, err, setErr, loading, setLoading } =
+  //   useAuthContext();
 
   const router = useRouter();
 
   const [isResetPassword, setIsResetPassword] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    handleSubmit();
-
-    try {
-      setErr("");
-      setLoading(true);
-
-      await login(value.email, value.password);
-
-      router.push("/account");
-    } catch (error) {
-      setErr(error.message);
-    }
-
-    setLoading(false);
+  const handleLogin = async () => {
+    // e.preventDefault();
+    // handleSubmit();
+    // try {
+    //   setErr("");
+    //   setLoading(true);
+    //   await login(value.email, value.password);
+    //   router.push("/account");
+    // } catch (error) {
+    //   setErr(error.message);
+    // }
+    // setLoading(false);
   };
 
-  const handleReset = async (e) => {
-    e.preventDefault();
-
-    try {
-      setErr("");
-      setMessage("");
-      setLoading(true);
-
-      await resetPassword(value.email);
-      setLoading(false);
-      setMessage("check your email inbox for more information.");
-    } catch (error) {
-      setErr(error.message);
-    }
+  const handleReset = async () => {
+    // e.preventDefault();
+    // try {
+    //   setErr("");
+    //   setMessage("");
+    //   setLoading(true);
+    //   await resetPassword(value.email);
+    //   setLoading(false);
+    //   setMessage("check your email inbox for more information.");
+    // } catch (error) {
+    //   setErr(error.message);
+    // }
   };
 
-  const setResetPassword = (value) => {
-    setErr("");
-    setIsResetPassword(value);
+  const setResetPassword = (value: string) => {
+    // setErr("");
+    // setIsResetPassword(value);
   };
 
   return (
@@ -64,7 +68,7 @@ const Login = () => {
           ) : (
             <>
               <h1>registered customers</h1>
-              {err && <Alert error> {err}</Alert>}
+              {/* {err && <Alert error> {err}</Alert>} */}
               <form className={classes.login__form} onSubmit={handleLogin}>
                 <FormInput
                   name="email"
@@ -92,14 +96,14 @@ const Login = () => {
               <div className={classes.login__create}>
                 <MyLink
                   route="/account/register"
-                  handelClick={() => setErr("")}
+                  // handelClick={() => setErr("")}
                 >
                   create an account
                 </MyLink>
                 <button
                   className={classes.btn}
                   type="button"
-                  onClick={() => setResetPassword(true)}
+                  // onClick={() => setResetPassword(true)}
                 >
                   forgot your password?
                 </button>
@@ -114,7 +118,7 @@ const Login = () => {
           ) : (
             <>
               <h1>reset password</h1>
-              {err && <Alert error> {err}</Alert>}
+              {/* {err && <Alert error> {err}</Alert>} */}
 
               {message && <Alert>{message}</Alert>}
               <p className={classes.resetText}>
@@ -140,7 +144,7 @@ const Login = () => {
               <button
                 className={classes.btn}
                 type="button"
-                onClick={() => setResetPassword(false)}
+                // onClick={() => setResetPassword(false)}
               >
                 cancel
               </button>
@@ -150,6 +154,6 @@ const Login = () => {
       )}
     </div>
   );
-};
+}
 
 export default Login;

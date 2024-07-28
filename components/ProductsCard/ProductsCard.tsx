@@ -1,10 +1,15 @@
 import { useState } from "react";
 import classes from "./style.module.scss";
 
+import type { Product } from "../../types";
 import ProductsCardImage from "./ProductsCardImage";
 import ProductsCardInfo from "./ProductsCardInfo";
 
-const ProductsCard = ({ product }) => {
+type ProductsCardProps = {
+  product: Product;
+};
+
+const ProductsCard = ({ product }: ProductsCardProps) => {
   const [color, setColor] = useState(product?.colors[0]);
 
   const productRoute = `/products/${product?.route}/?gender=${product?.gender}&id=${product?.id}`;

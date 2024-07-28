@@ -58,3 +58,5 @@ export type ImageInfo = {
   subtitle: string;
   title: string;
 };
+
+export type Gender = "men" | "women";

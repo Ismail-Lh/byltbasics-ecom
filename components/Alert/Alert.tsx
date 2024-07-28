@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 type AlertProps = {
-  error: boolean;
+  error?: boolean;
   children: ReactNode;
 };
 
