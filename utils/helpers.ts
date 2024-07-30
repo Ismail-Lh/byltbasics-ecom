@@ -1,5 +1,9 @@
-export const formatPrice = (price, discountPer, product_amount = 1) => {
-  let finalPrice;
+export const formatPrice = (
+  price: number,
+  discountPer?: number,
+  product_amount = 1,
+) => {
+  let finalPrice: number;
 
   if (!discountPer || discountPer === undefined)
     finalPrice = price * product_amount;

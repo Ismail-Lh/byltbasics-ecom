@@ -2,22 +2,26 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { SingleProductInfo } from "..";
-import { CloseIcon } from "../../Icons";
+import CloseIcon from "../../Icons/CloseIcon";
 import { useProductsContext } from "../../contexts/products_context";
 import { productModalVariants } from "../../utils/animations";
+import SingleProductInfo from "../SingleProductInfo/SingleProductInfo";
 import classes from "./ProductModal.module.scss";
 
-const ProductModal = () => {
+/**
+ * Renders a modal component for displaying product information.
+ * @returns JSX.Element
+ */
+function ProductModal() {
   const { closeProductModal, single_product } = useProductsContext();
 
-  const { productInfo: product, productColor } = single_product;
+  // const { productInfo: product, productColor } = single_product;
 
-  const [color, setColor] = useState("");
+  // const [color, setColor] = useState("");
 
-  useEffect(() => {
-    setColor(productColor);
-  }, [productColor]);
+  // useEffect(() => {
+  //   setColor(productColor);
+  // }, [productColor]);
 
   return (
     <motion.div
@@ -39,22 +43,22 @@ const ProductModal = () => {
             className={classes.product__image}
             style={{ position: "relative", width: "100%", height: "100%" }}
           >
-            <Image
+            {/* <Image
               src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[0]}`}
               alt={`${product?.name}-${color}`}
               layout="fill"
-            />
+            /> */}
           </div>
 
-          <SingleProductInfo
+          {/* <SingleProductInfo
             product={product}
             color={color}
             changeColor={setColor}
-          />
+          /> */}
         </div>
       </div>
     </motion.div>
   );
-};
+}
 
 export default ProductModal;

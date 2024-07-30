@@ -1,11 +1,14 @@
-import dynamic from "next/dynamic";
 import Image from "next/image";
 
+import MyLink from "../../MyLink/MyLink";
 import classes from "./NavBarLogo.module.scss";
 
-import { MyLink } from "../../../components";
-
-const NavBarLogo = () => {
+/**
+ * Renders the logo for the navigation bar.
+ *
+ * @returns The JSX element representing the logo.
+ */
+function NavBarLogo() {
   return (
     <div className={classes.navbar__logo}>
       <MyLink route="/">
@@ -18,6 +21,6 @@ const NavBarLogo = () => {
       </MyLink>
     </div>
   );
-};
+}
 
 export default NavBarLogo;

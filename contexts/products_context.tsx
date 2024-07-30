@@ -20,14 +20,14 @@ import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
 type SingleProduct = {
   productId: string;
-  gender: Gender;
+  gender: string;
   color: string;
 };
 
 type SimilarProduct = {
   productId: string;
   collection: string;
-  gender: Gender;
+  gender: string;
 };
 
 type ProductsProviderProps = {
@@ -47,7 +47,7 @@ type ProductsContextType = {
   men_products: Product[] | null;
   women_products: Product[] | null;
   popular_products: Product[] | null;
-  single_product: Product | null;
+  single_product: { single_product: Product; product_color: string };
   similar_products: Product[];
   product_color: string | null;
 };

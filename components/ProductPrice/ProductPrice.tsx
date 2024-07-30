@@ -1,7 +1,19 @@
 import { formatPrice } from "../../utils/helpers";
 import classes from "./ProductPrice.module.scss";
 
-const ProductPrice = ({ price, discountPer }) => {
+type ProductPriceProps = {
+  price: number;
+  discountPer?: number;
+};
+
+/**
+ * Renders the price of a product with optional discount.
+ *
+ * @param {number} price - The price of the product.
+ * @param {number} discountPer - The discount percentage applied to the product.
+ * @returns {JSX.Element} - The rendered component displaying the product price.
+ */
+function ProductPrice({ price, discountPer }: ProductPriceProps): JSX.Element {
   return (
     <div className={classes.product__price}>
       <span
@@ -15,6 +27,6 @@ const ProductPrice = ({ price, discountPer }) => {
       )}
     </div>
   );
-};
+}
 
 export default ProductPrice;

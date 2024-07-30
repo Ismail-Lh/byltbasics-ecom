@@ -3,22 +3,26 @@ import type { Collection, ImageInfo } from "../../types";
 import MyLink from "../MyLink/MyLink";
 import classes from "./DropDownMenu.module.scss";
 
-type ProductTypes = {
-  id: number;
+interface ProductType {
   type: string;
+  route: string;
   collection: string;
-};
+  id: string;
+}
+
+interface ProductCategory {
+  category: string;
+  route: string;
+  collection: string;
+}
 
 type DropDownMenuProps = {
   collections: Collection[];
   productsCategories: {
-    id: number;
-    productCategory: {
-      category: string;
-      collection: string;
-    };
-    productTypes: ProductTypes[];
+    id: string;
     gender: string;
+    productCategory: ProductCategory;
+    productTypes?: ProductType[];
   }[];
   imageInfo: ImageInfo;
 };

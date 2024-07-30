@@ -5,6 +5,7 @@ import classes from "./NavBarLinks.module.scss";
 import { useFiltersContext } from "../../../contexts/filters_context";
 import { useProductsContext } from "../../../contexts/products_context";
 
+import MenuIcon from "../../../Icons/MenuIcon";
 import {
   NavbarLinks,
   menCategories,
@@ -12,27 +13,29 @@ import {
   womenCategories,
   womenCollections,
 } from "../../../utils/constants";
-
-import { MyLink } from "../../";
-import { MenuIcon } from "../../../Icons";
+import MyLink from "../../MyLink/MyLink";
 
 const DynamicDropDownMenu = dynamic(
   () => import("../../DropDownMenu/DropDownMenu"),
 );
 
-const NavBarLinks = () => {
+/**
+ * Renders the navigation links for the navbar.
+ * @returns JSX.Element
+ */
+function NavBarLinks() {
   const { openSidebar } = useProductsContext();
   const { updateCollection } = useFiltersContext();
 
   const [showMenDropMenu, setShowMenDropMenu] = useState(false);
   const [showWomenDropMenu, setShowWomenDropMenu] = useState(false);
 
-  const handelHover = (link, state) => {
+  const handelHover = (link: string, state: boolean) => {
     link === "men" && setShowMenDropMenu(state);
     link === "women" && setShowWomenDropMenu(state);
   };
 
-  const handelClick = (link) => {
+  const handelClick = (link: string) => {
     link === "men" && updateCollection("shop-men", "all men");
     link === "women" && updateCollection("shop-women", "all women");
     link === "bundles" && updateCollection("bundles", "bundles");
@@ -65,7 +68,6 @@ const NavBarLinks = () => {
               <DynamicDropDownMenu
                 collections={menCollections}
                 productsCategories={menCategories}
-                gender="men"
                 imageInfo={{
                   imgUrl: "men-drop-down-img.jpg",
                   route: "/collections/spring-collection",
@@ -79,7 +81,6 @@ const NavBarLinks = () => {
               <DynamicDropDownMenu
                 collections={womenCollections}
                 productsCategories={womenCategories}
-                gender="women"
                 imageInfo={{
                   imgUrl: "women-drop-down-img.jpg",
                   route: "/products/womens-elite-joggers",
@@ -98,6 +99,6 @@ const NavBarLinks = () => {
       </div>
     </>
   );
-};
+}
 
 export default NavBarLinks;

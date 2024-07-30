@@ -1,15 +1,40 @@
 import Image from "next/image";
 
-import { Button, MyLink } from "..";
 import { useProductsContext } from "../../contexts/products_context";
+import type { Product } from "../../types";
+import Button from "../Button/Button";
+import MyLink from "../MyLink/MyLink";
 import classes from "./style.module.scss";
 
-const ProductsCardImage = ({ product, productRoute, color }) => {
+type ProductsCardImageProps = {
+  product: Product;
+  productRoute: string;
+  color: string;
+};
+
+/**
+ * Renders the image component for a product card.
+ *
+ * @param {ProductsCardImageProps} props - The component props.
+ * @param {Product} props.product - The product object.
+ * @param {string} props.productRoute - The route for the product.
+ * @param {string} props.color - The color of the product.
+ * @returns {JSX.Element} The rendered component.
+ */
+function ProductsCardImage({
+  product,
+  productRoute,
+  color,
+}: ProductsCardImageProps): JSX.Element {
   const { getSingleProduct, getSimilarProducts, openProductModal } =
     useProductsContext();
 
   const handelClick = () => {
-    getSingleProduct(product?.id, product?.gender, color);
+    getSingleProduct({
+      productId: product?.id,
+      gender: product?.gender,
+      color,
+    });
     openProductModal();
   };
 
@@ -17,8 +42,16 @@ const ProductsCardImage = ({ product, productRoute, color }) => {
     <div
       className={classes.card__image}
       onClick={() => {
-        getSingleProduct(product?.id, product?.gender, color);
-        getSimilarProducts(product?.collections, product?.gender, product?.id);
+        getSingleProduct({
+          productId: product?.id,
+          gender: product?.gender,
+          color,
+        });
+        getSimilarProducts({
+          collection: product?.collections,
+          gender: product?.gender,
+          productId: product?.id,
+        });
       }}
     >
       <MyLink route={productRoute}>
@@ -40,6 +73,6 @@ const ProductsCardImage = ({ product, productRoute, color }) => {
       )}
     </div>
   );
-};
+}
 
 export default ProductsCardImage;

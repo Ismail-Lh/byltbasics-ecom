@@ -1,15 +1,38 @@
 import classes from "./style.module.scss";
 
-import { MyLink } from "..";
-import { ProductColors, ProductPrice, ProductSale } from "..";
 import { useProductsContext } from "../../contexts/products_context";
+import type { Product } from "../../types";
+import MyLink from "../MyLink/MyLink";
+import ProductColors from "../ProductColors/ProductColors";
+import ProductPrice from "../ProductPrice/ProductPrice";
+import ProductSale from "../ProductSale/ProductSale";
 
-const ProductsCardInfo = ({ product, productRoute, color, setColor }) => {
+type ProductCardInfoProps = {
+  product: Product;
+  productRoute: string;
+  color: string;
+  setColor: (color: string) => void;
+};
+
+function ProductsCardInfo({
+  product,
+  productRoute,
+  color,
+  setColor,
+}: ProductCardInfoProps) {
   const { getSingleProduct, getSimilarProducts } = useProductsContext();
 
   const handelClick = () => {
-    getSingleProduct(product?.id, product?.gender, color);
-    getSimilarProducts(product?.collections, product?.gender, product?.id);
+    getSingleProduct({
+      productId: product?.id,
+      gender: product?.gender,
+      color,
+    });
+    getSimilarProducts({
+      collection: product?.collections,
+      gender: product?.gender,
+      productId: product?.id,
+    });
   };
 
   return (
@@ -38,6 +61,6 @@ const ProductsCardInfo = ({ product, productRoute, color, setColor }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductsCardInfo;

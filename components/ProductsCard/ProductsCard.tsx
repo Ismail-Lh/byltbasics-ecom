@@ -9,7 +9,14 @@ type ProductsCardProps = {
   product: Product;
 };
 
-const ProductsCard = ({ product }: ProductsCardProps) => {
+/**
+ * Renders a card component for displaying product information.
+ *
+ * @param {ProductsCardProps} props - The component props.
+ * @param {Product} props.product - The product object containing information about the product.
+ * @returns {JSX.Element} The rendered card component.
+ */
+function ProductsCard({ product }: ProductsCardProps): JSX.Element {
   const [color, setColor] = useState(product?.colors[0]);
 
   const productRoute = `/products/${product?.route}/?gender=${product?.gender}&id=${product?.id}`;
@@ -30,6 +37,6 @@ const ProductsCard = ({ product }: ProductsCardProps) => {
       />
     </div>
   );
-};
+}
 
 export default ProductsCard;

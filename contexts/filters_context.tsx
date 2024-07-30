@@ -1,9 +1,11 @@
-import React, { useContext, createContext, useReducer, useEffect } from "react";
+import type React from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 import FiltersReducer from "../reducers/filters_reducer";
 import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 import { useProductsContext } from "./products_context";
 
+import type { Product } from "../types";
 import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
@@ -14,7 +16,26 @@ import {
   UPDATE_SORT,
 } from "../utils/actions";
 
-const FiltersContext = createContext();
+type FilterContextType = {
+  collection: string;
+  products: Product[];
+  filtered_products: Product[];
+  sort: string;
+  filters: {
+    collections: string;
+    style: string;
+    cut: string;
+    neck: string;
+    sleeve: string;
+    fabric: string;
+  };
+  updateCollection: (route: string, title?: string) => void;
+  updateSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  updateFilters: (type: string, value: string) => void;
+  clearFilters: () => void;
+};
+
+const FiltersContext = createContext<FilterContextType | null>(null);
 
 const initialState = {
   collection: getLocalStorage("collection"),
@@ -31,11 +52,15 @@ const initialState = {
   },
 };
 
-export const FiltersProvider = ({ children }) => {
+type FiltersProviderProps = {
+  children: React.ReactNode;
+};
+
+export const FiltersProvider = ({ children }: FiltersProviderProps) => {
   const [state, dispatch] = useReducer(FiltersReducer, initialState);
   const { men_products, women_products } = useProductsContext();
 
-  const updateCollection = (route, title) => {
+  const updateCollection = (route: string, title?: string) => {
     dispatch({ type: UPDATE_COLLECTION, payload: { route, title } });
   };
 
@@ -48,20 +73,22 @@ export const FiltersProvider = ({ children }) => {
     setLocalStorage("collection", state.collection);
   }, [state.collection, men_products, women_products]);
 
-  const updateSort = (e) => {
+  const updateSort = (e: { target: { value: string } }) => {
     const { value } = e.target;
 
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     dispatch({ type: SORT_PRODUCTS });
   }, [state.sort]);
 
-  const updateFilters = (type, value) => {
+  const updateFilters = (type: string, value: string) => {
     dispatch({ type: UPDATE_FILTERS, payload: { type, value } });
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     dispatch({ type: FILTER_PRODUCTS });
   }, [state.filters]);
@@ -86,5 +113,11 @@ export const FiltersProvider = ({ children }) => {
 };
 
 export const useFiltersContext = () => {
-  return useContext(FiltersContext);
+  const context = useContext(FiltersContext);
+
+  if (!context) {
+    throw new Error("useFiltersContext must be used within a FiltersProvider");
+  }
+
+  return context;
 };

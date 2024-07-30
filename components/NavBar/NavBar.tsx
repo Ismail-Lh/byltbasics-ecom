@@ -13,7 +13,12 @@ import NavBarLogo from "./NavBarLogo/NavBarLogo";
 const DynamicMobileMenu = dynamic(() => import("../MobileMenu/MobileMenu"));
 const DynamicCart = dynamic(() => import("../Cart/Cart"));
 
-const NavBar = () => {
+/**
+ * Renders the navigation bar component.
+ *
+ * @returns The rendered navigation bar component.
+ */
+function NavBar() {
   const { isCartOpen } = useCartContext();
   const { isSidebarOpen } = useProductsContext();
 
@@ -38,6 +43,6 @@ const NavBar = () => {
       </AnimatePresence>
     </nav>
   );
-};
+}
 
 export default NavBar;

@@ -22,10 +22,11 @@ export type Product = {
   sizes: Size[];
   stock: number;
   popularity: boolean;
+  discountPer: number;
 };
 
 export type ProductsCategories = {
-  id: number;
+  id: string;
   category: string;
   imgUrl: string;
   route: string;
@@ -47,7 +48,7 @@ export type CartProduct = {
 };
 
 export type Collection = {
-  id: number;
+  id: string;
   collection: string;
   route: string;
 };
