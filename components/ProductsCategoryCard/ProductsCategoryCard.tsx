@@ -1,7 +1,7 @@
+import Button from "../Button/Button";
 import classes from "./ProductsCategoryCard.module.scss";
 
 import Image from "next/image";
-import { Button } from "..";
 
 type ProductsCategoryCardProps = {
   category: string;
