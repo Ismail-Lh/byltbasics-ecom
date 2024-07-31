@@ -1,7 +1,24 @@
 import { useEffect, useState } from "react";
 
-const useForm = () => {
-  const initialState = {
+type InitialFormState = {
+  name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  message: string;
+  password: string;
+  password_1: string;
+  password_2: string;
+};
+
+/**
+ * Custom hook for handling form state and validation.
+ *
+ * @returns An object containing the form submission handler, change handler, form values, and form errors.
+ */
+
+function useForm() {
+  const initialState: InitialFormState = {
     name: "",
     first_name: "",
     last_name: "",
@@ -12,8 +29,8 @@ const useForm = () => {
     password_2: "",
   };
 
-  const [value, setValue] = useState(initialState);
-  const [error, setError] = useState(initialState);
+  const [value, setValue] = useState<InitialFormState>(initialState);
+  const [error, setError] = useState<InitialFormState>(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -22,8 +39,8 @@ const useForm = () => {
     }
   }, [error, isSubmitting]);
 
-  const validate = (value) => {
-    const error = {};
+  const validate = (value: InitialFormState) => {
+    const error = {} as InitialFormState;
 
     if (!value.email) {
       error.email = "Email address is required";
@@ -74,7 +91,7 @@ const useForm = () => {
     return error;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
     setValue((value) => ({
       ...value,
@@ -82,7 +99,7 @@ const useForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (e) e.preventDefault();
 
     setError(validate(value));
@@ -95,6 +112,6 @@ const useForm = () => {
     value,
     error,
   };
-};
+}
 
 export default useForm;

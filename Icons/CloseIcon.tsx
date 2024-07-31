@@ -1,4 +1,4 @@
-const CloseIcon = () => {
+function CloseIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -6,9 +6,7 @@ const CloseIcon = () => {
       role="presentation"
       className="icon icon-close"
       viewBox="0 0 18 19"
-      tabIndex="-1"
-      disabled="disabled"
-      clickable="false"
+      tabIndex={-1}
     >
       <path
         fill="#222"
@@ -16,6 +14,6 @@ const CloseIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default CloseIcon;

@@ -1,4 +1,4 @@
-const AthleticIcon = () => {
+function AthleticIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -15,6 +15,6 @@ const AthleticIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default AthleticIcon;

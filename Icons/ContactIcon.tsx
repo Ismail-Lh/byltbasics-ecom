@@ -1,4 +1,4 @@
-const ContactIcon = () => {
+function ContactIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -15,6 +15,6 @@ const ContactIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default ContactIcon;

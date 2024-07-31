@@ -1,4 +1,4 @@
-const WrinkleIcon = () => {
+function WrinkleIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -15,6 +15,6 @@ const WrinkleIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default WrinkleIcon;

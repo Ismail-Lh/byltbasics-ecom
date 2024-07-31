@@ -1,6 +1,16 @@
+import HeroImage from "../components/Hero/HeroImage/HeroImage";
 import Layout from "../components/Layout/Layout";
-import { useProductsContext } from "../contexts/products_context";
+// import { useProductsContext } from "../contexts/products_context";
+import HeroSection from "../sections/HeroSection/HeroSection";
+import ProductsCategorySection from "../sections/ProductsCategorySection/ProductsCategorySection";
+import SplitContentSection from "../sections/SplitContentSection/SplitContentSection";
 import { productsCategories } from "../utils/constants";
+
+/**
+ * Renders the home page of the application.
+ *
+ * @returns The JSX element representing the home page.
+ */
 
 export default function Home() {
   // const { popular_products } = useProductsContext();

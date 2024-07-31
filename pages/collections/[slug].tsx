@@ -10,16 +10,22 @@ const ShopPageContainer = dynamic(
   () => import("../../containers/ShopPageContainer/ShopPageContainer"),
 );
 
-const Collections = () => {
+/**
+ * Renders the Collections page.
+ *
+ * @returns The JSX element representing the Collections page.
+ */
+
+function Collections() {
   const { updateCollection } = useFiltersContext();
 
   const router = useRouter();
   const { slug } = router.query;
 
-  const getTheCollectionTitle = (route) => {
+  const getTheCollectionTitle = (route?: string | string[]) => {
     let title = "";
 
-    const strIncludes = (str) => route?.includes(str);
+    const strIncludes = (str: string) => route?.includes(str);
 
     if (strIncludes("men")) title = "All Men";
     if (strIncludes("women")) title = "All Women";
@@ -47,6 +53,6 @@ const Collections = () => {
       <ShopPageContainer />
     </Layout>
   );
-};
+}
 
 export default Collections;

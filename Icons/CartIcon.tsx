@@ -1,4 +1,4 @@
-const CartIcon = () => {
+function CartIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -6,9 +6,7 @@ const CartIcon = () => {
       role="presentation"
       className="icon icon-cart"
       viewBox="0 0 21 19"
-      tabIndex="-1"
-      disabled="disabled"
-      clickable="false"
+      tabIndex={-1}
     >
       <path
         fill="#222"
@@ -18,6 +16,6 @@ const CartIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default CartIcon;

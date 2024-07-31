@@ -1,4 +1,4 @@
-const FriendsIcon = () => {
+function FriendsIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -14,6 +14,6 @@ const FriendsIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default FriendsIcon;

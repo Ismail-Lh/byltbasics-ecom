@@ -10,16 +10,21 @@ const ShopPageContainer = dynamic(
   () => import("../../../containers/ShopPageContainer/ShopPageContainer"),
 );
 
-const WomensCollections = () => {
+/**
+ * Renders the WomenCollections page.
+ *
+ * @returns The WomenCollections component.
+ */
+function WomenCollections() {
   const { updateCollection } = useFiltersContext();
 
   const router = useRouter();
   const { slug } = router.query;
 
-  const getTheCollectionTitle = (route) => {
+  const getTheCollectionTitle = (route?: string | string[]) => {
     let title = "";
 
-    const strIncludes = (str) => route?.includes(str);
+    const strIncludes = (str: string) => route?.includes(str);
 
     if (strIncludes("womens-tops")) title = "Women's tops";
     if (strIncludes("tank")) title = "Essential Tank";
@@ -39,13 +44,13 @@ const WomensCollections = () => {
 
   useEffect(() => {
     updateCollection(slug, title);
-  }, [slug]);
+  }, [slug, title, updateCollection]);
 
   return (
     <Layout title={`${title} | BYLT Basics`}>
       <ShopPageContainer />
     </Layout>
   );
-};
+}
 
-export default WomensCollections;
+export default WomenCollections;

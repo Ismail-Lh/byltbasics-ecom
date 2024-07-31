@@ -29,7 +29,7 @@ type FilterContextType = {
     sleeve: string;
     fabric: string;
   };
-  updateCollection: (route: string, title?: string) => void;
+  updateCollection: (route?: string | string[], title?: string) => void;
   updateSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   updateFilters: (type: string, value: string) => void;
   clearFilters: () => void;

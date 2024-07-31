@@ -8,12 +8,17 @@ const AccountPageContainer = dynamic(
   () => import("../../containers/AccountPageContainer/AccountPageContainer"),
 );
 
-const AccountPage = () => {
+/**
+ * Renders the Account page.
+ * @returns The JSX element representing the Account page.
+ */
+
+function AccountPage() {
   return (
     <Layout title="Account | BYLT Basics">
       <AccountPageContainer />
     </Layout>
   );
-};
+}
 
 export default PrivateRoute(AccountPage);

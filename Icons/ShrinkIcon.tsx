@@ -1,4 +1,4 @@
-const ShrinkIcon = () => {
+function ShrinkIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -15,6 +15,6 @@ const ShrinkIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default ShrinkIcon;

@@ -1,4 +1,4 @@
-const LoginIcon = () => {
+function LoginIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -15,6 +15,6 @@ const LoginIcon = () => {
       />
     </svg>
   );
-};
+}
 
 export default LoginIcon;

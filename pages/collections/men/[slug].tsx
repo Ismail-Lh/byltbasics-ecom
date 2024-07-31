@@ -9,16 +9,21 @@ const ShopPageContainer = dynamic(
   () => import("../../../containers/ShopPageContainer/ShopPageContainer"),
 );
 
-const MensCollections = () => {
+/**
+ * Renders the MenCollections page.
+ *
+ * @returns The rendered MenCollections page.
+ */
+function MenCollections() {
   const { updateCollection } = useFiltersContext();
 
   const router = useRouter();
   const { slug } = router.query;
 
-  const getTheCollectionTitle = (route) => {
+  const getTheCollectionTitle = (route?: string | string[]) => {
     let title = "";
 
-    const strIncludes = (str) => route?.includes(str);
+    const strIncludes = (str: string) => route?.includes(str);
 
     // Men's tops collections
     if (strIncludes("mens-tops")) title = "Tops";
@@ -61,13 +66,13 @@ const MensCollections = () => {
 
   useEffect(() => {
     updateCollection(slug, title);
-  }, [slug]);
+  }, [slug, title, updateCollection]);
 
   return (
     <Layout title={`${title} | BYLT Basics`}>
       <ShopPageContainer />
     </Layout>
   );
-};
+}
 
-export default MensCollections;
+export default MenCollections;

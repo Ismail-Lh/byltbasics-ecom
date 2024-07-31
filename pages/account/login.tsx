@@ -6,12 +6,16 @@ const LoginPageContainer = dynamic(
   () => import("../../containers/LoginPageContainer/LoginPageContainer"),
 );
 
-const LoginPage = () => {
+/**
+ * Renders the login page.
+ * @returns JSX.Element representing the login page.
+ */
+function LoginPage() {
   return (
     <Layout title="Login | BYLT Premium">
       <LoginPageContainer />
     </Layout>
   );
-};
+}
 
 export default LoginPage;

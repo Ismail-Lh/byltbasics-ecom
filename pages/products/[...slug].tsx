@@ -9,15 +9,23 @@ const SingleProductContainer = dynamic(
     import("../../containers/SingleProductContainer/SingleProductContainer"),
 );
 
-const SingleProductPage = () => {
-  const { single_product } = useProductsContext();
-  const { name } = single_product?.productInfo;
+/**
+ * Renders the single product page.
+ *
+ * @returns The JSX element representing the single product page.
+ */
+
+function SingleProductPage() {
+  const {
+    single_product: { single_product: product },
+  } = useProductsContext();
+  const { name } = product;
 
   return (
     <Layout title={`${name.toUpperCase()} | BYLT Premium`}>
       <SingleProductContainer />
     </Layout>
   );
-};
+}
 
 export default SingleProductPage;

@@ -1,4 +1,4 @@
-const MoneyIcon = () => {
+function MoneyIcon() {
   return (
     <svg
       aria-hidden="true"
@@ -14,6 +14,6 @@ const MoneyIcon = () => {
       </g>
     </svg>
   );
-};
+}
 
 export default MoneyIcon;
