@@ -2,27 +2,36 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import classes from "./SingleProductContainer.module.scss";
 
+import SingleProductImages from "../../components/SingleProductImages/SingleProductImages";
+import SingleProductInfo from "../../components/SingleProductInfo/SingleProductInfo";
 import { useProductsContext } from "../../contexts/products_context";
-
-import { SingleProductImages, SingleProductInfo } from "../../components";
 
 const ProductsSliderSection = dynamic(
   () => import("../../sections/ProductsSliderSection/ProductsSliderSection"),
 );
 
-const SingleProductContainer = () => {
+/**
+ * Renders a container component for displaying a single product.
+ *
+ * @returns The SingleProductContainer component.
+ */
+
+function SingleProductContainer() {
   const { single_product: product, similar_products: products } =
     useProductsContext();
 
-  const [color, setColor] = useState(product?.productColor);
+  const [color, setColor] = useState(product?.product_color);
 
   return (
     <div className={classes.singleProduct}>
       <div className="container">
         <div className={classes.singleProduct_container}>
-          <SingleProductImages product={product?.productInfo} color={color} />
+          <SingleProductImages
+            product={product?.single_product}
+            color={color}
+          />
           <SingleProductInfo
-            product={product?.productInfo}
+            product={product?.single_product}
             color={color}
             changeColor={setColor}
           />
@@ -32,6 +41,6 @@ const SingleProductContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SingleProductContainer;

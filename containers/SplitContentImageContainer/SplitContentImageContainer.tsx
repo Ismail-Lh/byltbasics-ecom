@@ -1,7 +1,25 @@
 import Image from "next/image";
 import classes from "./SplitContentImageContainer.module.scss";
 
-const SplitContentImageContainer = ({ imgUrl, imgAlt }) => {
+type SplitContentImageContainerProps = {
+  imgUrl: string;
+  imgAlt: string;
+};
+
+/**
+ * Renders a container component that displays an image with responsive layout.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.imgUrl - The URL of the image.
+ * @param {string} props.imgAlt - The alt text for the image.
+ * @returns {JSX.Element} The rendered SplitContentImageContainer component.
+ */
+
+function SplitContentImageContainer({
+  imgUrl,
+  imgAlt,
+}: SplitContentImageContainerProps): JSX.Element {
   return (
     <div className={classes.imgContainer} style={{ position: "relative" }}>
       <Image
@@ -13,6 +31,6 @@ const SplitContentImageContainer = ({ imgUrl, imgAlt }) => {
       />
     </div>
   );
-};
+}
 
 export default SplitContentImageContainer;

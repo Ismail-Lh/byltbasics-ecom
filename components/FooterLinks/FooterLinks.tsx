@@ -5,7 +5,7 @@ type FooterLinksProps = {
   links: {
     link: string;
     route: string;
-    id: number;
+    id: string;
   }[];
 };
 

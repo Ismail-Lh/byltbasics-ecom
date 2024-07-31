@@ -1,7 +1,13 @@
 import Image from "next/image";
 import classes from "./AboutUsPageContainer.module.scss";
 
-const AboutUsPageContainer = () => {
+/**
+ * Renders the About Us page container.
+ *
+ * @returns The JSX element representing the About Us page container.
+ */
+
+function AboutUsPageContainer() {
   return (
     <div>
       <div className={classes.backgroundImage}>
@@ -102,6 +108,6 @@ const AboutUsPageContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AboutUsPageContainer;

@@ -9,8 +9,16 @@ const DynamicUserAccount = dynamic(
   () => import("../../components/UserAccount/UserAccount"),
 );
 
-const AccountPageContainer = () => {
-  const { loading } = useAuthContext();
+/**
+ * Renders the account page container component.
+ *
+ * @returns The JSX element representing the account page container.
+ */
+
+function AccountPageContainer() {
+  // const { loading } = useAuthContext();
+
+  const loading = false;
 
   return (
     <div className={classes.account__container}>
@@ -21,6 +29,6 @@ const AccountPageContainer = () => {
       )}
     </div>
   );
-};
+}
 
 export default AccountPageContainer;

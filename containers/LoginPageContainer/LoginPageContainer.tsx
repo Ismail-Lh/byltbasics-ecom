@@ -4,7 +4,13 @@ import classes from "./LoginPageContainer.module.scss";
 
 const Login = dynamic(() => import("../../components/Login/Login"));
 
-const LoginPageContainer = () => {
+/**
+ * Renders the container component for the login page.
+ *
+ * @returns The JSX element representing the login page container.
+ */
+
+function LoginPageContainer() {
   return (
     <div className={classes.login__container}>
       <div className="container">
@@ -14,6 +20,6 @@ const LoginPageContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default LoginPageContainer;

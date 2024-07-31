@@ -9,13 +9,19 @@ const FooterFormInput = dynamic(
   () => import("../../components/FooterFormInput/FooterFormInput"),
 );
 
-const FooterFormContainer = () => {
+/**
+ * Renders the container for the footer form.
+ *
+ * @returns The JSX element representing the footer form container.
+ */
+
+function FooterFormContainer() {
   return (
     <div className={classes.footer__form}>
       <FooterFormText />
       <FooterFormInput />
     </div>
   );
-};
+}
 
 export default FooterFormContainer;

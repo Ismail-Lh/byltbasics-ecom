@@ -7,7 +7,13 @@ import useForm from "../../hooks/useForm";
 const FormInput = dynamic(() => import("../../components/FormInput/FormInput"));
 const Button = dynamic(() => import("../../components/Button/Button"));
 
-const ContactUsPageContainer = () => {
+/**
+ * Renders the contact us page container.
+ *
+ * @returns The JSX element representing the contact us page container.
+ */
+
+function ContactUsPageContainer() {
   const { value, handleChange, handleSubmit, error } = useForm();
 
   return (
@@ -81,6 +87,9 @@ const ContactUsPageContainer = () => {
                   name="message"
                   id="message"
                   placeholder="message"
+                  handleChange={handleChange}
+                  value={value.message}
+                  error={error.message}
                 />
               </div>
               <Button type="submit" color="black">
@@ -92,6 +101,6 @@ const ContactUsPageContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ContactUsPageContainer;

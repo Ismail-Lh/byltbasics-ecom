@@ -1,9 +1,13 @@
+import CheckCircleIcon from "../../Icons/CheckCircleIcon";
+import Button from "../../components/Button/Button";
 import classes from "./SuccessCheckoutPageContainer.module.scss";
 
-import { CheckCircleIcon } from "../../Icons";
-import { Button } from "../../components";
+/**
+ * Renders the success checkout page container.
+ * This component displays a confirmation message and a button to navigate to the user's account.
+ */
 
-const SuccessCheckoutPageContainer = () => {
+function SuccessCheckoutPageContainer() {
   return (
     <div className={classes.successCheckout}>
       <div className="container">
@@ -24,6 +28,6 @@ const SuccessCheckoutPageContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default SuccessCheckoutPageContainer;

@@ -5,7 +5,7 @@ import FiltersReducer from "../reducers/filters_reducer";
 import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 import { useProductsContext } from "./products_context";
 
-import type { Product } from "../types";
+import type { Collection, Product } from "../types";
 import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
@@ -17,7 +17,7 @@ import {
 } from "../utils/actions";
 
 type FilterContextType = {
-  collection: string;
+  collection: Collection;
   products: Product[];
   filtered_products: Product[];
   sort: string;

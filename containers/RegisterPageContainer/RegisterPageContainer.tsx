@@ -1,44 +1,46 @@
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 
 import classes from "./RegisterPageContainer.module.scss";
 
-import { useAuthContext } from "../../contexts/auth_context";
+// import { useAuthContext } from "../../contexts/auth_context";
 import useForm from "../../hooks/useForm";
 
-const Alert = dynamic(() => import("../../components/Alert/Alert"));
+// const Alert = dynamic(() => import("../../components/Alert/Alert"));
 const Button = dynamic(() => import("../../components/Button/Button"));
 const FormInput = dynamic(() => import("../../components/FormInput/FormInput"));
 const Loader = dynamic(() => import("../../components/Loader/Loader"));
 const MyLink = dynamic(() => import("../../components/MyLink/MyLink"));
 
-const RegisterPageContainer = () => {
+/**
+ * Container component for the register page.
+ * Renders a form for user registration.
+ */
+
+function RegisterPageContainer() {
   const { value, error, handleChange, handleSubmit } = useForm();
-  const { signUp, err, setErr, loading, setLoading } = useAuthContext();
+  // const { signUp, err, setErr, loading, setLoading } = useAuthContext();
+  // const router = useRouter();
 
-  const router = useRouter();
+  const loading = false;
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    handleSubmit();
-
-    try {
-      setErr("");
-      setLoading(true);
-      await signUp(
-        value.email,
-        value.password_1,
-        value.first_name,
-        value.last_name,
-      );
-      router.push("/account");
-
-      setLoading(false);
-    } catch (error) {
-      setErr(error.message);
-    }
-
-    setLoading(false);
+  const handleSignUp = async () => {
+    // e.preventDefault();
+    // handleSubmit();
+    // try {
+    //   setErr("");
+    //   setLoading(true);
+    //   await signUp(
+    //     value.email,
+    //     value.password_1,
+    //     value.first_name,
+    //     value.last_name,
+    //   );
+    //   router.push("/account");
+    //   setLoading(false);
+    // } catch (error) {
+    //   setErr(error.message);
+    // }
+    // setLoading(false);
   };
 
   return (
@@ -49,7 +51,7 @@ const RegisterPageContainer = () => {
         ) : (
           <div className={classes.register__container}>
             <h1 className={classes.register__title}>create account</h1>
-            {err && <Alert error>{err}</Alert>}
+            {/* {err && <Alert error>{err}</Alert>} */}
             <form className={classes.register__form} onSubmit={handleSignUp}>
               <FormInput
                 name="first_name"
@@ -110,6 +112,6 @@ const RegisterPageContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default RegisterPageContainer;

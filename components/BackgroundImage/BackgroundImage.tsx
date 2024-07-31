@@ -4,11 +4,23 @@ import { useFiltersContext } from "../../contexts/filters_context";
 import classes from "./BackgroundImage.module.scss";
 
 type BackgroundImageProps = {
-  srcImg: string;
-  titleBg: string;
+  srcImg?: string;
+  titleBg?: string;
 };
 
-function BackgroundImage({ srcImg, titleBg }: BackgroundImageProps) {
+/**
+ * Renders a background image component with a title.
+ *
+ * @param {BackgroundImageProps} props - The component props.
+ * @param {string} props.srcImg - The source image URL.
+ * @param {string} props.titleBg - The background title.
+ * @returns {JSX.Element} The rendered background image component.
+ */
+
+function BackgroundImage({
+  srcImg,
+  titleBg,
+}: BackgroundImageProps): JSX.Element {
   const { collection } = useFiltersContext();
 
   const [imgSrc, setImgSrc] = useState("");

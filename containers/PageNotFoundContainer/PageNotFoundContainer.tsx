@@ -1,9 +1,13 @@
-import dynamic from "next/dynamic";
+import Button from "../../components/Button/Button";
 import classes from "./PageNotFoundContainer.module.scss";
 
-const Button = dynamic(() => import("../../components/Button/Button"));
+/**
+ * Renders the page not found container.
+ *
+ * @returns The JSX element representing the page not found container.
+ */
 
-const PageNotFoundContainer = () => {
+function PageNotFoundContainer() {
   return (
     <div className={classes.pageContainer}>
       <div className="container">
@@ -15,6 +19,6 @@ const PageNotFoundContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PageNotFoundContainer;

@@ -2,16 +2,22 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
+import FacebookIcon from "../../Icons/FacebookIcon";
+import InstagramIcon from "../../Icons/InstagramIcon";
+import MyLink from "../../components/MyLink/MyLink";
 import classes from "./FooterLinksContainer.module.scss";
 
 const FooterLinks = dynamic(
   () => import("../../components/FooterLinks/FooterLinks"),
 );
-const MyLink = dynamic(() => import("../../components/MyLink/MyLink"));
 
-import { FacebookIcon, InstagramIcon } from "../../Icons";
+/**
+ * Renders the container component for the footer links.
+ *
+ * @returns The JSX element representing the footer links container.
+ */
 
-const FooterLinksContainer = () => {
+function FooterLinksContainer() {
   return (
     <div className="container">
       <div className={classes.footer__links}>
@@ -138,6 +144,6 @@ const FooterLinksContainer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default FooterLinksContainer;

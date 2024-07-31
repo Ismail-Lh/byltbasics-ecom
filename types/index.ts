@@ -51,6 +51,7 @@ export type Collection = {
   id: string;
   collection: string;
   route: string;
+  title: string;
 };
 
 export type ImageInfo = {

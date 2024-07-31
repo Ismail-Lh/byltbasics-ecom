@@ -9,7 +9,13 @@ const CollectionsContainer = dynamic(
   () => import("../CollectionsContainer/CollectionsContainer"),
 );
 
-const ShopPageContainer = () => {
+/**
+ * Renders the container component for the shop page.
+ *
+ * @returns The JSX element representing the shop page container.
+ */
+
+function ShopPageContainer() {
   return (
     <div>
       <div className={classes.backgroundImage}>
@@ -19,6 +25,6 @@ const ShopPageContainer = () => {
       <CollectionsContainer />
     </div>
   );
-};
+}
 
 export default ShopPageContainer;

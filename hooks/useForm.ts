@@ -6,6 +6,7 @@ const useForm = () => {
     first_name: "",
     last_name: "",
     email: "",
+    message: "",
     password: "",
     password_1: "",
     password_2: "",

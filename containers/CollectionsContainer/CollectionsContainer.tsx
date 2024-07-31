@@ -15,7 +15,12 @@ const SortProducts = dynamic(
 const Filters = dynamic(() => import("../../components/Filters/Filters"));
 const Loader = dynamic(() => import("../../components/Loader/Loader"));
 
-const CollectionsContainer = () => {
+/**
+ * Renders the collections container component.
+ * This component displays a grid of products based on the selected filters and sorting options.
+ */
+
+function CollectionsContainer() {
   const { loading } = useProductsContext();
   const { filtered_products: products } = useFiltersContext();
 
@@ -71,6 +76,6 @@ const CollectionsContainer = () => {
       )}
     </div>
   );
-};
+}
 
 export default CollectionsContainer;

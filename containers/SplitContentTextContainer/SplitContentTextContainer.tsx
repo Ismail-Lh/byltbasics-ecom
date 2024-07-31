@@ -1,8 +1,28 @@
+import MyLink from "../../components/MyLink/MyLink";
+import SplitContentIcons from "../../components/SplitContentIcons/SplitContentIcons";
+import SplitContentText from "../../components/SplitContentText/SplitContentText";
 import classes from "./SpiltContentTextContainer.module.scss";
 
-import { MyLink, SplitContentIcons, SplitContentText } from "../../components";
+type SplitContentTextContainerProps = {
+  title: string;
+  text: string;
+  istextfirst: boolean;
+  route: string;
+};
 
-const SplitContentTextContainer = ({ title, text, istextfirst, route }) => {
+/**
+ * Renders a container component that displays split content with text and icons.
+ *
+ * @param {SplitContentTextContainerProps} props - The props for the SplitContentTextContainer component.
+ * @returns {JSX.Element} The rendered SplitContentTextContainer component.
+ */
+
+function SplitContentTextContainer({
+  title,
+  text,
+  istextfirst,
+  route,
+}: SplitContentTextContainerProps): JSX.Element {
   return (
     <div className={classes.split__content_text}>
       <div>
@@ -14,6 +34,6 @@ const SplitContentTextContainer = ({ title, text, istextfirst, route }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SplitContentTextContainer;
