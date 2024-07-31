@@ -1,3 +1,4 @@
+import type { Product } from "../types";
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -11,7 +12,42 @@ import {
 
 import { formatPrice } from "../utils/helpers";
 
-const CartReducer = (state, action) => {
+interface CartItem {
+  id: string;
+  name: string;
+  style: string;
+  collections: string;
+  route: string;
+  gender: string;
+  color: string;
+  price: number;
+  discountPer: number;
+  image: string;
+  size: string;
+  amount: number;
+  max: number;
+}
+
+interface CartState {
+  cart: CartItem[];
+  isCartOpen: boolean;
+  total_products: number;
+  subTotal: string;
+}
+
+interface Action {
+  type: string;
+  payload: {
+    amount: number;
+    size: string;
+    color: string;
+    id: string;
+    product: Product;
+    value: string;
+  };
+}
+
+function CartReducer(state: CartState, action: Action): CartState {
   if (action.type === ADD_TO_CART) {
     const { amount, size, color, id, product } = action.payload;
 
@@ -33,7 +69,7 @@ const CartReducer = (state, action) => {
 
       return { ...state, cart: tempCart };
     }
-    const newItem = {
+    const newItem: CartItem = {
       id: id + color + size,
       name: product.name,
       style: product.style,
@@ -61,7 +97,7 @@ const CartReducer = (state, action) => {
   }
 
   if (action.type === REMOVE_FROM_CART) {
-    const id = action.payload;
+    const { id } = action.payload;
 
     const newCart = state.cart.filter((product) => product.id !== id);
 
@@ -82,9 +118,9 @@ const CartReducer = (state, action) => {
 
   if (action.type === COUNT_CART_SUBTOTAL) {
     const totalPrices = state.cart.map(({ price, discountPer, amount }) => {
-      let prices;
+      let prices: number;
 
-      if (!discountPer || discountPer === "undefined") prices = price * amount;
+      if (!discountPer) prices = price * amount;
       else prices = (price - (price * discountPer) / 100) * amount;
 
       return prices;
@@ -100,7 +136,7 @@ const CartReducer = (state, action) => {
 
     const tempCart = state.cart.map((item) => {
       if (item.id === id) {
-        let newAmount;
+        let newAmount: number;
         if (value === "inc") {
           newAmount = item.amount + 1;
 
@@ -128,6 +164,6 @@ const CartReducer = (state, action) => {
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
-};
+}
 
 export default CartReducer;

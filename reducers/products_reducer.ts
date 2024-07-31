@@ -10,38 +10,81 @@ import {
   SIDEBAR_OPEN,
 } from "../utils/actions";
 
-const ProductsReducer = (state, action) => {
-  if (action.type === SIDEBAR_OPEN) {
+interface Product {
+  id: number;
+  name: string;
+  popularity: boolean;
+  collections: string[];
+}
+
+interface State {
+  isSidebarOpen: boolean;
+  isProductModalOpen: boolean;
+  men_products: Product[];
+  women_products: Product[];
+  loading: boolean;
+  popular_products: {
+    men: Product[];
+    women: Product[];
+  }[];
+  single_product: {
+    productInfo: Product;
+    productColor: string;
+  };
+  similar_products: Product[];
+}
+
+type Action =
+  | { type: "SIDEBAR_OPEN" }
+  | { type: "SIDEBAR_CLOSE" }
+  | { type: "OPEN_PRODUCT_MODAL" }
+  | { type: "CLOSE_PRODUCT_MODAL" }
+  | {
+      type: "GET_PRODUCTS";
+      payload: { men: Product[]; women: Product[]; loading: boolean };
+    }
+  | { type: "GET_POPULAR_PRODUCTS" }
+  | {
+      type: "GET_SINGLE_PRODUCT";
+      payload: { productId: number; gender: string; color: string };
+    }
+  | {
+      type: "GET_SIMILAR_PRODUCTS";
+      payload: { collection: string; gender: string; productId: number };
+    };
+
+const ProductsReducer = (state: State, action: Action): State => {
+  if (action.type === "SIDEBAR_OPEN") {
     return { ...state, isSidebarOpen: true };
   }
 
-  if (action.type === SIDEBAR_CLOSE) {
+  if (action.type === "SIDEBAR_CLOSE") {
     return { ...state, isSidebarOpen: false };
   }
 
-  if (action.type === OPEN_PRODUCT_MODAL) {
+  if (action.type === "OPEN_PRODUCT_MODAL") {
     return { ...state, isProductModalOpen: true };
   }
 
-  if (action.type === CLOSE_PRODUCT_MODAL) {
+  if (action.type === "CLOSE_PRODUCT_MODAL") {
     return { ...state, isProductModalOpen: false };
   }
 
-  if (action.type === GET_PRODUCTS) {
-    const { men: menProducts, women: womenProducts, loading } = action.payload;
+  if (action.type === "GET_PRODUCTS") {
+    const { men, women, loading } = action.payload;
 
     return {
       ...state,
-      men_products: [...menProducts],
-      women_products: [...womenProducts],
+      men_products: [...men],
+      women_products: [...women],
       loading: loading,
     };
   }
 
-  if (action.type === GET_POPULAR_PRODUCTS) {
+  if (action.type === "GET_POPULAR_PRODUCTS") {
     const { men_products, women_products } = state;
 
-    const popularProducts = (products) =>
+    const popularProducts = (products: Product[]) =>
       products?.filter((product) => product.popularity === true);
 
     return {
@@ -55,13 +98,13 @@ const ProductsReducer = (state, action) => {
     };
   }
 
-  if (action.type === GET_SINGLE_PRODUCT) {
+  if (action.type === "GET_SINGLE_PRODUCT") {
     const { productId, gender, color } = action.payload;
     const { women_products, men_products } = state;
 
     let singleProduct = {};
 
-    const getSingleProduct = (products) =>
+    const getSingleProduct = (products: Product[]) =>
       products?.filter((product) => product.id === productId);
 
     if (gender === "men") {
@@ -81,11 +124,11 @@ const ProductsReducer = (state, action) => {
     };
   }
 
-  if (action.type === GET_SIMILAR_PRODUCTS) {
+  if (action.type === "GET_SIMILAR_PRODUCTS") {
     const { collection, gender, productId } = action.payload;
     const { men_products, women_products } = state;
 
-    let similarProducts;
+    let similarProducts = [];
 
     const getSimilarProducts = (products) =>
       products
@@ -103,7 +146,7 @@ const ProductsReducer = (state, action) => {
     return { ...state, similar_products: similarProducts };
   }
 
-  throw new Error(`No Matching "${action.type}" - action type`);
+  // throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default ProductsReducer;
