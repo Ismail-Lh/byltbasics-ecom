@@ -2,16 +2,31 @@ import { useEffect, useState } from "react";
 import classes from "./SingleProductInfo.module.scss";
 
 import { useCartContext } from "../../contexts/cart_context";
+import type { Product } from "../../types";
+import ProductColors from "../ProductColors/ProductColors";
+import ProductPrice from "../ProductPrice/ProductPrice";
+import ProductQuantity from "../ProductQuantity/ProductQuantity";
+import ProductSale from "../ProductSale/ProductSale";
+import ProductSizes from "../ProductSizes/ProductSizes";
 
-import {
-  ProductColors,
-  ProductPrice,
-  ProductQuantity,
-  ProductSale,
-  ProductSizes,
-} from "..";
+type SingleProductInfoProps = {
+  product: Product;
+  color: string;
+  changeColor: (color: string) => void;
+};
 
-const SingleProductInfo = ({ product, color, changeColor }) => {
+/**
+ * Renders the information for a single product.
+ *
+ * @param {SingleProductInfoProps} props - The component props.
+ * @returns {JSX.Element} The rendered component.
+ */
+
+function SingleProductInfo({
+  product,
+  color,
+  changeColor,
+}: SingleProductInfoProps): JSX.Element {
   const [size, setSize] = useState("");
   const { addToCart } = useCartContext();
 
@@ -83,12 +98,12 @@ const SingleProductInfo = ({ product, color, changeColor }) => {
         <button
           type="button"
           onClick={() =>
-            size && addToCart(amount, size, color, product?.id, product)
+            size && addToCart({ amount, size, color, id: product?.id, product })
           }
         >{`${size ? "add to cart" : "select a size"}`}</button>
       </div>
     </div>
   );
-};
+}
 
 export default SingleProductInfo;

@@ -2,17 +2,37 @@ import { useMediaQuery } from "@react-hook/media-query";
 import Image from "next/image";
 import { useState } from "react";
 
+import type { Product } from "../../types";
 import classes from "./SingleProductImages.module.scss";
 
-const SingleProductImages = ({ product, color }) => {
+type SingleProductImagesProps = {
+  product: Product;
+  color: string;
+};
+
+type ImagesProps = {
+  handelClick?: (idx: number) => void;
+  wh: string;
+};
+
+/**
+ * Renders the component for displaying the images of a single product.
+ *
+ * @param {SingleProductImagesProps} props - The component props.
+ * @returns {JSX.Element} The rendered component.
+ */
+function SingleProductImages({
+  product,
+  color,
+}: SingleProductImagesProps): JSX.Element {
   const [imageIndex, setImageIndex] = useState(0);
 
   const matchesMedia = useMediaQuery("only screen and (max-width: 768px)");
 
-  const Images = ({ handelClick, wh }) => {
+  const Images = ({ handelClick, wh }: ImagesProps) => {
     return (
       <>
-        {product?.images?.map((img) => (
+        {product?.images?.map((img, idx) => (
           <div
             key={img}
             onClick={() => handelClick?.(idx)}
@@ -56,6 +76,6 @@ const SingleProductImages = ({ product, color }) => {
       )}
     </>
   );
-};
+}
 
 export default SingleProductImages;

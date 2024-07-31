@@ -1,7 +1,26 @@
 import { formatPrice } from "../../utils/helpers";
 import classes from "./UserOrders.module.scss";
 
-const UserOrders = ({ orders }) => {
+type UserOrdersProps = {
+  orders: {
+    docId: string;
+    images: string[];
+    timestamp: string;
+    amount: number;
+    amount_shipping: number;
+    stripe_info: { quantity: number }[];
+  }[];
+};
+
+/**
+ * Renders a list of user orders.
+ *
+ * @param {UserOrdersProps} props - The component props.
+ * @param {Order[]} props.orders - The array of user orders.
+ * @returns {JSX.Element} The rendered component.
+ */
+
+function UserOrders({ orders }: UserOrdersProps): JSX.Element {
   return (
     <div className={classes.orders}>
       {orders?.map(
@@ -60,6 +79,6 @@ const UserOrders = ({ orders }) => {
       )}
     </div>
   );
-};
+}
 
 export default UserOrders;

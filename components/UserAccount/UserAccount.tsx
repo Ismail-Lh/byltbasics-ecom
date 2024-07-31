@@ -12,12 +12,18 @@ const DynamicUserAccountOrders = dynamic(
   () => import("../../components/UserAccountOrders/UserAccountOrders"),
 );
 
-const UserAccount = () => {
-  const { err } = useAuthContext();
+/**
+ * Renders the user account component.
+ *
+ * @returns The user account component.
+ */
+
+function UserAccount() {
+  // const { err } = useAuthContext();
 
   return (
     <div className="container">
-      {err && <DynamicAlert error>{err}</DynamicAlert>}
+      {/* {err && <DynamicAlert error>{err}</DynamicAlert>} */}
 
       <div className={classes.account__grid}>
         <DynamicUserAccountInfo />
@@ -26,6 +32,6 @@ const UserAccount = () => {
       </div>
     </div>
   );
-};
+}
 
 export default UserAccount;

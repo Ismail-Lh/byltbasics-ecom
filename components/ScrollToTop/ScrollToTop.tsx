@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { BiUpArrowIcon } from "../../Icons";
+import BiUpArrowIcon from "../../Icons/BiUpArrowIcon";
 import classes from "./ScrollToTop.module.scss";
 
-const ScrollToTop = () => {
+/**
+ * Renders a scroll-to-top button that appears when the user scrolls down the page.
+ * Clicking on the button scrolls the page to the top.
+ */
+function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -32,6 +36,6 @@ const ScrollToTop = () => {
       )}
     </>
   );
-};
+}
 
 export default ScrollToTop;

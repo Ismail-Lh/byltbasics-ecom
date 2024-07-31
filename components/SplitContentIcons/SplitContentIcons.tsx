@@ -1,14 +1,24 @@
+import AthleticIcon from "../../Icons/AthleticIcon";
+import FriendsIcon from "../../Icons/FriendsIcon";
+import MoneyIcon from "../../Icons/MoneyIcon";
+import ShrinkIcon from "../../Icons/ShrinkIcon";
+import WrinkleIcon from "../../Icons/WrinkleIcon";
 import classes from "./SplitContentIcons.module.scss";
 
-import {
-  AthleticIcon,
-  FriendsIcon,
-  MoneyIcon,
-  ShrinkIcon,
-  WrinkleIcon,
-} from "../../Icons";
+type SplitContentIconsProps = {
+  istextfirst: boolean;
+};
 
-const SplitContentIcons = ({ istextfirst }) => {
+/**
+ * Renders a component that displays split content icons based on the `istextfirst` prop.
+ *
+ * @param {SplitContentIconsProps} props - The props for the SplitContentIcons component.
+ * @returns {JSX.Element} The rendered SplitContentIcons component.
+ */
+
+function SplitContentIcons({
+  istextfirst,
+}: SplitContentIconsProps): JSX.Element {
   return (
     <div className={classes.split__content_icons}>
       {istextfirst ? (
@@ -37,6 +47,6 @@ const SplitContentIcons = ({ istextfirst }) => {
       )}
     </div>
   );
-};
+}
 
 export default SplitContentIcons;

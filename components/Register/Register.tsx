@@ -1,7 +1,13 @@
-import { Button } from "..";
+import Button from "../Button/Button";
 import classes from "./Register.module.scss";
 
-const Register = () => {
+/**
+ * Renders the Register component.
+ * This component allows new customers to create an account with the store.
+ * By creating an account, customers can move through the checkout process faster,
+ * store multiple shipping addresses, view and track their orders, and more.
+ */
+function Register() {
   return (
     <div className={classes.register}>
       <h1>new customers</h1>
@@ -15,6 +21,6 @@ const Register = () => {
       </Button>
     </div>
   );
-};
+}
 
 export default Register;

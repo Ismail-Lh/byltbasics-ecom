@@ -44,8 +44,8 @@ type ProductsContextType = {
   closeProductModal: () => void;
   getSingleProduct: (singleProduct: SingleProduct) => void;
   getSimilarProducts: (similarProduct: SimilarProduct) => void;
-  men_products: Product[] | null;
-  women_products: Product[] | null;
+  men_products: Product[];
+  women_products: Product[];
   popular_products: Product[] | null;
   single_product: { single_product: Product; product_color: string };
   similar_products: Product[];

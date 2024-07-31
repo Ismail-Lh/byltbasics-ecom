@@ -1,6 +1,25 @@
 import classes from "./ProductSizes.module.scss";
 
-const ProductSizes = ({ productSizes, size, setSize }) => {
+type ProductSizesProps = {
+  productSizes: { size: string; isAvailable: boolean }[];
+  size: string;
+  setSize: (size: string) => void;
+};
+
+/**
+ * Renders the product sizes component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.productSizes - The available product sizes.
+ * @param {string} props.size - The selected size.
+ * @param {Function} props.setSize - The function to set the selected size.
+ * @returns {JSX.Element} The rendered component.
+ */
+function ProductSizes({
+  productSizes,
+  size,
+  setSize,
+}: ProductSizesProps): JSX.Element {
   return (
     <div className={classes.product__sizes}>
       <p className={classes.left}>
@@ -25,6 +44,6 @@ const ProductSizes = ({ productSizes, size, setSize }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductSizes;

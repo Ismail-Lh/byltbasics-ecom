@@ -1,7 +1,10 @@
 import { useFiltersContext } from "../../contexts/filters_context";
 import classes from "./SortProducts.module.scss";
 
-const SortProducts = () => {
+/**
+ * Renders a form with a select dropdown for sorting products.
+ */
+function SortProducts() {
   const { sort, updateSort } = useFiltersContext();
 
   return (
@@ -23,6 +26,6 @@ const SortProducts = () => {
       </select>
     </form>
   );
-};
+}
 
 export default SortProducts;

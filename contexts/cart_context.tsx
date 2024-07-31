@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import CartReducer from "../reducers/cart_reducer";
 import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
+import type { Product } from "../types";
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -31,18 +32,7 @@ type CartContextType = {
   isCartOpen: boolean;
   total_products: number;
   subTotal: number;
-  addToCart: (
-    amount: number,
-    size: string,
-    color: string,
-    id: number,
-    product: {
-      id: number;
-      name: string;
-      price: number;
-      image: string;
-    },
-  ) => void;
+  addToCart: ({ amount, size, color, id, product }: AddToCartProps) => void;
   openCart: () => void;
   closeCart: () => void;
   removeFromCart: (id: number) => void;
@@ -64,16 +54,11 @@ type CartProviderProps = {
 };
 
 type AddToCartProps = {
+  id: string;
+  product: Product;
   amount: number;
   size: string;
   color: string;
-  id: number;
-  product: {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-  };
 };
 
 export const CartProvider = ({ children }: CartProviderProps) => {

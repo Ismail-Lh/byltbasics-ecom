@@ -1,19 +1,31 @@
 import { useState } from "react";
-import { CloseIcon } from "../../Icons";
+import CloseIcon from "../../Icons/CloseIcon";
 import { useProductsContext } from "../../contexts/products_context";
+import type { Product } from "../../types";
 import MyLink from "../MyLink/MyLink";
 import classes from "./SearchInput.module.scss";
 
-const SearchInput = ({ closeSearchBar }) => {
+type searchInputProps = {
+  closeSearchBar: (arg: boolean) => void;
+};
+
+/**
+ * Renders a search input component.
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.closeSearchBar - The function to close the search bar.
+ * @returns {JSX.Element} The search input component.
+ */
+function SearchInput({ closeSearchBar }: searchInputProps): JSX.Element {
   const { men_products, women_products, getSingleProduct } =
     useProductsContext();
 
   const allProducts = [...men_products, ...women_products];
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [searchValue, setSearchValue] = useState("");
 
-  const handelSearch = (e) => {
+  const handelSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchWord = e.target.value;
     setSearchValue(searchWord);
 
@@ -25,10 +37,10 @@ const SearchInput = ({ closeSearchBar }) => {
     else setFilteredProducts(newFilter);
   };
 
-  const handelClick = (id, gender, color) => {
+  const handelClick = (id: string, gender: string, color: string) => {
     setFilteredProducts([]);
     setSearchValue("");
-    getSingleProduct(id, gender, color);
+    getSingleProduct({ productId: id, color, gender });
   };
 
   return (
@@ -68,6 +80,6 @@ const SearchInput = ({ closeSearchBar }) => {
       )}
     </div>
   );
-};
+}
 
 export default SearchInput;
