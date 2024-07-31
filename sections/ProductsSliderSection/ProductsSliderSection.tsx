@@ -3,14 +3,31 @@ import dynamic from "next/dynamic";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import ProductsCard from "../../components/ProductsCard/ProductsCard";
 import { useProductsContext } from "../../contexts/products_context";
+import type { Product } from "../../types";
 import classes from "./ProductsSliderSection.module.scss";
 
 const Loader = dynamic(() => import("../../components/Loader/Loader"));
 
-import { ProductsCard } from "../../components";
+type ProductsSliderSectionProps = {
+  products: Product[];
+  title: string;
+};
 
-const ProductsSliderSection = ({ products, title }) => {
+/**
+ * Renders a section that displays products in either a grid or a slider format.
+ *
+ * @param {ProductsSliderSectionProps} props - The component props.
+ * @param {Product[]} props.products - The array of products to display.
+ * @param {string} props.title - The title of the section.
+ * @returns {JSX.Element} The rendered component.
+ */
+
+function ProductsSliderSection({
+  products,
+  title,
+}: ProductsSliderSectionProps): JSX.Element {
   const { loading } = useProductsContext();
 
   const responsive = {
@@ -54,10 +71,10 @@ const ProductsSliderSection = ({ products, title }) => {
                 <h2 className={classes.title}>{title}</h2>
 
                 {/* <Carousel ssr={false} infinite={true} responsive={responsive}>
-                  {products?.map((product) => (
-                    <ProductsCard key={product.id} product={product} />
-                  ))}
-                </Carousel> */}
+                              {products?.map((product) => (
+                                <ProductsCard key={product.id} product={product} />
+                              ))}
+                            </Carousel> */}
               </div>
             )}
           </>
@@ -65,6 +82,6 @@ const ProductsSliderSection = ({ products, title }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductsSliderSection;

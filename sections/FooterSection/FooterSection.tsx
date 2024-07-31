@@ -7,13 +7,17 @@ const FooterLinksContainer = dynamic(
   () => import("../../containers/FooterLinksContainer/FooterLinksContainer"),
 );
 
-const FooterSection = () => {
+/**
+ * Renders the footer section of the website.
+ * This component includes a container with the footer form and footer links.
+ */
+function FooterSection() {
   return (
     <div className="container">
       <FooterFormContainer />
       <FooterLinksContainer />
     </div>
   );
-};
+}
 
 export default FooterSection;

@@ -1,15 +1,23 @@
 import classes from "./ProductsCategorySection.module.scss";
 
-import { ProductsCategoryCard } from "../../components";
+import ProductsCategoryCard from "../../components/ProductsCategoryCard/ProductsCategoryCard";
 import type { ProductsCategories } from "../../types";
 
 type ProductsCategorySectionProps = {
   productsCategories: ProductsCategories[];
 };
 
-const ProductsCategorySection = ({
+/**
+ * Renders a section displaying product categories.
+ *
+ * @param {ProductsCategorySectionProps} props - The component props.
+ * @param {Array<ProductCategory>} props.productsCategories - The array of product categories to display.
+ * @returns {JSX.Element} The rendered component.
+ */
+
+function ProductsCategorySection({
   productsCategories,
-}: ProductsCategorySectionProps) => {
+}: ProductsCategorySectionProps): JSX.Element {
   return (
     <div className="container">
       <div className={classes.products__category_1}>
@@ -24,6 +32,6 @@ const ProductsCategorySection = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProductsCategorySection;

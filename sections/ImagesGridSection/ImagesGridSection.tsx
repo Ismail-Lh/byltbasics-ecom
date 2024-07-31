@@ -6,7 +6,10 @@ const HeroImage = dynamic(
   () => import("../../components/Hero/HeroImage/HeroImage"),
 );
 
-const ImagesGridSection = () => {
+/**
+ * Renders a section with an image grid.
+ */
+function ImagesGridSection() {
   const heroContent = [
     {
       id: 1,
@@ -53,6 +56,6 @@ const ImagesGridSection = () => {
       )}
     </div>
   );
-};
+}
 
 export default ImagesGridSection;

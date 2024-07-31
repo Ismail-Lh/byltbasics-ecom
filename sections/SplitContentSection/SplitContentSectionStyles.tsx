@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+interface WrapperProps {
+  istextfirst: boolean;
+  order: string;
+}
+
+export const Wrapper = styled.div<WrapperProps>`
   display: grid;
   grid-template-columns: ${(props) =>
     props.istextfirst ? "40% 60%" : "60% 40%"};

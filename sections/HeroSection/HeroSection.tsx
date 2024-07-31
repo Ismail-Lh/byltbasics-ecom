@@ -8,7 +8,12 @@ import { HeroData } from "../../utils/constants";
 import HeroImage from "../../components/Hero/HeroImage/HeroImage";
 import classes from "./HeroSection.module.scss";
 
-const HeroSection = () => {
+/**
+ * Renders the HeroSection component.
+ *
+ * @returns The rendered HeroSection component.
+ */
+function HeroSection() {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 0 },
@@ -50,6 +55,6 @@ const HeroSection = () => {
       </Carousel>
     </div>
   );
-};
+}
 
 export default HeroSection;
