@@ -19,7 +19,7 @@ export const formatPrice = (
   return newPrice;
 };
 
-export const getLocalStorage = (key) => {
+export const getLocalStorage = (key: string) => {
   if (typeof window !== "undefined") {
     const storage = localStorage?.getItem(key);
 
@@ -49,14 +49,17 @@ export const getLocalStorage = (key) => {
   }
 };
 
-export const setLocalStorage = (key, value) => {
+export const setLocalStorage = <T>(key: string, value: T) => {
   if (typeof window !== "undefined") {
     localStorage?.setItem(key, JSON.stringify(value));
   }
 };
 
-export const incAmount = (setAmount, stock) => {
-  setAmount((oldAmount) => {
+export const incAmount = (
+  setAmount: (updateFn: (oldAmount: number) => number) => void,
+  stock: number,
+): void => {
+  setAmount((oldAmount: number): number => {
     let newAmount = oldAmount + 1;
 
     if (newAmount > stock) {
@@ -67,8 +70,10 @@ export const incAmount = (setAmount, stock) => {
   });
 };
 
-export const decAmount = (setAmount) => {
-  setAmount((oldAmount) => {
+export const decAmount = (
+  setAmount: (updateFn: (oldAmount: number) => number) => void,
+): void => {
+  setAmount((oldAmount: number): number => {
     let newAmount = oldAmount - 1;
 
     if (newAmount < 1) {
