@@ -4,9 +4,41 @@
   "private": true,
   "author": "Lahbiyeb Ismail <ismaillhbibe@gmail.com>",
   "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "start": "pnpm -r start",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "dev:client": "pnpm --filter nextjs-app dev",
     "build:client": "pnpm --filter nextjs-app build",
     "start:client": "pnpm --filter nextjs-app start",
-    "lint:client": "pnpm --filter nextjs-app lint"
+    "lint:client": "pnpm --filter nextjs-app lint",
+    "dev:api": "pnpm --filter express-app dev",
+    "build:api": "pnpm --filter express-app build",
+    "start:api": "pnpm --filter express-app start",
+    "lint:api": "pnpm --filter express-app lint",
+    "clean": "pnpm -r exec -- rm -rf node_modules dist .next",
+    "prepare": "husky",
+    "lint-staged": "lint-staged",
+    "commit": "git-cz",
+    "postinstall": "pnpm run prepare"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-prettier": "^10.1.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

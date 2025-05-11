@@ -1,0 +1,17 @@
+{
+  "apps/nextjs-app/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter nextjs-app lint",
+    "prettier --write"
+  ],
+  "apps/express-app/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter express-app lint",
+    "prettier --write"
+  ],
+  "packages/**/*.{js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "*.{json,md}": [
+    "prettier --write"
+  ]
+}
