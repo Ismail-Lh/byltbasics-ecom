@@ -1,0 +1,12 @@
+{
+  "name": "byltbasics",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Lahbiyeb Ismail <ismaillhbibe@gmail.com>",
+  "scripts": {
+    "dev:client": "pnpm --filter nextjs-app dev",
+    "build:client": "pnpm --filter nextjs-app build",
+    "start:client": "pnpm --filter nextjs-app start",
+    "lint:client": "pnpm --filter nextjs-app lint"
+  }
+}
