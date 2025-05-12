@@ -2,15 +2,13 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import classes from "./NavBarIcons.module.scss";
-
+import { useCartContext } from "../../../contexts/cart_context";
 import CartIcon from "../../../Icons/CartIcon";
 import ContactIcon from "../../../Icons/ContactIcon";
 import LoginIcon from "../../../Icons/LoginIcon";
 import SearchIcon from "../../../Icons/SearchIcon";
-import { useAuthContext } from "../../../contexts/auth_context";
-import { useCartContext } from "../../../contexts/cart_context";
 import MyLink from "../../MyLink/MyLink";
+import classes from "./NavBarIcons.module.scss";
 
 const DynamicSearchInput = dynamic(
   () => import("../../SearchInput/SearchInput"),
@@ -42,26 +40,28 @@ function NavBarIcons() {
           justifyContent: `${openSearchInput ? "flex-start" : "flex-end"}`,
         }}
       >
-        {openSearchInput ? (
-          <DynamicSearchInput closeSearchBar={setOpenSearchInput} />
-        ) : (
-          <>
-            <button type="button" onClick={() => setOpenSearchInput(true)}>
-              <SearchIcon />
-            </button>
+        {openSearchInput
+          ? (
+              <DynamicSearchInput closeSearchBar={setOpenSearchInput} />
+            )
+          : (
+              <>
+                <button type="button" onClick={() => setOpenSearchInput(true)}>
+                  <SearchIcon />
+                </button>
 
-            {Icons.map(({ id, icon, route, cartIcon }) => (
-              <MyLink
-                route={route}
-                key={id}
-                handelClick={cartIcon ? openCart : () => {}}
-              >
-                {icon}
-                {cartIcon && <span>{total_products}</span>}
-              </MyLink>
-            ))}
-          </>
-        )}
+                {Icons.map(({ id, icon, route, cartIcon }) => (
+                  <MyLink
+                    route={route}
+                    key={id}
+                    handelClick={cartIcon ? openCart : () => {}}
+                  >
+                    {icon}
+                    {cartIcon && <span>{total_products}</span>}
+                  </MyLink>
+                ))}
+              </>
+            )}
       </div>
 
       <button

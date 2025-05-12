@@ -25,28 +25,30 @@ function SplitContentSection({
 }: SplitContentSectionProps): JSX.Element {
   return (
     <Wrapper istextfirst={istextfirst} order={istextfirst ? "2" : "-1"}>
-      {istextfirst ? (
-        <>
-          <SplitContentTextContainer
-            route={textProps.route}
-            text={textProps.text}
-            title={textProps.title}
-            istextfirst={istextfirst}
-          />
-          <SplitContentImageContainer
-            imgUrl={textProps.imgUrl}
-            imgAlt={textProps.title}
-          />
-        </>
-      ) : (
-        <>
-          <SplitContentImageContainer
-            imgUrl={textProps.imgUrl}
-            imgAlt={textProps.title}
-          />
-          <SplitContentTextContainer {...textProps} istextfirst={istextfirst} />
-        </>
-      )}
+      {istextfirst
+        ? (
+            <>
+              <SplitContentTextContainer
+                route={textProps.route}
+                text={textProps.text}
+                title={textProps.title}
+                istextfirst={istextfirst}
+              />
+              <SplitContentImageContainer
+                imgUrl={textProps.imgUrl}
+                imgAlt={textProps.title}
+              />
+            </>
+          )
+        : (
+            <>
+              <SplitContentImageContainer
+                imgUrl={textProps.imgUrl}
+                imgAlt={textProps.title}
+              />
+              <SplitContentTextContainer {...textProps} istextfirst={istextfirst} />
+            </>
+          )}
     </Wrapper>
   );
 }

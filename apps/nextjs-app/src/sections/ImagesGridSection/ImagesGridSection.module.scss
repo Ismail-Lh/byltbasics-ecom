@@ -1,13 +1,9 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .image {
   &__grid {
-    @include grid-columns(
-      $columns: repeat(2, 1fr),
-      $rows: repeat(2, 52rem),
-      $gap: 2rem
-    );
+    @include grid-columns($columns: repeat(2, 1fr), $rows: repeat(2, 52rem), $gap: 2rem);
     padding: 2rem;
 
     @media (max-width: 768px) {

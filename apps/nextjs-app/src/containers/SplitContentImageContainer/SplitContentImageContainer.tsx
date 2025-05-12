@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import classes from "./SplitContentImageContainer.module.scss";
 
 type SplitContentImageContainerProps = {
@@ -10,7 +11,7 @@ type SplitContentImageContainerProps = {
  * Renders a container component that displays an image with responsive layout.
  *
  * @component
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string} props.imgUrl - The URL of the image.
  * @param {string} props.imgAlt - The alt text for the image.
  * @returns {JSX.Element} The rendered SplitContentImageContainer component.

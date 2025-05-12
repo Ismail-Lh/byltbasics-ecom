@@ -1,20 +1,21 @@
-import { useFiltersContext } from "../../contexts/filters_context";
 import type { Collection, ImageInfo } from "../../types";
+
+import { useFiltersContext } from "../../contexts/filters_context";
 import MyLink from "../MyLink/MyLink";
 import classes from "./DropDownMenu.module.scss";
 
-interface ProductType {
+type ProductType = {
   type: string;
   route: string;
   collection: string;
   id: string;
-}
+};
 
-interface ProductCategory {
+type ProductCategory = {
   category: string;
   route: string;
   collection: string;
-}
+};
 
 type DropDownMenuProps = {
   collections: Collection[];

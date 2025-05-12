@@ -6,12 +6,12 @@ const PageNotFoundContainer = dynamic(
   () => import("../containers/PageNotFoundContainer/PageNotFoundContainer"),
 );
 
-const PageNotFound = () => {
+function PageNotFound() {
   return (
     <Layout title="404 Not Found | BYLT Basics">
       <PageNotFoundContainer />
     </Layout>
   );
-};
+}
 
 export default PageNotFound;

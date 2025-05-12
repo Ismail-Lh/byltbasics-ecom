@@ -1,12 +1,9 @@
-export const formatPrice = (
-  price: number,
-  discountPer?: number,
-  product_amount = 1,
-) => {
+export function formatPrice(price: number, discountPer?: number, product_amount = 1) {
   let finalPrice: number;
 
-  if (!discountPer || discountPer === undefined)
+  if (!discountPer || discountPer === undefined) {
     finalPrice = price * product_amount;
+  }
   else {
     finalPrice = (price - (price * discountPer) / 100) * product_amount;
   }
@@ -17,9 +14,9 @@ export const formatPrice = (
   }).format(finalPrice / 100);
 
   return newPrice;
-};
+}
 
-export const getLocalStorage = (key: string) => {
+export function getLocalStorage(key: string) {
   if (typeof window !== "undefined") {
     const storage = localStorage?.getItem(key);
 
@@ -47,18 +44,15 @@ export const getLocalStorage = (key: string) => {
       return storage ? JSON.parse(storage) : [];
     }
   }
-};
+}
 
-export const setLocalStorage = <T>(key: string, value: T) => {
+export function setLocalStorage<T>(key: string, value: T) {
   if (typeof window !== "undefined") {
     localStorage?.setItem(key, JSON.stringify(value));
   }
-};
+}
 
-export const incAmount = (
-  setAmount: (updateFn: (oldAmount: number) => number) => void,
-  stock: number,
-): void => {
+export function incAmount(setAmount: (updateFn: (oldAmount: number) => number) => void, stock: number): void {
   setAmount((oldAmount: number): number => {
     let newAmount = oldAmount + 1;
 
@@ -68,11 +62,9 @@ export const incAmount = (
 
     return newAmount;
   });
-};
+}
 
-export const decAmount = (
-  setAmount: (updateFn: (oldAmount: number) => number) => void,
-): void => {
+export function decAmount(setAmount: (updateFn: (oldAmount: number) => number) => void): void {
   setAmount((oldAmount: number): number => {
     let newAmount = oldAmount - 1;
 
@@ -82,4 +74,4 @@ export const decAmount = (
 
     return newAmount;
   });
-};
+}

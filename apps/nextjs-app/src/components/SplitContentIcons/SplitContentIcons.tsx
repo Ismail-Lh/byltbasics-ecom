@@ -21,30 +21,32 @@ function SplitContentIcons({
 }: SplitContentIconsProps): JSX.Element {
   return (
     <div className={classes.split__content_icons}>
-      {istextfirst ? (
-        <>
-          <div className={classes.split__content_icon_1}>
-            <WrinkleIcon />
-            <span>wrinkle free</span>
-          </div>
+      {istextfirst
+        ? (
+            <>
+              <div className={classes.split__content_icon_1}>
+                <WrinkleIcon />
+                <span>wrinkle free</span>
+              </div>
 
-          <div className={classes.split__content_icon_1}>
-            <ShrinkIcon />
-            <span>no shrink</span>
-          </div>
+              <div className={classes.split__content_icon_1}>
+                <ShrinkIcon />
+                <span>no shrink</span>
+              </div>
 
-          <div className={classes.split__content_icon_1}>
-            <AthleticIcon />
-            <span>athletic fit</span>
-          </div>
-        </>
-      ) : (
-        <div className={classes.split__content_icon_2}>
-          <FriendsIcon />
-          <p> =</p>
-          <MoneyIcon />
-        </div>
-      )}
+              <div className={classes.split__content_icon_1}>
+                <AthleticIcon />
+                <span>athletic fit</span>
+              </div>
+            </>
+          )
+        : (
+            <div className={classes.split__content_icon_2}>
+              <FriendsIcon />
+              <p> =</p>
+              <MoneyIcon />
+            </div>
+          )}
     </div>
   );
 }

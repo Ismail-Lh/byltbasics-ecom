@@ -20,10 +20,17 @@ function ProductPrice({ price, discountPer }: ProductPriceProps): JSX.Element {
         className={classes.new}
         style={{ color: `${discountPer ? "#d84242" : "#000"}` }}
       >
-        {formatPrice(price, discountPer)} USD
-      </span>{" "}
+        {formatPrice(price, discountPer)}
+        {" "}
+        USD
+      </span>
+      {" "}
       {discountPer && (
-        <span className={classes.old}>{formatPrice(price)} USD</span>
+        <span className={classes.old}>
+          {formatPrice(price)}
+          {" "}
+          USD
+        </span>
       )}
     </div>
   );

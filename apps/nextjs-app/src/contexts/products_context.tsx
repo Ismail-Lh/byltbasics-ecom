@@ -1,9 +1,11 @@
 import type React from "react";
-import { createContext, useContext, useEffect, useReducer } from "react";
+
+import { createContext, use, useEffect, useReducer } from "react";
+
+import type { Product } from "../types";
+
 import useFirebaseData from "../hooks/useFirebaseData";
-
 import ProductsReducer from "../reducers/products_reducer";
-
 import {
   CLOSE_PRODUCT_MODAL,
   GET_POPULAR_PRODUCTS,
@@ -14,8 +16,6 @@ import {
   SIDEBAR_CLOSE,
   SIDEBAR_OPEN,
 } from "../utils/actions";
-
-import type { Gender, Product } from "../types";
 import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
 type SingleProduct = {
@@ -66,7 +66,7 @@ const initialState = {
   similar_products: getLocalStorage("similarProducts"),
 };
 
-export const ProductsProvider = ({ children }: ProductsProviderProps) => {
+export function ProductsProvider({ children }: ProductsProviderProps) {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
   const { men, loading } = useFirebaseData("men");
   const { women } = useFirebaseData("women");
@@ -134,7 +134,7 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
   }, [state.similar_products]);
 
   return (
-    <ProductsContext.Provider
+    <ProductsContext
       value={{
         ...state,
         openSidebar,
@@ -146,17 +146,18 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
       }}
     >
       {children}
-    </ProductsContext.Provider>
+    </ProductsContext>
   );
-};
+}
 
-export const useProductsContext = () => {
-  const context = useContext(ProductsContext);
+export function useProductsContext() {
+  const context = use(ProductsContext);
   // Throw an error if the hook is used outside of the ProductsProvider
-  if (!context)
+  if (!context) {
     throw new Error(
       "useProductsContext must be used within the ProductsProvider!",
     );
+  }
 
   return context;
-};
+}

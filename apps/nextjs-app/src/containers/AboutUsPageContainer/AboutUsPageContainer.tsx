@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import classes from "./AboutUsPageContainer.module.scss";
 
 /**

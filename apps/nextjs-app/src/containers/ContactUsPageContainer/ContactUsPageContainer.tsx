@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import classes from "./ContactUsPageContainer.module.scss";
 
 import useForm from "../../hooks/useForm";
+import classes from "./ContactUsPageContainer.module.scss";
 
 const FormInput = dynamic(() => import("../../components/FormInput/FormInput"));
 const Button = dynamic(() => import("../../components/Button/Button"));
@@ -47,7 +47,8 @@ function ContactUsPageContainer() {
                 <span>
                   *Please note, due to our high order volume, responses from our
                   customer support team may take up to 3 business days.
-                </span>{" "}
+                </span>
+                {" "}
                 Once your order is placed, order processing will take 5 - 7
                 business days. Expedited shipping does not affect order
                 processing time. Once your items have shipped, they will be

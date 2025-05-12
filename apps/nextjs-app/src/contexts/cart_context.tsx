@@ -1,10 +1,10 @@
 import type React from "react";
-import { createContext, useContext, useEffect, useReducer } from "react";
 
-import CartReducer from "../reducers/cart_reducer";
-import { getLocalStorage, setLocalStorage } from "../utils/helpers";
+import { createContext, use, useEffect, useReducer } from "react";
 
 import type { Product } from "../types";
+
+import CartReducer from "../reducers/cart_reducer";
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -15,6 +15,7 @@ import {
   REMOVE_FROM_CART,
   TOGGLE_CART_AMOUNT,
 } from "../utils/actions";
+import { getLocalStorage, setLocalStorage } from "../utils/helpers";
 
 type CartContextType = {
   cart: {
@@ -61,7 +62,7 @@ type AddToCartProps = {
   color: string;
 };
 
-export const CartProvider = ({ children }: CartProviderProps) => {
+export function CartProvider({ children }: CartProviderProps) {
   const [state, dispatch] = useReducer(CartReducer, initialState);
 
   const addToCart = ({ amount, size, color, id, product }: AddToCartProps) => {
@@ -98,7 +99,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   return (
-    <CartContext.Provider
+    <CartContext
       value={{
         ...state,
         addToCart,
@@ -110,16 +111,16 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       }}
     >
       {children}
-    </CartContext.Provider>
+    </CartContext>
   );
-};
+}
 
-export const useCartContext = () => {
-  const context = useContext(CartContext);
+export function useCartContext() {
+  const context = use(CartContext);
 
   if (!context) {
     throw new Error("useCartContext must be used within a CartProvider");
   }
 
   return context;
-};
+}

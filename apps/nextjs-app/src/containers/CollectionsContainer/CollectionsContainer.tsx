@@ -1,10 +1,9 @@
 import { useMediaQuery } from "@react-hook/media-query";
 import dynamic from "next/dynamic";
 
-import classes from "./CollectionsContainer.module.scss";
-
 import { useFiltersContext } from "../../contexts/filters_context";
 import { useProductsContext } from "../../contexts/products_context";
+import classes from "./CollectionsContainer.module.scss";
 
 const ProductsCard = dynamic(
   () => import("../../components/ProductsCard/ProductsCard"),
@@ -40,40 +39,44 @@ function CollectionsContainer() {
 
   return (
     <div className="container">
-      {loading ? (
-        <Loader message="products loading..." />
-      ) : (
-        <div className={classes.collections__grid}>
-          {!matchesMedia ? (
-            <>
-              <FiltersContainer />
+      {loading
+        ? (
+            <Loader message="products loading..." />
+          )
+        : (
+            <div className={classes.collections__grid}>
+              {!matchesMedia
+                ? (
+                    <>
+                      <FiltersContainer />
 
-              <div className={classes.collections__products}>
-                <SortsContainer />
+                      <div className={classes.collections__products}>
+                        <SortsContainer />
 
-                <div className={classes.products}>
-                  {products?.map((product) => (
-                    <ProductsCard product={product} key={product.id} />
-                  ))}
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className={classes.collections__filters}>
-                <FiltersContainer />
-                <SortsContainer />
-              </div>
+                        <div className={classes.products}>
+                          {products?.map(product => (
+                            <ProductsCard product={product} key={product.id} />
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )
+                : (
+                    <>
+                      <div className={classes.collections__filters}>
+                        <FiltersContainer />
+                        <SortsContainer />
+                      </div>
 
-              <div className={classes.products}>
-                {products?.map((product) => (
-                  <ProductsCard product={product} key={product.id} />
-                ))}
-              </div>
-            </>
+                      <div className={classes.products}>
+                        {products?.map(product => (
+                          <ProductsCard product={product} key={product.id} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+            </div>
           )}
-        </div>
-      )}
     </div>
   );
 }

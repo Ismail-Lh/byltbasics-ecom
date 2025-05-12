@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import type { Product } from "../../types";
+
 import classes from "./SingleProductImages.module.scss";
 
 type SingleProductImagesProps = {
@@ -53,27 +54,29 @@ function SingleProductImages({
 
   return (
     <>
-      {!matchesMedia ? (
-        <div className={classes.singleProductImages_desktop}>
-          <Images wh="100%" />
-        </div>
-      ) : (
-        <div className={classes.singleProductImages_mobile}>
-          <div className={classes.big_image}>
-            <Image
-              src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
-              alt={`${product?.name}-${color}-${imageIndex}`}
-              layout="responsive"
-              width={540}
-              height={675}
-            />
-          </div>
+      {!matchesMedia
+        ? (
+            <div className={classes.singleProductImages_desktop}>
+              <Images wh="100%" />
+            </div>
+          )
+        : (
+            <div className={classes.singleProductImages_mobile}>
+              <div className={classes.big_image}>
+                <Image
+                  src={`/assets/products/${product?.gender}/${product?.collections}/${product?.style}/${product?.name}/${color}/large/${product?.images[imageIndex]}`}
+                  alt={`${product?.name}-${color}-${imageIndex}`}
+                  layout="responsive"
+                  width={540}
+                  height={675}
+                />
+              </div>
 
-          <div className={classes.small_images}>
-            <Images handelClick={setImageIndex} wh="10rem" />
-          </div>
-        </div>
-      )}
+              <div className={classes.small_images}>
+                <Images handelClick={setImageIndex} wh="10rem" />
+              </div>
+            </div>
+          )}
     </>
   );
 }

@@ -7,7 +7,7 @@ type ProductSaleProps = {
 /**
  * Renders a product sale component with the specified discount percentage.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {number} props.discountPer - The discount percentage.
  * @returns {JSX.Element} The rendered product sale component.
  */
@@ -15,7 +15,11 @@ function ProductSale({ discountPer }: ProductSaleProps): JSX.Element {
   return (
     <>
       {discountPer && (
-        <p className={classes.productSale}>sale {discountPer}% off</p>
+        <p className={classes.productSale}>
+          sale
+          {discountPer}
+          % off
+        </p>
       )}
     </>
   );

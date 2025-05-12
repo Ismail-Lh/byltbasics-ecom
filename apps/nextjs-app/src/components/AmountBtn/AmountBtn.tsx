@@ -12,7 +12,11 @@ function AmountBtn({ incAmount, decAmount, productAmount }: AmountBtnProps) {
       <button type="button" onClick={decAmount}>
         -
       </button>
-      <span> {productAmount} </span>
+      <span>
+        {" "}
+        {productAmount}
+        {" "}
+      </span>
       <button type="button" onClick={incAmount}>
         +
       </button>

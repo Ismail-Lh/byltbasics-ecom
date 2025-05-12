@@ -6,7 +6,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+
 import { auth } from "../lib/firebase.prod";
 
 type AuthContextType = {
@@ -50,7 +51,7 @@ type AuthProviderProps = {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
+export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [load, setLoad] = useState(true);
   const [err, setErr] = useState("");
@@ -112,7 +113,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   return (
-    <AuthContext.Provider
+    <AuthContext
       value={{
         user,
         signUp,
@@ -126,10 +127,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       }}
     >
       {!load && children}
-    </AuthContext.Provider>
+    </AuthContext>
   );
-};
+}
 
-export const useAuthContext = () => {
-  return useContext(AuthContext);
-};
+export function useAuthContext() {
+  return use(AuthContext);
+}

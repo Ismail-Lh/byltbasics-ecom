@@ -1,11 +1,10 @@
 import dynamic from "next/dynamic";
-
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+
+import type { Product } from "../../types";
 
 import ProductsCard from "../../components/ProductsCard/ProductsCard";
 import { useProductsContext } from "../../contexts/products_context";
-import type { Product } from "../../types";
 import classes from "./ProductsSliderSection.module.scss";
 
 const Loader = dynamic(() => import("../../components/Loader/Loader"));
@@ -61,7 +60,7 @@ function ProductsSliderSection({
                 <h2 className={classes.title}>{title}</h2>
 
                 <div className={classes.products}>
-                  {products?.map((product) => (
+                  {products?.map(product => (
                     <ProductsCard key={product.id} product={product} />
                   ))}
                 </div>

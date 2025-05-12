@@ -1,11 +1,9 @@
 import React from "react";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { HeroData } from "../../utils/constants";
-
 import HeroImage from "../../components/Hero/HeroImage/HeroImage";
+import { HeroData } from "../../utils/constants";
 import classes from "./HeroSection.module.scss";
 
 /**

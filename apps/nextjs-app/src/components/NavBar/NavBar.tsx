@@ -1,11 +1,9 @@
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 
-import classes from "./NavBar.module.scss";
-
 import { useCartContext } from "../../contexts/cart_context";
 import { useProductsContext } from "../../contexts/products_context";
-
+import classes from "./NavBar.module.scss";
 import NavBarIcons from "./NavBarIcons/NavBarIcons";
 import NavBarLinks from "./NavBarLinks/NavBarLinks";
 import NavBarLogo from "./NavBarLogo/NavBarLogo";

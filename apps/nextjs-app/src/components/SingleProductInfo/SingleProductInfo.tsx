@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import classes from "./SingleProductInfo.module.scss";
+
+import type { Product } from "../../types";
 
 import { useCartContext } from "../../contexts/cart_context";
-import type { Product } from "../../types";
 import ProductColors from "../ProductColors/ProductColors";
 import ProductPrice from "../ProductPrice/ProductPrice";
 import ProductQuantity from "../ProductQuantity/ProductQuantity";
 import ProductSale from "../ProductSale/ProductSale";
 import ProductSizes from "../ProductSizes/ProductSizes";
+import classes from "./SingleProductInfo.module.scss";
 
 type SingleProductInfoProps = {
   product: Product;
@@ -56,15 +57,19 @@ function SingleProductInfo({
       </div>
 
       <p className={classes.product__payment}>
-        4 interest-free payments. Available for orders above $35.{" "}
-        <span>Klarna</span>.{" "}
+        4 interest-free payments. Available for orders above $35.
+        {" "}
+        <span>Klarna</span>
+        .
+        {" "}
         <button type="button" className={classes.btn_more}>
           Learn more
         </button>
       </p>
 
       <p className={classes.product__description}>
-        {product?.description}{" "}
+        {product?.description}
+        {" "}
         <button type="button" className={classes.btn_more}>
           Learn more
         </button>
@@ -98,9 +103,10 @@ function SingleProductInfo({
         <button
           type="button"
           onClick={() =>
-            size && addToCart({ amount, size, color, id: product?.id, product })
-          }
-        >{`${size ? "add to cart" : "select a size"}`}</button>
+            size && addToCart({ amount, size, color, id: product?.id, product })}
+        >
+          {`${size ? "add to cart" : "select a size"}`}
+        </button>
       </div>
     </div>
   );

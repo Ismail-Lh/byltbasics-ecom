@@ -9,7 +9,7 @@ type FiltersModalProps = {
 /**
  * Renders a modal component for filters.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {Function} props.setOpenFiltersModal - A function to control the visibility of the filters modal.
  * @returns {JSX.Element} The rendered FiltersModal component.
  */

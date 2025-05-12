@@ -25,25 +25,27 @@ function Button({
 }: ButtonProps) {
   return (
     <>
-      {!route ? (
-        <button
-          className={`${color === "white" ? classes.btn__white : classes.btn__black}`}
-          role={role}
-          type={type}
-          onClick={handelClick}
-          onSubmit={handelSubmit}
-          disabled={disabled}
-        >
-          {children}
-        </button>
-      ) : (
-        <Link
-          href={route}
-          className={`${color === "white" ? classes.btn__white : classes.btn__black}`}
-        >
-          {children}
-        </Link>
-      )}
+      {!route
+        ? (
+            <button
+              className={`${color === "white" ? classes.btn__white : classes.btn__black}`}
+              role={role}
+              type={type}
+              onClick={handelClick}
+              onSubmit={handelSubmit}
+              disabled={disabled}
+            >
+              {children}
+            </button>
+          )
+        : (
+            <Link
+              href={route}
+              className={`${color === "white" ? classes.btn__white : classes.btn__black}`}
+            >
+              {children}
+            </Link>
+          )}
     </>
   );
 }

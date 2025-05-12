@@ -4,9 +4,36 @@
   "private": true,
   "author": "Lahbiyeb Ismail <ismaillhbibe@gmail.com>",
   "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "start": "pnpm -r start",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
     "dev:client": "pnpm --filter nextjs-app dev",
     "build:client": "pnpm --filter nextjs-app build",
     "start:client": "pnpm --filter nextjs-app start",
-    "lint:client": "pnpm --filter nextjs-app lint"
+    "lint:client": "pnpm --filter nextjs-app lint",
+    "dev:api": "pnpm --filter express-app dev",
+    "build:api": "pnpm --filter express-app build",
+    "start:api": "pnpm --filter express-app start",
+    "lint:api": "pnpm --filter express-app lint",
+    "clean": "pnpm -r exec -- rm -rf node_modules dist .next",
+    "prepare": "husky",
+    "postinstall": "pnpm run prepare"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.13.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint-react/eslint-plugin": "^1.49.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "eslint": "^9.26.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "pnpm lint:fix $1"
   }
 }

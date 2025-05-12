@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .product {
   &__sizes {
@@ -37,10 +37,7 @@
         @include transition();
 
         &:hover {
-          @include bg-txt-br-color(
-            $bg-color: $black-color,
-            $color: $white-color
-          );
+          @include bg-txt-br-color($bg-color: $black-color, $color: $white-color);
         }
 
         &:not(:last-of-type) {

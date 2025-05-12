@@ -1,5 +1,5 @@
-import CheckCircleIcon from "../../Icons/CheckCircleIcon";
 import Button from "../../components/Button/Button";
+import CheckCircleIcon from "../../Icons/CheckCircleIcon";
 import classes from "./SuccessCheckoutPageContainer.module.scss";
 
 /**

@@ -1,10 +1,11 @@
 import { collection, getDocs } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
 
-import { db } from "../lib/firebase.prod";
 import type { Gender } from "../types";
 
-const useFirebaseData = (gender: Gender) => {
+import { db } from "../lib/firebase.prod";
+
+function useFirebaseData(gender: Gender) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +17,7 @@ const useFirebaseData = (gender: Gender) => {
 
         const res = await getDocs(collection(db, gender));
 
-        const allData = res.docs.map((doc) => ({
+        const allData = res.docs.map(doc => ({
           ...doc.data(),
           docId: doc.id,
         }));
@@ -32,12 +33,13 @@ const useFirebaseData = (gender: Gender) => {
       return () => {
         setData([]);
       };
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
     }
   }, []);
 
   return { [gender]: data, loading };
-};
+}
 
 export default useFirebaseData;

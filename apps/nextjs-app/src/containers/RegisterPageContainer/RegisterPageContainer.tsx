@@ -1,9 +1,8 @@
 import dynamic from "next/dynamic";
 
-import classes from "./RegisterPageContainer.module.scss";
-
 // import { useAuthContext } from "../../contexts/auth_context";
 import useForm from "../../hooks/useForm";
+import classes from "./RegisterPageContainer.module.scss";
 
 // const Alert = dynamic(() => import("../../components/Alert/Alert"));
 const Button = dynamic(() => import("../../components/Button/Button"));

@@ -1,7 +1,7 @@
-import classes from "./ProductsCategorySection.module.scss";
+import type { ProductsCategories } from "../../types";
 
 import ProductsCategoryCard from "../../components/ProductsCategoryCard/ProductsCategoryCard";
-import type { ProductsCategories } from "../../types";
+import classes from "./ProductsCategorySection.module.scss";
 
 type ProductsCategorySectionProps = {
   productsCategories: ProductsCategories[];

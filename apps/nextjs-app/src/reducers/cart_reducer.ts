@@ -1,4 +1,5 @@
 import type { Product } from "../types";
+
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -9,10 +10,9 @@ import {
   REMOVE_FROM_CART,
   TOGGLE_CART_AMOUNT,
 } from "../utils/actions";
-
 import { formatPrice } from "../utils/helpers";
 
-interface CartItem {
+type CartItem = {
   id: string;
   name: string;
   style: string;
@@ -26,16 +26,16 @@ interface CartItem {
   size: string;
   amount: number;
   max: number;
-}
+};
 
-interface CartState {
+type CartState = {
   cart: CartItem[];
   isCartOpen: boolean;
   total_products: number;
   subTotal: string;
-}
+};
 
-interface Action {
+type Action = {
   type: string;
   payload: {
     amount: number;
@@ -45,13 +45,13 @@ interface Action {
     product: Product;
     value: string;
   };
-}
+};
 
 function CartReducer(state: CartState, action: Action): CartState {
   if (action.type === ADD_TO_CART) {
     const { amount, size, color, id, product } = action.payload;
 
-    const tempItem = state.cart.find((item) => item.id === id + color + size);
+    const tempItem = state.cart.find(item => item.id === id + color + size);
 
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
@@ -99,7 +99,7 @@ function CartReducer(state: CartState, action: Action): CartState {
   if (action.type === REMOVE_FROM_CART) {
     const { id } = action.payload;
 
-    const newCart = state.cart.filter((product) => product.id !== id);
+    const newCart = state.cart.filter(product => product.id !== id);
 
     return { ...state, cart: newCart };
   }
@@ -120,7 +120,8 @@ function CartReducer(state: CartState, action: Action): CartState {
     const totalPrices = state.cart.map(({ price, discountPer, amount }) => {
       let prices: number;
 
-      if (!discountPer) prices = price * amount;
+      if (!discountPer)
+        prices = price * amount;
       else prices = (price - (price * discountPer) / 100) * amount;
 
       return prices;

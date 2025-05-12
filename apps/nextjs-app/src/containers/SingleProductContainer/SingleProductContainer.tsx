@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import classes from "./SingleProductContainer.module.scss";
 
 import SingleProductImages from "../../components/SingleProductImages/SingleProductImages";
 import SingleProductInfo from "../../components/SingleProductInfo/SingleProductInfo";
 import { useProductsContext } from "../../contexts/products_context";
+import classes from "./SingleProductContainer.module.scss";
 
 const ProductsSliderSection = dynamic(
   () => import("../../sections/ProductsSliderSection/ProductsSliderSection"),
@@ -17,8 +17,8 @@ const ProductsSliderSection = dynamic(
  */
 
 function SingleProductContainer() {
-  const { single_product: product, similar_products: products } =
-    useProductsContext();
+  const { single_product: product, similar_products: products }
+    = useProductsContext();
 
   const [color, setColor] = useState(product?.product_color);
 

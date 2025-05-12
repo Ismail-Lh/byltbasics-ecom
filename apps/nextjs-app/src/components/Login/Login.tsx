@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import classes from "./Login.module.scss";
 
-import { useAuthContext } from "../../contexts/auth_context";
 import useForm from "../../hooks/useForm";
 import Alert from "../Alert/Alert";
 import Button from "../Button/Button";
 import FormInput from "../FormInput/FormInput";
 import Loader from "../Loader/Loader";
 import MyLink from "../MyLink/MyLink";
+import classes from "./Login.module.scss";
 
 /**
  * Renders the login component.

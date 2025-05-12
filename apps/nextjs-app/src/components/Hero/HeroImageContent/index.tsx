@@ -13,7 +13,7 @@ type HeroImageContentProps = {
 /**
  * Renders the content of the hero image.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string} props.title - The title of the hero image.
  * @param {string} props.subtitle - The subtitle of the hero image.
  * @param {string} props.color - The color of the hero image.

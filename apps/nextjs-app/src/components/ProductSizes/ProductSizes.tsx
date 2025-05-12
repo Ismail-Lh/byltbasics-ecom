@@ -9,7 +9,7 @@ type ProductSizesProps = {
 /**
  * Renders the product sizes component.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {Array} props.productSizes - The available product sizes.
  * @param {string} props.size - The selected size.
  * @param {Function} props.setSize - The function to set the selected size.
@@ -23,14 +23,15 @@ function ProductSizes({
   return (
     <div className={classes.product__sizes}>
       <p className={classes.left}>
-        size{" "}
+        size
+        {" "}
         <button type="button" className={classes.btn_more}>
           size guide
         </button>
       </p>
 
       <div className={classes.right}>
-        {productSizes?.map((s) => (
+        {productSizes?.map(s => (
           <button
             key={s.size}
             type="button"

@@ -1,23 +1,11 @@
-import {
-  CLOSE_PRODUCT_MODAL,
-  GET_POPULAR_PRODUCTS,
-  GET_PRODUCTS,
-  GET_PRODUCT_COLOR,
-  GET_SIMILAR_PRODUCTS,
-  GET_SINGLE_PRODUCT,
-  OPEN_PRODUCT_MODAL,
-  SIDEBAR_CLOSE,
-  SIDEBAR_OPEN,
-} from "../utils/actions";
-
-interface Product {
+type Product = {
   id: number;
   name: string;
   popularity: boolean;
   collections: string[];
-}
+};
 
-interface State {
+type State = {
   isSidebarOpen: boolean;
   isProductModalOpen: boolean;
   men_products: Product[];
@@ -32,7 +20,7 @@ interface State {
     productColor: string;
   };
   similar_products: Product[];
-}
+};
 
 type Action =
   | { type: "SIDEBAR_OPEN" }
@@ -40,20 +28,20 @@ type Action =
   | { type: "OPEN_PRODUCT_MODAL" }
   | { type: "CLOSE_PRODUCT_MODAL" }
   | {
-      type: "GET_PRODUCTS";
-      payload: { men: Product[]; women: Product[]; loading: boolean };
-    }
+    type: "GET_PRODUCTS";
+    payload: { men: Product[]; women: Product[]; loading: boolean };
+  }
   | { type: "GET_POPULAR_PRODUCTS" }
   | {
-      type: "GET_SINGLE_PRODUCT";
-      payload: { productId: number; gender: string; color: string };
-    }
+    type: "GET_SINGLE_PRODUCT";
+    payload: { productId: number; gender: string; color: string };
+  }
   | {
-      type: "GET_SIMILAR_PRODUCTS";
-      payload: { collection: string; gender: string; productId: number };
-    };
+    type: "GET_SIMILAR_PRODUCTS";
+    payload: { collection: string; gender: string; productId: number };
+  };
 
-const ProductsReducer = (state: State, action: Action): State => {
+function ProductsReducer(state: State, action: Action): State {
   if (action.type === "SIDEBAR_OPEN") {
     return { ...state, isSidebarOpen: true };
   }
@@ -77,7 +65,7 @@ const ProductsReducer = (state: State, action: Action): State => {
       ...state,
       men_products: [...men],
       women_products: [...women],
-      loading: loading,
+      loading,
     };
   }
 
@@ -85,7 +73,7 @@ const ProductsReducer = (state: State, action: Action): State => {
     const { men_products, women_products } = state;
 
     const popularProducts = (products: Product[]) =>
-      products?.filter((product) => product.popularity === true);
+      products?.filter(product => product.popularity === true);
 
     return {
       ...state,
@@ -105,7 +93,7 @@ const ProductsReducer = (state: State, action: Action): State => {
     let singleProduct = {};
 
     const getSingleProduct = (products: Product[]) =>
-      products?.filter((product) => product.id === productId);
+      products?.filter(product => product.id === productId);
 
     if (gender === "men") {
       singleProduct = getSingleProduct(men_products);
@@ -130,10 +118,10 @@ const ProductsReducer = (state: State, action: Action): State => {
 
     let similarProducts = [];
 
-    const getSimilarProducts = (products) =>
+    const getSimilarProducts = products =>
       products
-        ?.filter((product) => product.collections === collection)
-        .filter((product) => product.id !== productId);
+        ?.filter(product => product.collections === collection)
+        .filter(product => product.id !== productId);
 
     if (gender === "men") {
       similarProducts = getSimilarProducts(men_products);
@@ -147,6 +135,6 @@ const ProductsReducer = (state: State, action: Action): State => {
   }
 
   // throw new Error(`No Matching "${action.type}" - action type`);
-};
+}
 
 export default ProductsReducer;
