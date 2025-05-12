@@ -8,11 +8,7 @@ This is a monorepo for the BYLT Basics e-commerce project. The monorepo is manag
 byltbasics-ecom/
 ├── apps/
 │   ├── nextjs-app/     # BYLT Basics Next.js frontend application
-│   └── express-app/    # Express.js API (if applicable)
-├── packages/           # Shared packages
-│   ├── ui/             # Shared UI components
-│   ├── utils/          # Shared utilities
-│   └── config/         # Shared configuration
+│   └── express-app/    # Express.js API
 ├── pnpm-workspace.yaml # Workspace configuration
 └── package.json        # Root package.json
 ```
@@ -58,11 +54,16 @@ You can use the `pnpm commit` command to create a commit with a standardized mes
 
 ## Code Quality Tools
 
-- **ESLint**: Linting JavaScript and TypeScript files
+- **ESLint**: Linting JavaScript and TypeScript files with custom configurations
+  - Uses `@antfu/eslint-config` as a base with custom rules
+  - Enforces TypeScript types with `type` instead of `interface`
+  - Enforces kebab-case for filenames
+  - Sorts imports with `perfectionist` plugin
+  - Custom stylistic choices like double quotes and semicolons
 - **Prettier**: Code formatting
-- **Husky**: Git hooks
-- **lint-staged**: Run linters on staged files
-- **Commitlint**: Validate commit messages
+- **Husky**: Git hooks for pre-commit and commit message validation
+- **lint-staged**: Run linters automatically on staged files before commits
+- **Commitlint**: Validate commit messages using conventional commit format
 
 ## License
 
