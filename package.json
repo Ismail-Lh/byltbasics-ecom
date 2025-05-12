@@ -8,8 +8,7 @@
     "build": "pnpm -r build",
     "start": "pnpm -r start",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint:fix": "eslint --fix",
     "dev:client": "pnpm --filter nextjs-app dev",
     "build:client": "pnpm --filter nextjs-app build",
     "start:client": "pnpm --filter nextjs-app start",
@@ -20,8 +19,6 @@
     "lint:api": "pnpm --filter express-app lint",
     "clean": "pnpm -r exec -- rm -rf node_modules dist .next",
     "prepare": "husky",
-    "lint-staged": "lint-staged",
-    "commit": "git-cz",
     "postinstall": "pnpm run prepare"
   },
   "devDependencies": {
@@ -37,6 +34,6 @@
     "lint-staged": "^16.0.0"
   },
   "lint-staged": {
-    "*": "pnpm lint:fix"
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "pnpm lint:fix $1"
   }
 }
