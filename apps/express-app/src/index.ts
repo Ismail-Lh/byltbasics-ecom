@@ -1,10 +1,7 @@
-import dotenv from "dotenv";
-
 import app from "@/app";
+import { envConfig } from "@/config";
 
-dotenv.config();
-
-const PORT = 8080;
+const PORT = envConfig.server.port || 8080;
 
 /**
  * Starts the server and listens on the specified port.
