@@ -53,6 +53,12 @@ importers:
       helmet:
         specifier: ^8.1.0
         version: 8.1.0
+      inversify:
+        specifier: ^7.5.1
+        version: 7.5.1(reflect-metadata@0.2.2)
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
       zod:
         specifier: ^3.24.4
         version: 3.24.4
@@ -572,6 +578,25 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@inversifyjs/common@1.5.0':
+    resolution: {integrity: sha512-Qj5BELk11AfI2rgZEAaLPmOftmQRLLmoCXgAjmaF0IngQN5vHomVT5ML7DZ3+CA5fgGcEVMcGbUDAun+Rz+oNg==}
+
+  '@inversifyjs/container@1.9.1':
+    resolution: {integrity: sha512-8EhjFoAx1LoD7TpCuP9ptitwc+7kVXEpZB0IeoEsCQb9sWaNYYaBi+7Lommu3/1nYxdMbX2t7AJhQnryT1EEsg==}
+    peerDependencies:
+      reflect-metadata: ~0.2.2
+
+  '@inversifyjs/core@5.2.0':
+    resolution: {integrity: sha512-MMaHGGRjQWT9uAof63sbZyEhRl4XptEAE17DJwrgUcN9LsdIEvecKP3r53pE9VF88PFR41knUKKzagUBvWLHmw==}
+
+  '@inversifyjs/prototype-utils@0.1.0':
+    resolution: {integrity: sha512-lNz1yyajMRDXBHLvJsYYX81FcmeD15e5Qz1zAZ/3zeYTl+u7ZF/GxNRKJzNOloeMPMtuR8BnvzHA1SZxjR+J9w==}
+
+  '@inversifyjs/reflect-metadata-utils@1.1.0':
+    resolution: {integrity: sha512-jmuAuC3eL1GnFAYfJGJOMKRDL9q1mgzOyrban6zxfM8Yg1FUHsj25h27bW2G7p8X1Amvhg3MLkaOuogszkrofA==}
+    peerDependencies:
+      reflect-metadata: 0.2.2
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -2335,6 +2360,11 @@ packages:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
 
+  inversify@7.5.1:
+    resolution: {integrity: sha512-oWWFDU2BXiuqZynGcLDDD4tqiWAeaEUCALlCj0vk/QwHGgZY/tzDFPuTmWMY3jwRmDIHxVDkcj9SL3MFTlCEDw==}
+    peerDependencies:
+      reflect-metadata: ~0.2.2
+
   ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
     engines: {node: '>= 0.10'}
@@ -3307,6 +3337,9 @@ packages:
   refa@0.12.1:
     resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
+  reflect-metadata@0.2.2:
+    resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
 
   reflect.getprototypeof@1.0.10:
     resolution: {integrity: sha512-00o4I+DVrefhv+nX0ulyi3biSHCPDe+yLv5o/p6d/UVlirijB8E16FtfwSAi4g3tcqrQ4lRAqQSoFEZJehYEcw==}
@@ -4462,6 +4495,31 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.5':
     optional: true
+
+  '@inversifyjs/common@1.5.0': {}
+
+  '@inversifyjs/container@1.9.1(reflect-metadata@0.2.2)':
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/core': 5.2.0(reflect-metadata@0.2.2)
+      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
+      reflect-metadata: 0.2.2
+
+  '@inversifyjs/core@5.2.0(reflect-metadata@0.2.2)':
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/prototype-utils': 0.1.0
+      '@inversifyjs/reflect-metadata-utils': 1.1.0(reflect-metadata@0.2.2)
+    transitivePeerDependencies:
+      - reflect-metadata
+
+  '@inversifyjs/prototype-utils@0.1.0':
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+
+  '@inversifyjs/reflect-metadata-utils@1.1.0(reflect-metadata@0.2.2)':
+    dependencies:
+      reflect-metadata: 0.2.2
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -6598,6 +6656,13 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.0
 
+  inversify@7.5.1(reflect-metadata@0.2.2):
+    dependencies:
+      '@inversifyjs/common': 1.5.0
+      '@inversifyjs/container': 1.9.1(reflect-metadata@0.2.2)
+      '@inversifyjs/core': 5.2.0(reflect-metadata@0.2.2)
+      reflect-metadata: 0.2.2
+
   ipaddr.js@1.9.1: {}
 
   is-array-buffer@3.0.5:
@@ -7638,6 +7703,8 @@ snapshots:
   refa@0.12.1:
     dependencies:
       '@eslint-community/regexpp': 4.12.1
+
+  reflect-metadata@0.2.2: {}
 
   reflect.getprototypeof@1.0.10:
     dependencies:
