@@ -12,6 +12,7 @@ This is the backend API service for the BYLT Basics e-commerce project. It provi
 - **Zod**: Schema validation
 - **Helmet**: Security middleware
 - **CORS**: Cross-origin resource sharing
+- **HTTP-Status**: HTTP status code constants
 
 ## Project Structure
 
@@ -25,6 +26,10 @@ express-app/
 └── src/
     ├── app.ts          # Express application setup
     ├── index.ts        # Server entry point
+    ├── api-errors/     # Custom error classes
+    │   ├── base.error.ts     # Base error class
+    │   ├── index.ts          # Export error classes
+    │   └── specific errors   # HTTP status-specific errors
     ├── config/         # Configuration files
     │   ├── env.config.ts  # Environment variable validation
     │   ├── index.ts       # Export configurations
@@ -33,6 +38,11 @@ express-app/
     │       ├── service-provider.ts # Service provider initialization
     │       ├── types.ts          # DI type definitions
     │       └── index.ts          # Export DI utilities
+    ├── middlewares/    # Express middlewares
+    │   └── error/      # Error handling middlewares
+    │       ├── global-error.middleware.ts # Global error handler
+    │       ├── not-allowed-method.middleware.ts # 405 Method not allowed handler
+    │       └── index.ts          # Export middlewares
     └── services/       # Service implementations
         ├── index.ts    # Export services
         └── logger/     # Logging service
@@ -110,9 +120,20 @@ The application uses InversifyJS for dependency injection, which helps with:
 
 Services are registered in `container.ts` and accessed through `service-provider.ts`.
 
-### Environment Configuration
+### Type-Safe Environment Configuration
 
 Environment variables are validated using Zod to ensure type safety and proper configuration. This prevents runtime errors due to missing or incorrectly formatted environment variables.
+
+Example from `env.config.ts`:
+
+```typescript
+const envSchema = z.object({
+  NODE_ENV: z.enum(["production", "development", "test"]),
+  PORT: z.string({ message: "PORT must be a string" }).default("8080"),
+  SERVER_URL: z.string({ message: "SERVER_URL must be a string" }),
+  CLIENT_URL: z.string({ message: "CLIENT_URL must be a string" }),
+});
+```
 
 ### Logging System
 
@@ -140,9 +161,83 @@ loggerService.error("Database connection failed", {
 });
 ```
 
+Example implementation features:
+
+```typescript
+@injectable()
+export class LoggerService implements ILoggerService {
+  // Multiple log methods with consistent interface
+  public error: LogMethod = (message: string, meta?: any) => {
+    this.logger.error(message, meta);
+  };
+
+  public warn: LogMethod = (message: string, meta?: any) => {
+    this.logger.warn(message, meta);
+  };
+
+  // Additional utility methods
+  public getLogger(): winston.Logger {
+    return this.logger;
+  }
+
+  public addTransport(transport: winston.transport): void {
+    this.logger.add(transport);
+  }
+}
+```
+
 ### Error Handling
 
-The application includes global error handlers for:
+The application includes a comprehensive error handling system:
+
+#### Standardized Error Classes
+
+- **BaseError**: Foundation error class with standardized properties:
+
+  - `name`: Identifies the error type
+  - `httpCode`: Appropriate HTTP status code
+  - `isOperational`: Distinguishes operational from programming errors
+  - `metadata`: Additional context for debugging
+
+- **Specific Error Classes**: Type-safe error classes for common HTTP status codes:
+  - `BadRequestError` (400)
+  - `UnauthorizedError` (401)
+  - `ForbiddenError` (403)
+  - `NotFoundError` (404)
+  - `HttpMethodNotAllowedError` (405)
+  - `ConflictError` (409)
+  - `TooManyRequestsError` (429)
+  - `InternalServerError` (500)
+  - `DatabaseError` (500)
+
+#### Error Middleware
+
+- **Global Error Middleware**: Catches and processes all errors:
+
+  - Standardizes error responses
+  - Logs detailed error information
+  - Provides appropriate status codes
+  - Shows stack traces in development mode
+
+- **Method Not Allowed Middleware**: Handles requests with unsupported HTTP methods:
+  - Returns 405 status code with detailed message
+  - Includes which method was attempted and on which route
+
+#### Error Response Format
+
+All API errors follow a consistent JSON format:
+
+```json
+{
+  "message": "Detailed error message",
+  "statusCode": 400,
+  "name": "BAD_REQUEST"
+}
+```
+
+#### Process Error Handlers
+
+The application also includes process-level error handlers for:
 
 - Uncaught exceptions
 - Unhandled promise rejections
