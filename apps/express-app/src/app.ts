@@ -1,3 +1,8 @@
+import "reflect-metadata";
+
+// Import from our service provider which uses the DI container
+import "@/config/inversify";
+
 import type { Express } from "express";
 
 import cors from "cors";
