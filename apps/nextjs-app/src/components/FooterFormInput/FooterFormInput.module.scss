@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .footer {
   &__form {
@@ -41,17 +41,11 @@
           cursor: pointer;
           text-transform: uppercase;
           height: 3.9rem;
-          @include bg-txt-br-color(
-            $bg-color: $venice-blue-color,
-            $color: $white-color
-          );
+          @include bg-txt-br-color($bg-color: $venice-blue-color, $color: $white-color);
           @include transition();
 
           &:hover {
-            @include bg-txt-br-color(
-              $color: $venice-blue-color,
-              $bg-color: $white-color
-            );
+            @include bg-txt-br-color($color: $venice-blue-color, $bg-color: $white-color);
           }
 
           @media (max-width: 425px) {

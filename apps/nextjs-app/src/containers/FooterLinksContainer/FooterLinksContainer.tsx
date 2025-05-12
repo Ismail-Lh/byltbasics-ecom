@@ -2,9 +2,9 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
+import MyLink from "../../components/MyLink/MyLink";
 import FacebookIcon from "../../Icons/FacebookIcon";
 import InstagramIcon from "../../Icons/InstagramIcon";
-import MyLink from "../../components/MyLink/MyLink";
 import classes from "./FooterLinksContainer.module.scss";
 
 const FooterLinks = dynamic(
@@ -136,7 +136,8 @@ function FooterLinksContainer() {
           COPYRIGHT © 2021, BYLT BASICS. ALL RIGHTS RESERVED.
         </p>
         <p className={classes.footer__copyright_2}>
-          DEVELOPED BY{" "}
+          DEVELOPED BY
+          {" "}
           <MyLink route="https://twitter.com/lhbibe_ismail">
             ISMAIL LAHBIYEB
           </MyLink>

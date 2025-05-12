@@ -36,7 +36,9 @@ function UserOrders({ orders }: UserOrdersProps): JSX.Element {
             <div className={classes.order__header}>
               <div className={classes.order__id}>
                 <p className={classes.paragraph}>
-                  <span>order id:</span> {docId}
+                  <span>order id:</span>
+                  {" "}
+                  {docId}
                 </p>
               </div>
 
@@ -49,7 +51,11 @@ function UserOrders({ orders }: UserOrdersProps): JSX.Element {
                 <div className={classes.order__total}>
                   <h3>total amount</h3>
                   <p className={classes.paragraph}>
-                    {formatPrice(amount)} - <span>next day delivery</span>{" "}
+                    {formatPrice(amount)}
+                    {" "}
+                    -
+                    <span>next day delivery</span>
+                    {" "}
                     {formatPrice(amount_shipping)}
                   </p>
                 </div>
@@ -59,7 +65,8 @@ function UserOrders({ orders }: UserOrdersProps): JSX.Element {
                   <p className={classes.paragraph}>
                     {stripe_info
                       .map(({ quantity }) => quantity)
-                      .reduce((acc, curr) => acc + curr, 0)}{" "}
+                      .reduce((acc, curr) => acc + curr, 0)}
+                    {" "}
                     <span>products</span>
                   </p>
                 </div>
@@ -70,7 +77,10 @@ function UserOrders({ orders }: UserOrdersProps): JSX.Element {
               {images.map((imgSrc, idx) => (
                 <div className={classes.order__products_images} key={imgSrc}>
                   <img src={imgSrc} alt={imgSrc} className={classes.img} />
-                  <p>product qty: {stripe_info[idx].quantity}</p>
+                  <p>
+                    product qty:
+                    {stripe_info[idx].quantity}
+                  </p>
                 </div>
               ))}
             </div>

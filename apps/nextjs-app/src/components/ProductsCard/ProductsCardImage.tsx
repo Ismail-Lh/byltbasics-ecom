@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import { useProductsContext } from "../../contexts/products_context";
 import type { Product } from "../../types";
+
+import { useProductsContext } from "../../contexts/products_context";
 import Button from "../Button/Button";
 import MyLink from "../MyLink/MyLink";
 import classes from "./style.module.scss";
@@ -26,8 +27,8 @@ function ProductsCardImage({
   productRoute,
   color,
 }: ProductsCardImageProps): JSX.Element {
-  const { getSingleProduct, getSimilarProducts, openProductModal } =
-    useProductsContext();
+  const { getSingleProduct, getSimilarProducts, openProductModal }
+    = useProductsContext();
 
   const handelClick = () => {
     getSingleProduct({

@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { useAuthContext } from "../../contexts/auth_context";
 
 import classes from "./UserAccount.module.scss";
 

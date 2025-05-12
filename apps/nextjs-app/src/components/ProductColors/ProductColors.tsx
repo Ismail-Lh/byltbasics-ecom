@@ -9,7 +9,7 @@ type ProductColorsProps = {
 /**
  * Renders a component that displays the available product colors and allows the user to select a color.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string[]} props.productColors - An array of available product colors.
  * @param {string} props.color - The currently selected color.
  * @param {Function} props.setColor - A function to set the selected color.
@@ -23,10 +23,12 @@ function ProductColors({
   return (
     <div className={classes.productColors}>
       <p>
-        Color : <span>{color}</span>
+        Color :
+        {" "}
+        <span>{color}</span>
       </p>
       <div className={classes.colors}>
-        {productColors?.map((clr) => (
+        {productColors?.map(clr => (
           <div
             key={clr}
             onClick={() => setColor(clr)}

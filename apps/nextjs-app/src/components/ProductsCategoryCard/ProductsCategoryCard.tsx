@@ -1,7 +1,7 @@
+import Image from "next/image";
+
 import Button from "../Button/Button";
 import classes from "./ProductsCategoryCard.module.scss";
-
-import Image from "next/image";
 
 type ProductsCategoryCardProps = {
   category: string;
@@ -9,11 +9,11 @@ type ProductsCategoryCardProps = {
   route: string;
 };
 
-const ProductsCategoryCard = ({
+function ProductsCategoryCard({
   category,
   imgUrl,
   route,
-}: ProductsCategoryCardProps) => {
+}: ProductsCategoryCardProps) {
   return (
     <div className={classes.card}>
       <div
@@ -31,6 +31,6 @@ const ProductsCategoryCard = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProductsCategoryCard;

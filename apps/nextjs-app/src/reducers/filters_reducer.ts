@@ -9,7 +9,7 @@ import {
   UPDATE_SORT,
 } from "../utils/actions";
 
-interface Product {
+type Product = {
   collections: string;
   style: string;
   cut: string;
@@ -25,25 +25,25 @@ interface Product {
   newCore?: boolean;
   date: number;
   name: string;
-}
+};
 
-interface Collection {
+type Collection = {
   route: string;
   title: string;
-}
+};
 
-interface FiltersState {
+type FiltersState = {
   collection: Collection;
   products: Product[];
   filtered_products: Product[];
   sort:
     | string
     | {
-        route: string;
-        title: string;
-        men_products: Product[];
-        women_products: Product[];
-      };
+      route: string;
+      title: string;
+      men_products: Product[];
+      women_products: Product[];
+    };
   filters: {
     collections: string;
     style: string;
@@ -52,9 +52,9 @@ interface FiltersState {
     sleeve: string;
     fabric: string;
   };
-}
+};
 
-interface Action {
+type Action = {
   type: string;
   payload: {
     route: string;
@@ -64,13 +64,14 @@ interface Action {
     type: string;
     value: string;
   };
-}
+};
 
-const itemPrice = (price: number, discountPer?: number): number => {
-  if (!discountPer) return price;
+function itemPrice(price: number, discountPer?: number): number {
+  if (!discountPer)
+    return price;
 
   return price - (price * discountPer) / 100;
-};
+}
 
 function FiltersReducer(state: FiltersState, action: Action): FiltersState {
   if (action.type === UPDATE_COLLECTION) {
@@ -87,26 +88,27 @@ function FiltersReducer(state: FiltersState, action: Action): FiltersState {
     let products: Product[] = [];
 
     const allProducts = [...men_products, ...women_products];
-    const salesProducts = allProducts.filter((product) => product.discountPer);
+    const salesProducts = allProducts.filter(product => product.discountPer);
 
     const getProductsByCollection = (
       collection: string,
       prd: Product[],
-    ): Product[] => prd.filter((product) => product.collections === collection);
+    ): Product[] => prd.filter(product => product.collections === collection);
 
     const getProductsByStyle = (style: string, prd: Product[]): Product[] =>
-      prd.filter((product) => product.style === style);
+      prd.filter(product => product.style === style);
 
     const getProductsByNeck = (neck: string, prd: Product[]): Product[] =>
-      prd.filter((product) => product.neck === neck);
+      prd.filter(product => product.neck === neck);
 
     const getProductsByCut = (cut: string, prd: Product[]): Product[] =>
-      prd.filter((product) => product.cut === cut);
+      prd.filter(product => product.cut === cut);
 
     const getProductsBySleeve = (sleeve: string, prd: Product[]): Product[] =>
-      prd.filter((product) => product.sleeve === sleeve);
+      prd.filter(product => product.sleeve === sleeve);
 
-    if (route === "shop-men") products = men_products;
+    if (route === "shop-men")
+      products = men_products;
     if (route === "mens-tops")
       products = getProductsByCollection("mens-tops", men_products);
     if (route === "mens-bottoms")
@@ -125,7 +127,8 @@ function FiltersReducer(state: FiltersState, action: Action): FiltersState {
       products = getProductsByStyle("shorts", men_products);
     if (route === "mens-pullovers")
       products = getProductsByStyle("pullovers", men_products);
-    if (route === "hats") products = getProductsByStyle("hats", allProducts);
+    if (route === "hats")
+      products = getProductsByStyle("hats", allProducts);
     if (route === "boxer-briefs")
       products = getProductsByStyle("boxer briefs", men_products);
     if (route === "mens-vnecks")
@@ -139,29 +142,32 @@ function FiltersReducer(state: FiltersState, action: Action): FiltersState {
     if (route === "new")
       products = men_products.sort((curr, next) => next.date - curr.date);
     if (route === "snow-wash")
-      products = men_products.filter((product) => product.snowWash === true);
+      products = men_products.filter(product => product.snowWash === true);
     if (route === "performance-collection")
-      products = men_products.filter((product) => product.performance === true);
+      products = men_products.filter(product => product.performance === true);
     if (route === "executive-collection")
-      products = men_products.filter((product) => product.exect === true);
+      products = men_products.filter(product => product.exect === true);
     if (route === "summer-dye-collection")
-      products = men_products.filter((product) => product.summerDye === true);
+      products = men_products.filter(product => product.summerDye === true);
     if (route === "new-core-collection")
-      products = men_products.filter((product) => product.newCore === true);
+      products = men_products.filter(product => product.newCore === true);
 
-    if (route === "shop-women") products = women_products;
+    if (route === "shop-women")
+      products = women_products;
     if (route === "womens-tops")
       products = getProductsByCollection("womens-tops", women_products);
     if (route === "womens-bottoms")
       products = getProductsByCollection("womens-bottoms", women_products);
     if (route === "womens-joggers")
       products = getProductsByStyle("joggers", women_products);
-    if (route === "bundles") products = women_products;
-    if (route === "sales") products = salesProducts;
+    if (route === "bundles")
+      products = women_products;
+    if (route === "sales")
+      products = salesProducts;
 
     return {
       ...state,
-      products: products,
+      products,
       filtered_products: products,
     };
   }
@@ -177,16 +183,16 @@ function FiltersReducer(state: FiltersState, action: Action): FiltersState {
     if (sort === "price-lowest") {
       tempProducts = tempProducts.sort(
         (curr, next) =>
-          itemPrice(curr.price, curr.discountPer) -
-          itemPrice(next.price, next.discountPer),
+          itemPrice(curr.price, curr.discountPer)
+          - itemPrice(next.price, next.discountPer),
       );
     }
 
     if (sort === "price-highest") {
       tempProducts = tempProducts.sort(
         (curr, next) =>
-          itemPrice(next.price, next.discountPer) -
-          itemPrice(curr.price, curr.discountPer),
+          itemPrice(next.price, next.discountPer)
+          - itemPrice(curr.price, curr.discountPer),
       );
     }
 
@@ -227,40 +233,40 @@ function FiltersReducer(state: FiltersState, action: Action): FiltersState {
 
     if (collections !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
+        ?.map(product => product)
         ?.filter(
-          (product) => product?.collections?.toLowerCase() === collections,
+          product => product?.collections?.toLowerCase() === collections,
         );
     }
 
     if (style !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
-        ?.filter((product) => product?.style?.toLowerCase() === style);
+        ?.map(product => product)
+        ?.filter(product => product?.style?.toLowerCase() === style);
     }
 
     if (cut !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
-        ?.filter((product) => product?.cut?.toLowerCase() === cut);
+        ?.map(product => product)
+        ?.filter(product => product?.cut?.toLowerCase() === cut);
     }
 
     if (neck !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
-        ?.filter((product) => product?.neck?.toLowerCase() === neck);
+        ?.map(product => product)
+        ?.filter(product => product?.neck?.toLowerCase() === neck);
     }
 
     if (sleeve !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
-        ?.filter((product) => product?.sleeve?.toLowerCase() === sleeve);
+        ?.map(product => product)
+        ?.filter(product => product?.sleeve?.toLowerCase() === sleeve);
     }
 
     if (fabric !== "all") {
       tempProducts = tempProducts
-        ?.map((product) => product)
-        ?.filter((product) => product?.fabric?.toLowerCase() === fabric);
+        ?.map(product => product)
+        ?.filter(product => product?.fabric?.toLowerCase() === fabric);
     }
 
     return { ...state, filtered_products: tempProducts };

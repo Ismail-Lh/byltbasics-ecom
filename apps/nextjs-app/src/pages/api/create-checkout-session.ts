@@ -12,7 +12,7 @@ export default async (req, res) => {
         currency: "usd",
         unit_amount: price,
         product_data: {
-          name: name,
+          name,
           images: [item.image],
         },
       },

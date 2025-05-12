@@ -1,6 +1,3 @@
-import useStripeOrders from "../../hooks/useStripeOrders";
-import Loader from "../Loader/Loader";
-
 /**
  * Renders the user's account orders.
  *

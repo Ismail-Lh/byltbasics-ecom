@@ -17,7 +17,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
-const fulFillOrders = async (session) => {
+async function fulFillOrders(session) {
   // const usersRef = collection(db, 'users');
   // const emailRef = doc(usersRef, session.metadata.email);
   // const ordersRef = collection(emailRef, 'orders');
@@ -57,7 +57,7 @@ const fulFillOrders = async (session) => {
         `SUCCESS: Orders ${session.id} had been added to firestore DB.`,
       ),
     );
-};
+}
 
 export default async (req, res) => {
   if (req.method === "POST") {
@@ -71,7 +71,8 @@ export default async (req, res) => {
     // Verify webhook signature and extract the event.
     try {
       event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
-    } catch (err) {
+    }
+    catch (err) {
       console.error("Error: ", err.message);
       return response.status(400).send(`Webhook Error: ${err.message}`);
     }
@@ -82,7 +83,7 @@ export default async (req, res) => {
 
       return fulFillOrders(session)
         .then(() => res.status(200))
-        .catch((err) => res.status(400).send(`Webhook Error: ${err.message}`));
+        .catch(err => res.status(400).send(`Webhook Error: ${err.message}`));
     }
   }
 };

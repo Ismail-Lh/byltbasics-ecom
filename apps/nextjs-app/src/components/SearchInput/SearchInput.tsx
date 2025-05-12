@@ -1,7 +1,9 @@
 import { useState } from "react";
-import CloseIcon from "../../Icons/CloseIcon";
-import { useProductsContext } from "../../contexts/products_context";
+
 import type { Product } from "../../types";
+
+import { useProductsContext } from "../../contexts/products_context";
+import CloseIcon from "../../Icons/CloseIcon";
 import MyLink from "../MyLink/MyLink";
 import classes from "./SearchInput.module.scss";
 
@@ -12,13 +14,13 @@ type searchInputProps = {
 /**
  * Renders a search input component.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {Function} props.closeSearchBar - The function to close the search bar.
  * @returns {JSX.Element} The search input component.
  */
 function SearchInput({ closeSearchBar }: searchInputProps): JSX.Element {
-  const { men_products, women_products, getSingleProduct } =
-    useProductsContext();
+  const { men_products, women_products, getSingleProduct }
+    = useProductsContext();
 
   const allProducts = [...men_products, ...women_products];
 
@@ -33,7 +35,8 @@ function SearchInput({ closeSearchBar }: searchInputProps): JSX.Element {
       name.toLowerCase().includes(searchWord.toLowerCase()),
     );
 
-    if (searchWord === "") setFilteredProducts([]);
+    if (searchWord === "")
+      setFilteredProducts([]);
     else setFilteredProducts(newFilter);
   };
 

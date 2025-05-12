@@ -1,19 +1,18 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
-import classes from "./NavBarLinks.module.scss";
 
 import { useFiltersContext } from "../../../contexts/filters_context";
 import { useProductsContext } from "../../../contexts/products_context";
-
 import MenuIcon from "../../../Icons/MenuIcon";
 import {
-  NavbarLinks,
   menCategories,
   menCollections,
+  NavbarLinks,
   womenCategories,
   womenCollections,
 } from "../../../utils/constants";
 import MyLink from "../../MyLink/MyLink";
+import classes from "./NavBarLinks.module.scss";
 
 const DynamicDropDownMenu = dynamic(
   () => import("../../DropDownMenu/DropDownMenu"),

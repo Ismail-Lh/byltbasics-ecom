@@ -1,11 +1,11 @@
-import classes from "./style.module.scss";
+import type { Product } from "../../types";
 
 import { useProductsContext } from "../../contexts/products_context";
-import type { Product } from "../../types";
 import MyLink from "../MyLink/MyLink";
 import ProductColors from "../ProductColors/ProductColors";
 import ProductPrice from "../ProductPrice/ProductPrice";
 import ProductSale from "../ProductSale/ProductSale";
+import classes from "./style.module.scss";
 
 type ProductCardInfoProps = {
   product: Product;

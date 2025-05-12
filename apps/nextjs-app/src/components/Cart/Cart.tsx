@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 // import { loadStripe } from '@stripe/stripe-js';
 // import axios from 'axios';
 
-import CloseIcon from "../../Icons/CloseIcon";
 import { useAuthContext } from "../../contexts/auth_context";
 import { useCartContext } from "../../contexts/cart_context";
+import CloseIcon from "../../Icons/CloseIcon";
 import { cartVariants } from "../../utils/animations";
 import Button from "../Button/Button";
 import classes from "./Cart.module.scss";
@@ -63,32 +63,40 @@ function Cart() {
         <p>free shipping on orders of $100+</p>
       </div>
 
-      {products?.length === 0 ? (
-        <p className={classes.cart__empty}>Your cart is currently empty.</p>
-      ) : (
-        <>
-          <CartItems />
+      {products?.length === 0
+        ? (
+            <p className={classes.cart__empty}>Your cart is currently empty.</p>
+          )
+        : (
+            <>
+              <CartItems />
 
-          <div className={classes.cart__subtotal}>
-            <p className={classes.cart__subtotal_title}>subtotal:</p>
-            <p className={classes.cart__subtotal_price}>{subTotal} USD</p>
-          </div>
+              <div className={classes.cart__subtotal}>
+                <p className={classes.cart__subtotal_title}>subtotal:</p>
+                <p className={classes.cart__subtotal_price}>
+                  {subTotal}
+                  {" "}
+                  USD
+                </p>
+              </div>
 
-          <div className={classes.cart__clear}>
-            <Button handelClick={clearCart}>Clear cart</Button>
-          </div>
+              <div className={classes.cart__clear}>
+                <Button handelClick={clearCart}>Clear cart</Button>
+              </div>
 
-          <div className={classes.cart__checkout}>
-            {!user ? (
-              <Button route="/account/login">sign in to checkout</Button>
-            ) : (
-              <Button role="link" handelClick={createCheckoutSession}>
-                proceed to checkout
-              </Button>
-            )}
-          </div>
-        </>
-      )}
+              <div className={classes.cart__checkout}>
+                {!user
+                  ? (
+                      <Button route="/account/login">sign in to checkout</Button>
+                    )
+                  : (
+                      <Button role="link" handelClick={createCheckoutSession}>
+                        proceed to checkout
+                      </Button>
+                    )}
+              </div>
+            </>
+          )}
     </motion.div>
   );
 }

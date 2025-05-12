@@ -8,14 +8,14 @@ type HeroSubtitleProps = {
 /**
  * Renders the subtitle for the hero component.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string} props.subtitle - The subtitle text.
  * @param {string} props.color - The color of the subtitle.
  * @returns {JSX.Element} The rendered subtitle component.
  */
 function HeroSubtitle({ subtitle, color }: HeroSubtitleProps): JSX.Element {
   return (
-    <h2 className={classes.hero__subtitle} style={{ color: color }}>
+    <h2 className={classes.hero__subtitle} style={{ color }}>
       {subtitle}
     </h2>
   );

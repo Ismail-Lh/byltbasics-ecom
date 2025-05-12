@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .scrollToTop {
   @include wh-hei($wh: 4rem, $hei: 4rem);

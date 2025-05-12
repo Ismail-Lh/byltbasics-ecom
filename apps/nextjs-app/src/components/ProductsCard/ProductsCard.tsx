@@ -1,9 +1,10 @@
 import { useState } from "react";
-import classes from "./style.module.scss";
 
 import type { Product } from "../../types";
+
 import ProductsCardImage from "./ProductsCardImage";
 import ProductsCardInfo from "./ProductsCardInfo";
+import classes from "./style.module.scss";
 
 type ProductsCardProps = {
   product: Product;

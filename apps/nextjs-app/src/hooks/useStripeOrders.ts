@@ -1,17 +1,18 @@
 import { format } from "date-fns";
+import { collection, doc, getDocs, orderBy } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
 
-import { collection, doc, getDocs, orderBy } from "firebase/firestore/lite";
 import { useAuthContext } from "../contexts/auth_context";
 import { db } from "../lib/firebase.prod";
 
-const useStripeOrders = () => {
+function useStripeOrders() {
   const { user } = useAuthContext();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
 
-  if (!user) return;
+  if (!user)
+    return;
 
   useEffect(() => {
     try {
@@ -27,7 +28,7 @@ const useStripeOrders = () => {
           orderBy("timestamp", "desc"),
         );
 
-        const allOrders = ordersRes.docs.map((doc) => ({
+        const allOrders = ordersRes.docs.map(doc => ({
           ...doc.data(),
           timestamp: format(
             doc.data().timestamp.toDate(),
@@ -47,12 +48,13 @@ const useStripeOrders = () => {
       return () => {
         setData([]);
       };
-    } catch (error) {
+    }
+    catch (error) {
       setErr(error.message);
     }
   }, []);
 
   return { orders, loading, err };
-};
+}
 
 export default useStripeOrders;

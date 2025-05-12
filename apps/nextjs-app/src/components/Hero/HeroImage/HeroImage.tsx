@@ -14,7 +14,7 @@ type HeroImageProps = {
 /**
  * Renders a hero image component with a background image and content.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string} props.title - The title of the hero image.
  * @param {string} props.subtitle - The subtitle of the hero image.
  * @param {string} props.imgUrlDesktop - The URL of the desktop background image.

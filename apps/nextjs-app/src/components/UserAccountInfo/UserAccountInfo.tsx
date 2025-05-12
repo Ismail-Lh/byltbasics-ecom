@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
-import classes from "./UserAccountInfo.module.scss";
 
-import { useAuthContext } from "../../contexts/auth_context";
 import Button from "../Button/Button";
+import classes from "./UserAccountInfo.module.scss";
 
 /**
  * Renders the user account information component.

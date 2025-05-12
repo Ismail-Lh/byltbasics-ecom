@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
-import CloseIcon from "../../Icons/CloseIcon";
 import { useProductsContext } from "../../contexts/products_context";
+import CloseIcon from "../../Icons/CloseIcon";
 import { productModalVariants } from "../../utils/animations";
-import SingleProductInfo from "../SingleProductInfo/SingleProductInfo";
 import classes from "./ProductModal.module.scss";
 
 /**

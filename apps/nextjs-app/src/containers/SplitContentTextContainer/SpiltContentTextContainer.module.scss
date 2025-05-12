@@ -1,13 +1,10 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .split {
   &__content {
     &_text {
-      @include bg-txt-br-color(
-        $bg-color: $valhalla-color,
-        $color: $white-color
-      );
+      @include bg-txt-br-color($bg-color: $valhalla-color, $color: $white-color);
       padding: 4rem;
 
       @media (max-width: 1024px) {

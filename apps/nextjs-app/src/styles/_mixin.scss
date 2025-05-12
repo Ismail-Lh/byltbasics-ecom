@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use "./variables" as *;
 
 // set the flex align-items & justify-content
 @mixin flex-ali-jus($align: center, $justify: center, $direction: row) {
@@ -70,17 +70,13 @@
   height: $hei;
 }
 
-@mixin mrb-pdb-brb(
-  $mr-b: 1rem,
-  $pd-b: 1.5rem,
-  $br-b: 1px solid $light-grey-color
-) {
+@mixin mrb-pdb-brb($mr-b: 1rem, $pd-b: 1.5rem, $br-b: 1px solid $light-grey-color) {
   margin-bottom: $mr-b;
   padding-bottom: $pd-b;
   border-bottom: $br-b;
 }
 
-@mixin position($ps: absolute, $tp: 0, $rg: 0, $bt: 0, $lf: 0, $z: 'initial') {
+@mixin position($ps: absolute, $tp: 0, $rg: 0, $bt: 0, $lf: 0, $z: "initial") {
   position: $ps;
   top: $tp;
   right: $rg;

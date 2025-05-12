@@ -44,31 +44,38 @@ function useForm() {
 
     if (!value.email) {
       error.email = "Email address is required";
-    } else if (!/\S+@\S+\.\S+/.test(value.email)) {
+    }
+    else if (!/\S[^\s@]*@\S+\.\S+/.test(value.email)) {
       error.email = "Email address is invalid";
     }
 
     if (!value.name) {
       error.name = "User name is required";
-    } else if (value.name.length < 4) {
+    }
+    else if (value.name.length < 4) {
       error.name = "User name must be at least 4 characters";
-    } else if (value.name.length > 12) {
+    }
+    else if (value.name.length > 12) {
       error.name = "User name must be less than 12 characters";
     }
 
     if (!value.first_name) {
       error.first_name = "First name is required";
-    } else if (value.first_name.length < 4) {
+    }
+    else if (value.first_name.length < 4) {
       error.first_name = "First name must be at least 4 characters";
-    } else if (value.first_name.length > 12) {
+    }
+    else if (value.first_name.length > 12) {
       error.first_name = "First name must be less than 12 characters";
     }
 
     if (!value.last_name) {
       error.last_name = "Last name is required";
-    } else if (value.last_name.length < 4) {
+    }
+    else if (value.last_name.length < 4) {
       error.last_name = "Last name must be at least 4 characters";
-    } else if (value.last_name.length > 12) {
+    }
+    else if (value.last_name.length > 12) {
       error.last_name = "Last name must be less than 12 characters";
     }
 
@@ -78,9 +85,11 @@ function useForm() {
 
     if (!value.password_1) {
       error.password_1 = "Password is required";
-    } else if (value.password_1.length < 8) {
+    }
+    else if (value.password_1.length < 8) {
       error.password_1 = "Password must be at least 8 characters";
-    } else if (value.password_1.length > 14) {
+    }
+    else if (value.password_1.length > 14) {
       error.password_1 = "Password must be less than 14 characters";
     }
 
@@ -93,14 +102,15 @@ function useForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.persist();
-    setValue((value) => ({
+    setValue(value => ({
       ...value,
       [e.target.name]: e.target.value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (e) e.preventDefault();
+    if (e)
+      e.preventDefault();
 
     setError(validate(value));
     setIsSubmitting(true);

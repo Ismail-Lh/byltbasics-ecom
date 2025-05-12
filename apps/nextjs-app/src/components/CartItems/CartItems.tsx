@@ -1,6 +1,7 @@
-import CloseIcon from "../../Icons/CloseIcon";
+import type { CartProduct } from "../../types";
+
 import { useCartContext } from "../../contexts/cart_context";
-import type { CartProduct, Product } from "../../types";
+import CloseIcon from "../../Icons/CloseIcon";
 import { formatPrice } from "../../utils/helpers";
 import AmountBtn from "../AmountBtn/AmountBtn";
 import MyLink from "../MyLink/MyLink";
@@ -45,8 +46,14 @@ function CartItems() {
                   <h2 className={classes.name}>
                     <MyLink route={`/products/${route}`}>{name}</MyLink>
                   </h2>
-                  <p className={classes.color}>color: {color}</p>
-                  <p className={classes.size}>size: {size}</p>
+                  <p className={classes.color}>
+                    color:
+                    {color}
+                  </p>
+                  <p className={classes.size}>
+                    size:
+                    {size}
+                  </p>
                 </div>
                 <div className={classes.deleteProduct}>
                   <button type="button" onClick={() => removeFromCart(id)}>
@@ -63,7 +70,9 @@ function CartItems() {
                 />
 
                 <p className={classes.price}>
-                  {formatPrice(price, discountPer, amount)} USD
+                  {formatPrice(price, discountPer, amount)}
+                  {" "}
+                  USD
                 </p>
               </div>
             </div>

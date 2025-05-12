@@ -25,7 +25,7 @@ function FormInput({
   error,
   label,
 }: FormInputProps): JSX.Element {
-  if (type === "textarea")
+  if (type === "textarea") {
     return (
       <textarea
         className="textarea"
@@ -36,6 +36,7 @@ function FormInput({
         rows={10}
       />
     );
+  }
 
   return (
     <div>

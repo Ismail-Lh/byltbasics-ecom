@@ -1,5 +1,6 @@
-import { type NextRouter, useRouter } from "next/router";
-import { useAuthContext } from "../contexts/auth_context";
+import type { NextRouter } from "next/router";
+
+import { useRouter } from "next/router";
 
 type PrivateRouteProps = {
   [key: string]: unknown;

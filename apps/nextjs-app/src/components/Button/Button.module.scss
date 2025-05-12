@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .btn {
   &__white,
@@ -13,11 +13,7 @@
     @include transition();
   }
   &__white {
-    @include bg-txt-br-color(
-      $bg-color: $white-color,
-      $color: $black-color,
-      $br-color: $white-color
-    );
+    @include bg-txt-br-color($bg-color: $white-color, $color: $black-color, $br-color: $white-color);
 
     &:hover {
       @include bg-txt-br-color($color: $white-color, $br-color: $white-color);
@@ -25,18 +21,10 @@
   }
 
   &__black {
-    @include bg-txt-br-color(
-      $bg-color: $valhalla-color,
-      $color: $white-color,
-      $br-color: $valhalla-color
-    );
+    @include bg-txt-br-color($bg-color: $valhalla-color, $color: $white-color, $br-color: $valhalla-color);
 
     &:hover {
-      @include bg-txt-br-color(
-        $bg-color: $white-color,
-        $color: $valhalla-color,
-        $br-color: $valhalla-color
-      );
+      @include bg-txt-br-color($bg-color: $white-color, $color: $valhalla-color, $br-color: $valhalla-color);
     }
   }
 }

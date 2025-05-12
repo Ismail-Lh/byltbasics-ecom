@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .register {
   @include mr-pd($mr: 5.9rem 0 0 0, $pd: 4rem 0 2rem 0);

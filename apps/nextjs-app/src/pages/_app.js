@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
-import "../styles/globals.scss";
 
+import "../styles/globals.scss";
 import NavBar from "../components/NavBar/NavBar";
 import { AuthProvider } from "../contexts/auth_context";
 import { CartProvider } from "../contexts/cart_context";

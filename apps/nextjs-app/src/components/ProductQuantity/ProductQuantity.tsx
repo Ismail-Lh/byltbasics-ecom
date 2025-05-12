@@ -1,7 +1,6 @@
-import classes from "./ProductQuantity.module.scss";
-
 import { decAmount, incAmount } from "../../utils/helpers";
 import AmountBtn from "../AmountBtn/AmountBtn";
+import classes from "./ProductQuantity.module.scss";
 
 type ProductQuantityProps = {
   stock: number;
@@ -12,7 +11,7 @@ type ProductQuantityProps = {
 /**
  * Renders the product quantity component.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {number} props.stock - The available stock of the product.
  * @param {number} props.amount - The current quantity of the product.
  * @param {Function} props.setAmount - The function to update the quantity of the product.

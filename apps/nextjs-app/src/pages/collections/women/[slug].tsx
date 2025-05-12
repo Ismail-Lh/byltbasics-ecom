@@ -26,16 +26,26 @@ function WomenCollections() {
 
     const strIncludes = (str: string) => route?.includes(str);
 
-    if (strIncludes("womens-tops")) title = "Women's tops";
-    if (strIncludes("tank")) title = "Essential Tank";
-    if (strIncludes("tee")) title = "Essential Tee";
-    if (strIncludes("crop")) title = "Crop Top";
-    if (strIncludes("womens-bottoms")) title = "Women's Bottoms";
-    if (strIncludes("joggers")) title = "Women's Joggers";
-    if (strIncludes("leggings")) title = "Women's Leggings";
-    if (strIncludes("accessories")) title = "Hats & Accessories";
-    if (strIncludes("hats")) title = "Hats";
-    if (strIncludes("gift")) title = "Gift Cards";
+    if (strIncludes("womens-tops"))
+      title = "Women's tops";
+    if (strIncludes("tank"))
+      title = "Essential Tank";
+    if (strIncludes("tee"))
+      title = "Essential Tee";
+    if (strIncludes("crop"))
+      title = "Crop Top";
+    if (strIncludes("womens-bottoms"))
+      title = "Women's Bottoms";
+    if (strIncludes("joggers"))
+      title = "Women's Joggers";
+    if (strIncludes("leggings"))
+      title = "Women's Leggings";
+    if (strIncludes("accessories"))
+      title = "Hats & Accessories";
+    if (strIncludes("hats"))
+      title = "Hats";
+    if (strIncludes("gift"))
+      title = "Gift Cards";
 
     return title;
   };

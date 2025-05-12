@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-import CloseIcon from "../../Icons/CloseIcon";
-import SearchIcon from "../../Icons/SearchIcon";
 import { useFiltersContext } from "../../contexts/filters_context";
 import { useProductsContext } from "../../contexts/products_context";
+import CloseIcon from "../../Icons/CloseIcon";
+import SearchIcon from "../../Icons/SearchIcon";
 import { sideBarVariants } from "../../utils/animations";
 import { NavbarLinks } from "../../utils/constants";
 import classes from "./MobileMenu.module.scss";

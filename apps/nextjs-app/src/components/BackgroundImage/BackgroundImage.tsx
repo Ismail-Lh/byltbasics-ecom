@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import { useFiltersContext } from "../../contexts/filters_context";
 import classes from "./BackgroundImage.module.scss";
 

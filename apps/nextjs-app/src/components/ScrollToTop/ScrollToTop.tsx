@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import BiUpArrowIcon from "../../Icons/BiUpArrowIcon";
 import classes from "./ScrollToTop.module.scss";
 
@@ -14,7 +15,8 @@ function ScrollToTop() {
 
     if (scrolled > 300) {
       setVisible(true);
-    } else if (scrolled <= 300) {
+    }
+    else if (scrolled <= 300) {
       setVisible(false);
     }
   };

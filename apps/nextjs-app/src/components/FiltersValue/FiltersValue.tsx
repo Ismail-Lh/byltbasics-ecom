@@ -1,8 +1,7 @@
-import classes from "./FiltersValue.module.scss";
-
 import { useFiltersContext } from "../../contexts/filters_context";
 import Button from "../Button/Button";
 import FilterType from "../FilterType/FilterType";
+import classes from "./FiltersValue.module.scss";
 
 /**
  * Renders the filters and clear filters button.
@@ -46,7 +45,7 @@ function FiltersValue() {
 
   return (
     <>
-      {filtersTitle.map((title) => (
+      {filtersTitle.map(title => (
         <FilterType key={title} title={title} products={products} />
       ))}
 

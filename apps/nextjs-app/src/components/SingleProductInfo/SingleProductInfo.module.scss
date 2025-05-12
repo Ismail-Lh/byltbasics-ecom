@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .product {
   &__title {
@@ -81,18 +81,11 @@
       border: 2px solid;
       border-radius: 5px;
       @include text-transform();
-      @include bg-txt-br-color(
-        $bg-color: $venice-blue-color,
-        $color: $white-color
-      );
+      @include bg-txt-br-color($bg-color: $venice-blue-color, $color: $white-color);
       @include transition();
 
       &:hover {
-        @include bg-txt-br-color(
-          $bg-color: $white-color,
-          $color: $venice-blue-color,
-          $br-color: $venice-blue-color
-        );
+        @include bg-txt-br-color($bg-color: $white-color, $color: $venice-blue-color, $br-color: $venice-blue-color);
       }
     }
   }

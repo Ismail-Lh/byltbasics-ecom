@@ -1,12 +1,12 @@
 import { Fragment, useState } from "react";
-import classes from "./FilterType.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
-import AngleDownIcon from "../../Icons/AngleDownIcon";
-import AngleUpIcon from "../../Icons/AngleUpIcon";
-import { useFiltersContext } from "../../contexts/filters_context";
 import type { Product } from "../../types";
 
-import { v4 as uuidv4 } from "uuid";
+import { useFiltersContext } from "../../contexts/filters_context";
+import AngleDownIcon from "../../Icons/AngleDownIcon";
+import AngleUpIcon from "../../Icons/AngleUpIcon";
+import classes from "./FilterType.module.scss";
 
 type FilterTypeProps = {
   title: string;
@@ -16,7 +16,7 @@ type FilterTypeProps = {
 /**
  * Renders a filter type component.
  *
- * @param {Object} props - The component props.
+ * @param {object} props - The component props.
  * @param {string} props.title - The title of the filter type.
  * @param {Array} props.products - The array of products.
  * @returns {JSX.Element} The filter type component.
@@ -26,7 +26,7 @@ function FilterType({ title, products }: FilterTypeProps): JSX.Element {
   const [toggleAccordion, setToggleAccordion] = useState(false);
 
   const filtersValue = [
-    ...new Set(products?.map((product) => product.name === title)),
+    ...new Set(products?.map(product => product.name === title)),
   ];
 
   return (
@@ -41,7 +41,7 @@ function FilterType({ title, products }: FilterTypeProps): JSX.Element {
 
       {toggleAccordion && (
         <div className={classes.filter__type_value}>
-          {filtersValue.map((value) => (
+          {filtersValue.map(value => (
             <Fragment key={uuidv4()}>
               {value !== undefined && (
                 <div onClick={() => updateFilters(title, value)}>

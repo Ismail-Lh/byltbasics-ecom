@@ -2,15 +2,13 @@ import { useMediaQuery } from "@react-hook/media-query";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-import classes from "./Filters.module.scss";
-
 import AngleRightIcon from "../../Icons/AngleRightIcon";
+import FiltersValue from "../FiltersValue/FiltersValue";
+import classes from "./Filters.module.scss";
 
 const DynamicFiltersModal = dynamic(
   () => import("../FiltersModal/FiltersModal"),
 );
-
-import FiltersValue from "../FiltersValue/FiltersValue";
 
 type FiltersContainerProps = {
   children?: React.ReactNode;
@@ -38,21 +36,23 @@ function Filters() {
 
   return (
     <>
-      {!matchesMedia ? (
-        <FiltersContainer>
-          <FiltersValue />
-        </FiltersContainer>
-      ) : (
-        <>
-          <FiltersContainer handelClick={() => setOpenFiltersModal(true)}>
-            <AngleRightIcon />
-          </FiltersContainer>
+      {!matchesMedia
+        ? (
+            <FiltersContainer>
+              <FiltersValue />
+            </FiltersContainer>
+          )
+        : (
+            <>
+              <FiltersContainer handelClick={() => setOpenFiltersModal(true)}>
+                <AngleRightIcon />
+              </FiltersContainer>
 
-          {openFiltersModal && (
-            <DynamicFiltersModal setOpenFiltersModal={setOpenFiltersModal} />
+              {openFiltersModal && (
+                <DynamicFiltersModal setOpenFiltersModal={setOpenFiltersModal} />
+              )}
+            </>
           )}
-        </>
-      )}
     </>
   );
 }

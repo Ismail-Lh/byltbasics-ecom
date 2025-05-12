@@ -1,5 +1,5 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixin' as *;
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
 
 .split__content {
   &_title {
@@ -14,7 +14,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: -1.5rem;

@@ -1,11 +1,10 @@
 import type React from "react";
-import { createContext, useContext, useEffect, useReducer } from "react";
 
-import FiltersReducer from "../reducers/filters_reducer";
-import { getLocalStorage, setLocalStorage } from "../utils/helpers";
-import { useProductsContext } from "./products_context";
+import { createContext, use, useEffect, useReducer } from "react";
 
 import type { Collection, Product } from "../types";
+
+import FiltersReducer from "../reducers/filters_reducer";
 import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
@@ -15,6 +14,8 @@ import {
   UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../utils/actions";
+import { getLocalStorage, setLocalStorage } from "../utils/helpers";
+import { useProductsContext } from "./products_context";
 
 type FilterContextType = {
   collection: Collection;
@@ -56,7 +57,7 @@ type FiltersProviderProps = {
   children: React.ReactNode;
 };
 
-export const FiltersProvider = ({ children }: FiltersProviderProps) => {
+export function FiltersProvider({ children }: FiltersProviderProps) {
   const [state, dispatch] = useReducer(FiltersReducer, initialState);
   const { men_products, women_products } = useProductsContext();
 
@@ -98,7 +99,7 @@ export const FiltersProvider = ({ children }: FiltersProviderProps) => {
   };
 
   return (
-    <FiltersContext.Provider
+    <FiltersContext
       value={{
         ...state,
         updateCollection,
@@ -108,16 +109,16 @@ export const FiltersProvider = ({ children }: FiltersProviderProps) => {
       }}
     >
       {children}
-    </FiltersContext.Provider>
+    </FiltersContext>
   );
-};
+}
 
-export const useFiltersContext = () => {
-  const context = useContext(FiltersContext);
+export function useFiltersContext() {
+  const context = use(FiltersContext);
 
   if (!context) {
     throw new Error("useFiltersContext must be used within a FiltersProvider");
   }
 
   return context;
-};
+}
