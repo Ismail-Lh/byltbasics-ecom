@@ -2,10 +2,10 @@ import type { NextFunction, Request, Response } from "express";
 
 import httpStatus from "http-status";
 
-import type { BaseError } from "@/api-errors";
+import type { BaseError } from "@/infrastructure/errors";
 
 import { envConfig } from "@/config";
-import { loggerService } from "@/config/inversify";
+import { logger } from "@/config/inversify";
 
 export function globalErrorMiddleware(
   err: BaseError,
@@ -17,10 +17,10 @@ export function globalErrorMiddleware(
     ? err.httpCode
     : httpStatus.INTERNAL_SERVER_ERROR;
 
-  loggerService.error(`${err.name} - ${statusCode}: ${err.message}.`);
+  logger.error(`${err.name} - ${statusCode}: ${err.message}.`);
 
   if (envConfig.node_env === "development") {
-    loggerService.debug(`Error Stack: ${err.stack}`);
+    logger.debug(`Error Stack: ${err.stack}`);
   }
 
   res.status(statusCode).json({

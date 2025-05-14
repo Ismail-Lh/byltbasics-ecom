@@ -1,6 +1,7 @@
-import app from "@/app";
 import { envConfig } from "@/config";
-import { loggerService } from "@/config/inversify";
+import { logger } from "@/config/inversify";
+
+import app from "./app";
 
 const PORT = envConfig.server.port || 8080;
 
@@ -10,7 +11,7 @@ const PORT = envConfig.server.port || 8080;
  * Logs a message indicating that the server is running.
  */
 const server = app.listen(PORT, async () => {
-  loggerService.info(
+  logger.info(
     `Server is running on http://localhost:${PORT}`,
   );
 });
@@ -23,8 +24,8 @@ const server = app.listen(PORT, async () => {
  * @param {Error} err - The uncaught exception error.
  */
 process.on("uncaughtException", (err) => {
-  loggerService.warn("UNCAUGHT EXCEPTION! 💥 Shutting down...");
-  loggerService.error(err.name, err.message);
+  logger.warn("UNCAUGHT EXCEPTION! 💥 Shutting down...");
+  logger.error(err.name, err.message);
   process.exit(1);
 });
 
@@ -36,8 +37,8 @@ process.on("uncaughtException", (err) => {
  * @param {Error} err - The unhandled rejection error.
  */
 process.on("unhandledRejection", (err: Error) => {
-  loggerService.warn("UNHANDLED REJECTION! 💥 Shutting down...");
-  loggerService.error(err.name, err.message);
+  logger.warn("UNHANDLED REJECTION! 💥 Shutting down...");
+  logger.error(err.name, err.message);
 
   server.close(() => {
     process.exit(1);
