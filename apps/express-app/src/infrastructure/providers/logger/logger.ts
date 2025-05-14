@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import winston from "winston";
 
-import type { ILoggerService, LogMethod } from "./logger.types";
+import type { ILogger } from "@/application/providers";
 
 import {
   DEFAULT_COMBINED_LOG_PATH,
@@ -10,10 +10,10 @@ import {
   DEFAULT_TIMESTAMP_FORMAT,
   LOG_COLORS,
   LOG_LEVELS,
-} from "./logger.constants";
+} from "./constants";
 
 /**
- * LoggerService provides a centralized logging solution for the application
+ * Logger provides a centralized logging solution for the application
  * using Winston as the underlying logging library.
  *
  * Features:
@@ -23,14 +23,14 @@ import {
  * - Color-coded console output
  * - Metadata support for contextual logging
  *
- * @implements {ILoggerService}
+ * @implements {ILogger}
  */
 @injectable()
-export class LoggerService implements ILoggerService {
+export class Logger implements ILogger {
   private logger: winston.Logger;
 
   /**
-   * Initializes the LoggerService with default configuration.
+   * Initializes the Logger with default configuration.
    * Sets up Winston with console and file transports, configures log formats,
    * and establishes color coding for different log levels.
    */
@@ -109,7 +109,7 @@ export class LoggerService implements ILoggerService {
    * @param {string} message - The error message to log
    * @param {any} [meta] - Optional metadata to provide additional context about the error
    */
-  public error: LogMethod = (message: string, meta?: any) => {
+  public error = (message: string, meta?: any) => {
     this.logger.error(message, meta);
   };
 
@@ -121,7 +121,7 @@ export class LoggerService implements ILoggerService {
    * @param {string} message - The warning message to log
    * @param {any} [meta] - Optional metadata to provide additional context
    */
-  public warn: LogMethod = (message: string, meta?: any) => {
+  public warn = (message: string, meta?: any) => {
     this.logger.warn(message, meta);
   };
 
@@ -132,7 +132,7 @@ export class LoggerService implements ILoggerService {
    * @param {string} message - The information message to log
    * @param {any} [meta] - Optional metadata to provide additional context
    */
-  public info: LogMethod = (message: string, meta?: any) => {
+  public info = (message: string, meta?: any) => {
     this.logger.info(message, meta);
   };
 
@@ -143,7 +143,7 @@ export class LoggerService implements ILoggerService {
    * @param {string} message - The HTTP-related message to log
    * @param {any} [meta] - Optional metadata (e.g. request details, response status)
    */
-  public http: LogMethod = (message: string, meta?: any) => {
+  public http = (message: string, meta?: any) => {
     this.logger.http(message, meta);
   };
 
@@ -155,7 +155,7 @@ export class LoggerService implements ILoggerService {
    * @param {string} message - The debug message to log
    * @param {any} [meta] - Optional metadata to provide additional context
    */
-  public debug: LogMethod = (message: string, meta?: any) => {
+  public debug = (message: string, meta?: any) => {
     this.logger.debug(message, meta);
   };
 
