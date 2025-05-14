@@ -9,7 +9,7 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
-import { globalErrorMiddleware, notAllowedMethodMiddleware } from "@/middlewares/error";
+import { globalErrorMiddleware, notAllowedMethodMiddleware } from "./middlewares";
 
 const app: Express = express();
 

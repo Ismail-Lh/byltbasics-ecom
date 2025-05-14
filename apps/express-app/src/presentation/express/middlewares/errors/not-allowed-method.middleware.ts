@@ -1,7 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 
-import { HttpMethodNotAllowedError } from "@/api-errors";
-
+import { HttpMethodNotAllowedError } from "@/infrastructure/errors";
 /**
  * Middleware to handle HTTP method not allowed errors.
  * This middleware is used to respond with a 405 Method Not Allowed error

@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 
-import type { ILoggerService } from "@/services";
+import type { ILogger } from "@/application/providers";
 
-import { LoggerService } from "@/services";
+import { Logger } from "@/infrastructure/providers";
 
 import { TYPES } from "./types";
 
@@ -13,8 +13,8 @@ const container = new Container();
 // Initialize container - this function sets up all the bindings
 function bootstrapContainer() {
   container
-    .bind<ILoggerService>(TYPES.LoggerService)
-    .to(LoggerService)
+    .bind<ILogger>(TYPES.Logger)
+    .to(Logger)
     .inSingletonScope();
 
   return container;
