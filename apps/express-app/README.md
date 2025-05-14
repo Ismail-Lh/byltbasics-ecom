@@ -14,7 +14,31 @@ This is the backend API service for the BYLT Basics e-commerce project. It provi
 - **CORS**: Cross-origin resource sharing
 - **HTTP-Status**: HTTP status code constants
 
+## Architecture Overview
+
+The project follows Clean Architecture principles to create a maintainable and testable codebase with clear separation of concerns:
+
+### Layers
+
+1. **Domain Layer** - Contains enterprise business rules, entities, and use cases. It has no dependencies on other layers.
+
+2. **Application Layer** - Contains application-specific business rules. It defines interfaces that are implemented by the outer layers.
+
+3. **Infrastructure Layer** - Contains implementations of interfaces defined in the application layer, including external services, tools, and frameworks.
+
+4. **Presentation Layer** - Contains delivery mechanisms like the Express framework, controllers, and middleware that interact with the application layer.
+
+### Key Benefits of This Architecture
+
+- **Independent of Frameworks**: The core business logic is isolated from external frameworks.
+- **Testable**: Business rules can be tested without the UI, database, web server, or any external element.
+- **Independent of UI**: The UI can change without changing the business rules.
+- **Independent of Database**: Business rules are not bound to a specific database.
+- **Independent of External Agencies**: Business rules don't know anything about external interfaces.
+
 ## Project Structure
+
+The project follows a Clean Architecture approach, separating concerns into distinct layers:
 
 ```
 express-app/
@@ -24,32 +48,41 @@ express-app/
 │   ├── all.log         # Combined logs
 │   └── error.log       # Error-only logs
 └── src/
-    ├── app.ts          # Express application setup
-    ├── index.ts        # Server entry point
-    ├── api-errors/     # Custom error classes
-    │   ├── base.error.ts     # Base error class
-    │   ├── index.ts          # Export error classes
-    │   └── specific errors   # HTTP status-specific errors
-    ├── config/         # Configuration files
-    │   ├── env.config.ts  # Environment variable validation
-    │   ├── index.ts       # Export configurations
-    │   └── inversify/     # Dependency injection setup
-    │       ├── container.ts      # IoC container setup
-    │       ├── service-provider.ts # Service provider initialization
-    │       ├── types.ts          # DI type definitions
-    │       └── index.ts          # Export DI utilities
-    ├── middlewares/    # Express middlewares
-    │   └── error/      # Error handling middlewares
-    │       ├── global-error.middleware.ts # Global error handler
-    │       ├── not-allowed-method.middleware.ts # 405 Method not allowed handler
-    │       └── index.ts          # Export middlewares
-    └── services/       # Service implementations
-        ├── index.ts    # Export services
-        └── logger/     # Logging service
-            ├── index.ts          # Export logger components
-            ├── logger.service.ts # Winston logger implementation
-            ├── logger.types.ts   # Logger interfaces and types
-            └── logger.constants.ts # Logger configuration constants
+    ├── application/    # Application business rules layer
+    │   └── providers/  # Interfaces for external services
+    │       ├── index.ts       # Export provider interfaces
+    │       └── logger.interface.ts # Logger interface definitions
+    ├── domain/         # Enterprise business rules layer
+    │   └── users/      # User domain entities and use cases
+    ├── infrastructure/ # External implementations (frameworks, tools)
+    │   ├── errors/     # Custom error classes
+    │   │   ├── base.error.ts   # Base error class
+    │   │   ├── index.ts        # Export error classes
+    │   │   └── *               # HTTP status-specific errors
+    │   └── providers/  # External service implementations
+    │       ├── index.ts        # Export providers
+    │       └── logger/         # Logging implementation
+    │           ├── constants.ts # Logger configuration constants
+    │           ├── index.ts     # Export logger components
+    │           └── logger.ts    # Winston logger implementation
+    ├── presentation/   # User interface layer
+    │   └── express/    # Express-specific code
+    │       ├── app.ts           # Express application setup
+    │       ├── server.ts        # Server entry point
+    │       └── middlewares/     # Express middlewares
+    │           ├── index.ts     # Export middlewares
+    │           └── errors/      # Error handling middlewares
+    │               ├── global-error.middleware.ts # Global error handler
+    │               ├── not-allowed-method.middleware.ts # 405 Method not allowed
+    │               └── index.ts # Export error middlewares
+    └── config/         # Configuration files
+        ├── env.config.ts  # Environment variable validation
+        ├── index.ts       # Export configurations
+        └── inversify/     # Dependency injection setup
+            ├── container.ts      # IoC container setup
+            ├── service-provider.ts # Service provider initialization
+            ├── types.ts          # DI type definitions
+            └── index.ts          # Export DI utilities
 ```
 
 ## Setup and Installation
@@ -89,7 +122,21 @@ pnpm dev:api
 pnpm dev
 ```
 
-This will start the server with hot-reloading enabled.
+The development server will start with hot-reloading enabled, running from the entry point at `src/presentation/express/server.ts`.
+
+## Recent Changes (May 2025)
+
+- **Architectural Refactoring**: Migrated from a flat structure to a layered Clean Architecture approach
+- **Improved Separation of Concerns**:
+  - Moved Express-specific code to the presentation layer
+  - Defined clear interfaces in the application layer
+  - Implemented services in the infrastructure layer
+- **Enhanced Logging System**:
+  - Created a clearer interface for the logger in the application layer
+  - Implemented the interface in the infrastructure layer
+- **Dependency Injection Updates**:
+  - Updated DI container with the new architecture
+  - Renamed symbols for better clarity (e.g., LoggerService -> Logger)
 
 ## Building for Production
 
