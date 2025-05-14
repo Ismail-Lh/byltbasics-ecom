@@ -13,6 +13,8 @@ This is the backend API service for the BYLT Basics e-commerce project. It provi
 - **Helmet**: Security middleware
 - **CORS**: Cross-origin resource sharing
 - **HTTP-Status**: HTTP status code constants
+- **Drizzle ORM**: Database ORM
+- **Postgres**: PostgreSQL client
 
 ## Architecture Overview
 
@@ -44,6 +46,7 @@ The project follows a Clean Architecture approach, separating concerns into dist
 express-app/
 ├── package.json        # Project dependencies and scripts
 ├── tsconfig.json       # TypeScript configuration
+├── drizzle.config.ts   # Drizzle ORM configuration
 ├── logs/               # Log files (gitignored)
 │   ├── all.log         # Combined logs
 │   └── error.log       # Error-only logs
@@ -55,6 +58,24 @@ express-app/
     ├── domain/         # Enterprise business rules layer
     │   └── users/      # User domain entities and use cases
     ├── infrastructure/ # External implementations (frameworks, tools)
+    │   ├── databases/  # Database implementations
+    │   │   └── drizzle-supabase/ # Drizzle ORM with Supabase/Postgres
+    │   │       ├── index.ts         # DB connection and setup
+    │   │       ├── migrate.ts       # Migration script
+    │   │       ├── seed.ts          # Seeding script
+    │   │       ├── schemas/         # Database schema definitions
+    │   │       │   ├── index.ts     # Export schemas
+    │   │       │   └── user.ts      # User schema definition
+    │   │       ├── seeds/           # Database seed data
+    │   │       │   ├── index.ts     # Export seed functions
+    │   │       │   ├── user.ts      # User seeding logic
+    │   │       │   └── data/        # Seed data files
+    │   │       │       └── users.json # Sample user data
+    │   │       └── migrations/      # Generated migration files
+    │   │           ├── meta/        # Migration metadata
+    │   │           │   ├── _journal.json   # Migration journal
+    │   │           │   └── *.json   # Migration snapshots
+    │   │           └── *.sql        # SQL migration files
     │   ├── errors/     # Custom error classes
     │   │   ├── base.error.ts   # Base error class
     │   │   ├── index.ts        # Export error classes
@@ -91,6 +112,7 @@ express-app/
 
 - Node.js 18+
 - pnpm 8+
+- PostgreSQL database
 
 ### Installation
 
@@ -105,12 +127,64 @@ pnpm install
 
 Create a `.env` file in the `apps/express-app` directory with the following variables:
 
-```env
-NODE_ENV=development
-PORT=8080
-SERVER_URL=http://localhost:8080
-CLIENT_URL=http://localhost:3000
 ```
+NODE_ENV=development
+PORT=3001
+SERVER_URL=http://localhost:3001
+CLIENT_URL=http://localhost:3000
+DB_URL=postgres://username:password@localhost:5432/database
+DB_MIGRATING=false
+DB_SEEDING=false
+DB_LOGGING=true
+```
+
+Replace `username`, `password`, and `database` with your PostgreSQL credentials.
+
+## Database Setup
+
+The project uses Drizzle ORM with PostgreSQL for database operations. Here's how to work with the database:
+
+### Generate Migrations
+
+When you make changes to the schema files, generate a new migration:
+
+```bash
+# From the root of the monorepo
+pnpm db:generate
+```
+
+### Run Migrations
+
+Apply migrations to your database:
+
+```bash
+# From the root of the monorepo
+pnpm db:migrate
+```
+
+### Seed Database
+
+Populate your database with initial data:
+
+```bash
+# From the root of the monorepo
+pnpm db:seed
+```
+
+### Pushing Schema Changes
+
+For development, you can push schema changes directly to the database:
+
+```bash
+# From the root of the monorepo
+pnpm db:push
+```
+
+### Database Migration Structure
+
+- Migrations are stored in `src/infrastructure/databases/drizzle-supabase/migrations/`
+- Each migration has SQL files and metadata files tracking the changes
+- The `meta/_journal.json` file tracks all migrations that have been applied
 
 ## Development
 
