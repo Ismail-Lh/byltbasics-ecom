@@ -8,8 +8,10 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "$/*": ["./*"]
     },
+    "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types"],
     "strict": true,
     "outDir": "./dist",
@@ -21,5 +23,9 @@
   "exclude": ["node_modules"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
   }
 }

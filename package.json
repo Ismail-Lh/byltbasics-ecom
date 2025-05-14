@@ -19,7 +19,11 @@
     "lint:api": "pnpm --filter express-app lint",
     "clean": "pnpm -r exec -- rm -rf node_modules dist .next",
     "prepare": "husky",
-    "postinstall": "pnpm run prepare"
+    "postinstall": "pnpm run prepare",
+    "db:push": "pnpm --filter express-app db:push",
+    "db:migrate": "pnpm --filter express-app db:migrate",
+    "db:seed": "pnpm --filter express-app db:seed",
+    "db:generate": "pnpm --filter express-app db:generate"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.0",
