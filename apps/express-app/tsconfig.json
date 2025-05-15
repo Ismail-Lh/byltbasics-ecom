@@ -4,7 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "rootDir": "./src",
+    "rootDir": "./",
     "module": "CommonJS",
     "moduleResolution": "node",
     "paths": {
