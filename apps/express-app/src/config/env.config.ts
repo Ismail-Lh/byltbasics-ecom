@@ -16,6 +16,7 @@ const envSchema = z.object({
   DB_MIGRATING: stringBoolean,
   DB_SEEDING: stringBoolean,
   DB_LOGGING: stringBoolean,
+  HASH_ALGORITHM: z.enum(["sha256", "sha512"]).default("sha256"),
 });
 
 type EnvSchema = z.infer<typeof envSchema>;
@@ -54,5 +55,8 @@ export const envConfig = {
     db_migrating: validatedEnv.DB_MIGRATING,
     db_seeding: validatedEnv.DB_SEEDING,
     db_logging: validatedEnv.DB_LOGGING,
+  },
+  crypto: {
+    hash_algorithm: validatedEnv.HASH_ALGORITHM,
   },
 } as const;
