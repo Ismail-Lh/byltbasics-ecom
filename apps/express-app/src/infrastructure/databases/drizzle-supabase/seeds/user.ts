@@ -10,8 +10,7 @@ export async function seedUsers(db: db) {
         .insert(schema.user)
         .values({
           ...user,
-          emailVerified: true,
-          phoneVerified: true,
+          isEmailVerified: true,
         })
         .returning();
     }),
