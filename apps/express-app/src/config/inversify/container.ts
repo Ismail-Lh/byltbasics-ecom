@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 
-import type { ILogger } from "@/application/providers";
+import type { ICryptoProvider, ILogger } from "@/application/providers";
 import type { IUserRepository } from "@/application/repositories";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
 
 import { CreateUserUseCase } from "@/application/use-cases/user";
-import { Logger } from "@/infrastructure/providers";
+import { CryptoProvider, Logger } from "@/infrastructure/providers";
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
 
 import { TYPES } from "./types";
@@ -19,6 +19,11 @@ function bootstrapContainer() {
   container
     .bind<ILogger>(TYPES.Logger)
     .to(Logger)
+    .inSingletonScope();
+
+  container
+    .bind<ICryptoProvider>(TYPES.CryptoProvider)
+    .to(CryptoProvider)
     .inSingletonScope();
 
   container
