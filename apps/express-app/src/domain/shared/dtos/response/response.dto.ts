@@ -25,5 +25,5 @@ export interface IResponseDTO<T> {
   /**
    * (Optional) The HTTP status code associated with the response.
    */
-  statusCode?: number;
+  statusCode: number;
 }

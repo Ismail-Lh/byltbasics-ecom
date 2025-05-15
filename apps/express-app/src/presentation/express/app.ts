@@ -1,3 +1,4 @@
+import "express-async-errors";
 import "reflect-metadata";
 
 // Import from our service provider which uses the DI container
@@ -10,6 +11,7 @@ import express from "express";
 import helmet from "helmet";
 
 import { globalErrorMiddleware, notAllowedMethodMiddleware } from "./middlewares";
+import { userRoutes } from "./routes";
 
 const app: Express = express();
 
@@ -31,6 +33,8 @@ app.use(
 app.get("/", (_req, res) => {
   res.json({ message: "Hello from the server!" });
 });
+
+app.use("/api/v1/users", userRoutes);
 
 // Handle unsupported HTTP methods
 // This middleware is used to respond with a 405 Method Not Allowed error
