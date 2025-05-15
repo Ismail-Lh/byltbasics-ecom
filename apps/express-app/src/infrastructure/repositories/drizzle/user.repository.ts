@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm";
 import { injectable } from "inversify";
 
 import type { IUserRepository } from "@/application/repositories";
@@ -29,5 +30,16 @@ export class UserRepository implements IUserRepository {
     }
 
     return newUser[0];
+  }
+
+  /**
+   * Finds a user by their email address in the database.
+   *
+   * @param email - The email address of the user to find.
+   * @returns A promise that resolves to the found user's data, or null if no user is found.
+   */
+  async findByEmail(email: string): Promise<IUserOutReqDTO | null> {
+    const user = await db.select().from(usersTable).where(eq(usersTable.email, email)).limit(1);
+    return user.length > 0 ? user[0] : null;
   }
 }

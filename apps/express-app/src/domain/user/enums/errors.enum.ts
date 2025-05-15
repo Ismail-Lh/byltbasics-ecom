@@ -14,4 +14,7 @@ export enum UserErrors {
   UserNameMinLength = "Username must be at least 3 characters long.",
   UserNameInvalidFormat = "Invalid username format. Only letters, numbers, and underscores are allowed.",
   UserNameSpecialCharacterLimit = "Username cannot contain special characters like '\"<>;(){}.",
+
+  // User already exists
+  UserAlreadyExists = "User already exists with this email address.",
 }
