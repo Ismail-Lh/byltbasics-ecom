@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "rootDir": "./",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"],
+      "$/*": ["./*"]
+    },
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types"],
+    "strict": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
+  }
+}
