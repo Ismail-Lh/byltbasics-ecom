@@ -3,7 +3,7 @@ import type { Table } from "drizzle-orm";
 import { getTableName, sql } from "drizzle-orm";
 
 import { envConfig } from "@/config";
-import { logger } from "@/config/inversify";
+import { logger } from "@/presentation/service-provider";
 
 import { connection, db } from "./";
 import * as schema from "./schemas";

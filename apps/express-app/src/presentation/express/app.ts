@@ -1,8 +1,7 @@
-import "express-async-errors";
 import "reflect-metadata";
 
 // Import from our service provider which uses the DI container
-import "@/config/inversify";
+import "../service-provider";
 
 import type { Express } from "express";
 

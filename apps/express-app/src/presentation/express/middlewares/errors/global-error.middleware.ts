@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import type { BaseError } from "@/infrastructure/errors";
 
 import { envConfig } from "@/config";
-import { logger } from "@/config/inversify";
+import { logger } from "@/presentation/service-provider";
 
 export function globalErrorMiddleware(
   err: BaseError,

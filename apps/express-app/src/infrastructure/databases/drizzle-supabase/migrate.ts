@@ -1,7 +1,7 @@
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 
 import { envConfig } from "@/config";
-import { logger } from "@/config/inversify";
+import { logger } from "@/presentation/service-provider";
 import config from "$/drizzle.config";
 
 import { connection, db } from "./";

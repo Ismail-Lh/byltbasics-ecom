@@ -5,9 +5,9 @@ import type { IUserRepository } from "@/application/repositories";
 import type { IResponseDTO } from "@/domain/shared/dtos";
 import type { ICreateUserReqDTO, IUserOutReqDTO } from "@/domain/user/dtos";
 
-import { TYPES } from "@/config/inversify";
 import { UserEntity } from "@/domain/user/entity";
 import { UserErrors } from "@/domain/user/enums";
+import { TYPES } from "@/infrastructure/di-container/types";
 import { BadRequestError } from "@/infrastructure/errors";
 
 import type { ICreateUserUseCase } from "../interfaces";
