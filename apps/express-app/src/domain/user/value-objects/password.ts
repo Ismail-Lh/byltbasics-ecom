@@ -1,21 +1,21 @@
-import { z } from "zod";
+import { passwordSchema } from "../schemas";
 
-import { UserErrors } from "../enums";
-
-export const passwordSchema = z
-  .string()
-  .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).*$/, {
-    message: UserErrors.PasswordSpecialCharacter,
-  })
-  .min(8, { message: UserErrors.PasswordMinLength })
-  .max(128, { message: UserErrors.PasswordLengthLimitExceeded })
-  .refine(value => !/['"<>;(){}]/.test(value), {
-    message: UserErrors.PasswordSpecialCharacterLimit,
-  });
-
+/**
+ * Represents a user's password as a value object.
+ *
+ * This class validates the password using the `passwordSchema` upon instantiation.
+ * If the password is invalid, an error is thrown with the validation message.
+ * The password value is immutable and can be accessed via the `value` getter.
+ */
 export class Password {
   private readonly _value: string;
 
+  /**
+   * Creates a new Password instance after validating the provided value.
+   *
+   * @param value - The raw password string to be validated and stored.
+   * @throws {Error} If the password does not conform to the `passwordSchema`.
+   */
   constructor(value: string) {
     const parsedValue = passwordSchema.safeParse(value);
 
@@ -26,6 +26,11 @@ export class Password {
     this._value = parsedValue.data;
   }
 
+  /**
+   * Gets the validated password value.
+   *
+   * @returns The validated password string.
+   */
   get value(): string {
     return this._value;
   }

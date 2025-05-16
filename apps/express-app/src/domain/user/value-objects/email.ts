@@ -1,17 +1,4 @@
-import { z } from "zod";
-
-import { UserErrors } from "../enums";
-
-/**
- * Zod schema for validating email addresses.
- *
- * @constant
- * @type {z.ZodObject}
- */
-const emailAddressSchema = z
-  .string()
-  .max(255, { message: UserErrors.EmailLengthLimitExceeded })
-  .email({ message: UserErrors.InvalidEmailAddress });
+import { emailAddressSchema } from "../schemas";
 
 /**
  * Class representing an email address.
