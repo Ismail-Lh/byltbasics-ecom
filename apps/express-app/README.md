@@ -15,6 +15,7 @@ This is the backend API service for the BYLT Basics e-commerce project. It provi
 - **HTTP-Status**: HTTP status code constants
 - **Drizzle ORM**: Database ORM
 - **Postgres**: PostgreSQL client
+- **express-async-errors**: Async error handling
 
 ## Architecture Overview
 
@@ -38,6 +39,16 @@ The project follows Clean Architecture principles to create a maintainable and t
 - **Independent of Database**: Business rules are not bound to a specific database.
 - **Independent of External Agencies**: Business rules don't know anything about external interfaces.
 
+### Domain-Driven Design Approach
+
+The application follows Domain-Driven Design principles:
+
+- **Entities**: Domain objects with identity, such as User
+- **Value Objects**: Immutable objects that represent a concept, such as Email, Password
+- **Repositories**: Abstract data access with domain-focused interfaces
+- **Domain Services**: Encapsulate domain logic that doesn't fit in entities or value objects
+- **Factories**: Create complex domain objects or aggregates
+
 ## Project Structure
 
 The project follows a Clean Architecture approach, separating concerns into distinct layers:
@@ -52,11 +63,42 @@ express-app/
 │   └── error.log       # Error-only logs
 └── src/
     ├── application/    # Application business rules layer
-    │   └── providers/  # Interfaces for external services
-    │       ├── index.ts       # Export provider interfaces
-    │       └── logger.interface.ts # Logger interface definitions
+    │   ├── providers/  # Interfaces for external services
+    │   │   ├── index.ts       # Export provider interfaces
+    │   │   ├── crypto.interface.ts # Crypto provider interface
+    │   │   └── logger.interface.ts # Logger interface definitions
+    │   ├── repositories/ # Repository interfaces
+    │   │   ├── index.ts       # Export repository interfaces
+    │   │   └── user.repository.ts # User repository interface
+    │   └── use-cases/  # Application use cases
+    │       └── user/   # User-related use cases
+    │           ├── implementations/ # Use case implementations
+    │           │   └── create-user.ts # User creation use case
+    │           ├── interfaces/    # Use case interfaces
+    │           │   └── create-user.ts # User creation interface
+    │           └── index.ts       # Export use cases
     ├── domain/         # Enterprise business rules layer
-    │   └── users/      # User domain entities and use cases
+    │   ├── shared/     # Shared domain components
+    │   │   └── dtos/   # Shared data transfer objects
+    │   │       └── response/ # Response DTOs
+    │   │           └── response.dto.ts # Generic response interface
+    │   └── user/       # User domain entities and value objects
+    │       ├── dtos/   # User data transfer objects
+    │       ├── entity/ # User entity definition
+    │       │   └── user.entity.ts # User domain entity
+    │       ├── enums/  # User-related enumerations
+    │       │   └── errors.enum.ts # User error messages
+    │       ├── schemas/ # Validation schemas
+    │       │   ├── create-user.schema.ts # User creation schema
+    │       │   ├── email.schema.ts # Email validation schema
+    │       │   ├── password.schema.ts # Password validation schema
+    │       │   ├── username.schema.ts # Username validation schema
+    │       │   └── index.ts     # Export schemas
+    │       └── value-objects/ # User value objects
+    │           ├── email.ts     # Email value object
+    │           ├── name.ts      # Name value object
+    │           ├── password.ts  # Password value object
+    │           └── index.ts     # Export value objects
     ├── infrastructure/ # External implementations (frameworks, tools)
     │   ├── databases/  # Database implementations
     │   │   └── drizzle-supabase/ # Drizzle ORM with Supabase/Postgres
@@ -76,34 +118,59 @@ express-app/
     │   │           │   ├── _journal.json   # Migration journal
     │   │           │   └── *.json   # Migration snapshots
     │   │           └── *.sql        # SQL migration files
+    │   ├── di-container/ # Dependency injection container
+    │   │   ├── container.ts   # IoC container setup
+    │   │   └── types.ts       # DI type definitions
     │   ├── errors/     # Custom error classes
     │   │   ├── base.error.ts   # Base error class
     │   │   ├── index.ts        # Export error classes
     │   │   └── *               # HTTP status-specific errors
-    │   └── providers/  # External service implementations
-    │       ├── index.ts        # Export providers
-    │       └── logger/         # Logging implementation
-    │           ├── constants.ts # Logger configuration constants
-    │           ├── index.ts     # Export logger components
-    │           └── logger.ts    # Winston logger implementation
+    │   ├── providers/  # External service implementations
+    │   │   ├── crypto/  # Cryptography implementation
+    │   │   ├── logger/  # Logging implementation
+    │   │   │   ├── constants.ts # Logger configuration constants
+    │   │   │   ├── index.ts     # Export logger components
+    │   │   │   └── logger.ts    # Winston logger implementation
+    │   │   └── index.ts # Export providers
+    │   └── repositories/ # Repository implementations
+    │       └── drizzle/  # Drizzle-based repositories
+    │           └── user.repository.ts # User repository implementation
     ├── presentation/   # User interface layer
-    │   └── express/    # Express-specific code
-    │       ├── app.ts           # Express application setup
-    │       ├── server.ts        # Server entry point
-    │       └── middlewares/     # Express middlewares
-    │           ├── index.ts     # Export middlewares
-    │           └── errors/      # Error handling middlewares
-    │               ├── global-error.middleware.ts # Global error handler
-    │               ├── not-allowed-method.middleware.ts # 405 Method not allowed
-    │               └── index.ts # Export error middlewares
+    │   ├── adapters/   # Adapter implementations
+    │   │   └── express.ts     # Express adapter for controllers
+    │   ├── express/    # Express-specific code
+    │   │   ├── app.ts         # Express application setup
+    │   │   ├── server.ts      # Server entry point
+    │   │   ├── middlewares/   # Express middlewares
+    │   │   │   ├── errors/    # Error handling middlewares
+    │   │   │   │   ├── global-error.middleware.ts # Global error handler
+    │   │   │   │   ├── not-allowed-method.middleware.ts # 405 Method not allowed
+    │   │   │   │   └── index.ts # Export error middlewares
+    │   │   │   ├── validations/ # Request validation middlewares
+    │   │   │   │   ├── validate-request.middleware.ts # Zod validation middleware
+    │   │   │   │   └── index.ts # Export validation middlewares
+    │   │   │   └── index.ts     # Export all middlewares
+    │   │   ├── routes/       # Express routes
+    │   │   │   ├── user.ts     # User routes
+    │   │   │   └── index.ts    # Export routes
+    │   │   └── types/        # Express type definitions
+    │   │       └── index.ts    # Type definitions
+    │   ├── http/      # HTTP-related components
+    │   │   ├── controllers/  # API controllers
+    │   │   │   ├── controller.interface.ts # Controller interface
+    │   │   │   └── user/     # User controllers
+    │   │   │       ├── create-user.ts # User creation controller
+    │   │   │       └── index.ts # Export user controllers
+    │   │   └── helpers/     # HTTP helpers
+    │   │       └── interfaces/ # HTTP interfaces
+    │   │           ├── http-req.ts # HTTP request interface
+    │   │           ├── http-res.ts # HTTP response interface
+    │   │           └── index.ts # Export HTTP interfaces
+    │   └── service-provider/ # Service provider (DI container access)
+    │       └── index.ts      # Service provider implementation
     └── config/         # Configuration files
         ├── env.config.ts  # Environment variable validation
-        ├── index.ts       # Export configurations
-        └── inversify/     # Dependency injection setup
-            ├── container.ts      # IoC container setup
-            ├── service-provider.ts # Service provider initialization
-            ├── types.ts          # DI type definitions
-            └── index.ts          # Export DI utilities
+        └── index.ts       # Export configurations
 ```
 
 ## Setup and Installation
@@ -200,15 +267,46 @@ The development server will start with hot-reloading enabled, running from the e
 
 ## Recent Changes (May 2025)
 
-- **Architectural Refactoring**: Migrated from a flat structure to a layered Clean Architecture approach
+- **Architectural Refactoring**:
+
+  - Migrated from a flat structure to a layered Clean Architecture approach
+  - Reorganized DI container from `/config/inversify` to `/infrastructure/di-container`
+  - Moved service provider to the presentation layer for better separation of concerns
+
 - **Improved Separation of Concerns**:
+
   - Moved Express-specific code to the presentation layer
   - Defined clear interfaces in the application layer
   - Implemented services in the infrastructure layer
+  - Properly structured HTTP helpers and interfaces
+
 - **Enhanced Logging System**:
+
   - Created a clearer interface for the logger in the application layer
   - Implemented the interface in the infrastructure layer
+
+- **Added Schema Validation**:
+
+  - Extracted validation schemas from value objects into dedicated schema files
+  - Added comprehensive validation for email, username, and password
+  - Added detailed JSDoc documentation for schemas and validation rules
+
+- **Request Validation Middleware**:
+
+  - Implemented type-safe request validation using Zod
+  - Created middleware for validating request body, params, and query
+  - Added standardized error handling for validation failures
+  - Applied validation to API endpoints for improved data integrity
+
+- **User Registration API**:
+
+  - Implemented complete user registration endpoint
+  - Added proper validation and error handling
+  - Created controller, use case, and repository implementation
+  - Added comprehensive documentation for all components
+
 - **Dependency Injection Updates**:
+
   - Updated DI container with the new architecture
   - Renamed symbols for better clarity (e.g., LoggerService -> Logger)
 
@@ -224,10 +322,46 @@ pnpm start:api
 
 ## API Endpoints
 
-| Method                             | Endpoint | Description                  |
-| ---------------------------------- | -------- | ---------------------------- |
-| GET                                | /        | Health check/welcome message |
-| _Additional endpoints to be added_ |
+| Method | Endpoint      | Description                  | Request Body                | Response                                  |
+| ------ | ------------- | ---------------------------- | --------------------------- | ----------------------------------------- |
+| GET    | /             | Health check/welcome message | None                        | `{ "message": "Hello from the server!" }` |
+| POST   | /api/v1/users | Create a new user account    | `{ name, email, password }` | User object with 201 status               |
+
+### User Management Endpoints
+
+#### Create User
+
+```
+POST /api/v1/users
+```
+
+Creates a new user account.
+
+**Request Body:**
+
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "StrongP@ssw0rd"
+}
+```
+
+**Response (201 Created):**
+
+```json
+{
+  "id": "user-123",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "createdAt": "2025-05-16T10:30:00Z"
+}
+```
+
+**Possible Errors:**
+
+- 400 Bad Request: Invalid input data (name, email, or password)
+- 409 Conflict: User with the provided email already exists
 
 ## Core Features
 
@@ -239,22 +373,11 @@ The application uses InversifyJS for dependency injection, which helps with:
 - Easier testing through mocking
 - Centralized service management
 
-Services are registered in `container.ts` and accessed through `service-provider.ts`.
+Services are registered in `container.ts` and accessed through the service provider.
 
 ### Type-Safe Environment Configuration
 
 Environment variables are validated using Zod to ensure type safety and proper configuration. This prevents runtime errors due to missing or incorrectly formatted environment variables.
-
-Example from `env.config.ts`:
-
-```typescript
-const envSchema = z.object({
-  NODE_ENV: z.enum(["production", "development", "test"]),
-  PORT: z.string({ message: "PORT must be a string" }).default("8080"),
-  SERVER_URL: z.string({ message: "SERVER_URL must be a string" }),
-  CLIENT_URL: z.string({ message: "CLIENT_URL must be a string" }),
-});
-```
 
 ### Logging System
 
@@ -266,46 +389,6 @@ The application includes a comprehensive logging system based on Winston:
 - Separate error logs
 - Structured JSON log format
 - Contextual metadata support
-
-Example usage:
-
-```typescript
-import { loggerService } from "@/config/inversify";
-
-// Basic logging
-loggerService.info("Server started successfully");
-
-// Logging with metadata
-loggerService.error("Database connection failed", {
-  attemptCount: 3,
-  lastError: "Connection timeout"
-});
-```
-
-Example implementation features:
-
-```typescript
-@injectable()
-export class LoggerService implements ILoggerService {
-  // Multiple log methods with consistent interface
-  public error: LogMethod = (message: string, meta?: any) => {
-    this.logger.error(message, meta);
-  };
-
-  public warn: LogMethod = (message: string, meta?: any) => {
-    this.logger.warn(message, meta);
-  };
-
-  // Additional utility methods
-  public getLogger(): winston.Logger {
-    return this.logger;
-  }
-
-  public addTransport(transport: winston.transport): void {
-    this.logger.add(transport);
-  }
-}
-```
 
 ### Error Handling
 
@@ -365,10 +448,48 @@ The application also includes process-level error handlers for:
 
 These ensure that errors are properly logged before the application shuts down gracefully.
 
+### Controller and Adapter Pattern
+
+The application follows the Controller pattern with Adapters for clean separation of concerns:
+
+- **HTTP Controllers**: Handle the application's business logic
+- **Express Adapter**: Translates between Express requests/responses and the application's interface
+- **Framework-Agnostic**: Business logic remains isolated from web framework details
+
+This approach makes the application more testable and adaptable to different presentation frameworks.
+
 ### Security
 
 - **Helmet**: Provides security headers to protect against common web vulnerabilities
 - **CORS**: Configured to only allow specific origins to access the API
+
+### Request Validation
+
+The application includes a comprehensive validation system:
+
+#### Schema-Based Validation
+
+- **Zod Schemas**: Type-safe validation schemas for all domain objects:
+
+  - User creation data
+  - Email addresses
+  - Passwords
+  - Usernames
+
+- **Value Objects**: Domain-driven design approach with value objects:
+  - `Email`: Validates and encapsulates email addresses
+  - `Password`: Validates and encapsulates password values
+  - `UserName`: Validates and encapsulates username values
+
+#### Request Validation Middleware
+
+- **validateRequest Middleware**: Generic middleware for validating HTTP requests:
+
+  - Validates request body against schemas
+  - Validates URL parameters
+  - Validates query parameters
+  - Provides descriptive error messages
+  - Throws appropriate HTTP errors for invalid data
 
 ## Testing
 
