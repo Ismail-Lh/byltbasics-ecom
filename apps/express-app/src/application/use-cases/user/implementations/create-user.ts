@@ -17,7 +17,8 @@ export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(@inject(TYPES.UserRepository) private userRepository: IUserRepository, @inject(TYPES.CryptoProvider) private cryptoProvider: ICryptoProvider) {}
 
   async execute(data: ICreateUserReqDTO): Promise<IResponseDTO<IUserOutReqDTO>> {
-    const { name, email, password } = new UserEntity(data);
+    const userEntity = UserEntity.create(data);
+    const { name, email, password } = userEntity;
 
     const existingUser = await this.userRepository.findByEmail(email);
 
