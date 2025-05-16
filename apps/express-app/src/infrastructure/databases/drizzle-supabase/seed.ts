@@ -3,7 +3,7 @@ import type { Table } from "drizzle-orm";
 import { getTableName, sql } from "drizzle-orm";
 
 import { envConfig } from "@/config";
-import { logger } from "@/config/inversify";
+import { logger } from "@/presentation/service-provider";
 
 import { connection, db } from "./";
 import * as schema from "./schemas";
@@ -21,7 +21,7 @@ async function resetTable(db: db, table: Table) {
 
 async function main() {
   for (const table of [
-    schema.user,
+    schema.usersTable,
   ]) {
     // await db.delete(table); // clear tables without truncating / resetting ids
     await resetTable(db, table);

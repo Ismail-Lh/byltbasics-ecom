@@ -1,6 +1,8 @@
-import { envConfig } from "@/config";
-import { logger } from "@/config/inversify";
+// import "express-async-errors";
 
+import { envConfig } from "@/config";
+
+import { logger } from "../service-provider";
 import app from "./app";
 
 const PORT = envConfig.server.port || 8080;
