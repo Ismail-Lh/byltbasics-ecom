@@ -39,3 +39,5 @@
 
 # logs
 **/logs
+
+**/dist
