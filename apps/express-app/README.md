@@ -272,6 +272,13 @@ The development server will start with hot-reloading enabled, running from the e
 
 ## Recent Changes (May 2025)
 
+- **Authentication Module Implementation**:
+
+  - Restructured user registration into a dedicated authentication module
+  - Implemented clearer API naming with auth-specific endpoints
+  - Set up foundation for future authentication features (login, token refresh, etc.)
+  - Improved API semantics and organization
+
 - **Standardized API Response Format**:
 
   - Implemented a unified response format for consistent API communication
@@ -334,17 +341,17 @@ pnpm start:api
 
 ## API Endpoints
 
-| Method | Endpoint      | Description                  | Request Body                | Response                                  |
-| ------ | ------------- | ---------------------------- | --------------------------- | ----------------------------------------- |
-| GET    | /             | Health check/welcome message | None                        | `{ "message": "Hello from the server!" }` |
-| POST   | /api/v1/users | Create a new user account    | `{ name, email, password }` | User object with 201 status               |
+| Method | Endpoint              | Description                  | Request Body                | Response                                  |
+| ------ | --------------------- | ---------------------------- | --------------------------- | ----------------------------------------- |
+| GET    | /                     | Health check/welcome message | None                        | `{ "message": "Hello from the server!" }` |
+| POST   | /api/v1/auth/register | Register a new user account  | `{ name, email, password }` | User object with 201 status               |
 
-### User Management Endpoints
+### Authentication Endpoints
 
-#### Create User
+#### Register User
 
 ```
-POST /api/v1/users
+POST /api/v1/auth/register
 ```
 
 Creates a new user account.
@@ -482,6 +489,36 @@ The application follows the Controller pattern with Adapters for clean separatio
 - **Framework-Agnostic**: Business logic remains isolated from web framework details
 
 This approach makes the application more testable and adaptable to different presentation frameworks.
+
+### Authentication Module
+
+The application includes a dedicated authentication module that handles user registration, login, and session management:
+
+#### Architecture
+
+- **Controllers**: Auth-specific controllers in `presentation/http/controllers/auth/`
+
+  - `AuthRegisterController`: Handles user registration requests
+  - (Future) `AuthLoginController`: Will handle user login
+  - (Future) `AuthRefreshController`: Will handle token refresh
+
+- **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
+
+  - RESTful endpoints under `/api/v1/auth/` prefix
+  - Clear separation of authentication concerns
+
+- **Design Benefits**:
+  - Centralized authentication logic
+  - Improved API organization and discoverability
+  - Clear extension points for future auth features
+  - Better adherence to single responsibility principle
+
+#### Security Considerations
+
+- Password hashing with bcrypt
+- Protection against brute force attacks
+- Proper error handling for auth failures
+- Input validation for all auth-related requests
 
 ### Standardized API Response Format
 
