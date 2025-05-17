@@ -4,5 +4,5 @@ export const TYPES = {
   ApiResponseSanitizer: Symbol.for("ApiResponseSanitizer"),
   UserRepository: Symbol.for("UserRepository"),
   CreateUserUseCase: Symbol.for("CreateUserUseCase"),
-  CreateUserController: Symbol.for("CreateUserController"),
+  AuthRegisterController: Symbol.for("AuthRegisterController"),
 } as const;

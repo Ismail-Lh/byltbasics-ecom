@@ -2,7 +2,7 @@
 import "reflect-metadata";
 
 import type { IApiResponseSanitizer, ILogger } from "@/application/providers";
-import type { ICreateUserController } from "@/presentation/http/controllers/user";
+import type { IAuthRegisterController } from "@/presentation/http/controllers/auth";
 
 import { container } from "@/infrastructure/di-container/container";
 import { TYPES } from "@/infrastructure/di-container/types";
@@ -13,6 +13,6 @@ export const apiResponseSanitizer = container.get<IApiResponseSanitizer>(
   TYPES.ApiResponseSanitizer,
 );
 
-export const createUserController = container.get<ICreateUserController>(
-  TYPES.CreateUserController,
+export const authRegisterController = container.get<IAuthRegisterController>(
+  TYPES.AuthRegisterController,
 );

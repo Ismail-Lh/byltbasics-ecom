@@ -4,12 +4,12 @@ import { Container } from "inversify";
 import type { IApiResponseSanitizer, ICryptoProvider, ILogger } from "@/application/providers";
 import type { IUserRepository } from "@/application/repositories";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
-import type { ICreateUserController } from "@/presentation/http/controllers/user";
+import type { IAuthRegisterController } from "@/presentation/http/controllers/auth";
 
 import { CreateUserUseCase } from "@/application/use-cases/user";
 import { ApiResponseSanitizer, CryptoProvider, Logger } from "@/infrastructure/providers";
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
-import { CreateUserController } from "@/presentation/http/controllers/user";
+import { AuthRegisterController } from "@/presentation/http/controllers/auth";
 
 import { TYPES } from "./types";
 
@@ -39,8 +39,8 @@ function bootstrapContainer() {
     .to(CreateUserUseCase);
 
   container
-    .bind<ICreateUserController>(TYPES.CreateUserController)
-    .to(CreateUserController);
+    .bind<IAuthRegisterController>(TYPES.AuthRegisterController)
+    .to(AuthRegisterController);
 
   return container;
 }

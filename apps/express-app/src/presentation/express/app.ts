@@ -10,7 +10,7 @@ import express from "express";
 import helmet from "helmet";
 
 import { globalErrorMiddleware, notAllowedMethodMiddleware } from "./middlewares";
-import { userRoutes } from "./routes";
+import { authRoutes } from "./routes";
 
 const app: Express = express();
 
@@ -33,7 +33,7 @@ app.get("/", (_req, res) => {
   res.json({ message: "Hello from the server!" });
 });
 
-app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 // Handle unsupported HTTP methods
 // This middleware is used to respond with a 405 Method Not Allowed error

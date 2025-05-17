@@ -9,20 +9,20 @@ import { TYPES } from "@/infrastructure/di-container/types";
 import type { IHttpRequest, IHttpResponse } from "../../helpers/interfaces";
 import type { IHttpController } from "../controller.interface";
 
-export interface ICreateUserController extends IHttpController<ICreateUserReqDTO, IUserOutReqDTO> {}
+export interface IAuthRegisterController extends IHttpController<ICreateUserReqDTO, IUserOutReqDTO> {}
 
 /**
- * Controller responsible for handling HTTP requests related to user creation.
+ * Controller responsible for handling HTTP requests related to user registration.
  *
  * @remarks
- * This controller receives user creation requests, delegates the business logic to the injected
+ * This controller receives user registration requests, delegates the business logic to the injected
  * `CreateUserUseCase`, and returns the appropriate HTTP response.
  *
- * @see ICreateUserController
+ * @see IAuthRegisterController
  * @see ICreateUserUseCase
  */
 @injectable()
-export class CreateUserController implements ICreateUserController {
+export class AuthRegisterController implements IAuthRegisterController {
   /**
    * Creates an instance of the controller with the injected CreateUserUseCase dependency.
    *
@@ -33,7 +33,7 @@ export class CreateUserController implements ICreateUserController {
   /**
    * Handles the HTTP request to create a new user.
    *
-   * @param request - The HTTP request containing the user creation data in the body.
+   * @param request - The HTTP request containing the user registration data in the body.
    * @returns A promise that resolves to an HTTP response with the created user data.
    */
   async handle(request: IHttpRequest<ICreateUserReqDTO>): Promise<IHttpResponse<IUserOutReqDTO>> {
