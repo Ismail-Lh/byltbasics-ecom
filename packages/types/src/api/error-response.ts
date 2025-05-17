@@ -25,7 +25,7 @@ export interface IApiErrorResponse {
   /**
    * The payload containing details about the error.
    */
-  payload: {
+  body: {
     /**
      * A descriptive message about the error.
      */

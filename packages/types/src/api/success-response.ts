@@ -11,9 +11,9 @@
  * @property payload.paginationMeta - (Optional) Metadata for paginated responses, if applicable.
  */
 export interface IApiSuccessResponse<T> {
-  success: boolean;
   statusCode: number;
-  payload: {
+  success: boolean;
+  body: {
     message: string;
     data: T;
   };
