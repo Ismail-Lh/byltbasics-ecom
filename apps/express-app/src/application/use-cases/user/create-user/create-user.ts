@@ -10,7 +10,7 @@ import { UserErrors } from "@/domain/user/enums";
 import { TYPES } from "@/infrastructure/di-container/types";
 import { BadRequestError } from "@/infrastructure/errors";
 
-import type { ICreateUserUseCase } from "../interfaces";
+import type { ICreateUserUseCase } from "./create-user.interface";
 
 /**
  * Use case for creating a new user in the system.
