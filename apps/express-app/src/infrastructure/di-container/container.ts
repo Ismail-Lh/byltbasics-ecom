@@ -1,13 +1,13 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 
-import type { ICryptoProvider, ILogger } from "@/application/providers";
+import type { IApiResponseSanitizer, ICryptoProvider, ILogger } from "@/application/providers";
 import type { IUserRepository } from "@/application/repositories";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
 import type { ICreateUserController } from "@/presentation/http/controllers/user";
 
 import { CreateUserUseCase } from "@/application/use-cases/user";
-import { CryptoProvider, Logger } from "@/infrastructure/providers";
+import { ApiResponseSanitizer, CryptoProvider, Logger } from "@/infrastructure/providers";
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
 import { CreateUserController } from "@/presentation/http/controllers/user";
 
@@ -25,6 +25,10 @@ function bootstrapContainer() {
   container
     .bind<ICryptoProvider>(TYPES.CryptoProvider)
     .to(CryptoProvider);
+
+  container
+    .bind<IApiResponseSanitizer>(TYPES.ApiResponseSanitizer)
+    .to(ApiResponseSanitizer);
 
   container
     .bind<IUserRepository>(TYPES.UserRepository)
