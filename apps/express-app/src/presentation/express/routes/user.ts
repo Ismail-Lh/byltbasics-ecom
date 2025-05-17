@@ -17,9 +17,9 @@ const userRoutes = Router();
  * Endpoint to create a new user.
  */
 userRoutes.post("/", validateRequest({ body: createUserSchema }), async (request: Request, response: Response) => {
-  const adapter = await expressAdapter(request, createUserController);
+  const res = await expressAdapter(request, createUserController);
 
-  response.status(adapter.statusCode).json(adapter.body);
+  response.status(res.statusCode).json(res.body);
 });
 
 export { userRoutes };

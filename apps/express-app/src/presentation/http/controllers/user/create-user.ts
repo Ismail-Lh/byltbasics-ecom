@@ -1,5 +1,6 @@
 import { inject, injectable } from "inversify";
 
+import type { IApiResponseSanitizer } from "@/application/providers";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
 import type { ICreateUserReqDTO, IUserOutReqDTO } from "@/domain/user/dtos";
 
@@ -27,7 +28,7 @@ export class CreateUserController implements ICreateUserController {
    *
    * @param createUserUseCase - The use case responsible for handling user creation logic.
    */
-  constructor(@inject(TYPES.CreateUserUseCase) private createUserUseCase: ICreateUserUseCase) {}
+  constructor(@inject(TYPES.CreateUserUseCase) private createUserUseCase: ICreateUserUseCase, @inject(TYPES.ApiResponseSanitizer) private apiResponseSanitizer: IApiResponseSanitizer) {}
 
   /**
    * Handles the HTTP request to create a new user.
@@ -38,11 +39,11 @@ export class CreateUserController implements ICreateUserController {
   async handle(request: IHttpRequest<ICreateUserReqDTO>): Promise<IHttpResponse<IUserOutReqDTO>> {
     const body = request.body;
 
-    const userRes = await this.createUserUseCase.execute(body);
+    const { data, message, statusCode } = await this.createUserUseCase.execute(body);
 
-    return {
-      statusCode: userRes.statusCode,
-      body: userRes.data,
-    };
+    // Sanitize the response data
+    const sanitizedResponse = this.apiResponseSanitizer.successResponse({ data, message, statusCode });
+
+    return sanitizedResponse;
   }
 }

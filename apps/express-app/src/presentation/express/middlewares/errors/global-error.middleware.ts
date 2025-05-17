@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import type { BaseError } from "@/infrastructure/errors";
 
 import { envConfig } from "@/config";
-import { logger } from "@/presentation/service-provider";
+import { apiResponseSanitizer, logger } from "@/presentation/service-provider";
 
 export function globalErrorMiddleware(
   err: BaseError,
@@ -23,11 +23,13 @@ export function globalErrorMiddleware(
     logger.debug(`Error Stack: ${err.stack}`);
   }
 
-  res.status(statusCode).json({
+  const formatedError = apiResponseSanitizer.errorResponse({
     message: err.message,
     statusCode,
     name: err.name,
   });
+
+  res.status(formatedError.statusCode).json(formatedError.body);
 
   next();
 }
