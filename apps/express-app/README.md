@@ -16,6 +16,7 @@ This is the backend API service for the BYLT Basics e-commerce project. It provi
 - **Drizzle ORM**: Database ORM
 - **Postgres**: PostgreSQL client
 - **express-async-errors**: Async error handling
+- **@byltbasics/types**: Shared type definitions across the monorepo
 
 ## Architecture Overview
 
@@ -66,7 +67,8 @@ express-app/
     │   ├── providers/  # Interfaces for external services
     │   │   ├── index.ts       # Export provider interfaces
     │   │   ├── crypto.interface.ts # Crypto provider interface
-    │   │   └── logger.interface.ts # Logger interface definitions
+    │   │   ├── logger.interface.ts # Logger interface definitions
+    │   │   └── response-sanitizer.interface.ts # Response sanitizer interface
     │   ├── repositories/ # Repository interfaces
     │   │   ├── index.ts       # Export repository interfaces
     │   │   └── user.repository.ts # User repository interface
@@ -131,6 +133,9 @@ express-app/
     │   │   │   ├── constants.ts # Logger configuration constants
     │   │   │   ├── index.ts     # Export logger components
     │   │   │   └── logger.ts    # Winston logger implementation
+    │   │   ├── response-sanitizer/ # Response sanitizer implementation
+    │   │   │   ├── index.ts     # Export response sanitizer
+    │   │   │   └── response-sanitizer.ts # Response sanitizer implementation
     │   │   └── index.ts # Export providers
     │   └── repositories/ # Repository implementations
     │       └── drizzle/  # Drizzle-based repositories
@@ -267,6 +272,13 @@ The development server will start with hot-reloading enabled, running from the e
 
 ## Recent Changes (May 2025)
 
+- **Standardized API Response Format**:
+
+  - Implemented a unified response format for consistent API communication
+  - Created an `ApiResponseSanitizer` to handle response formatting and data sanitization
+  - Integrated with shared types package to ensure consistency across frontend and backend
+  - Added sensitive data filtering to prevent leaking of critical information
+
 - **Architectural Refactoring**:
 
   - Migrated from a flat structure to a layered Clean Architecture approach
@@ -351,10 +363,17 @@ Creates a new user account.
 
 ```json
 {
-  "id": "user-123",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "createdAt": "2025-05-16T10:30:00Z"
+  "success": true,
+  "statusCode": 201,
+  "body": {
+    "message": "User created successfully",
+    "data": {
+      "id": "user-123",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "createdAt": "2025-05-16T10:30:00Z"
+    }
+  }
 }
 ```
 
@@ -433,9 +452,15 @@ All API errors follow a consistent JSON format:
 
 ```json
 {
-  "message": "Detailed error message",
+  "success": false,
   "statusCode": 400,
-  "name": "BAD_REQUEST"
+  "body": {
+    "message": "Detailed error message",
+    "name": "BAD_REQUEST",
+    "errorDetails": {
+      "email": "Email format is invalid"
+    }
+  }
 }
 ```
 
@@ -457,6 +482,62 @@ The application follows the Controller pattern with Adapters for clean separatio
 - **Framework-Agnostic**: Business logic remains isolated from web framework details
 
 This approach makes the application more testable and adaptable to different presentation frameworks.
+
+### Standardized API Response Format
+
+The application implements a standardized API response format to ensure consistency across all endpoints:
+
+#### Response Sanitizer
+
+The `ApiResponseSanitizer` is responsible for:
+
+- **Formatting Responses**: Ensuring all API responses follow a consistent format
+- **Data Sanitization**: Removing sensitive data from responses (passwords, tokens, etc.)
+- **Type Safety**: Providing type-safe response structures through shared types
+
+All API responses follow these standardized formats:
+
+**Success Response Structure:**
+
+```typescript
+{
+  success: boolean; // Always true for success responses
+  statusCode: number; // HTTP status code (200, 201, etc.)
+  body: {
+    message: string; // Success message
+    data: T; // Response data (generic type)
+  };
+}
+```
+
+**Error Response Structure:**
+
+```typescript
+{
+  success: boolean; // Always false for error responses
+  statusCode: number; // HTTP status code (400, 404, 500, etc.)
+  body: {
+    message: string; // Error message
+    name: string; // Error type identifier
+    errorDetails: any;
+  };
+}
+```
+
+#### Sensitive Data Protection
+
+The sanitizer automatically detects and removes sensitive data using pattern matching. Fields that match any of these patterns are removed from responses:
+
+- Password fields
+- User IDs collections
+- Credit card information
+- Social security numbers
+- Authentication tokens
+- API keys
+- Private keys
+- Secret keys
+
+This helps prevent inadvertent exposure of sensitive information through API responses.
 
 ### Security
 
@@ -493,11 +574,123 @@ The application includes a comprehensive validation system:
 
 ## Testing
 
-_Testing implementation details to be added_
+The application follows a comprehensive testing strategy aligned with the Clean Architecture approach:
+
+### Testing Framework
+
+- **Jest**: Primary testing framework
+- **Supertest**: HTTP testing utility for API endpoints
+- **ts-mockito**: Mocking library for TypeScript
+
+### Testing Structure
+
+Tests are organized according to the application's architecture layers:
+
+- **Unit Tests**: Test individual components in isolation
+
+  - Value objects
+  - Entities
+  - Use cases
+  - Providers
+
+- **Integration Tests**: Test interactions between components
+  - Repository implementations with database
+  - Middleware chains
+  - Controller workflows
+- **API Tests**: Test complete HTTP endpoints
+  - Request validation
+  - Response format
+  - Status codes
+  - Error handling
+
+### Test Naming Convention
+
+Tests follow a descriptive naming convention:
+
+```
+[Component].[scenario].[expected result]
+```
+
+Example: `Email.withInvalidFormat.shouldThrowValidationError`
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run with coverage
+pnpm test:coverage
+
+# Run specific test suite
+pnpm test -- -t "UserRepository"
+```
+
+### Test Environments
+
+- Tests use isolated environments with:
+  - In-memory databases for repository tests
+  - Mocked dependencies for use case tests
+  - Test-specific configuration
 
 ## Deployment
 
-_Deployment details to be added_
+The application is designed for flexible deployment options:
+
+### Containerization
+
+- **Docker**: Application is containerized for consistent deployment
+- **Docker Compose**: Development environment with all dependencies
+- **Dockerfile**: Multi-stage build for optimized production images
+
+### CI/CD Pipeline
+
+The application uses GitHub Actions for continuous integration and deployment:
+
+- **Build & Test**: On every pull request
+
+  - Run tests
+  - Check code style
+  - Build application
+
+- **Deploy to Staging**: On merge to develop branch
+  - Build and push Docker image
+  - Deploy to staging environment
+  - Run smoke tests
+- **Deploy to Production**: On merge to main branch
+  - Build and push Docker image
+  - Deploy to production environment
+  - Run health checks
+
+### Infrastructure
+
+- **Production**: Kubernetes cluster on AWS EKS
+- **Staging**: Kubernetes cluster on AWS EKS
+- **Database**: Managed PostgreSQL (AWS RDS)
+- **Logging**: ELK Stack (Elasticsearch, Logstash, Kibana)
+- **Monitoring**: Prometheus and Grafana
+
+### Scaling Strategy
+
+- **Horizontal Scaling**: Multiple instances behind a load balancer
+- **Auto-Scaling**: Based on CPU and memory metrics
+- **Database Scaling**: Read replicas for high-traffic scenarios
+
+### Deployment Commands
+
+```bash
+# Build for production
+pnpm build:api
+
+# Start in production mode
+pnpm start:api
+
+# Build Docker image
+docker build -t byltbasics/api:latest .
+
+# Run Docker container
+docker run -p 3001:3001 --env-file .env byltbasics/api:latest
+```
 
 ## License
 
