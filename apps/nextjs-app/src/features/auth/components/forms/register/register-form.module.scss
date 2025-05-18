@@ -1,0 +1,28 @@
+@use "@/app/variables" as *;
+@use "@/app/mixin" as *;
+
+.register {
+  @include mr-pd($mr: 5.9rem 0 0 0, $pd: 4rem 0 2rem 0);
+
+  @media (max-width: 768px) {
+    padding-top: 2rem;
+  }
+
+  &__form,
+  &__form div {
+    margin-bottom: 1.5rem;
+  }
+
+  &__form {
+    label {
+      @include text-transform($transform: capitalize, $weight: 300);
+      font-size: $sm-size-2;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
