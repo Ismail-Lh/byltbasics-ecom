@@ -41,3 +41,5 @@
 **/logs
 
 **/dist
+
+**/client-ui
