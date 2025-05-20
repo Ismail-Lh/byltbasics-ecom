@@ -1,22 +1,15 @@
 "use client";
 
+import type { z } from "zod";
+
 import { Button, FormInput } from "@/components/global";
 import { Form } from "@/components/ui";
+import { useRegister } from "@/features/auth/hooks";
+import { registerSchema } from "@/features/auth/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import classes from "./register-form.module.scss";
-
-const registerSchema = z.object({
-  username: z.string().min(1, { message: "Username is required" }),
-  email: z.string().email({ message: "Invalid email address" }),
-  password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
-  password_confirm: z.string().min(6, { message: "Password confirmation is required" }),
-}).refine(data => data.password === data.password_confirm, {
-  message: "Passwords don't match",
-  path: ["password_confirm"],
-});
 
 export type IRegisterDto = z.infer<typeof registerSchema>;
 
@@ -24,22 +17,24 @@ export function RegisterForm() {
   const form = useForm<IRegisterDto>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       password_confirm: "",
     },
   });
 
-  const handleRegister = (formData: IRegisterDto) => console.log(formData);
+  const { mutate: register, isPending } = useRegister();
+
+  const handleRegister = (formData: IRegisterDto) => register(formData);
 
   return (
     <Form {...form}>
       <form className={classes.register__form} onSubmit={form.handleSubmit(handleRegister)}>
         <FormInput
-          name="username"
-          placeholder="Enter Your Username"
-          label="Username"
+          name="name"
+          placeholder="Enter Your Name"
+          label="Name"
           control={form.control}
         />
         <FormInput
@@ -64,7 +59,7 @@ export function RegisterForm() {
           control={form.control}
         />
 
-        <Button disabled={false} color="black" type="submit">
+        <Button disabled={isPending} color="black" type="submit">
           Create Account
         </Button>
       </form>
