@@ -179,6 +179,18 @@ importers:
         specifier: ^5
         version: 5.8.3
 
+  packages/schemas:
+    dependencies:
+      tsup:
+        specifier: ^8.4.0
+        version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.1)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.8.3
+      zod:
+        specifier: ^3.24.4
+        version: 3.24.4
+
   packages/types:
     dependencies:
       tsup:

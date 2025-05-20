@@ -12,6 +12,7 @@
     "dev:client": "pnpm --filter nextjs-app dev",
     "build:client": "pnpm --filter nextjs-app build",
     "build:types": "pnpm run --filter types build",
+    "build:schemas": "pnpm run --filter schemas build",
     "start:client": "pnpm --filter nextjs-app start",
     "lint:client": "pnpm --filter nextjs-app lint",
     "dev:api": "pnpm --filter express-app dev",
