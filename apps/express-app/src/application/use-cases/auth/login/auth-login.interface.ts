@@ -1,7 +1,4 @@
-import type { IUser } from "@byltbasics/types";
-
-import type { IAuthLoginDto } from "@/domain/auth/dtos";
-import type { IResponseDTO } from "@/domain/shared/dtos";
+import type { IAuthLoginDto, IAuthResponseDto } from "@/domain/auth/dtos";
 
 /**
  * Interface for the use case of user authentication login.
@@ -14,7 +11,7 @@ export interface IAuthLoginUseCase {
    *
    * @async
    * @param {IAuthLoginDto} data - The data for user authentication login.
-   * @returns {Promise<IResponseDTO<IUser>>} The response data.
+   * @returns {Promise<IAuthResponseDto>} - A promise that resolves to the authentication response DTO.
    */
-  execute: (data: IAuthLoginDto) => Promise<IResponseDTO<IUser>>;
+  execute: (data: IAuthLoginDto) => Promise<IAuthResponseDto>;
 }
