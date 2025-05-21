@@ -2,7 +2,7 @@
 import "reflect-metadata";
 
 import type { IApiResponseSanitizer, ILogger } from "@/application/providers";
-import type { IAuthRegisterController } from "@/presentation/http/controllers/auth";
+import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/http/controllers/auth";
 
 import { container } from "@/infrastructure/di-container/container";
 import { TYPES } from "@/infrastructure/di-container/types";
@@ -15,4 +15,8 @@ export const apiResponseSanitizer = container.get<IApiResponseSanitizer>(
 
 export const authRegisterController = container.get<IAuthRegisterController>(
   TYPES.AuthRegisterController,
+);
+
+export const authLoginController = container.get<IAuthLoginController>(
+  TYPES.AuthLoginController,
 );
