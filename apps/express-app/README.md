@@ -59,13 +59,24 @@ The project follows Clean Architecture principles to create a maintainable and t
 
 ### Layers
 
-1. **Domain Layer** - Contains enterprise business rules, entities, and use cases. It has no dependencies on other layers.
+1. **Domain Layer**: Contains business entities, value objects, and domain rules
 
-2. **Application Layer** - Contains application-specific business rules. It defines interfaces that are implemented by the outer layers.
+   - Independent of frameworks and external concerns
+   - Defines the core business logic
 
-3. **Infrastructure Layer** - Contains implementations of interfaces defined in the application layer, including external services, tools, and frameworks.
+2. **Application Layer**: Contains use cases and interfaces
 
-4. **Presentation Layer** - Contains delivery mechanisms like the Express framework, controllers, and middleware that interact with the application layer.
+   - Orchestrates the flow of data between domain and infrastructure
+   - Defines interfaces implemented by outer layers
+
+3. **Infrastructure Layer**: Contains implementations of interfaces
+
+   - Database access, external services, and framework integrations
+   - Adapts external technologies to the application's needs
+
+4. **Presentation Layer**: Contains controllers, routes, and middleware
+   - Handles HTTP requests and responses
+   - Adapts the application to the web framework
 
 ### Key Benefits of This Architecture
 
@@ -91,126 +102,30 @@ The project follows a Clean Architecture approach, separating concerns into dist
 
 ```
 express-app/
-├── package.json        # Project dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-├── drizzle.config.ts   # Drizzle ORM configuration
+├── src/
+│   ├── domain/         # Enterprise business rules
+│   │   ├── shared/     # Shared domain components
+│   │   └── user/       # User domain entities and value objects
+│   ├── application/    # Application business rules
+│   │   ├── providers/  # Provider interfaces
+│   │   ├── repositories/ # Repository interfaces
+│   │   └── use-cases/  # Application use cases
+│   ├── infrastructure/ # External implementations
+│   │   ├── databases/  # Database implementations
+│   │   ├── di-container/ # Dependency injection
+│   │   ├── errors/     # Error handling
+│   │   ├── providers/  # Provider implementations
+│   │   └── repositories/ # Repository implementations
+│   ├── presentation/   # User interface layer
+│   │   ├── adapters/   # Framework adapters
+│   │   ├── express/    # Express-specific code
+│   │   ├── http/       # HTTP controllers
+│   │   └── service-provider/ # DI container access
+│   └── config/         # Configuration
 ├── logs/               # Log files (gitignored)
-│   ├── all.log         # Combined logs
-│   └── error.log       # Error-only logs
-└── src/
-    ├── application/    # Application business rules layer
-    │   ├── providers/  # Interfaces for external services
-    │   │   ├── index.ts       # Export provider interfaces
-    │   │   ├── crypto.interface.ts # Crypto provider interface
-    │   │   ├── logger.interface.ts # Logger interface definitions
-    │   │   └── response-sanitizer.interface.ts # Response sanitizer interface
-    │   ├── repositories/ # Repository interfaces
-    │   │   ├── index.ts       # Export repository interfaces
-    │   │   └── user.repository.ts # User repository interface
-    │   └── use-cases/  # Application use cases
-    │       └── user/   # User-related use cases
-    │           ├── implementations/ # Use case implementations
-    │           │   └── create-user.ts # User creation use case
-    │           ├── interfaces/    # Use case interfaces
-    │           │   └── create-user.ts # User creation interface
-    │           └── index.ts       # Export use cases
-    ├── domain/         # Enterprise business rules layer
-    │   ├── shared/     # Shared domain components
-    │   │   └── dtos/   # Shared data transfer objects
-    │   │       └── response/ # Response DTOs
-    │   │           └── response.dto.ts # Generic response interface
-    │   └── user/       # User domain entities and value objects
-    │       ├── dtos/   # User data transfer objects
-    │       ├── entity/ # User entity definition
-    │       │   └── user.entity.ts # User domain entity
-    │       ├── enums/  # User-related enumerations
-    │       │   └── errors.enum.ts # User error messages
-    │       ├── schemas/ # Validation schemas
-    │       │   ├── create-user.schema.ts # User creation schema
-    │       │   ├── email.schema.ts # Email validation schema
-    │       │   ├── password.schema.ts # Password validation schema
-    │       │   ├── username.schema.ts # Username validation schema
-    │       │   └── index.ts     # Export schemas
-    │       └── value-objects/ # User value objects
-    │           ├── email.ts     # Email value object
-    │           ├── name.ts      # Name value object
-    │           ├── password.ts  # Password value object
-    │           └── index.ts     # Export value objects
-    ├── infrastructure/ # External implementations (frameworks, tools)
-    │   ├── databases/  # Database implementations
-    │   │   └── drizzle-supabase/ # Drizzle ORM with Supabase/Postgres
-    │   │       ├── index.ts         # DB connection and setup
-    │   │       ├── migrate.ts       # Migration script
-    │   │       ├── seed.ts          # Seeding script
-    │   │       ├── schemas/         # Database schema definitions
-    │   │       │   ├── index.ts     # Export schemas
-    │   │       │   └── user.ts      # User schema definition
-    │   │       ├── seeds/           # Database seed data
-    │   │       │   ├── index.ts     # Export seed functions
-    │   │       │   ├── user.ts      # User seeding logic
-    │   │       │   └── data/        # Seed data files
-    │   │       │       └── users.json # Sample user data
-    │   │       └── migrations/      # Generated migration files
-    │   │           ├── meta/        # Migration metadata
-    │   │           │   ├── _journal.json   # Migration journal
-    │   │           │   └── *.json   # Migration snapshots
-    │   │           └── *.sql        # SQL migration files
-    │   ├── di-container/ # Dependency injection container
-    │   │   ├── container.ts   # IoC container setup
-    │   │   └── types.ts       # DI type definitions
-    │   ├── errors/     # Custom error classes
-    │   │   ├── base.error.ts   # Base error class
-    │   │   ├── index.ts        # Export error classes
-    │   │   └── *               # HTTP status-specific errors
-    │   ├── providers/  # External service implementations
-    │   │   ├── crypto/  # Cryptography implementation
-    │   │   ├── logger/  # Logging implementation
-    │   │   │   ├── constants.ts # Logger configuration constants
-    │   │   │   ├── index.ts     # Export logger components
-    │   │   │   └── logger.ts    # Winston logger implementation
-    │   │   ├── response-sanitizer/ # Response sanitizer implementation
-    │   │   │   ├── index.ts     # Export response sanitizer
-    │   │   │   └── response-sanitizer.ts # Response sanitizer implementation
-    │   │   └── index.ts # Export providers
-    │   └── repositories/ # Repository implementations
-    │       └── drizzle/  # Drizzle-based repositories
-    │           └── user.repository.ts # User repository implementation
-    ├── presentation/   # User interface layer
-    │   ├── adapters/   # Adapter implementations
-    │   │   └── express.ts     # Express adapter for controllers
-    │   ├── express/    # Express-specific code
-    │   │   ├── app.ts         # Express application setup
-    │   │   ├── server.ts      # Server entry point
-    │   │   ├── middlewares/   # Express middlewares
-    │   │   │   ├── errors/    # Error handling middlewares
-    │   │   │   │   ├── global-error.middleware.ts # Global error handler
-    │   │   │   │   ├── not-allowed-method.middleware.ts # 405 Method not allowed
-    │   │   │   │   └── index.ts # Export error middlewares
-    │   │   │   ├── validations/ # Request validation middlewares
-    │   │   │   │   ├── validate-request.middleware.ts # Zod validation middleware
-    │   │   │   │   └── index.ts # Export validation middlewares
-    │   │   │   └── index.ts     # Export all middlewares
-    │   │   ├── routes/       # Express routes
-    │   │   │   ├── user.ts     # User routes
-    │   │   │   └── index.ts    # Export routes
-    │   │   └── types/        # Express type definitions
-    │   │       └── index.ts    # Type definitions
-    │   ├── http/      # HTTP-related components
-    │   │   ├── controllers/  # API controllers
-    │   │   │   ├── controller.interface.ts # Controller interface
-    │   │   │   └── user/     # User controllers
-    │   │   │       ├── create-user.ts # User creation controller
-    │   │   │       └── index.ts # Export user controllers
-    │   │   └── helpers/     # HTTP helpers
-    │   │       └── interfaces/ # HTTP interfaces
-    │   │           ├── http-req.ts # HTTP request interface
-    │   │           ├── http-res.ts # HTTP response interface
-    │   │           └── index.ts # Export HTTP interfaces
-    │   └── service-provider/ # Service provider (DI container access)
-    │       └── index.ts      # Service provider implementation
-    └── config/         # Configuration files
-        ├── env.config.ts  # Environment variable validation
-        └── index.ts       # Export configurations
+├── package.json        # Project dependencies
+├── tsconfig.json       # TypeScript configuration
+└── drizzle.config.ts   # Drizzle ORM configuration
 ```
 
 ## Setup and Installation
@@ -313,16 +228,31 @@ The development server will start with hot-reloading enabled, running from the e
 
   - ✅ Implemented user registration with validation and hashing
   - ✅ Added JWT-based login with access and refresh tokens
-  - ✅ Created token refresh endpoint and validation
-  - ✅ Implemented secure logout mechanism
-  - ✅ Added password reset flow with email verification
+  - ❌ Created token refresh endpoint and validation (in-progress)
+  - ❌ Implemented secure logout mechanism (in-progress)
+  - ❌ Added password reset flow with email verification (planned)
 
 - **Security Enhancements**:
   - ✅ Strengthened password requirements with entropy checks
-  - ✅ Added rate limiting for auth endpoints to prevent brute-force attacks
-  - ✅ Implemented IP-based suspicious activity detection
-  - ✅ Added CSRF protection for authenticated routes
-  - ✅ Enhanced JWT validation with proper audience and issuer checks
+  - ❌ Enhanced JWT validation with proper audience and issuer checks (planned)
+  - ❌ Added rate limiting for auth endpoints to prevent brute-force attacks (planned)
+  - ❌ Implemented IP-based suspicious activity detection (planned)
+  - ❌ Added CSRF protection for authenticated routes (planned)
+
+### 🛡️ Response Handling & Error Management
+
+- **Enhanced Response Sanitization**:
+
+  - ✅ Improved API response sanitization with clearer documentation
+  - ✅ Added additional sensitive field pattern detection
+  - ✅ Implemented configurable sanitization rules
+  - ✅ Enhanced security by removing sensitive data from responses
+
+- **Error Handling Improvements**:
+  - ✅ Standardized error response formatting across the application
+  - ✅ Improved global error middleware for better error tracing
+  - ✅ Refined auth error messages for better user experience
+  - ✅ Enhanced error details for debugging in development mode
 
 ### 🏗️ Architectural Improvements
 
@@ -419,11 +349,11 @@ The authentication system is built with security and flexibility as core princip
 
 - **Controllers**:
 
-  - `AuthRegisterController`: Handles user registration with validation
-  - `AuthLoginController`: Manages login and token issuance
-  - `AuthRefreshController`: Handles token refresh logic
-  - `AuthLogoutController`: Manages secure session termination
-  - `AuthPasswordResetController`: Handles password reset flows
+  - ✅ `AuthRegisterController`: Handles user registration with validation
+  - ✅ `AuthLoginController`: Manages login and token issuance
+  - ❌ `AuthRefreshController`: Handles token refresh logic
+  - ❌ `AuthLogoutController`: Manages secure session termination
+  - ❌ `AuthPasswordResetController`: Handles password reset flows
 
 - **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
   - RESTful endpoints under `/api/v1/auth/` prefix
@@ -433,37 +363,37 @@ The authentication system is built with security and flexibility as core princip
 
 - **JWT Strategy**:
 
-  - Access tokens with configurable short lifetime (default: 15m)
-  - Refresh tokens with longer lifetime (default: 7d)
-  - Token rotation on refresh for improved security
-  - Signed tokens with RS256 algorithm
+  - ✅ Access tokens with configurable short lifetime (default: 15m)
+  - ✅ Refresh tokens with longer lifetime (default: 7d)
+  - ✅ Token rotation on refresh for improved security
+  - ✅ Signed tokens with RS256 algorithm
 
 - **Token Storage**:
-  - Access tokens delivered as Bearer tokens
-  - Refresh tokens stored in HTTP-only, secure cookies
-  - Server-side token tracking for instant invalidation
+  - ✅ Access tokens delivered as Bearer tokens
+  - ✅ Refresh tokens stored in HTTP-only, secure cookies
+  - ✅ Server-side token tracking for instant invalidation
 
 #### 🛡️ Security Features
 
 - **Password Management**:
 
-  - Bcrypt hashing with configurable work factors
-  - Minimum entropy requirements
-  - Dictionary attack prevention
-  - Password history tracking (prevents reuse)
+  - ✅ Bcrypt hashing with configurable work factors
+  - ✅ Minimum entropy requirements
+  - ✅ Dictionary attack prevention
+  - ✅ Password history tracking (prevents reuse)
 
 - **Attack Prevention**:
 
-  - Rate limiting on auth endpoints (sliding window)
-  - Progressive delays for failed attempts
-  - Account lockout after threshold breaches
-  - IP-based and user-based tracking
+  - ❌ Rate limiting on auth endpoints (sliding window)
+  - ❌ Progressive delays for failed attempts
+  - ❌ Account lockout after threshold breaches
+  - ❌ IP-based and user-based tracking
 
 - **Session Security**:
-  - CSRF protection with SameSite cookie attributes
-  - XSS prevention with HTTPOnly cookies
-  - Automatic token refresh handling
-  - Device fingerprinting for unusual activity detection
+  - ❌ CSRF protection with SameSite cookie attributes
+  - ❌ XSS prevention with HTTPOnly cookies
+  - ❌ Automatic token refresh handling
+  - ❌ Device fingerprinting for unusual activity detection
 
 ### 🔐 Authentication Endpoints Examples
 
@@ -493,12 +423,7 @@ Creates a new user account.
   "statusCode": 201,
   "body": {
     "message": "User registered successfully",
-    "data": {
-      "id": "user-123",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "createdAt": "2025-05-16T10:30:00Z"
-    }
+    "data": null
   }
 }
 ```
@@ -528,14 +453,7 @@ Authenticates a user and returns access and refresh tokens.
   "statusCode": 200,
   "body": {
     "message": "Login successful",
-    "data": {
-      "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "user": {
-        "id": "user-123",
-        "name": "John Doe",
-        "email": "john@example.com"
-      }
-    }
+    "data": null
   }
 }
 ```
@@ -710,9 +628,10 @@ The application includes a dedicated authentication module that handles user reg
 
 - **Controllers**: Auth-specific controllers in `presentation/http/controllers/auth/`
 
-  - `AuthRegisterController`: Handles user registration requests
-  - (Future) `AuthLoginController`: Will handle user login
-  - (Future) `AuthRefreshController`: Will handle token refresh
+  - `AuthRegisterController`: Handles user registration with validation
+  - `AuthLoginController`: Manages login and token issuance with proper error handling
+  - `AuthRefreshController`: Handles token refresh logic
+  - `AuthPasswordResetController`: Handles password reset flows
 
 - **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
 
@@ -781,10 +700,11 @@ The sanitizer automatically detects and removes sensitive data using pattern mat
 - User IDs collections
 - Credit card information
 - Social security numbers
-- Authentication tokens
+- Authentication tokens and keys
 - API keys
 - Private keys
 - Secret keys
+- Any field matching authentication patterns
 
 This helps prevent inadvertent exposure of sensitive information through API responses.
 
@@ -886,45 +806,6 @@ pnpm test -- -t "UserRepository"
 
 The application is designed for flexible deployment options:
 
-### Containerization
-
-- **Docker**: Application is containerized for consistent deployment
-- **Docker Compose**: Development environment with all dependencies
-- **Dockerfile**: Multi-stage build for optimized production images
-
-### CI/CD Pipeline
-
-The application uses GitHub Actions for continuous integration and deployment:
-
-- **Build & Test**: On every pull request
-
-  - Run tests
-  - Check code style
-  - Build application
-
-- **Deploy to Staging**: On merge to develop branch
-  - Build and push Docker image
-  - Deploy to staging environment
-  - Run smoke tests
-- **Deploy to Production**: On merge to main branch
-  - Build and push Docker image
-  - Deploy to production environment
-  - Run health checks
-
-### Infrastructure
-
-- **Production**: Kubernetes cluster on AWS EKS
-- **Staging**: Kubernetes cluster on AWS EKS
-- **Database**: Managed PostgreSQL (AWS RDS)
-- **Logging**: ELK Stack (Elasticsearch, Logstash, Kibana)
-- **Monitoring**: Prometheus and Grafana
-
-### Scaling Strategy
-
-- **Horizontal Scaling**: Multiple instances behind a load balancer
-- **Auto-Scaling**: Based on CPU and memory metrics
-- **Database Scaling**: Read replicas for high-traffic scenarios
-
 ### Deployment Commands
 
 ```bash
@@ -941,70 +822,27 @@ docker build -t byltbasics/api:latest .
 docker run -p 3001:3001 --env-file .env byltbasics/api:latest
 ```
 
-## 📈 Performance Optimization
+## 📝 Latest Updates (May 2025)
 
-### 🚀 Response Time Optimization
+### 🛡️ Response Handling System Enhancements
 
-- **Database Query Optimization**:
+In our ongoing effort to improve security and user experience, we've made several enhancements to the response handling system:
 
-  - Efficient indexing strategy
-  - Query caching for frequent operations
-  - Connection pooling configuration
-  - Prepared statements for repeated queries
-  - Query timeout management
+#### Response Sanitizer Interface Improvements
 
-- **Memory Management**:
-  - Streaming responses for large datasets
-  - Memory usage monitoring
-  - Garbage collection optimization
-  - Buffer pooling for file operations
+- Added comprehensive documentation to interface methods and parameters
+- Introduced configurable sanitization rules for greater flexibility
+- Added new sanitization pattern detection for improved security
+- Enhanced TypeScript types to ensure type safety across the application
 
-### 🔄 Concurrency Management
+#### Advanced Error Handling
 
-- **Node.js Event Loop Optimization**:
+- Refined global error middleware for more consistent error reporting
+- Improved error message clarity for authentication failures
+- Added environment-aware stack trace handling (development-only)
+- Enhanced error formatting for better client-side interpretation
 
-  - Asynchronous patterns throughout codebase
-  - Offloading CPU-intensive tasks to workers
-  - Avoiding synchronous operations in request handlers
-  - Proper promise chaining and error propagation
-
-- **Worker Threads**:
-  - Parallel processing for CPU-bound tasks
-  - Workload distribution across cores
-  - Shared memory for efficient data passing
-  - Thread health monitoring
-
-## 📊 Monitoring & Observability
-
-### 📝 Application Metrics
-
-- **Health Checks**:
-
-  - System health endpoints with detailed diagnostics
-  - Database connectivity monitoring
-  - External service dependency checks
-  - Resource utilization reporting
-
-- **Performance Metrics**:
-  - Request duration tracking
-  - Database operation timing
-  - Memory usage monitoring
-  - Custom business metrics
-
-### 📊 Observability
-
-- **Structured Logging**:
-
-  - Correlation IDs across service boundaries
-  - Log aggregation with ELK stack
-  - Context-enriched log entries
-  - Log level management by module
-
-- **Error Tracking**:
-  - Centralized error collection
-  - Anomaly detection
-  - Error frequency analysis
-  - Automated alerting
+These improvements ensure sensitive data never leaves our API and that error messages are consistently formatted while being informative to clients. The enhanced sanitization patterns now cover a broader range of sensitive data types without impacting response performance.
 
 ## 🔒 License
 
