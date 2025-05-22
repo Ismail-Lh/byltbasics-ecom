@@ -1,15 +1,17 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 
-import type { ICryptoProvider, ILogger } from "@/application/providers";
+import type { IApiResponseSanitizer, ICryptoProvider, IJwtTokenProvider, ILogger } from "@/application/providers";
 import type { IUserRepository } from "@/application/repositories";
+import type { IAuthLoginUseCase } from "@/application/use-cases/auth";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
-import type { ICreateUserController } from "@/presentation/http/controllers/user";
+import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/http/controllers/auth";
 
+import { AuthLoginUseCase } from "@/application/use-cases/auth";
 import { CreateUserUseCase } from "@/application/use-cases/user";
-import { CryptoProvider, Logger } from "@/infrastructure/providers";
+import { ApiResponseSanitizer, CryptoProvider, JwtTokenProvider, Logger } from "@/infrastructure/providers";
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
-import { CreateUserController } from "@/presentation/http/controllers/user";
+import { AuthLoginController, AuthRegisterController } from "@/presentation/http/controllers/auth";
 
 import { TYPES } from "./types";
 
@@ -27,6 +29,14 @@ function bootstrapContainer() {
     .to(CryptoProvider);
 
   container
+    .bind<IApiResponseSanitizer>(TYPES.ApiResponseSanitizer)
+    .to(ApiResponseSanitizer);
+
+  container
+    .bind<IJwtTokenProvider>(TYPES.JwtTokenProvider)
+    .to(JwtTokenProvider);
+
+  container
     .bind<IUserRepository>(TYPES.UserRepository)
     .to(UserRepository);
 
@@ -35,8 +45,16 @@ function bootstrapContainer() {
     .to(CreateUserUseCase);
 
   container
-    .bind<ICreateUserController>(TYPES.CreateUserController)
-    .to(CreateUserController);
+    .bind<IAuthRegisterController>(TYPES.AuthRegisterController)
+    .to(AuthRegisterController);
+
+  container
+    .bind<IAuthLoginUseCase>(TYPES.AuthLoginUseCase)
+    .to(AuthLoginUseCase);
+
+  container
+    .bind<IAuthLoginController>(TYPES.AuthLoginController)
+    .to(AuthLoginController);
 
   return container;
 }

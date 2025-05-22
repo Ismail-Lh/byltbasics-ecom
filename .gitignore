@@ -39,3 +39,7 @@
 
 # logs
 **/logs
+
+**/dist
+
+**/client-ui

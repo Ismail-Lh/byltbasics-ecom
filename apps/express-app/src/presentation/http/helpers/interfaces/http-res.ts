@@ -1,3 +1,15 @@
+interface IResponseBody<T> {
+  /**
+   * The message describing the result of the operation.
+   */
+  message: string;
+
+  /**
+   * The data to include in the response.
+   */
+  data: T;
+}
+
 /**
  * Interface representing an HTTP response.
  */
@@ -10,5 +22,5 @@ export interface IHttpResponse<R> {
   /**
    * The body of the HTTP response.
    */
-  body: R;
+  body: IResponseBody<R>;
 }

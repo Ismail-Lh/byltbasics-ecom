@@ -1,3 +1,5 @@
+import type { IUser } from "@byltbasics/types";
+
 import type { ICreateUserReqDTO, IUserOutReqDTO } from "@/domain/user/dtos";
 
 /**
@@ -19,7 +21,7 @@ export interface IUserRepository {
    *
    * @async
    * @param {string} email - The email address of the user to find.
-   * @returns {Promise<IUserOutReqDTO | null>} - A promise that resolves to the found user's data, or null if no user is found.
+   * @returns {Promise<IUser | null>} - A promise that resolves to the found user's data, or null if no user is found.
    */
-  findByEmail: (email: string) => Promise<IUserOutReqDTO | null>;
+  findByEmail: (email: string) => Promise<IUser | null>;
 }
