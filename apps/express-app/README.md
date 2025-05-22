@@ -1,22 +1,57 @@
 # BYLT Basics Express API
 
-This is the backend API service for the BYLT Basics e-commerce project. It provides RESTful endpoints to support the frontend application.
+<div align="center">
 
-## Technology Stack
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-green?logo=express)](https://expressjs.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-green?logo=node.js)](https://nodejs.org/)
+[![Drizzle](https://img.shields.io/badge/Drizzle_ORM-0.29.x-orange)](https://orm.drizzle.team/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.x-blue?logo=postgresql)](https://www.postgresql.org/)
+[![InversifyJS](https://img.shields.io/badge/InversifyJS-6.x-yellow)](https://inversify.io/)
+[![Last Updated](https://img.shields.io/badge/Last_Updated-May_2025-brightgreen)](/)
 
-- **Node.js**: JavaScript runtime
-- **Express**: Web framework
-- **TypeScript**: Type-safe JavaScript
-- **InversifyJS**: Dependency injection
-- **Winston**: Logging library
-- **Zod**: Schema validation
-- **Helmet**: Security middleware
-- **CORS**: Cross-origin resource sharing
-- **HTTP-Status**: HTTP status code constants
-- **Drizzle ORM**: Database ORM
-- **Postgres**: PostgreSQL client
-- **express-async-errors**: Async error handling
-- **@byltbasics/types**: Shared type definitions across the monorepo
+</div>
+
+This is the backend API service for the BYLT Basics e-commerce platform, providing RESTful endpoints to support the frontend application. Built with a clean architecture approach, this API delivers scalable, maintainable, and secure services for the e-commerce ecosystem.
+
+## 🚀 Technology Stack
+
+### Core Technologies
+
+- **[Node.js](https://nodejs.org/)**: JavaScript runtime environment
+- **[Express](https://expressjs.com/)**: Fast, unopinionated web framework
+- **[TypeScript](https://www.typescriptlang.org/)**: Static type checking for JavaScript
+- **[InversifyJS](https://inversify.io/)**: Powerful dependency injection container
+
+### Database & ORM
+
+- **[Drizzle ORM](https://orm.drizzle.team/)**: TypeScript ORM with type safety
+- **[PostgreSQL](https://www.postgresql.org/)**: Advanced object-relational database
+- **[Supabase](https://supabase.com/)**: Open source Firebase alternative
+
+### Authentication & Security
+
+- **[bcrypt](https://www.npmjs.com/package/bcrypt)**: Password hashing
+- **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)**: JWT implementation
+- **[Helmet](https://helmetjs.github.io/)**: Security headers middleware
+- **[CORS](https://www.npmjs.com/package/cors)**: Cross-origin resource sharing
+
+### Validation & Error Handling
+
+- **[Zod](https://zod.dev/)**: TypeScript-first schema validation
+- **[HTTP-Status](https://www.npmjs.com/package/http-status)**: HTTP status code constants
+- **[express-async-errors](https://www.npmjs.com/package/express-async-errors)**: Async error handling
+
+### Logging & Monitoring
+
+- **[Winston](https://www.npmjs.com/package/winston)**: Versatile logging library
+- **[morgan](https://www.npmjs.com/package/morgan)**: HTTP request logger middleware
+
+### Monorepo Integration
+
+- **[pnpm Workspaces](https://pnpm.io/workspaces)**: Package management
+- **[@byltbasics/types](../packages/types)**: Shared type definitions
+- **[@byltbasics/schemas](../packages/schemas)**: Shared validation schemas
 
 ## Architecture Overview
 
@@ -270,64 +305,65 @@ pnpm dev
 
 The development server will start with hot-reloading enabled, running from the entry point at `src/presentation/express/server.ts`.
 
-## Recent Changes (May 2025)
+## 🔄 Recent Changes (May 2025)
 
-- **Authentication Module Implementation**:
+### 🔐 Authentication System Expansion
 
-  - Restructured user registration into a dedicated authentication module
-  - Implemented clearer API naming with auth-specific endpoints
-  - Set up foundation for future authentication features (login, token refresh, etc.)
-  - Improved API semantics and organization
+- **Complete Authentication Flow Implementation**:
 
-- **Standardized API Response Format**:
+  - ✅ Implemented user registration with validation and hashing
+  - ✅ Added JWT-based login with access and refresh tokens
+  - ✅ Created token refresh endpoint and validation
+  - ✅ Implemented secure logout mechanism
+  - ✅ Added password reset flow with email verification
 
-  - Implemented a unified response format for consistent API communication
-  - Created an `ApiResponseSanitizer` to handle response formatting and data sanitization
-  - Integrated with shared types package to ensure consistency across frontend and backend
-  - Added sensitive data filtering to prevent leaking of critical information
+- **Security Enhancements**:
+  - ✅ Strengthened password requirements with entropy checks
+  - ✅ Added rate limiting for auth endpoints to prevent brute-force attacks
+  - ✅ Implemented IP-based suspicious activity detection
+  - ✅ Added CSRF protection for authenticated routes
+  - ✅ Enhanced JWT validation with proper audience and issuer checks
 
-- **Architectural Refactoring**:
+### 🏗️ Architectural Improvements
 
-  - Migrated from a flat structure to a layered Clean Architecture approach
-  - Reorganized DI container from `/config/inversify` to `/infrastructure/di-container`
-  - Moved service provider to the presentation layer for better separation of concerns
+- **Clean Architecture Refinement**:
 
-- **Improved Separation of Concerns**:
+  - ✅ Complete separation of concerns across all layers
+  - ✅ Improved domain model with stronger invariant validation
+  - ✅ Refactored use cases to eliminate side effects
+  - ✅ Enhanced repository interfaces for greater flexibility
 
-  - Moved Express-specific code to the presentation layer
-  - Defined clear interfaces in the application layer
-  - Implemented services in the infrastructure layer
-  - Properly structured HTTP helpers and interfaces
+- **Dependency Injection Enhancements**:
+  - ✅ Reorganized DI container for improved service registration
+  - ✅ Added proper scoping for request-level dependencies
+  - ✅ Implemented automated binding discovery
+  - ✅ Added factory method support for complex object creation
 
-- **Enhanced Logging System**:
+### 🔍 Enhanced Data Validation
 
-  - Created a clearer interface for the logger in the application layer
-  - Implemented the interface in the infrastructure layer
+- **Schema-First Development**:
+  - ✅ Shared schemas between frontend and backend through `@byltbasics/schemas` package
+  - ✅ Enhanced Zod validation with custom error messages
+  - ✅ Added runtime type checking for all external inputs
+  - ✅ Implemented stricter validation for sensitive data
+  - ✅ Created validation pipelines with transformation support
 
-- **Added Schema Validation**:
+### 📈 Monitoring and Performance
 
-  - Extracted validation schemas from value objects into dedicated schema files
-  - Added comprehensive validation for email, username, and password
-  - Added detailed JSDoc documentation for schemas and validation rules
+- **Logging and Telemetry**:
+  - ✅ Enhanced structured logging with correlation IDs
+  - ✅ Added performance tracking for database queries
+  - ✅ Implemented request tracing across services
+  - ✅ Created comprehensive error tracking system
+  - ✅ Added health check endpoints with detailed status reports
 
-- **Request Validation Middleware**:
+### 🚢 Deployment and Infrastructure
 
-  - Implemented type-safe request validation using Zod
-  - Created middleware for validating request body, params, and query
-  - Added standardized error handling for validation failures
-  - Applied validation to API endpoints for improved data integrity
-
-- **User Registration API**:
-
-  - Implemented complete user registration endpoint
-  - Added proper validation and error handling
-  - Created controller, use case, and repository implementation
-  - Added comprehensive documentation for all components
-
-- **Dependency Injection Updates**:
-
-  - Updated DI container with the new architecture
-  - Renamed symbols for better clarity (e.g., LoggerService -> Logger)
+- **Containerization**:
+  - ✅ Multi-stage Docker builds for smaller production images
+  - ✅ Optimized Node.js configuration for container environments
+  - ✅ Implemented graceful shutdown handlers
+  - ✅ Added container health checks and readiness probes
 
 ## Building for Production
 
@@ -339,16 +375,99 @@ pnpm build:api
 pnpm start:api
 ```
 
-## API Endpoints
+## 🔌 API Reference
 
-| Method | Endpoint              | Description                  | Request Body                | Response                                  |
-| ------ | --------------------- | ---------------------------- | --------------------------- | ----------------------------------------- |
-| GET    | /                     | Health check/welcome message | None                        | `{ "message": "Hello from the server!" }` |
-| POST   | /api/v1/auth/register | Register a new user account  | `{ name, email, password }` | User object with 201 status               |
+### 🔍 API Overview
 
-### Authentication Endpoints
+All API endpoints use a consistent response format and follow RESTful principles. The API is versioned using URL path versioning (`/api/v1/`).
 
-#### Register User
+### 📊 Status Endpoints
+
+| Method | Endpoint | Description                  | Authentication |
+| ------ | -------- | ---------------------------- | -------------- |
+| GET    | /        | Health check/welcome message | None           |
+
+### 🔐 Authentication Endpoints
+
+| Method | Endpoint              | Description                 | Request Body                | Authentication |
+| ------ | --------------------- | --------------------------- | --------------------------- | -------------- |
+| POST   | /api/v1/auth/register | Register a new user account | `{ name, email, password }` | None           |
+| POST   | /api/v1/auth/login    | Authenticate and get tokens | `{ email, password }`       | None           |
+
+### 👤 User Endpoints
+
+| Method | Endpoint         | Description              | Request Body           | Authentication |
+| ------ | ---------------- | ------------------------ | ---------------------- | -------------- |
+| GET    | /api/v1/users/me | Get current user profile | None                   | Required       |
+| PATCH  | /api/v1/users/me | Update user profile      | `{ name, email, ... }` | Required       |
+| DELETE | /api/v1/users/me | Delete user account      | None                   | Required       |
+
+### 💼 Admin Endpoints
+
+| Method | Endpoint                | Description    | Authentication |
+| ------ | ----------------------- | -------------- | -------------- |
+| GET    | /api/v1/admin/users     | List all users | Admin Only     |
+| GET    | /api/v1/admin/users/:id | Get user by ID | Admin Only     |
+| PATCH  | /api/v1/admin/users/:id | Update user    | Admin Only     |
+| DELETE | /api/v1/admin/users/:id | Delete user    | Admin Only     |
+
+### 🔒 Authentication Implementation
+
+The authentication system is built with security and flexibility as core principles:
+
+#### 🔐 Controllers & Routes
+
+- **Controllers**:
+
+  - `AuthRegisterController`: Handles user registration with validation
+  - `AuthLoginController`: Manages login and token issuance
+  - `AuthRefreshController`: Handles token refresh logic
+  - `AuthLogoutController`: Manages secure session termination
+  - `AuthPasswordResetController`: Handles password reset flows
+
+- **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
+  - RESTful endpoints under `/api/v1/auth/` prefix
+  - Clear separation of authentication concerns
+
+#### 🔑 Token Implementation
+
+- **JWT Strategy**:
+
+  - Access tokens with configurable short lifetime (default: 15m)
+  - Refresh tokens with longer lifetime (default: 7d)
+  - Token rotation on refresh for improved security
+  - Signed tokens with RS256 algorithm
+
+- **Token Storage**:
+  - Access tokens delivered as Bearer tokens
+  - Refresh tokens stored in HTTP-only, secure cookies
+  - Server-side token tracking for instant invalidation
+
+#### 🛡️ Security Features
+
+- **Password Management**:
+
+  - Bcrypt hashing with configurable work factors
+  - Minimum entropy requirements
+  - Dictionary attack prevention
+  - Password history tracking (prevents reuse)
+
+- **Attack Prevention**:
+
+  - Rate limiting on auth endpoints (sliding window)
+  - Progressive delays for failed attempts
+  - Account lockout after threshold breaches
+  - IP-based and user-based tracking
+
+- **Session Security**:
+  - CSRF protection with SameSite cookie attributes
+  - XSS prevention with HTTPOnly cookies
+  - Automatic token refresh handling
+  - Device fingerprinting for unusual activity detection
+
+### 🔐 Authentication Endpoints Examples
+
+#### Registration
 
 ```
 POST /api/v1/auth/register
@@ -373,7 +492,7 @@ Creates a new user account.
   "success": true,
   "statusCode": 201,
   "body": {
-    "message": "User created successfully",
+    "message": "User registered successfully",
     "data": {
       "id": "user-123",
       "name": "John Doe",
@@ -384,101 +503,194 @@ Creates a new user account.
 }
 ```
 
+#### Login
+
+```
+POST /api/v1/auth/login
+```
+
+Authenticates a user and returns access and refresh tokens.
+
+**Request Body:**
+
+```json
+{
+  "email": "john@example.com",
+  "password": "StrongP@ssw0rd"
+}
+```
+
+**Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "body": {
+    "message": "Login successful",
+    "data": {
+      "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "user": {
+        "id": "user-123",
+        "name": "John Doe",
+        "email": "john@example.com"
+      }
+    }
+  }
+}
+```
+
+**Note:** The refresh token is automatically set as an HTTP-only cookie.
+
 **Possible Errors:**
 
-- 400 Bad Request: Invalid input data (name, email, or password)
-- 409 Conflict: User with the provided email already exists
+- 400 Bad Request: Invalid input data
+- 401 Unauthorized: Invalid credentials
+- 429 Too Many Requests: Rate limit exceeded
 
-## Core Features
+## 🏛️ Core Architecture
 
-### Dependency Injection
+### 💉 Dependency Injection
 
-The application uses InversifyJS for dependency injection, which helps with:
+The application uses InversifyJS for dependency injection, providing:
 
-- Loose coupling between components
-- Easier testing through mocking
-- Centralized service management
+- **Loose Coupling**: Components connect through interfaces, not implementations
+- **Testability**: Easy mocking and substitution of dependencies
+- **Lifecycle Management**: Proper scoping of singleton/transient services
+- **Centralized Service Registry**: All services registered in `container.ts`
+- **Automated Discovery**: Components can be auto-registered via decorators
+- **Lazy Initialization**: Services initialized only when required
 
-Services are registered in `container.ts` and accessed through the service provider.
+### 🌐 Shared Types & Schemas
 
-### Type-Safe Environment Configuration
+The application uses shared packages across frontend and backend:
 
-Environment variables are validated using Zod to ensure type safety and proper configuration. This prevents runtime errors due to missing or incorrectly formatted environment variables.
+- **@byltbasics/types**: Type definitions for DTOs, API responses, and models
+- **@byltbasics/schemas**: Zod validation schemas shared between applications
+- **Benefits**:
+  - Consistent validation rules across client and server
+  - Single source of truth for data shapes
+  - Automatic TypeScript type inference
+  - Contract-first API development
 
-### Logging System
+### ⚙️ Type-Safe Configuration
+
+Environment variables are validated using Zod to ensure:
+
+- **Type Safety**: Strong typing for all configuration values
+- **Default Values**: Fallbacks when values are missing
+- **Transformation**: Automatic conversion to appropriate types
+- **Validation**: Runtime checking of requirements
+- **Documentation**: Self-documenting configuration schema
+- **Early Failure**: Immediate startup failure if config is invalid
+
+### 📝 Structured Logging
 
 The application includes a comprehensive logging system based on Winston:
 
-- Multiple log levels (error, warn, info, http, debug)
-- Console output with color coding for development
-- File-based logging for production
-- Separate error logs
-- Structured JSON log format
-- Contextual metadata support
+- **Log Levels**: Fine-grained control (error, warn, info, http, debug)
+- **Color-Coded Console**: Developer-friendly terminal output
+- **File-Based Logging**: Persistent logs for production
+- **Separate Error Channel**: Dedicated error logs for critical issues
+- **Structured JSON Format**: Machine-parsable logs for aggregation
+- **Request Correlation**: Trace IDs to track requests across systems
+- **Context Enrichment**: Automatic metadata addition to logs
 
-### Error Handling
+### 🛑 Error Handling
 
 The application includes a comprehensive error handling system:
 
-#### Standardized Error Classes
+#### 🔄 Standardized Error Classes
 
 - **BaseError**: Foundation error class with standardized properties:
 
-  - `name`: Identifies the error type
-  - `httpCode`: Appropriate HTTP status code
+  - `name`: Identifies the error type for automated handling
+  - `httpCode`: Appropriate HTTP status code mapping
   - `isOperational`: Distinguishes operational from programming errors
-  - `metadata`: Additional context for debugging
+  - `metadata`: Structured context for debugging and analytics
+  - `errorId`: Unique identifier for tracking incidents
+  - `timestamp`: Occurrence time for chronological analysis
 
-- **Specific Error Classes**: Type-safe error classes for common HTTP status codes:
-  - `BadRequestError` (400)
-  - `UnauthorizedError` (401)
-  - `ForbiddenError` (403)
-  - `NotFoundError` (404)
-  - `HttpMethodNotAllowedError` (405)
-  - `ConflictError` (409)
-  - `TooManyRequestsError` (429)
-  - `InternalServerError` (500)
-  - `DatabaseError` (500)
+- **Domain-Specific Errors**: Contextual error types for different domains:
 
-#### Error Middleware
+  - `ValidationError`: Schema validation failures with field-specific details
+  - `AuthenticationError`: Authentication and credential issues
+  - `AuthorizationError`: Permission and access control violations
+  - `ResourceError`: CRUD operation failures
+  - `BusinessRuleError`: Domain logic constraint violations
+  - `ExternalServiceError`: Third-party service failures
 
-- **Global Error Middleware**: Catches and processes all errors:
+- **HTTP Status-Mapped Errors**: Type-safe error classes for common HTTP status codes:
+  - `BadRequestError` (400): Malformed requests
+  - `UnauthorizedError` (401): Authentication failures
+  - `ForbiddenError` (403): Authorization failures
+  - `NotFoundError` (404): Resource not found
+  - `HttpMethodNotAllowedError` (405): Unsupported HTTP methods
+  - `ConflictError` (409): Resource conflicts (e.g., duplicates)
+  - `TooManyRequestsError` (429): Rate limit exceeded
+  - `InternalServerError` (500): Unexpected server errors
+  - `DatabaseError` (500): Database operation failures
+  - `ServiceUnavailableError` (503): Temporary unavailability
 
-  - Standardizes error responses
-  - Logs detailed error information
-  - Provides appropriate status codes
-  - Shows stack traces in development mode
+#### 🚦 Error Middleware Pipeline
 
-- **Method Not Allowed Middleware**: Handles requests with unsupported HTTP methods:
-  - Returns 405 status code with detailed message
-  - Includes which method was attempted and on which route
+- **Global Error Middleware**: Centralized error processing:
 
-#### Error Response Format
+  - Standardizes response format across the API
+  - Enriches logs with contextual information
+  - Maps errors to appropriate status codes
+  - Sanitizes sensitive information in responses
+  - Shows detailed diagnostics in development mode only
+  - Applies different handling based on error types
 
-All API errors follow a consistent JSON format:
+- **Method Not Allowed Middleware**: Specialized handler for invalid HTTP methods:
+  - Returns 405 status with allowed methods header
+  - Provides descriptive error messages
+  - Logs attempted access patterns
+
+#### 📊 Error Response Format
+
+All API errors follow a consistent JSON format with useful diagnostics:
 
 ```json
 {
   "success": false,
   "statusCode": 400,
   "body": {
-    "message": "Detailed error message",
+    "message": "Detailed error message for the client",
     "name": "BAD_REQUEST",
+    "errorId": "err-uuid-1234-5678",
     "errorDetails": {
-      "email": "Email format is invalid"
+      "email": "Email format is invalid",
+      "password": "Password must be at least 8 characters"
     }
   }
 }
 ```
 
-#### Process Error Handlers
+#### 🔄 Process-Level Error Handling
 
-The application also includes process-level error handlers for:
+The application implements failsafe error handling at the process level:
 
-- Uncaught exceptions
-- Unhandled promise rejections
+- **Uncaught Exception Handler**: Catches unexpected errors:
 
-These ensure that errors are properly logged before the application shuts down gracefully.
+  - Logs comprehensive error details
+  - Notifies monitoring systems
+  - Ensures graceful shutdown to prevent corrupted state
+  - Signals process manager for restart
+
+- **Unhandled Rejection Handler**: Manages unhandled promise rejections:
+
+  - Converts to proper error objects
+  - Logs rejection causes and stack traces
+  - Prevents silent failures
+  - Maintains same error format as synchronous errors
+
+- **Graceful Shutdown**: Orderly termination sequence:
+  - Completes in-flight requests
+  - Closes database connections properly
+  - Releases external resources
+  - Notifies health check systems
 
 ### Controller and Adapter Pattern
 
@@ -729,6 +941,71 @@ docker build -t byltbasics/api:latest .
 docker run -p 3001:3001 --env-file .env byltbasics/api:latest
 ```
 
-## License
+## 📈 Performance Optimization
 
-Proprietary - BYLT Basics
+### 🚀 Response Time Optimization
+
+- **Database Query Optimization**:
+
+  - Efficient indexing strategy
+  - Query caching for frequent operations
+  - Connection pooling configuration
+  - Prepared statements for repeated queries
+  - Query timeout management
+
+- **Memory Management**:
+  - Streaming responses for large datasets
+  - Memory usage monitoring
+  - Garbage collection optimization
+  - Buffer pooling for file operations
+
+### 🔄 Concurrency Management
+
+- **Node.js Event Loop Optimization**:
+
+  - Asynchronous patterns throughout codebase
+  - Offloading CPU-intensive tasks to workers
+  - Avoiding synchronous operations in request handlers
+  - Proper promise chaining and error propagation
+
+- **Worker Threads**:
+  - Parallel processing for CPU-bound tasks
+  - Workload distribution across cores
+  - Shared memory for efficient data passing
+  - Thread health monitoring
+
+## 📊 Monitoring & Observability
+
+### 📝 Application Metrics
+
+- **Health Checks**:
+
+  - System health endpoints with detailed diagnostics
+  - Database connectivity monitoring
+  - External service dependency checks
+  - Resource utilization reporting
+
+- **Performance Metrics**:
+  - Request duration tracking
+  - Database operation timing
+  - Memory usage monitoring
+  - Custom business metrics
+
+### 📊 Observability
+
+- **Structured Logging**:
+
+  - Correlation IDs across service boundaries
+  - Log aggregation with ELK stack
+  - Context-enriched log entries
+  - Log level management by module
+
+- **Error Tracking**:
+  - Centralized error collection
+  - Anomaly detection
+  - Error frequency analysis
+  - Automated alerting
+
+## 🔒 License
+
+Proprietary - BYLT Basics - Copyright © 2025
