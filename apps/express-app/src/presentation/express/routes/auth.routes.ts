@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 
 import { Router } from "express";
+import httpStatus from "http-status";
 
 import type { IAuthLoginDto, IAuthResponseDto } from "@/domain/auth/dtos";
 
@@ -23,9 +24,9 @@ const authRoutes = Router();
  * Endpoint to create a new user.
  */
 authRoutes.post("/register", validateRequest({ body: createUserSchema }), async (request: Request, response: Response) => {
-  const data = await expressAdapter(request, authRegisterController);
+  await expressAdapter(request, authRegisterController);
 
-  response.status(201).json(apiResponseSanitizer.successResponse({ data, message: "User registered successfully" }));
+  response.status(httpStatus.CREATED).json(apiResponseSanitizer.successResponse({ message: "User registered successfully", statusCode: httpStatus.CREATED }));
 });
 
 /**
@@ -40,7 +41,7 @@ authRoutes.post("/login", validateRequest({ body: authLoginSchema }), async (req
   response.cookie(envConfig.auth.access_token_name, accessToken, accessTokenCookieConfig);
   response.cookie(envConfig.auth.refresh_token_name, refreshToken, refreshTokenCookieConfig);
 
-  response.status(200).json(apiResponseSanitizer.successResponse({ data, message: "Login successful" }));
+  response.status(httpStatus.OK).json(apiResponseSanitizer.successResponse({ message: "Login successful" }));
 });
 
 export { authRoutes };

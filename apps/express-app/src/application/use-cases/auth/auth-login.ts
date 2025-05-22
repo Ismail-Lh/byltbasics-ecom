@@ -6,7 +6,7 @@ import type { IAuthLoginDto, IAuthResponseDto } from "@/domain/auth/dtos";
 
 import { Email, Password } from "@/domain/user/value-objects";
 import { TYPES } from "@/infrastructure/di-container/types";
-import { ForbiddenError, NotFoundError } from "@/infrastructure/errors";
+import { ForbiddenError } from "@/infrastructure/errors";
 
 /**
  * Interface for the use case of user authentication login.
@@ -61,7 +61,7 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
         email,
       });
 
-      throw new NotFoundError("User not found");
+      throw new ForbiddenError("Invalid password or email.");
     }
 
     const isPasswordMatch = await this.cryptoProvider.validateHashMatch(validatedPassword.value, user.password);

@@ -121,6 +121,20 @@ export class ApiResponseSanitizer implements IApiResponseSanitizer {
       ...sanitizationOptions,
     };
 
+    if (!data) {
+      return {
+        success: true,
+        statusCode,
+        body: {
+          message,
+          data: null,
+        },
+      } as IApiSuccessResponse<T>;
+    }
+
+    // If sanitization is enabled, sanitize the data
+    // using the provided sanitization rules or default rules
+    // If sanitization is not enabled, return the original data
     const sanitizedData = sanitization.sanitize
       ? this.sanitizeData(data, sanitization.sanitizationRules)
       : data;

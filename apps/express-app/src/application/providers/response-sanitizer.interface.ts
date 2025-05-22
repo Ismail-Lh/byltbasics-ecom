@@ -17,7 +17,7 @@ export interface ISuccessResponsePayload<T> {
   /**
    * The data to include in the response.
    */
-  data: T;
+  data?: T;
 }
 
 /**
