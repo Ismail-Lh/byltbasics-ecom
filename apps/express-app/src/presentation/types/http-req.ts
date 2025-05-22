@@ -1,4 +1,4 @@
-import type { EmptyRecord } from "@/presentation/express/types";
+import type { EmptyRecord } from "./global";
 
 /**
  * Interface representing an HTTP request.

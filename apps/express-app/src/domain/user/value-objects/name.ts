@@ -1,4 +1,4 @@
-import { usernameSchema } from "../schemas";
+import { usernameSchema } from "@byltbasics/schemas";
 
 /**
  * Value object representing a user's name.

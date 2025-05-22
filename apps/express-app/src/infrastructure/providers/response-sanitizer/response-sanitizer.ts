@@ -19,7 +19,7 @@ export class ApiResponseSanitizer implements IApiResponseSanitizer {
   private readonly _defaultSanitizationRules: ISanitizationRule[] = [
     { fieldPattern: /password/i },
     { fieldPattern: /userIds/i },
-    // { fieldPattern: /token|api[_-]?key|secret/i },
+    { fieldPattern: /token|api[_-]?key|secret/i },
     { fieldPattern: /credit[_-]?card|card[_-]?number/i },
     { fieldPattern: /ssn|social[_-]?security/i },
     { fieldPattern: /auth/i },
@@ -121,6 +121,20 @@ export class ApiResponseSanitizer implements IApiResponseSanitizer {
       ...sanitizationOptions,
     };
 
+    if (!data) {
+      return {
+        success: true,
+        statusCode,
+        body: {
+          message,
+          data: null,
+        },
+      } as IApiSuccessResponse<T>;
+    }
+
+    // If sanitization is enabled, sanitize the data
+    // using the provided sanitization rules or default rules
+    // If sanitization is not enabled, return the original data
     const sanitizedData = sanitization.sanitize
       ? this.sanitizeData(data, sanitization.sanitizationRules)
       : data;

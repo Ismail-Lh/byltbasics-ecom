@@ -15,9 +15,11 @@ export function useRegister() {
       toast.loading("Registering...", { id: "loadingToast" });
     },
     onSuccess: (responseData) => {
-      toast.success(responseData.message, { id: "loadingToast" });
+      const { body } = responseData;
 
-      router.push("/");
+      toast.success(body.message, { id: "loadingToast" });
+
+      router.push("/login");
     },
     onError: (error) => {
       toast.error(error.message);

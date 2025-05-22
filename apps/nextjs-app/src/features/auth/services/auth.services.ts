@@ -1,4 +1,4 @@
-import type { IApiErrorResponse } from "@byltbasics/types";
+import type { IApiErrorResponse, IApiSuccessResponse } from "@byltbasics/types";
 import type { AxiosError } from "axios";
 
 import { API_URL } from "@/constants/env.constants";
@@ -15,11 +15,11 @@ import type { ILoginDto, IRegisterDto } from "../components/forms";
  */
 export async function registerUser(
   registerDto: IRegisterDto,
-): Promise<{ message: string; data: unknown }> {
+): Promise<IApiSuccessResponse<{ message: string }>> {
   const { name, email, password } = registerDto;
 
   const { data: responseData, error } = await asyncTryCatch(
-    axios.post(
+    axios.post<IApiSuccessResponse<{ message: string }>>(
       `${API_URL}/auth/register`,
       {
         name,
@@ -49,9 +49,9 @@ export async function registerUser(
  */
 export async function loginUser(
   loginDto: ILoginDto,
-): Promise<{ message: string; accessToken: string }> {
+): Promise<IApiSuccessResponse<{ message: string }>> {
   const { data: responseData, error } = await asyncTryCatch(
-    axios.post<{ message: string; accessToken: string }>(`${API_URL}/auth/login`, loginDto, {
+    axios.post<IApiSuccessResponse<{ message: string }>>(`${API_URL}/auth/login`, loginDto, {
       withCredentials: true,
     }),
   );

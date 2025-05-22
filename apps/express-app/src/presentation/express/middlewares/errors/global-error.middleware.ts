@@ -23,13 +23,13 @@ export function globalErrorMiddleware(
     logger.debug(`Error Stack: ${err.stack}`);
   }
 
-  const formatedError = apiResponseSanitizer.errorResponse({
+  const formatedErrorRes = apiResponseSanitizer.errorResponse({
     message: err.message,
     statusCode,
     name: err.name,
   });
 
-  res.status(formatedError.statusCode).json(formatedError.body);
+  res.status(formatedErrorRes.statusCode).json(formatedErrorRes);
 
   next();
 }

@@ -1,6 +1,4 @@
-import type { EmptyRecord } from "@/presentation/express/types";
-
-import type { IHttpRequest, IHttpResponse } from "../helpers/interfaces";
+import type { EmptyRecord, IHttpRequest } from "../types";
 
 /**
  * Interface representing a generic HTTP controller.
@@ -15,5 +13,5 @@ import type { IHttpRequest, IHttpResponse } from "../helpers/interfaces";
  * which processes an incoming HTTP request and returns a promise that resolves to an HTTP response.
  */
 export interface IHttpController<B, R, Q = EmptyRecord, P = EmptyRecord> {
-  handle: (request: IHttpRequest<B, Q, P>) => Promise<IHttpResponse<R>>;
+  handle: (request: IHttpRequest<B, Q, P>) => Promise<R>;
 }
