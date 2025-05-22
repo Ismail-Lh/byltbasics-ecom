@@ -17,6 +17,12 @@ const envSchema = z.object({
   DB_SEEDING: stringBoolean,
   DB_LOGGING: stringBoolean,
   HASH_ALGORITHM: z.enum(["sha256", "sha512"]).default("sha256"),
+  ACCESS_TOKEN_NAME: z.string({ message: "ACCESS_TOKEN_NAME must be a string" }).default("access_token"),
+  ACCESS_TOKEN_SECRET: z.string({ message: "ACCESS_TOKEN_SECRET must be a string" }).min(20, { message: "ACCESS_TOKEN_SECRET must be at least 20 characters long" }),
+  ACCESS_TOKEN_EXPIRES_IN: z.string({ message: "ACCESS_TOKEN_EXPIRES_IN must be a string" }).default("15m"),
+  REFRESH_TOKEN_NAME: z.string({ message: "REFRESH_TOKEN_NAME must be a string" }).default("refresh_token"),
+  REFRESH_TOKEN_SECRET: z.string({ message: "REFRESH_TOKEN_SECRET must be a string" }).min(20, { message: "REFRESH_TOKEN_SECRET must be at least 20 characters long" }),
+  REFRESH_TOKEN_EXPIRES_IN: z.string({ message: "REFRESH_TOKEN_EXPIRES_IN must be a string" }).default("1d"),
 });
 
 type EnvSchema = z.infer<typeof envSchema>;
@@ -49,6 +55,14 @@ export const envConfig = {
   },
   client: {
     url: validatedEnv.CLIENT_URL,
+  },
+  auth: {
+    access_token_name: validatedEnv.ACCESS_TOKEN_NAME,
+    access_token_secret: validatedEnv.ACCESS_TOKEN_SECRET,
+    access_token_expires_in: validatedEnv.ACCESS_TOKEN_EXPIRES_IN,
+    refresh_token_name: validatedEnv.REFRESH_TOKEN_NAME,
+    refresh_token_secret: validatedEnv.REFRESH_TOKEN_SECRET,
+    refresh_token_expires_in: validatedEnv.REFRESH_TOKEN_EXPIRES_IN,
   },
   db: {
     db_url: validatedEnv.DB_URL,

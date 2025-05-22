@@ -11,6 +11,8 @@
     "lint:fix": "eslint --fix",
     "dev:client": "pnpm --filter nextjs-app dev",
     "build:client": "pnpm --filter nextjs-app build",
+    "build:types": "pnpm run --filter types build",
+    "build:schemas": "pnpm run --filter schemas build",
     "start:client": "pnpm --filter nextjs-app start",
     "lint:client": "pnpm --filter nextjs-app lint",
     "dev:api": "pnpm --filter express-app dev",
@@ -23,7 +25,8 @@
     "db:push": "pnpm --filter express-app db:push",
     "db:migrate": "pnpm --filter express-app db:migrate",
     "db:seed": "pnpm --filter express-app db:seed",
-    "db:generate": "pnpm --filter express-app db:generate"
+    "db:generate": "pnpm --filter express-app db:generate",
+    "test:api": "pnpm --filter express-app test"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.0",
@@ -33,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@typescript-eslint/parser": "^8.32.0",
     "eslint": "^9.26.0",
+    "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-react-refresh": "^0.4.20",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0"

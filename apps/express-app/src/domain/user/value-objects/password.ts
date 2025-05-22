@@ -1,4 +1,4 @@
-import { passwordSchema } from "../schemas";
+import { passwordSchema } from "@byltbasics/schemas";
 
 /**
  * Represents a user's password as a value object.

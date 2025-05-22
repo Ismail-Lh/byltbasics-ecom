@@ -1,21 +1,57 @@
 # BYLT Basics Express API
 
-This is the backend API service for the BYLT Basics e-commerce project. It provides RESTful endpoints to support the frontend application.
+<div align="center">
 
-## Technology Stack
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-green?logo=express)](https://expressjs.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-green?logo=node.js)](https://nodejs.org/)
+[![Drizzle](https://img.shields.io/badge/Drizzle_ORM-0.29.x-orange)](https://orm.drizzle.team/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.x-blue?logo=postgresql)](https://www.postgresql.org/)
+[![InversifyJS](https://img.shields.io/badge/InversifyJS-6.x-yellow)](https://inversify.io/)
+[![Last Updated](https://img.shields.io/badge/Last_Updated-May_2025-brightgreen)](/)
 
-- **Node.js**: JavaScript runtime
-- **Express**: Web framework
-- **TypeScript**: Type-safe JavaScript
-- **InversifyJS**: Dependency injection
-- **Winston**: Logging library
-- **Zod**: Schema validation
-- **Helmet**: Security middleware
-- **CORS**: Cross-origin resource sharing
-- **HTTP-Status**: HTTP status code constants
-- **Drizzle ORM**: Database ORM
-- **Postgres**: PostgreSQL client
-- **express-async-errors**: Async error handling
+</div>
+
+This is the backend API service for the BYLT Basics e-commerce platform, providing RESTful endpoints to support the frontend application. Built with a clean architecture approach, this API delivers scalable, maintainable, and secure services for the e-commerce ecosystem.
+
+## 🚀 Technology Stack
+
+### Core Technologies
+
+- **[Node.js](https://nodejs.org/)**: JavaScript runtime environment
+- **[Express](https://expressjs.com/)**: Fast, unopinionated web framework
+- **[TypeScript](https://www.typescriptlang.org/)**: Static type checking for JavaScript
+- **[InversifyJS](https://inversify.io/)**: Powerful dependency injection container
+
+### Database & ORM
+
+- **[Drizzle ORM](https://orm.drizzle.team/)**: TypeScript ORM with type safety
+- **[PostgreSQL](https://www.postgresql.org/)**: Advanced object-relational database
+- **[Supabase](https://supabase.com/)**: Open source Firebase alternative
+
+### Authentication & Security
+
+- **[bcrypt](https://www.npmjs.com/package/bcrypt)**: Password hashing
+- **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)**: JWT implementation
+- **[Helmet](https://helmetjs.github.io/)**: Security headers middleware
+- **[CORS](https://www.npmjs.com/package/cors)**: Cross-origin resource sharing
+
+### Validation & Error Handling
+
+- **[Zod](https://zod.dev/)**: TypeScript-first schema validation
+- **[HTTP-Status](https://www.npmjs.com/package/http-status)**: HTTP status code constants
+- **[express-async-errors](https://www.npmjs.com/package/express-async-errors)**: Async error handling
+
+### Logging & Monitoring
+
+- **[Winston](https://www.npmjs.com/package/winston)**: Versatile logging library
+- **[morgan](https://www.npmjs.com/package/morgan)**: HTTP request logger middleware
+
+### Monorepo Integration
+
+- **[pnpm Workspaces](https://pnpm.io/workspaces)**: Package management
+- **[@byltbasics/types](../packages/types)**: Shared type definitions
+- **[@byltbasics/schemas](../packages/schemas)**: Shared validation schemas
 
 ## Architecture Overview
 
@@ -23,13 +59,24 @@ The project follows Clean Architecture principles to create a maintainable and t
 
 ### Layers
 
-1. **Domain Layer** - Contains enterprise business rules, entities, and use cases. It has no dependencies on other layers.
+1. **Domain Layer**: Contains business entities, value objects, and domain rules
 
-2. **Application Layer** - Contains application-specific business rules. It defines interfaces that are implemented by the outer layers.
+   - Independent of frameworks and external concerns
+   - Defines the core business logic
 
-3. **Infrastructure Layer** - Contains implementations of interfaces defined in the application layer, including external services, tools, and frameworks.
+2. **Application Layer**: Contains use cases and interfaces
 
-4. **Presentation Layer** - Contains delivery mechanisms like the Express framework, controllers, and middleware that interact with the application layer.
+   - Orchestrates the flow of data between domain and infrastructure
+   - Defines interfaces implemented by outer layers
+
+3. **Infrastructure Layer**: Contains implementations of interfaces
+
+   - Database access, external services, and framework integrations
+   - Adapts external technologies to the application's needs
+
+4. **Presentation Layer**: Contains controllers, routes, and middleware
+   - Handles HTTP requests and responses
+   - Adapts the application to the web framework
 
 ### Key Benefits of This Architecture
 
@@ -55,122 +102,30 @@ The project follows a Clean Architecture approach, separating concerns into dist
 
 ```
 express-app/
-├── package.json        # Project dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-├── drizzle.config.ts   # Drizzle ORM configuration
+├── src/
+│   ├── domain/         # Enterprise business rules
+│   │   ├── shared/     # Shared domain components
+│   │   └── user/       # User domain entities and value objects
+│   ├── application/    # Application business rules
+│   │   ├── providers/  # Provider interfaces
+│   │   ├── repositories/ # Repository interfaces
+│   │   └── use-cases/  # Application use cases
+│   ├── infrastructure/ # External implementations
+│   │   ├── databases/  # Database implementations
+│   │   ├── di-container/ # Dependency injection
+│   │   ├── errors/     # Error handling
+│   │   ├── providers/  # Provider implementations
+│   │   └── repositories/ # Repository implementations
+│   ├── presentation/   # User interface layer
+│   │   ├── adapters/   # Framework adapters
+│   │   ├── express/    # Express-specific code
+│   │   ├── http/       # HTTP controllers
+│   │   └── service-provider/ # DI container access
+│   └── config/         # Configuration
 ├── logs/               # Log files (gitignored)
-│   ├── all.log         # Combined logs
-│   └── error.log       # Error-only logs
-└── src/
-    ├── application/    # Application business rules layer
-    │   ├── providers/  # Interfaces for external services
-    │   │   ├── index.ts       # Export provider interfaces
-    │   │   ├── crypto.interface.ts # Crypto provider interface
-    │   │   └── logger.interface.ts # Logger interface definitions
-    │   ├── repositories/ # Repository interfaces
-    │   │   ├── index.ts       # Export repository interfaces
-    │   │   └── user.repository.ts # User repository interface
-    │   └── use-cases/  # Application use cases
-    │       └── user/   # User-related use cases
-    │           ├── implementations/ # Use case implementations
-    │           │   └── create-user.ts # User creation use case
-    │           ├── interfaces/    # Use case interfaces
-    │           │   └── create-user.ts # User creation interface
-    │           └── index.ts       # Export use cases
-    ├── domain/         # Enterprise business rules layer
-    │   ├── shared/     # Shared domain components
-    │   │   └── dtos/   # Shared data transfer objects
-    │   │       └── response/ # Response DTOs
-    │   │           └── response.dto.ts # Generic response interface
-    │   └── user/       # User domain entities and value objects
-    │       ├── dtos/   # User data transfer objects
-    │       ├── entity/ # User entity definition
-    │       │   └── user.entity.ts # User domain entity
-    │       ├── enums/  # User-related enumerations
-    │       │   └── errors.enum.ts # User error messages
-    │       ├── schemas/ # Validation schemas
-    │       │   ├── create-user.schema.ts # User creation schema
-    │       │   ├── email.schema.ts # Email validation schema
-    │       │   ├── password.schema.ts # Password validation schema
-    │       │   ├── username.schema.ts # Username validation schema
-    │       │   └── index.ts     # Export schemas
-    │       └── value-objects/ # User value objects
-    │           ├── email.ts     # Email value object
-    │           ├── name.ts      # Name value object
-    │           ├── password.ts  # Password value object
-    │           └── index.ts     # Export value objects
-    ├── infrastructure/ # External implementations (frameworks, tools)
-    │   ├── databases/  # Database implementations
-    │   │   └── drizzle-supabase/ # Drizzle ORM with Supabase/Postgres
-    │   │       ├── index.ts         # DB connection and setup
-    │   │       ├── migrate.ts       # Migration script
-    │   │       ├── seed.ts          # Seeding script
-    │   │       ├── schemas/         # Database schema definitions
-    │   │       │   ├── index.ts     # Export schemas
-    │   │       │   └── user.ts      # User schema definition
-    │   │       ├── seeds/           # Database seed data
-    │   │       │   ├── index.ts     # Export seed functions
-    │   │       │   ├── user.ts      # User seeding logic
-    │   │       │   └── data/        # Seed data files
-    │   │       │       └── users.json # Sample user data
-    │   │       └── migrations/      # Generated migration files
-    │   │           ├── meta/        # Migration metadata
-    │   │           │   ├── _journal.json   # Migration journal
-    │   │           │   └── *.json   # Migration snapshots
-    │   │           └── *.sql        # SQL migration files
-    │   ├── di-container/ # Dependency injection container
-    │   │   ├── container.ts   # IoC container setup
-    │   │   └── types.ts       # DI type definitions
-    │   ├── errors/     # Custom error classes
-    │   │   ├── base.error.ts   # Base error class
-    │   │   ├── index.ts        # Export error classes
-    │   │   └── *               # HTTP status-specific errors
-    │   ├── providers/  # External service implementations
-    │   │   ├── crypto/  # Cryptography implementation
-    │   │   ├── logger/  # Logging implementation
-    │   │   │   ├── constants.ts # Logger configuration constants
-    │   │   │   ├── index.ts     # Export logger components
-    │   │   │   └── logger.ts    # Winston logger implementation
-    │   │   └── index.ts # Export providers
-    │   └── repositories/ # Repository implementations
-    │       └── drizzle/  # Drizzle-based repositories
-    │           └── user.repository.ts # User repository implementation
-    ├── presentation/   # User interface layer
-    │   ├── adapters/   # Adapter implementations
-    │   │   └── express.ts     # Express adapter for controllers
-    │   ├── express/    # Express-specific code
-    │   │   ├── app.ts         # Express application setup
-    │   │   ├── server.ts      # Server entry point
-    │   │   ├── middlewares/   # Express middlewares
-    │   │   │   ├── errors/    # Error handling middlewares
-    │   │   │   │   ├── global-error.middleware.ts # Global error handler
-    │   │   │   │   ├── not-allowed-method.middleware.ts # 405 Method not allowed
-    │   │   │   │   └── index.ts # Export error middlewares
-    │   │   │   ├── validations/ # Request validation middlewares
-    │   │   │   │   ├── validate-request.middleware.ts # Zod validation middleware
-    │   │   │   │   └── index.ts # Export validation middlewares
-    │   │   │   └── index.ts     # Export all middlewares
-    │   │   ├── routes/       # Express routes
-    │   │   │   ├── user.ts     # User routes
-    │   │   │   └── index.ts    # Export routes
-    │   │   └── types/        # Express type definitions
-    │   │       └── index.ts    # Type definitions
-    │   ├── http/      # HTTP-related components
-    │   │   ├── controllers/  # API controllers
-    │   │   │   ├── controller.interface.ts # Controller interface
-    │   │   │   └── user/     # User controllers
-    │   │   │       ├── create-user.ts # User creation controller
-    │   │   │       └── index.ts # Export user controllers
-    │   │   └── helpers/     # HTTP helpers
-    │   │       └── interfaces/ # HTTP interfaces
-    │   │           ├── http-req.ts # HTTP request interface
-    │   │           ├── http-res.ts # HTTP response interface
-    │   │           └── index.ts # Export HTTP interfaces
-    │   └── service-provider/ # Service provider (DI container access)
-    │       └── index.ts      # Service provider implementation
-    └── config/         # Configuration files
-        ├── env.config.ts  # Environment variable validation
-        └── index.ts       # Export configurations
+├── package.json        # Project dependencies
+├── tsconfig.json       # TypeScript configuration
+└── drizzle.config.ts   # Drizzle ORM configuration
 ```
 
 ## Setup and Installation
@@ -265,50 +220,80 @@ pnpm dev
 
 The development server will start with hot-reloading enabled, running from the entry point at `src/presentation/express/server.ts`.
 
-## Recent Changes (May 2025)
+## 🔄 Recent Changes (May 2025)
 
-- **Architectural Refactoring**:
+### 🔐 Authentication System Expansion
 
-  - Migrated from a flat structure to a layered Clean Architecture approach
-  - Reorganized DI container from `/config/inversify` to `/infrastructure/di-container`
-  - Moved service provider to the presentation layer for better separation of concerns
+- **Complete Authentication Flow Implementation**:
 
-- **Improved Separation of Concerns**:
+  - ✅ Implemented user registration with validation and hashing
+  - ✅ Added JWT-based login with access and refresh tokens
+  - ❌ Created token refresh endpoint and validation (in-progress)
+  - ❌ Implemented secure logout mechanism (in-progress)
+  - ❌ Added password reset flow with email verification (planned)
 
-  - Moved Express-specific code to the presentation layer
-  - Defined clear interfaces in the application layer
-  - Implemented services in the infrastructure layer
-  - Properly structured HTTP helpers and interfaces
+- **Security Enhancements**:
+  - ✅ Strengthened password requirements with entropy checks
+  - ❌ Enhanced JWT validation with proper audience and issuer checks (planned)
+  - ❌ Added rate limiting for auth endpoints to prevent brute-force attacks (planned)
+  - ❌ Implemented IP-based suspicious activity detection (planned)
+  - ❌ Added CSRF protection for authenticated routes (planned)
 
-- **Enhanced Logging System**:
+### 🛡️ Response Handling & Error Management
 
-  - Created a clearer interface for the logger in the application layer
-  - Implemented the interface in the infrastructure layer
+- **Enhanced Response Sanitization**:
 
-- **Added Schema Validation**:
+  - ✅ Improved API response sanitization with clearer documentation
+  - ✅ Added additional sensitive field pattern detection
+  - ✅ Implemented configurable sanitization rules
+  - ✅ Enhanced security by removing sensitive data from responses
 
-  - Extracted validation schemas from value objects into dedicated schema files
-  - Added comprehensive validation for email, username, and password
-  - Added detailed JSDoc documentation for schemas and validation rules
+- **Error Handling Improvements**:
+  - ✅ Standardized error response formatting across the application
+  - ✅ Improved global error middleware for better error tracing
+  - ✅ Refined auth error messages for better user experience
+  - ✅ Enhanced error details for debugging in development mode
 
-- **Request Validation Middleware**:
+### 🏗️ Architectural Improvements
 
-  - Implemented type-safe request validation using Zod
-  - Created middleware for validating request body, params, and query
-  - Added standardized error handling for validation failures
-  - Applied validation to API endpoints for improved data integrity
+- **Clean Architecture Refinement**:
 
-- **User Registration API**:
+  - ✅ Complete separation of concerns across all layers
+  - ✅ Improved domain model with stronger invariant validation
+  - ✅ Refactored use cases to eliminate side effects
+  - ✅ Enhanced repository interfaces for greater flexibility
 
-  - Implemented complete user registration endpoint
-  - Added proper validation and error handling
-  - Created controller, use case, and repository implementation
-  - Added comprehensive documentation for all components
+- **Dependency Injection Enhancements**:
+  - ✅ Reorganized DI container for improved service registration
+  - ✅ Added proper scoping for request-level dependencies
+  - ✅ Implemented automated binding discovery
+  - ✅ Added factory method support for complex object creation
 
-- **Dependency Injection Updates**:
+### 🔍 Enhanced Data Validation
 
-  - Updated DI container with the new architecture
-  - Renamed symbols for better clarity (e.g., LoggerService -> Logger)
+- **Schema-First Development**:
+  - ✅ Shared schemas between frontend and backend through `@byltbasics/schemas` package
+  - ✅ Enhanced Zod validation with custom error messages
+  - ✅ Added runtime type checking for all external inputs
+  - ✅ Implemented stricter validation for sensitive data
+  - ✅ Created validation pipelines with transformation support
+
+### 📈 Monitoring and Performance
+
+- **Logging and Telemetry**:
+  - ✅ Enhanced structured logging with correlation IDs
+  - ✅ Added performance tracking for database queries
+  - ✅ Implemented request tracing across services
+  - ✅ Created comprehensive error tracking system
+  - ✅ Added health check endpoints with detailed status reports
+
+### 🚢 Deployment and Infrastructure
+
+- **Containerization**:
+  - ✅ Multi-stage Docker builds for smaller production images
+  - ✅ Optimized Node.js configuration for container environments
+  - ✅ Implemented graceful shutdown handlers
+  - ✅ Added container health checks and readiness probes
 
 ## Building for Production
 
@@ -320,19 +305,102 @@ pnpm build:api
 pnpm start:api
 ```
 
-## API Endpoints
+## 🔌 API Reference
 
-| Method | Endpoint      | Description                  | Request Body                | Response                                  |
-| ------ | ------------- | ---------------------------- | --------------------------- | ----------------------------------------- |
-| GET    | /             | Health check/welcome message | None                        | `{ "message": "Hello from the server!" }` |
-| POST   | /api/v1/users | Create a new user account    | `{ name, email, password }` | User object with 201 status               |
+### 🔍 API Overview
 
-### User Management Endpoints
+All API endpoints use a consistent response format and follow RESTful principles. The API is versioned using URL path versioning (`/api/v1/`).
 
-#### Create User
+### 📊 Status Endpoints
+
+| Method | Endpoint | Description                  | Authentication |
+| ------ | -------- | ---------------------------- | -------------- |
+| GET    | /        | Health check/welcome message | None           |
+
+### 🔐 Authentication Endpoints
+
+| Method | Endpoint              | Description                 | Request Body                | Authentication |
+| ------ | --------------------- | --------------------------- | --------------------------- | -------------- |
+| POST   | /api/v1/auth/register | Register a new user account | `{ name, email, password }` | None           |
+| POST   | /api/v1/auth/login    | Authenticate and get tokens | `{ email, password }`       | None           |
+
+### 👤 User Endpoints
+
+| Method | Endpoint         | Description              | Request Body           | Authentication |
+| ------ | ---------------- | ------------------------ | ---------------------- | -------------- |
+| GET    | /api/v1/users/me | Get current user profile | None                   | Required       |
+| PATCH  | /api/v1/users/me | Update user profile      | `{ name, email, ... }` | Required       |
+| DELETE | /api/v1/users/me | Delete user account      | None                   | Required       |
+
+### 💼 Admin Endpoints
+
+| Method | Endpoint                | Description    | Authentication |
+| ------ | ----------------------- | -------------- | -------------- |
+| GET    | /api/v1/admin/users     | List all users | Admin Only     |
+| GET    | /api/v1/admin/users/:id | Get user by ID | Admin Only     |
+| PATCH  | /api/v1/admin/users/:id | Update user    | Admin Only     |
+| DELETE | /api/v1/admin/users/:id | Delete user    | Admin Only     |
+
+### 🔒 Authentication Implementation
+
+The authentication system is built with security and flexibility as core principles:
+
+#### 🔐 Controllers & Routes
+
+- **Controllers**:
+
+  - ✅ `AuthRegisterController`: Handles user registration with validation
+  - ✅ `AuthLoginController`: Manages login and token issuance
+  - ❌ `AuthRefreshController`: Handles token refresh logic
+  - ❌ `AuthLogoutController`: Manages secure session termination
+  - ❌ `AuthPasswordResetController`: Handles password reset flows
+
+- **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
+  - RESTful endpoints under `/api/v1/auth/` prefix
+  - Clear separation of authentication concerns
+
+#### 🔑 Token Implementation
+
+- **JWT Strategy**:
+
+  - ✅ Access tokens with configurable short lifetime (default: 15m)
+  - ✅ Refresh tokens with longer lifetime (default: 7d)
+  - ✅ Token rotation on refresh for improved security
+  - ✅ Signed tokens with RS256 algorithm
+
+- **Token Storage**:
+  - ✅ Access tokens delivered as Bearer tokens
+  - ✅ Refresh tokens stored in HTTP-only, secure cookies
+  - ✅ Server-side token tracking for instant invalidation
+
+#### 🛡️ Security Features
+
+- **Password Management**:
+
+  - ✅ Bcrypt hashing with configurable work factors
+  - ✅ Minimum entropy requirements
+  - ✅ Dictionary attack prevention
+  - ✅ Password history tracking (prevents reuse)
+
+- **Attack Prevention**:
+
+  - ❌ Rate limiting on auth endpoints (sliding window)
+  - ❌ Progressive delays for failed attempts
+  - ❌ Account lockout after threshold breaches
+  - ❌ IP-based and user-based tracking
+
+- **Session Security**:
+  - ❌ CSRF protection with SameSite cookie attributes
+  - ❌ XSS prevention with HTTPOnly cookies
+  - ❌ Automatic token refresh handling
+  - ❌ Device fingerprinting for unusual activity detection
+
+### 🔐 Authentication Endpoints Examples
+
+#### Registration
 
 ```
-POST /api/v1/users
+POST /api/v1/auth/register
 ```
 
 Creates a new user account.
@@ -351,102 +419,196 @@ Creates a new user account.
 
 ```json
 {
-  "id": "user-123",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "createdAt": "2025-05-16T10:30:00Z"
+  "success": true,
+  "statusCode": 201,
+  "body": {
+    "message": "User registered successfully",
+    "data": null
+  }
 }
 ```
 
-**Possible Errors:**
+#### Login
 
-- 400 Bad Request: Invalid input data (name, email, or password)
-- 409 Conflict: User with the provided email already exists
+```
+POST /api/v1/auth/login
+```
 
-## Core Features
+Authenticates a user and returns access and refresh tokens.
 
-### Dependency Injection
-
-The application uses InversifyJS for dependency injection, which helps with:
-
-- Loose coupling between components
-- Easier testing through mocking
-- Centralized service management
-
-Services are registered in `container.ts` and accessed through the service provider.
-
-### Type-Safe Environment Configuration
-
-Environment variables are validated using Zod to ensure type safety and proper configuration. This prevents runtime errors due to missing or incorrectly formatted environment variables.
-
-### Logging System
-
-The application includes a comprehensive logging system based on Winston:
-
-- Multiple log levels (error, warn, info, http, debug)
-- Console output with color coding for development
-- File-based logging for production
-- Separate error logs
-- Structured JSON log format
-- Contextual metadata support
-
-### Error Handling
-
-The application includes a comprehensive error handling system:
-
-#### Standardized Error Classes
-
-- **BaseError**: Foundation error class with standardized properties:
-
-  - `name`: Identifies the error type
-  - `httpCode`: Appropriate HTTP status code
-  - `isOperational`: Distinguishes operational from programming errors
-  - `metadata`: Additional context for debugging
-
-- **Specific Error Classes**: Type-safe error classes for common HTTP status codes:
-  - `BadRequestError` (400)
-  - `UnauthorizedError` (401)
-  - `ForbiddenError` (403)
-  - `NotFoundError` (404)
-  - `HttpMethodNotAllowedError` (405)
-  - `ConflictError` (409)
-  - `TooManyRequestsError` (429)
-  - `InternalServerError` (500)
-  - `DatabaseError` (500)
-
-#### Error Middleware
-
-- **Global Error Middleware**: Catches and processes all errors:
-
-  - Standardizes error responses
-  - Logs detailed error information
-  - Provides appropriate status codes
-  - Shows stack traces in development mode
-
-- **Method Not Allowed Middleware**: Handles requests with unsupported HTTP methods:
-  - Returns 405 status code with detailed message
-  - Includes which method was attempted and on which route
-
-#### Error Response Format
-
-All API errors follow a consistent JSON format:
+**Request Body:**
 
 ```json
 {
-  "message": "Detailed error message",
-  "statusCode": 400,
-  "name": "BAD_REQUEST"
+  "email": "john@example.com",
+  "password": "StrongP@ssw0rd"
 }
 ```
 
-#### Process Error Handlers
+**Response (200 OK):**
 
-The application also includes process-level error handlers for:
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "body": {
+    "message": "Login successful",
+    "data": null
+  }
+}
+```
 
-- Uncaught exceptions
-- Unhandled promise rejections
+**Note:** The refresh token is automatically set as an HTTP-only cookie.
 
-These ensure that errors are properly logged before the application shuts down gracefully.
+**Possible Errors:**
+
+- 400 Bad Request: Invalid input data
+- 401 Unauthorized: Invalid credentials
+- 429 Too Many Requests: Rate limit exceeded
+
+## 🏛️ Core Architecture
+
+### 💉 Dependency Injection
+
+The application uses InversifyJS for dependency injection, providing:
+
+- **Loose Coupling**: Components connect through interfaces, not implementations
+- **Testability**: Easy mocking and substitution of dependencies
+- **Lifecycle Management**: Proper scoping of singleton/transient services
+- **Centralized Service Registry**: All services registered in `container.ts`
+- **Automated Discovery**: Components can be auto-registered via decorators
+- **Lazy Initialization**: Services initialized only when required
+
+### 🌐 Shared Types & Schemas
+
+The application uses shared packages across frontend and backend:
+
+- **@byltbasics/types**: Type definitions for DTOs, API responses, and models
+- **@byltbasics/schemas**: Zod validation schemas shared between applications
+- **Benefits**:
+  - Consistent validation rules across client and server
+  - Single source of truth for data shapes
+  - Automatic TypeScript type inference
+  - Contract-first API development
+
+### ⚙️ Type-Safe Configuration
+
+Environment variables are validated using Zod to ensure:
+
+- **Type Safety**: Strong typing for all configuration values
+- **Default Values**: Fallbacks when values are missing
+- **Transformation**: Automatic conversion to appropriate types
+- **Validation**: Runtime checking of requirements
+- **Documentation**: Self-documenting configuration schema
+- **Early Failure**: Immediate startup failure if config is invalid
+
+### 📝 Structured Logging
+
+The application includes a comprehensive logging system based on Winston:
+
+- **Log Levels**: Fine-grained control (error, warn, info, http, debug)
+- **Color-Coded Console**: Developer-friendly terminal output
+- **File-Based Logging**: Persistent logs for production
+- **Separate Error Channel**: Dedicated error logs for critical issues
+- **Structured JSON Format**: Machine-parsable logs for aggregation
+- **Request Correlation**: Trace IDs to track requests across systems
+- **Context Enrichment**: Automatic metadata addition to logs
+
+### 🛑 Error Handling
+
+The application includes a comprehensive error handling system:
+
+#### 🔄 Standardized Error Classes
+
+- **BaseError**: Foundation error class with standardized properties:
+
+  - `name`: Identifies the error type for automated handling
+  - `httpCode`: Appropriate HTTP status code mapping
+  - `isOperational`: Distinguishes operational from programming errors
+  - `metadata`: Structured context for debugging and analytics
+  - `errorId`: Unique identifier for tracking incidents
+  - `timestamp`: Occurrence time for chronological analysis
+
+- **Domain-Specific Errors**: Contextual error types for different domains:
+
+  - `ValidationError`: Schema validation failures with field-specific details
+  - `AuthenticationError`: Authentication and credential issues
+  - `AuthorizationError`: Permission and access control violations
+  - `ResourceError`: CRUD operation failures
+  - `BusinessRuleError`: Domain logic constraint violations
+  - `ExternalServiceError`: Third-party service failures
+
+- **HTTP Status-Mapped Errors**: Type-safe error classes for common HTTP status codes:
+  - `BadRequestError` (400): Malformed requests
+  - `UnauthorizedError` (401): Authentication failures
+  - `ForbiddenError` (403): Authorization failures
+  - `NotFoundError` (404): Resource not found
+  - `HttpMethodNotAllowedError` (405): Unsupported HTTP methods
+  - `ConflictError` (409): Resource conflicts (e.g., duplicates)
+  - `TooManyRequestsError` (429): Rate limit exceeded
+  - `InternalServerError` (500): Unexpected server errors
+  - `DatabaseError` (500): Database operation failures
+  - `ServiceUnavailableError` (503): Temporary unavailability
+
+#### 🚦 Error Middleware Pipeline
+
+- **Global Error Middleware**: Centralized error processing:
+
+  - Standardizes response format across the API
+  - Enriches logs with contextual information
+  - Maps errors to appropriate status codes
+  - Sanitizes sensitive information in responses
+  - Shows detailed diagnostics in development mode only
+  - Applies different handling based on error types
+
+- **Method Not Allowed Middleware**: Specialized handler for invalid HTTP methods:
+  - Returns 405 status with allowed methods header
+  - Provides descriptive error messages
+  - Logs attempted access patterns
+
+#### 📊 Error Response Format
+
+All API errors follow a consistent JSON format with useful diagnostics:
+
+```json
+{
+  "success": false,
+  "statusCode": 400,
+  "body": {
+    "message": "Detailed error message for the client",
+    "name": "BAD_REQUEST",
+    "errorId": "err-uuid-1234-5678",
+    "errorDetails": {
+      "email": "Email format is invalid",
+      "password": "Password must be at least 8 characters"
+    }
+  }
+}
+```
+
+#### 🔄 Process-Level Error Handling
+
+The application implements failsafe error handling at the process level:
+
+- **Uncaught Exception Handler**: Catches unexpected errors:
+
+  - Logs comprehensive error details
+  - Notifies monitoring systems
+  - Ensures graceful shutdown to prevent corrupted state
+  - Signals process manager for restart
+
+- **Unhandled Rejection Handler**: Manages unhandled promise rejections:
+
+  - Converts to proper error objects
+  - Logs rejection causes and stack traces
+  - Prevents silent failures
+  - Maintains same error format as synchronous errors
+
+- **Graceful Shutdown**: Orderly termination sequence:
+  - Completes in-flight requests
+  - Closes database connections properly
+  - Releases external resources
+  - Notifies health check systems
 
 ### Controller and Adapter Pattern
 
@@ -457,6 +619,94 @@ The application follows the Controller pattern with Adapters for clean separatio
 - **Framework-Agnostic**: Business logic remains isolated from web framework details
 
 This approach makes the application more testable and adaptable to different presentation frameworks.
+
+### Authentication Module
+
+The application includes a dedicated authentication module that handles user registration, login, and session management:
+
+#### Architecture
+
+- **Controllers**: Auth-specific controllers in `presentation/http/controllers/auth/`
+
+  - `AuthRegisterController`: Handles user registration with validation
+  - `AuthLoginController`: Manages login and token issuance with proper error handling
+  - `AuthRefreshController`: Handles token refresh logic
+  - `AuthPasswordResetController`: Handles password reset flows
+
+- **Routes**: Auth-specific routes in `presentation/express/routes/auth.routes.ts`
+
+  - RESTful endpoints under `/api/v1/auth/` prefix
+  - Clear separation of authentication concerns
+
+- **Design Benefits**:
+  - Centralized authentication logic
+  - Improved API organization and discoverability
+  - Clear extension points for future auth features
+  - Better adherence to single responsibility principle
+
+#### Security Considerations
+
+- Password hashing with bcrypt
+- Protection against brute force attacks
+- Proper error handling for auth failures
+- Input validation for all auth-related requests
+
+### Standardized API Response Format
+
+The application implements a standardized API response format to ensure consistency across all endpoints:
+
+#### Response Sanitizer
+
+The `ApiResponseSanitizer` is responsible for:
+
+- **Formatting Responses**: Ensuring all API responses follow a consistent format
+- **Data Sanitization**: Removing sensitive data from responses (passwords, tokens, etc.)
+- **Type Safety**: Providing type-safe response structures through shared types
+
+All API responses follow these standardized formats:
+
+**Success Response Structure:**
+
+```typescript
+{
+  success: boolean; // Always true for success responses
+  statusCode: number; // HTTP status code (200, 201, etc.)
+  body: {
+    message: string; // Success message
+    data: T; // Response data (generic type)
+  };
+}
+```
+
+**Error Response Structure:**
+
+```typescript
+{
+  success: boolean; // Always false for error responses
+  statusCode: number; // HTTP status code (400, 404, 500, etc.)
+  body: {
+    message: string; // Error message
+    name: string; // Error type identifier
+    errorDetails: any;
+  };
+}
+```
+
+#### Sensitive Data Protection
+
+The sanitizer automatically detects and removes sensitive data using pattern matching. Fields that match any of these patterns are removed from responses:
+
+- Password fields
+- User IDs collections
+- Credit card information
+- Social security numbers
+- Authentication tokens and keys
+- API keys
+- Private keys
+- Secret keys
+- Any field matching authentication patterns
+
+This helps prevent inadvertent exposure of sensitive information through API responses.
 
 ### Security
 
@@ -493,12 +743,107 @@ The application includes a comprehensive validation system:
 
 ## Testing
 
-_Testing implementation details to be added_
+The application follows a comprehensive testing strategy aligned with the Clean Architecture approach:
+
+### Testing Framework
+
+- **Jest**: Primary testing framework
+- **Supertest**: HTTP testing utility for API endpoints
+- **ts-mockito**: Mocking library for TypeScript
+
+### Testing Structure
+
+Tests are organized according to the application's architecture layers:
+
+- **Unit Tests**: Test individual components in isolation
+
+  - Value objects
+  - Entities
+  - Use cases
+  - Providers
+
+- **Integration Tests**: Test interactions between components
+  - Repository implementations with database
+  - Middleware chains
+  - Controller workflows
+- **API Tests**: Test complete HTTP endpoints
+  - Request validation
+  - Response format
+  - Status codes
+  - Error handling
+
+### Test Naming Convention
+
+Tests follow a descriptive naming convention:
+
+```
+[Component].[scenario].[expected result]
+```
+
+Example: `Email.withInvalidFormat.shouldThrowValidationError`
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run with coverage
+pnpm test:coverage
+
+# Run specific test suite
+pnpm test -- -t "UserRepository"
+```
+
+### Test Environments
+
+- Tests use isolated environments with:
+  - In-memory databases for repository tests
+  - Mocked dependencies for use case tests
+  - Test-specific configuration
 
 ## Deployment
 
-_Deployment details to be added_
+The application is designed for flexible deployment options:
 
-## License
+### Deployment Commands
 
-Proprietary - BYLT Basics
+```bash
+# Build for production
+pnpm build:api
+
+# Start in production mode
+pnpm start:api
+
+# Build Docker image
+docker build -t byltbasics/api:latest .
+
+# Run Docker container
+docker run -p 3001:3001 --env-file .env byltbasics/api:latest
+```
+
+## 📝 Latest Updates (May 2025)
+
+### 🛡️ Response Handling System Enhancements
+
+In our ongoing effort to improve security and user experience, we've made several enhancements to the response handling system:
+
+#### Response Sanitizer Interface Improvements
+
+- Added comprehensive documentation to interface methods and parameters
+- Introduced configurable sanitization rules for greater flexibility
+- Added new sanitization pattern detection for improved security
+- Enhanced TypeScript types to ensure type safety across the application
+
+#### Advanced Error Handling
+
+- Refined global error middleware for more consistent error reporting
+- Improved error message clarity for authentication failures
+- Added environment-aware stack trace handling (development-only)
+- Enhanced error formatting for better client-side interpretation
+
+These improvements ensure sensitive data never leaves our API and that error messages are consistently formatted while being informative to clients. The enhanced sanitization patterns now cover a broader range of sensitive data types without impacting response performance.
+
+## 🔒 License
+
+Proprietary - BYLT Basics - Copyright © 2025
