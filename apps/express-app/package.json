@@ -23,6 +23,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@byltbasics/schemas": "workspace:*",
     "@byltbasics/types": "workspace:*",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",

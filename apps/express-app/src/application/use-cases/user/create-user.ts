@@ -2,7 +2,6 @@ import { inject, injectable } from "inversify";
 
 import type { ICryptoProvider } from "@/application/providers";
 import type { IUserRepository } from "@/application/repositories";
-import type { IResponseDTO } from "@/domain/shared/dtos";
 import type { ICreateUserReqDTO, IUserOutReqDTO } from "@/domain/user/dtos";
 
 import { UserEntity } from "@/domain/user/entity";
@@ -10,7 +9,21 @@ import { UserErrors } from "@/domain/user/enums";
 import { TYPES } from "@/infrastructure/di-container/types";
 import { BadRequestError } from "@/infrastructure/errors";
 
-import type { ICreateUserUseCase } from "./create-user.interface";
+/**
+ * Interface for the use case of creating a new user.
+ *
+ * @interface
+ */
+export interface ICreateUserUseCase {
+  /**
+   * Executes the create user use case.
+   *
+   * @async
+   * @param {ICreateUserReqDTO} data - The data for creating a new user.
+   * @returns {Promise<IUserOutReqDTO>} The response data.
+   */
+  execute: (data: ICreateUserReqDTO) => Promise<IUserOutReqDTO>;
+}
 
 /**
  * Use case for creating a new user in the system.
@@ -41,7 +54,7 @@ export class CreateUserUseCase implements ICreateUserUseCase {
    * @returns A response DTO containing the created user data.
    * @throws {BadRequestError} If a user with the given email already exists.
    */
-  async execute(data: ICreateUserReqDTO): Promise<IResponseDTO<IUserOutReqDTO>> {
+  async execute(data: ICreateUserReqDTO): Promise<IUserOutReqDTO> {
     const userEntity = UserEntity.create(data);
     const { name, email, password } = userEntity;
 
@@ -55,11 +68,6 @@ export class CreateUserUseCase implements ICreateUserUseCase {
 
     const newUser = await this.userRepository.create({ name, email, password: passwordHash });
 
-    return {
-      success: true,
-      statusCode: 201,
-      message: "User created successfully",
-      data: newUser,
-    };
+    return newUser;
   }
 }

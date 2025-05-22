@@ -8,7 +8,21 @@ import { Email, Password } from "@/domain/user/value-objects";
 import { TYPES } from "@/infrastructure/di-container/types";
 import { ForbiddenError, NotFoundError } from "@/infrastructure/errors";
 
-import type { IAuthLoginUseCase } from "./auth-login.interface";
+/**
+ * Interface for the use case of user authentication login.
+ *
+ * @interface
+ */
+export interface IAuthLoginUseCase {
+  /**
+   * Executes the auth login use case.
+   *
+   * @async
+   * @param {IAuthLoginDto} data - The data for user authentication login.
+   * @returns {Promise<IAuthResponseDto>} - A promise that resolves to the authentication response DTO.
+   */
+  execute: (data: IAuthLoginDto) => Promise<IAuthResponseDto>;
+}
 
 /**
  * AuthLoginUseCase

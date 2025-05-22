@@ -5,13 +5,13 @@ import type { IApiResponseSanitizer, ICryptoProvider, IJwtTokenProvider, ILogger
 import type { IUserRepository } from "@/application/repositories";
 import type { IAuthLoginUseCase } from "@/application/use-cases/auth";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
-import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/http/controllers/auth";
+import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/controllers/auth";
 
 import { AuthLoginUseCase } from "@/application/use-cases/auth";
 import { CreateUserUseCase } from "@/application/use-cases/user";
 import { ApiResponseSanitizer, CryptoProvider, JwtTokenProvider, Logger } from "@/infrastructure/providers";
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
-import { AuthLoginController, AuthRegisterController } from "@/presentation/http/controllers/auth";
+import { AuthLoginController, AuthRegisterController } from "@/presentation/controllers/auth";
 
 import { TYPES } from "./types";
 

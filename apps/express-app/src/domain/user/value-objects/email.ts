@@ -1,4 +1,4 @@
-import { emailAddressSchema } from "../schemas";
+import { emailAddressSchema } from "@byltbasics/schemas";
 
 /**
  * Class representing an email address.

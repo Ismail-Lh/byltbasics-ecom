@@ -1,12 +1,11 @@
 import { inject, injectable } from "inversify";
 
-import type { IApiResponseSanitizer } from "@/application/providers";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
 import type { ICreateUserReqDTO, IUserOutReqDTO } from "@/domain/user/dtos";
 
 import { TYPES } from "@/infrastructure/di-container/types";
 
-import type { IHttpRequest, IHttpResponse } from "../../helpers/interfaces";
+import type { IHttpRequest } from "../../types";
 import type { IHttpController } from "../controller.interface";
 
 export interface IAuthRegisterController extends IHttpController<ICreateUserReqDTO, IUserOutReqDTO> {}
@@ -28,7 +27,7 @@ export class AuthRegisterController implements IAuthRegisterController {
    *
    * @param createUserUseCase - The use case responsible for handling user creation logic.
    */
-  constructor(@inject(TYPES.CreateUserUseCase) private createUserUseCase: ICreateUserUseCase, @inject(TYPES.ApiResponseSanitizer) private apiResponseSanitizer: IApiResponseSanitizer) {}
+  constructor(@inject(TYPES.CreateUserUseCase) private createUserUseCase: ICreateUserUseCase) {}
 
   /**
    * Handles the HTTP request to create a new user.
@@ -36,14 +35,11 @@ export class AuthRegisterController implements IAuthRegisterController {
    * @param request - The HTTP request containing the user registration data in the body.
    * @returns A promise that resolves to an HTTP response with the created user data.
    */
-  async handle(request: IHttpRequest<ICreateUserReqDTO>): Promise<IHttpResponse<IUserOutReqDTO>> {
+  async handle(request: IHttpRequest<ICreateUserReqDTO>): Promise<IUserOutReqDTO> {
     const body = request.body;
 
-    const { data, message, statusCode } = await this.createUserUseCase.execute(body);
+    const data = await this.createUserUseCase.execute(body);
 
-    // Sanitize the response data
-    const sanitizedResponse = this.apiResponseSanitizer.successResponse({ data, message, statusCode });
-
-    return sanitizedResponse;
+    return data;
   }
 }
