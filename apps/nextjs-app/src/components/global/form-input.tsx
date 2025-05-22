@@ -13,7 +13,7 @@ import React from "react";
 interface FormInputProps<T extends FieldValues> {
   name: FieldPath<T>;
   placeholder: string;
-  label: string;
+  label?: string;
   control: Control<T>;
   type?: string;
 }

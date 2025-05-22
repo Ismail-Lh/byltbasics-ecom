@@ -5,7 +5,7 @@ import { API_URL } from "@/constants/env.constants";
 import { asyncTryCatch } from "@/utils";
 import axios from "axios";
 
-import type { IRegisterDto } from "../components/forms";
+import type { ILoginDto, IRegisterDto } from "../components/forms";
 
 /**
  * Registers a new user with the provided registration credentials.
@@ -36,6 +36,33 @@ export async function registerUser(
     }
 
     throw new Error("Registration failed. Please try again.");
+  }
+
+  return responseData.data;
+}
+
+/**
+ * Logs in a user with the provided login credentials.
+ *
+ * @param loginDto - The login form data containing user credentials.
+ * @returns A promise that resolves to the login response.
+ */
+export async function loginUser(
+  loginDto: ILoginDto,
+): Promise<{ message: string; accessToken: string }> {
+  const { data: responseData, error } = await asyncTryCatch(
+    axios.post<{ message: string; accessToken: string }>(`${API_URL}/auth/login`, loginDto, {
+      withCredentials: true,
+    }),
+  );
+
+  if (error) {
+    const axiosError = error as AxiosError<IApiErrorResponse>;
+    if (axiosError.response) {
+      throw new Error(axiosError.response.data.body.message);
+    }
+
+    throw new Error("Login failed. Please try again.");
   }
 
   return responseData.data;
