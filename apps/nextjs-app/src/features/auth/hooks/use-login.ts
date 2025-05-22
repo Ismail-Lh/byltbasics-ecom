@@ -28,9 +28,9 @@ export function useLogin() {
       toast.loading("Logging in...", { id: "loadingToast" });
     },
     onSuccess: async (responseData) => {
-      const { message } = responseData;
+      const { body } = responseData;
 
-      toast.success(message);
+      toast.success(body.message);
 
       setAuthenticated();
 

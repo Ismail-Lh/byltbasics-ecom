@@ -44,6 +44,9 @@ importers:
 
   apps/express-app:
     dependencies:
+      '@byltbasics/schemas':
+        specifier: workspace:*
+        version: link:../../packages/schemas
       '@byltbasics/types':
         specifier: workspace:*
         version: link:../../packages/types
