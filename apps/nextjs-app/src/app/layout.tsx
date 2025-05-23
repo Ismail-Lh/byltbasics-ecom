@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-import { ReactQueryProvider } from "@/providers";
+import { Navbar } from "@/layout";
 
 import "./globals.scss";
 
+import { ReactQueryProvider } from "@/providers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ReactQueryProvider>
           <Toaster />
+          <Navbar />
           {children}
         </ReactQueryProvider>
       </body>
