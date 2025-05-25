@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-import { Navbar } from "@/layout";
+import { ReactQueryProvider } from "@/providers";
 
 import "./globals.scss";
 
-import { ReactQueryProvider } from "@/providers";
+import { Navbar } from "@/ui/layout";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 

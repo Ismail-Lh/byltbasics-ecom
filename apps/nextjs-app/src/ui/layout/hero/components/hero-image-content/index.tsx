@@ -1,4 +1,4 @@
-import { Button } from "@/components/global";
+import { Button } from "@/ui/components/global";
 
 import { HeroSubtitle } from "../hero-subtitle";
 import { HeroTitle } from "../hero-title";

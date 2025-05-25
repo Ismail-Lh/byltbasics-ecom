@@ -1,5 +1,6 @@
-import { productCollections } from "@/data";
-import { HeroSection, ProductCollectionsSection } from "@/layout";
+import { productCollections } from "@/constants/product-collections";
+
+import { HeroSection, ProductCollectionsSection } from "../../layout";
 
 export function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import { Logo } from "@/components/global";
+import { Logo } from "@/ui/components/global";
 
 import { NavbarIcons, NavbarLinks } from "./components";
 import styles from "./styles.module.scss";

@@ -7,7 +7,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@/components/ui";
+} from "@/ui/components/ui";
 import React from "react";
 
 interface FormInputProps<T extends FieldValues> {
