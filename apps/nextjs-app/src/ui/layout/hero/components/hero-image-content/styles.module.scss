@@ -1,0 +1,18 @@
+@use "@/app/variables" as *;
+@use "@/app/mixin" as *;
+
+.hero {
+  &__content {
+    @include flex-ali-jus($direction: column);
+    @include wh-hei();
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+
+    @media (max-width: 700px) {
+      @include flex-ali-jus($justify: flex-end, $direction: column);
+      padding-bottom: 9rem;
+    }
+  }
+}

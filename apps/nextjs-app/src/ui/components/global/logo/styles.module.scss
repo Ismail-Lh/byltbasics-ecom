@@ -1,0 +1,7 @@
+.navbar__logo {
+  justify-self: center;
+
+  @media (max-width: 980px) {
+    justify-self: start;
+  }
+}

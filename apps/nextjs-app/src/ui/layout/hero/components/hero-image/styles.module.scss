@@ -1,0 +1,10 @@
+@use "@/app/variables" as *;
+@use "@/app/mixin" as *;
+
+.hero {
+  &__container {
+    width: 100vw;
+    height: calc(100vh - 5.9rem);
+    position: relative;
+  }
+}
