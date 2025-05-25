@@ -2,10 +2,10 @@
 
 import type { z } from "zod";
 
-import { Button, FormInput } from "@/components/global";
-import { Form } from "@/components/ui";
 import { useRegister } from "@/features/auth/hooks";
 import { registerSchema } from "@/features/auth/schemas";
+import { Button, FormInput } from "@/ui/components/global";
+import { Form } from "@/ui/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
