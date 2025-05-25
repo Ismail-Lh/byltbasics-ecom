@@ -1,0 +1,103 @@
+@use "@/app/variables" as *;
+@use "@/app/mixin" as *;
+
+.discount {
+  &__form {
+    @include grid-columns($columns: repeat(2, 1fr));
+    @include bg-txt-br-color($bg-color: $valhalla-color, $color: $white-color);
+    @include mr-pd($mr: 3rem 0, $pd: 6rem 0);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      place-items: center;
+      row-gap: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      padding: 5rem 0;
+    }
+
+    @media (max-width: 500px) {
+      padding: 4rem 2rem;
+    }
+
+    &_text {
+      @include grid-center();
+
+      h1,
+      h2 {
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: $xl-size-2;
+        margin-top: 1rem;
+
+        @media (max-width: 600px) {
+          font-size: $xl-size-3;
+        }
+      }
+
+      h2 {
+        font-size: $md-size-1;
+
+        @media (max-width: 600px) {
+          font-size: $md-size-2;
+        }
+      }
+    }
+
+    &_input {
+      .text {
+        font-size: $sm-size-3;
+        margin-bottom: 1.5rem;
+
+        @media (max-width: 768px) {
+          margin-bottom: 2.5rem;
+        }
+      }
+
+      .form {
+        @include flex-align();
+
+        @media (max-width: 425px) {
+          flex-direction: column;
+        }
+
+        &__ipt {
+          padding: 1rem 2rem;
+          width: 60%;
+
+          @media (max-width: 768px) {
+            width: 80%;
+          }
+
+          @media (max-width: 425px) {
+            width: 100%;
+            margin-bottom: 1rem;
+          }
+        }
+
+        &__btn {
+          display: inline-block;
+          font-size: $sm-size-3;
+          padding: 1rem 2rem;
+          cursor: pointer;
+          text-transform: uppercase;
+          height: 3.9rem;
+          @include bg-txt-br-color($bg-color: $venice-blue-color, $color: $white-color);
+          @include transition();
+
+          &:hover {
+            @include bg-txt-br-color($color: $venice-blue-color, $bg-color: $white-color);
+          }
+
+          @media (max-width: 425px) {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

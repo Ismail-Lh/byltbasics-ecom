@@ -1,3 +1,5 @@
+"use client";
+
 import { useMediaQuery } from "@react-hook/media-query";
 import Image from "next/image";
 

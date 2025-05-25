@@ -4,7 +4,7 @@ import { ReactQueryProvider } from "@/providers";
 
 import "./globals.scss";
 
-import { Navbar } from "@/ui/layout";
+import { Footer, Navbar } from "@/ui/layout";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
@@ -35,6 +35,7 @@ export default function RootLayout({
           <Toaster />
           <Navbar />
           {children}
+          <Footer />
         </ReactQueryProvider>
       </body>
     </html>
