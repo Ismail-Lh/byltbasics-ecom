@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { Container } from "inversify";
 
 import type { IApiResponseSanitizer, ICryptoProvider, IJwtTokenProvider, ILogger } from "@/application/providers";
-import type { IUserRepository } from "@/application/repositories";
+import type { IRefreshTokenRepository, IUserRepository } from "@/application/repositories";
 import type { IAuthLoginUseCase } from "@/application/use-cases/auth";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
 import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/controllers/auth";
@@ -13,6 +13,7 @@ import { ApiResponseSanitizer, CryptoProvider, JwtTokenProvider, Logger } from "
 import { UserRepository } from "@/infrastructure/repositories/drizzle";
 import { AuthLoginController, AuthRegisterController } from "@/presentation/controllers/auth";
 
+import { RefreshTokenRepository } from "../repositories/drizzle/refresh-token.repository";
 import { TYPES } from "./types";
 
 // Create and configure the container
@@ -55,6 +56,10 @@ function bootstrapContainer() {
   container
     .bind<IAuthLoginController>(TYPES.AuthLoginController)
     .to(AuthLoginController);
+
+  container
+    .bind<IRefreshTokenRepository>(TYPES.RefreshTokenRepository)
+    .to(RefreshTokenRepository);
 
   return container;
 }
