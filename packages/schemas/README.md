@@ -25,7 +25,8 @@ import { emailAddressSchema, passwordSchema, usernameSchema } from "@byltbasics/
 try {
   const validatedEmail = emailAddressSchema.parse("user@example.com");
   // Use the validated email
-} catch (error) {
+}
+catch (error) {
   // Handle validation error
   console.error("Invalid email:", error.message);
 }
@@ -35,7 +36,8 @@ const result = passwordSchema.safeParse("Password123!");
 if (result.success) {
   const validPassword = result.data;
   // Use the validated password
-} else {
+}
+else {
   // Handle validation error
   console.error("Invalid password:", result.error.message);
 }
@@ -56,11 +58,13 @@ const resolver = zodResolver(
 ### User Schemas
 
 - **emailAddressSchema**: Validates email addresses
+
   - Ensures string format
   - Maximum length: 255 characters
   - Validates standard email format
 
 - **passwordSchema**: Validates user passwords
+
   - Requires at least one lowercase letter
   - Requires at least one uppercase letter
   - Requires at least one digit
@@ -131,7 +135,7 @@ import { z } from "zod";
 
 /**
  * Schema for validating product prices.
- * 
+ *
  * - Must be a number
  * - Must be greater than zero
  * - Must have at most 2 decimal places
