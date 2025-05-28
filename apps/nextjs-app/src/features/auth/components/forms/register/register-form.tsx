@@ -2,12 +2,13 @@
 
 import type { z } from "zod";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { useRegister } from "@/features/auth/hooks";
 import { registerSchema } from "@/features/auth/schemas";
 import { Button, FormInput } from "@/ui/components/global";
 import { Form } from "@/ui/components/ui";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 
 import classes from "./register-form.module.scss";
 

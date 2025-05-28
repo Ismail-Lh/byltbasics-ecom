@@ -10,6 +10,7 @@ This document outlines the branching strategy for the ByltBasics E-commerce proj
 ## Feature Branch Naming Convention
 
 All feature branches should follow these naming conventions:
+
 - `feature/[feature-name]` - For new features
 - `bugfix/[bug-name]` - For bug fixes
 - `hotfix/[hotfix-name]` - For critical fixes to production
@@ -18,6 +19,7 @@ All feature branches should follow these naming conventions:
 ## Current Implementation Plan
 
 ### Phase 1: User Management Features
+
 - `feature/user-create` - Implement user creation functionality
 - `feature/user-read` - Implement user data retrieval
 - `feature/user-update` - Implement user profile updates
@@ -25,6 +27,7 @@ All feature branches should follow these naming conventions:
 - `feature/user-profile` - Implement user profile views and management
 
 ### Phase 2: Authentication Features
+
 - `feature/auth-login` - Implement login functionality
 - `feature/auth-signup` - Implement signup process
 - `feature/auth-password-reset` - Implement password reset flow
@@ -34,6 +37,7 @@ All feature branches should follow these naming conventions:
 ## Branch Workflow
 
 1. Create new feature branches from `develop`
+
    ```bash
    git checkout develop
    git pull origin develop
@@ -41,12 +45,14 @@ All feature branches should follow these naming conventions:
    ```
 
 2. Regularly commit changes to your feature branch
+
    ```bash
    git add .
    git commit -m "feat: descriptive message"
    ```
 
 3. Push feature branch to remote repository
+
    ```bash
    git push -u origin feature/feature-name
    ```
@@ -82,6 +88,7 @@ We use the Conventional Commits specification for commit messages:
 ```
 
 Types include:
+
 - feat: A new feature
 - fix: A bug fix
 - docs: Documentation changes

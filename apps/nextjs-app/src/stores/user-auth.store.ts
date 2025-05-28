@@ -1,8 +1,9 @@
 "use client";
 
-import { getAuthStatusFromCookie, setAuthStatusCookie } from "@/utils";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
+
+import { getAuthStatusFromCookie, setAuthStatusCookie } from "@/utils";
 
 // Define authentication state types
 export type AuthStatus = "authenticated" | "unauthenticated";

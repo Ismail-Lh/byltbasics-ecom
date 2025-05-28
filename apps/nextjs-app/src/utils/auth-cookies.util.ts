@@ -1,8 +1,8 @@
 /* eslint-disable node/no-process-env */
 
-import type { AuthStatus } from "@/stores/user-auth.store";
-
 import Cookies from "js-cookie";
+
+import type { AuthStatus } from "@/stores/user-auth.store";
 
 /**
  * Cookie utilities for authentication state management using js-cookie
