@@ -1,9 +1,10 @@
 import type { IApiErrorResponse, IApiSuccessResponse } from "@byltbasics/types";
 import type { AxiosError } from "axios";
 
+import axios from "axios";
+
 import { API_URL } from "@/constants/env.constants";
 import { asyncTryCatch } from "@/utils";
-import axios from "axios";
 
 import type { ILoginDto, IRegisterDto } from "../components/forms";
 

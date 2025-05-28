@@ -2,12 +2,13 @@
 
 import type { z } from "zod";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { useLogin } from "@/features/auth/hooks/use-login";
 import { loginSchema } from "@/features/auth/schemas";
 import { Button, FormInput } from "@/ui/components/global";
 import { Form } from "@/ui/components/ui";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 
 import styles from "./login-form.module.scss";
 

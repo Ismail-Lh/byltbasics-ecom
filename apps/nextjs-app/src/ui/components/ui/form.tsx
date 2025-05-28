@@ -7,8 +7,6 @@ import type {
   FieldValues,
 } from "react-hook-form";
 
-import { cn } from "@/lib/utils";
-import { Label } from "@/ui/components/ui/label";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 import {
@@ -16,6 +14,9 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form";
+
+import { cn } from "@/lib/utils";
+import { Label } from "@/ui/components/ui/label";
 
 const Form = FormProvider;
 

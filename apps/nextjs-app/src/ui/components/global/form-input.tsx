@@ -1,5 +1,7 @@
 import type { Control, FieldPath, FieldValues } from "react-hook-form";
 
+import React from "react";
+
 import {
   FormControl,
   FormField,
@@ -8,7 +10,6 @@ import {
   FormMessage,
   Input,
 } from "@/ui/components/ui";
-import React from "react";
 
 interface FormInputProps<T extends FieldValues> {
   name: FieldPath<T>;

@@ -1,5 +1,6 @@
-import { Button } from "@/ui/components/global";
 import Image from "next/image";
+
+import { Button } from "@/ui/components/global";
 
 import classes from "./styles.module.scss";
 

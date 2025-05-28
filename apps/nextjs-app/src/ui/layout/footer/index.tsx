@@ -1,9 +1,10 @@
-import { footerLinks } from "@/constants/footer-links";
-import { chunkArray } from "@/utils";
 import { Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { v4 as uuidv4 } from "uuid";
+
+import { footerLinks } from "@/constants/footer-links";
+import { chunkArray } from "@/utils";
 
 import { FooterLinkList } from "./footer-link-list";
 import styles from "./styles.module.scss";
