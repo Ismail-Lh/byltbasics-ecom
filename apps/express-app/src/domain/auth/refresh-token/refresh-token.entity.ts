@@ -1,4 +1,4 @@
-import type { ICreateRefreshTokenEntityDto } from "./dtos";
+import type { ICreateRefreshTokenEntityDto, ICreateRefreshTokenReqDto } from "./dtos";
 
 import { DeviceId, ExpiresAt, IpAddress, Token } from "./value-objects";
 
@@ -7,30 +7,33 @@ import { DeviceId, ExpiresAt, IpAddress, Token } from "./value-objects";
  * This entity contains user identification, token value, and related metadata.
  */
 export class RefreshTokenEntity {
-  /** Unique identifier of the user this token belongs to */
-  readonly userId: string;
+  readonly unhashedToken: string;
 
-  /** The secure token value generated using cryptographically safe methods */
-  readonly token: string;
+  constructor() {
+    const token = new Token();
 
-  /** ISO timestamp string representing when this token will expire */
-  readonly expiresAt: string;
+    this.unhashedToken = token.getUnhashedTokenValue;
+  }
 
-  /** Hashed identifier of the device used during authentication */
-  readonly deviceId: string;
+  createTokenRequestBody(data: ICreateRefreshTokenEntityDto): ICreateRefreshTokenReqDto {
+    return {
+      userId: data.userId,
+      token: this.generateHashedToken(this.unhashedToken),
+      expiresAt: ExpiresAt.createFromTTL(data.ttl).toString,
+      deviceId: this.generateDeviceIdHash(data.deviceId),
+      ipAddress: this.generateIpAddressHash(data.ipAddress),
+    };
+  }
 
-  /** Hashed IP address from which the authentication request originated */
-  readonly ipAddress: string;
+  generateHashedToken(rawToken: string): string {
+    return new Token().generateHashedToken(rawToken);
+  }
 
-  /**
-   * Creates a new refresh token entity
-   * @param data - The data required to create a refresh token
-   */
-  constructor(data: ICreateRefreshTokenEntityDto) {
-    this.userId = data.userId;
-    this.token = Token.generate().getValue;
-    this.expiresAt = ExpiresAt.createFromTTL(data.ttl).toString;
-    this.deviceId = DeviceId.generateHash(data.deviceId).getValue;
-    this.ipAddress = IpAddress.generateHash(data.ipAddress).getValue;
+  generateDeviceIdHash(deviceId: string): string {
+    return DeviceId.generateHash(deviceId).getValue;
+  }
+
+  generateIpAddressHash(ipAddress: string): string {
+    return IpAddress.generateHash(ipAddress).getValue;
   }
 }

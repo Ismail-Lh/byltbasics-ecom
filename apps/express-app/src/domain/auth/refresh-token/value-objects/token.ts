@@ -9,42 +9,51 @@ import { cryptoProvider } from "@/presentation/service-provider";
  */
 export class Token {
   /**
-   * The actual token value stored internally.
+   * The hashed value of the token.
    * @private
    */
-  private value: string;
+  private hashedTokenValue: string;
 
   /**
-   * Creates a new Token instance.
-   * @param value - The token string value to store
-   * @throws Error if the token format is invalid (less than 64 characters)
+   * The raw token value before hashing.
+   * This value is not stored in the database for security reasons.
+   * It is only used for comparison during authentication.
    * @private
    */
-  private constructor(value: string) {
-    if (value.length < 64) {
-      throw new Error("Invalid token format");
-    }
-    this.value = value;
+  private unhashedTokenValue: string;
+
+  /**
+   *  Constructor for the Token class.
+   */
+  constructor() {
+    this.unhashedTokenValue = cryptoProvider.generateSecureToken();
+    this.hashedTokenValue = this.generateHashedToken(this.unhashedTokenValue);
   }
 
   /**
    * Generates a new secure token.
    * Creates a random token and then hashes it without salt.
    * @returns A new Token instance containing the hashed value
-   * @static
    */
-  static generate(): Token {
-    const randomToken = cryptoProvider.generateSecureToken();
-    const tokenHash = cryptoProvider.generateUnsaltedHash(randomToken);
+  generateHashedToken(unhashedTokenValue: string): string {
+    const hashedTokenValue = cryptoProvider.generateUnsaltedHash(unhashedTokenValue);
 
-    return new Token(tokenHash);
+    return hashedTokenValue;
   }
 
   /**
-   * Retrieves the token's value.
-   * @returns The string value of the token
+   * Retrieves the unhashedToken's value.
+   * @returns The string value of the unhashedToken
    */
-  get getValue(): string {
-    return this.value;
+  get getUnhashedTokenValue(): string {
+    return this.unhashedTokenValue;
+  }
+
+  /**
+   * Retrieves the hashedToken's value.
+   * @returns The string value of the hashedToken
+   */
+  get getHashedTokenValue(): string {
+    return this.hashedTokenValue;
   }
 }
