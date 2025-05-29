@@ -83,9 +83,11 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
       throw new ForbiddenError("Invalid password or email");
     }
 
-    const refreshToken = new RefreshTokenEntity({ userId: user.id, deviceId, ipAddress, ttl: envConfig.auth.refresh_token_expires_in });
+    const refreshToken = new RefreshTokenEntity();
 
-    await this.refreshTokenRepository.create(refreshToken);
+    const createTokenBody = refreshToken.createTokenRequestBody({ userId: user.id, deviceId, ipAddress, ttl: envConfig.auth.refresh_token_expires_in });
+
+    await this.refreshTokenRepository.create(createTokenBody);
 
     const accessToken = this.jwtTokenProvider.signAccessToken(user.id);
 
@@ -94,6 +96,6 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
       email,
     });
 
-    return { accessToken, refreshToken: refreshToken.token };
+    return { accessToken, refreshToken: refreshToken.unhashedToken };
   }
 }
