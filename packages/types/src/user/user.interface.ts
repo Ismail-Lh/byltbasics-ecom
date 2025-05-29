@@ -11,7 +11,7 @@
  * @property updatedAt - Timestamp indicating when the user was last updated.
  */
 export interface IUser {
-  id: number;
+  id: string;
   name: string;
   email: string;
   isEmailVerified: boolean;

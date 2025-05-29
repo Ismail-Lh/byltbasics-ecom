@@ -7,7 +7,7 @@ export async function seedUsers(db: db) {
   await Promise.all(
     users.map(async (user) => {
       await db
-        .insert(schema.user)
+        .insert(schema.usersTable)
         .values({
           ...user,
           isEmailVerified: true,

@@ -1,3 +1,5 @@
+import type { Request } from "express";
+
 import type { EmptyRecord } from "./global";
 
 /**
@@ -7,7 +9,17 @@ export interface IHttpRequest<B, Q = EmptyRecord, P = EmptyRecord> {
   /**
    * Represents the headers of the HTTP request.
    */
-  header?: unknown;
+  headers: Request["headers"];
+
+  /**
+   * Represents the cookies of the HTTP request.
+   */
+  cookies: Request["cookies"];
+
+  /**
+   * Represents the IP address of the client making the HTTP request.
+   */
+  ip: Request["ip"];
 
   /**
    * Represents the body of the HTTP request.
