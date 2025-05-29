@@ -12,7 +12,12 @@ export interface IHttpRequest<B, Q = EmptyRecord, P = EmptyRecord> {
   headers: Request["headers"];
 
   /**
-   * Represents the HTTP method of the request (e.g., GET, POST).
+   * Represents the cookies of the HTTP request.
+   */
+  cookies: Request["cookies"];
+
+  /**
+   * Represents the IP address of the client making the HTTP request.
    */
   ip: Request["ip"];
 
