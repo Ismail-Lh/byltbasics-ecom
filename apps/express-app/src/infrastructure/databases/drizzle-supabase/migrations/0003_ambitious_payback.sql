@@ -1,0 +1,1 @@
+ALTER TABLE "refreshTokens" DROP COLUMN "revoked_at";

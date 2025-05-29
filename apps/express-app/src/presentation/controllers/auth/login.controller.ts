@@ -38,7 +38,15 @@ export class AuthLoginController implements IAuthLoginController {
   async handle(request: IHttpRequest<IAuthLoginDto>): Promise<IAuthResponseDto> {
     const body = request.body;
 
-    const authTokens = await this.authLoginUseCase.execute(body);
+    const deviceId = [
+      request.headers["user-agent"],
+      request.headers["accept-language"],
+      request.headers["sec-ch-ua-platform"],
+    ].join("|");
+
+    const ipAddress = request.ip as string;
+
+    const authTokens = await this.authLoginUseCase.execute({ ...body, deviceId, ipAddress });
 
     return authTokens;
   }

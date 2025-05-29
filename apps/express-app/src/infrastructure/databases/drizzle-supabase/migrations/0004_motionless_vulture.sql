@@ -1,0 +1,1 @@
+ALTER TABLE "refreshTokens" ALTER COLUMN "ip_address" SET DATA TYPE varchar(255);

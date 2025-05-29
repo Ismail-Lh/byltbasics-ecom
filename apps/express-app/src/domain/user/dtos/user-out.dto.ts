@@ -7,7 +7,7 @@ export interface IUserOutReqDTO {
   /**
    * The ID of the user.
    */
-  id: number;
+  id: string;
 
   /**
    * The name of the user.
