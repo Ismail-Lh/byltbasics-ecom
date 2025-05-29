@@ -3,17 +3,16 @@ import { Container } from "inversify";
 
 import type { IApiResponseSanitizer, ICryptoProvider, IJwtTokenProvider, ILogger } from "@/application/providers";
 import type { IRefreshTokenRepository, IUserRepository } from "@/application/repositories";
-import type { IAuthLoginUseCase } from "@/application/use-cases/auth";
+import type { IAuthLoginUseCase, IRefreshTokenUseCase } from "@/application/use-cases/auth";
 import type { ICreateUserUseCase } from "@/application/use-cases/user";
-import type { IAuthLoginController, IAuthRegisterController } from "@/presentation/controllers/auth";
+import type { IAuthLoginController, IAuthRegisterController, IRefreshTokenController } from "@/presentation/controllers/auth";
 
-import { AuthLoginUseCase } from "@/application/use-cases/auth";
+import { AuthLoginUseCase, RefreshTokenUseCase } from "@/application/use-cases/auth";
 import { CreateUserUseCase } from "@/application/use-cases/user";
 import { ApiResponseSanitizer, CryptoProvider, JwtTokenProvider, Logger } from "@/infrastructure/providers";
-import { UserRepository } from "@/infrastructure/repositories/drizzle";
-import { AuthLoginController, AuthRegisterController } from "@/presentation/controllers/auth";
+import { RefreshTokenRepository, UserRepository } from "@/infrastructure/repositories/drizzle";
+import { AuthLoginController, AuthRegisterController, RefreshTokenController } from "@/presentation/controllers/auth";
 
-import { RefreshTokenRepository } from "../repositories/drizzle/refresh-token.repository";
 import { TYPES } from "./types";
 
 // Create and configure the container
@@ -60,6 +59,14 @@ function bootstrapContainer() {
   container
     .bind<IRefreshTokenRepository>(TYPES.RefreshTokenRepository)
     .to(RefreshTokenRepository);
+
+  container
+    .bind<IRefreshTokenUseCase>(TYPES.RefreshTokenUseCase)
+    .to(RefreshTokenUseCase);
+
+  container
+    .bind<IRefreshTokenController>(TYPES.RefreshTokenController)
+    .to(RefreshTokenController);
 
   return container;
 }

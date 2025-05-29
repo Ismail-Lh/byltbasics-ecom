@@ -9,4 +9,6 @@ export const TYPES = {
   AuthLoginUseCase: Symbol.for("AuthLoginUseCase"),
   AuthLoginController: Symbol.for("AuthLoginController"),
   RefreshTokenRepository: Symbol.for("RefreshTokenRepository"),
+  RefreshTokenUseCase: Symbol.for("RefreshTokenUseCase"),
+  RefreshTokenController: Symbol.for("RefreshTokenController"),
 } as const;
