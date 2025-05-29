@@ -35,6 +35,8 @@ This is the backend API service for the BYLT Basics e-commerce platform, providi
 - **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)**: JWT implementation
 - **[Helmet](https://helmetjs.github.io/)**: Security headers middleware
 - **[CORS](https://www.npmjs.com/package/cors)**: Cross-origin resource sharing
+- **Session Management**: Secure refresh token implementation with rotation
+- **Device Tracking**: Browser fingerprinting for improved security
 
 ### Validation & Error Handling
 
@@ -208,6 +210,47 @@ pnpm db:push
 - Each migration has SQL files and metadata files tracking the changes
 - The `meta/_journal.json` file tracks all migrations that have been applied
 
+## Database Schema
+
+The main database tables include:
+
+### Users Table
+
+```sql
+CREATE TABLE "users" (
+  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  "name" varchar(255) NOT NULL,
+  "email" varchar(255) NOT NULL UNIQUE,
+  "is_email_verified" boolean DEFAULT false NOT NULL,
+  "email_verified_at" timestamp,
+  "password" varchar(255) NOT NULL,
+  "created_at" timestamp DEFAULT now() NOT NULL,
+  "updated_at" timestamp DEFAULT now() NOT NULL
+);
+```
+
+### RefreshTokens Table
+
+```sql
+CREATE TABLE "refreshTokens" (
+  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+  "token" varchar(255) NOT NULL,
+  "device_id" varchar(255) NOT NULL,
+  "ip_address" varchar(255),
+  "revocation_reason" varchar(255),
+  "is_revoked" boolean DEFAULT false NOT NULL,
+  "expires_at" timestamp NOT NULL,
+  "created_at" timestamp DEFAULT now() NOT NULL,
+  "updated_at" timestamp DEFAULT now() NOT NULL,
+  "user_id" uuid NOT NULL,
+  CONSTRAINT "refreshTokens_id_unique" UNIQUE("id"),
+  CONSTRAINT "refreshTokens_user_id_users_id_fk" FOREIGN KEY ("user_id")
+    REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action
+);
+```
+
+This schema supports the complete authentication flow with secure refresh token management and device tracking.
+
 ## Development
 
 ```bash
@@ -228,15 +271,18 @@ The development server will start with hot-reloading enabled, running from the e
 
   - ✅ Implemented user registration with validation and hashing
   - ✅ Added JWT-based login with access and refresh tokens
-  - ❌ Created token refresh endpoint and validation (in-progress)
+  - ✅ Created token refresh endpoint and validation
+  - ✅ Implemented token rotation for enhanced security
   - ❌ Implemented secure logout mechanism (in-progress)
   - ❌ Added password reset flow with email verification (planned)
 
 - **Security Enhancements**:
   - ✅ Strengthened password requirements with entropy checks
+  - ✅ Added device fingerprinting for session tracking
+  - ✅ Implemented IP address logging for authentication requests
+  - ✅ Created token revocation capabilities for security incidents
   - ❌ Enhanced JWT validation with proper audience and issuer checks (planned)
   - ❌ Added rate limiting for auth endpoints to prevent brute-force attacks (planned)
-  - ❌ Implemented IP-based suspicious activity detection (planned)
   - ❌ Added CSRF protection for authenticated routes (planned)
 
 ### 🛡️ Response Handling & Error Management
@@ -323,6 +369,7 @@ All API endpoints use a consistent response format and follow RESTful principles
 | ------ | --------------------- | --------------------------- | --------------------------- | -------------- |
 | POST   | /api/v1/auth/register | Register a new user account | `{ name, email, password }` | None           |
 | POST   | /api/v1/auth/login    | Authenticate and get tokens | `{ email, password }`       | None           |
+| POST   | /api/v1/auth/refresh  | Refresh access token        | None (uses refresh cookie)  | Refresh Token  |
 
 ### 👤 User Endpoints
 
@@ -351,7 +398,7 @@ The authentication system is built with security and flexibility as core princip
 
   - ✅ `AuthRegisterController`: Handles user registration with validation
   - ✅ `AuthLoginController`: Manages login and token issuance
-  - ❌ `AuthRefreshController`: Handles token refresh logic
+  - ✅ `RefreshTokenController`: Handles token verification and refresh
   - ❌ `AuthLogoutController`: Manages secure session termination
   - ❌ `AuthPasswordResetController`: Handles password reset flows
 
@@ -651,95 +698,47 @@ The application includes a dedicated authentication module that handles user reg
 - Proper error handling for auth failures
 - Input validation for all auth-related requests
 
-### Standardized API Response Format
+## Authentication Architecture
 
-The application implements a standardized API response format to ensure consistency across all endpoints:
+The API implements a robust token-based authentication system with the following components:
 
-#### Response Sanitizer
+### Access & Refresh Token Flow
 
-The `ApiResponseSanitizer` is responsible for:
+- **Two-Token Strategy**: Uses short-lived access tokens and longer-lived refresh tokens
+- **Token Rotation**: Each refresh operation invalidates the previous token for security
+- **Secure Storage**: Access tokens stored in memory, refresh tokens in HTTP-only cookies
+- **Device Binding**: Tokens are bound to specific devices using browser fingerprinting
 
-- **Formatting Responses**: Ensuring all API responses follow a consistent format
-- **Data Sanitization**: Removing sensitive data from responses (passwords, tokens, etc.)
-- **Type Safety**: Providing type-safe response structures through shared types
+### Security Measures
 
-All API responses follow these standardized formats:
+- **Token Verification**: Comprehensive validation of token integrity and ownership
+- **Revocation Capabilities**: Ability to revoke tokens individually or by user
+- **Device Tracking**: Record and validate requesting device information
+- **IP Address Logging**: Track origin IP addresses for security monitoring
+- **Value Objects**: Domain-driven approach with specialized token validation objects
 
-**Success Response Structure:**
+### Implementation Details
 
-```typescript
-{
-  success: boolean; // Always true for success responses
-  statusCode: number; // HTTP status code (200, 201, etc.)
-  body: {
-    message: string; // Success message
-    data: T; // Response data (generic type)
-  };
-}
 ```
+domain/
+└── auth/
+    └── refresh-token/
+        ├── dtos/              # Data Transfer Objects for token operations
+        ├── value-objects/     # Token, DeviceID, ExpiresAt value objects
+        ├── refresh-token.entity.ts  # Token entity with generation logic
+        └── refresh-token.model.ts   # Token verification model
 
-**Error Response Structure:**
+application/
+└── use-cases/
+    └── auth/
+        ├── auth-login.ts      # Login with token generation
+        └── refresh-token.ts   # Token verification and rotation
 
-```typescript
-{
-  success: boolean; // Always false for error responses
-  statusCode: number; // HTTP status code (400, 404, 500, etc.)
-  body: {
-    message: string; // Error message
-    name: string; // Error type identifier
-    errorDetails: any;
-  };
-}
+infrastructure/
+└── repositories/
+    └── drizzle/
+        └── refresh-token.repository.ts  # Token persistence implementation
 ```
-
-#### Sensitive Data Protection
-
-The sanitizer automatically detects and removes sensitive data using pattern matching. Fields that match any of these patterns are removed from responses:
-
-- Password fields
-- User IDs collections
-- Credit card information
-- Social security numbers
-- Authentication tokens and keys
-- API keys
-- Private keys
-- Secret keys
-- Any field matching authentication patterns
-
-This helps prevent inadvertent exposure of sensitive information through API responses.
-
-### Security
-
-- **Helmet**: Provides security headers to protect against common web vulnerabilities
-- **CORS**: Configured to only allow specific origins to access the API
-
-### Request Validation
-
-The application includes a comprehensive validation system:
-
-#### Schema-Based Validation
-
-- **Zod Schemas**: Type-safe validation schemas for all domain objects:
-
-  - User creation data
-  - Email addresses
-  - Passwords
-  - Usernames
-
-- **Value Objects**: Domain-driven design approach with value objects:
-  - `Email`: Validates and encapsulates email addresses
-  - `Password`: Validates and encapsulates password values
-  - `UserName`: Validates and encapsulates username values
-
-#### Request Validation Middleware
-
-- **validateRequest Middleware**: Generic middleware for validating HTTP requests:
-
-  - Validates request body against schemas
-  - Validates URL parameters
-  - Validates query parameters
-  - Provides descriptive error messages
-  - Throws appropriate HTTP errors for invalid data
 
 ## Testing
 
@@ -844,6 +843,54 @@ In our ongoing effort to improve security and user experience, we've made severa
 
 These improvements ensure sensitive data never leaves our API and that error messages are consistently formatted while being informative to clients. The enhanced sanitization patterns now cover a broader range of sensitive data types without impacting response performance.
 
-## 🔒 License
+## Authentication Flow
 
-Proprietary - BYLT Basics - Copyright © 2025
+The diagram below illustrates the refresh token authentication flow:
+
+```
+┌─────────────┐                                    ┌────────────┐                                    ┌───────────────┐
+│   Client    │                                    │    API     │                                    │   Database    │
+└──────┬──────┘                                    └─────┬──────┘                                    └───────┬───────┘
+       │                                                 │                                                   │
+       │ 1. POST /auth/login (email, password)           │                                                   │
+       │ ─────────────────────────────────────────────► │                                                   │
+       │                                                 │ 2. Validate credentials                           │
+       │                                                 │ ───────────────────────────────────────────────► │
+       │                                                 │                                                   │
+       │                                                 │ 3. Create refresh token                           │
+       │                                                 │ ───────────────────────────────────────────────► │
+       │                                                 │                                                   │
+       │ 4. Return access token + Set refresh_token     │                                                   │
+       │ ◄─────────────────────────────────────────────  │                                                   │
+       │    cookie (HTTP-only, Secure)                   │                                                   │
+       │                                                 │                                                   │
+       │ 5. Make authenticated request                   │                                                   │
+       │    with access token                            │                                                   │
+       │ ─────────────────────────────────────────────► │                                                   │
+       │                                                 │                                                   │
+       │ 6. Resource response                            │                                                   │
+       │ ◄───────────────────────────────────────────── │                                                   │
+       │                                                 │                                                   │
+       │ 7. Access token expires                         │                                                   │
+       │                                                 │                                                   │
+       │ 8. POST /auth/refresh                           │                                                   │
+       │    with refresh_token cookie                    │                                                   │
+       │ ─────────────────────────────────────────────► │                                                   │
+       │                                                 │ 9. Validate refresh token                         │
+       │                                                 │ ───────────────────────────────────────────────► │
+       │                                                 │                                                   │
+       │                                                 │ 10. Revoke old refresh token                      │
+       │                                                 │ ───────────────────────────────────────────────► │
+       │                                                 │                                                   │
+       │                                                 │ 11. Create new refresh token                      │
+       │                                                 │ ───────────────────────────────────────────────► │
+       │                                                 │                                                   │
+       │ 12. Return new access token + Set new cookie   │                                                   │
+       │ ◄─────────────────────────────────────────────  │                                                   │
+       │                                                 │                                                   │
+       │ 13. Resume making authenticated requests        │                                                   │
+       │ ─────────────────────────────────────────────► │                                                   │
+       │                                                 │                                                   │
+```
+
+This token rotation strategy ensures that even if a refresh token is compromised, it becomes useless after the next refresh operation.

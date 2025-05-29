@@ -7,7 +7,7 @@ import type { IAuthLoginDto, IAuthResponseDto } from "@/domain/auth/dtos";
 
 import { envConfig } from "@/config";
 import { expressAdapter } from "@/presentation/adapters/express";
-import { apiResponseSanitizer, authLoginController, authRegisterController } from "@/presentation/service-provider";
+import { apiResponseSanitizer, authLoginController, authRegisterController, refreshTokenController } from "@/presentation/service-provider";
 
 import type { EmptyRecord } from "../../types";
 
@@ -42,6 +42,21 @@ authRoutes.post("/login", validateRequest({ body: authLoginSchema }), async (req
   response.cookie(envConfig.auth.refresh_token_name, refreshToken, refreshTokenCookieConfig);
 
   response.status(httpStatus.OK).json(apiResponseSanitizer.successResponse({ message: "Login successful" }));
+});
+
+/**
+ * Endpoint to refresh access token.
+ */
+authRoutes.post("/refresh", async (request: Request, response: Response) => {
+  const data = await expressAdapter(request, refreshTokenController);
+
+  const { accessToken, refreshToken } = data;
+
+  // Set the access and refresh token cookies
+  response.cookie(envConfig.auth.access_token_name, accessToken, accessTokenCookieConfig);
+  response.cookie(envConfig.auth.refresh_token_name, refreshToken, refreshTokenCookieConfig);
+
+  response.status(httpStatus.OK).json(apiResponseSanitizer.successResponse({ message: "Refresh token successful" }));
 });
 
 export { authRoutes };

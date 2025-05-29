@@ -1,9 +1,11 @@
 import { inject, injectable } from "inversify";
 
 import type { ICryptoProvider, IJwtTokenProvider, ILogger } from "@/application/providers";
-import type { IUserRepository } from "@/application/repositories";
+import type { IRefreshTokenRepository, IUserRepository } from "@/application/repositories";
 import type { IAuthLoginDto, IAuthResponseDto } from "@/domain/auth/dtos";
 
+import { envConfig } from "@/config";
+import { RefreshTokenEntity } from "@/domain/auth/refresh-token";
 import { Email, Password } from "@/domain/user/value-objects";
 import { TYPES } from "@/infrastructure/di-container/types";
 import { ForbiddenError } from "@/infrastructure/errors";
@@ -35,6 +37,7 @@ export interface IAuthLoginUseCase {
 export class AuthLoginUseCase implements IAuthLoginUseCase {
   constructor(
     @inject(TYPES.UserRepository) private userRepository: IUserRepository,
+    @inject(TYPES.RefreshTokenRepository) private refreshTokenRepository: IRefreshTokenRepository,
     @inject(TYPES.CryptoProvider) private cryptoProvider: ICryptoProvider,
     @inject(TYPES.JwtTokenProvider) private jwtTokenProvider: IJwtTokenProvider,
     @inject(TYPES.Logger) private logger: ILogger,
@@ -43,12 +46,17 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
   /**
    * Executes the auth login use case.
    *
+   * This method validates the user's credentials, checks if the user exists,
+   * verifies the password, creates a refresh token, and generates an access token.
+   * It also logs authentication events for security monitoring.
+   *
    * @async
-   * @param {IAuthLoginDto} data - The data for user authentication login.
-   * @returns {Promise<IAuthResponseDto>} - A promise that resolves to the authentication response DTO.
+   * @param {IAuthLoginDto} data - The login data containing email, password, deviceId, and ipAddress
+   * @returns {Promise<IAuthResponseDto>} - A promise that resolves to the authentication response with access and refresh tokens
+   * @throws {ForbiddenError} - If the email doesn't exist or the password is incorrect
    */
   async execute(data: IAuthLoginDto): Promise<IAuthResponseDto> {
-    const { email, password } = data;
+    const { email, password, deviceId, ipAddress } = data;
 
     const validatedEmail = new Email(email);
     const validatedPassword = new Password(password);
@@ -75,13 +83,19 @@ export class AuthLoginUseCase implements IAuthLoginUseCase {
       throw new ForbiddenError("Invalid password or email");
     }
 
-    const authTokens = this.jwtTokenProvider.signAuthTokens(user.id);
+    const refreshToken = new RefreshTokenEntity();
+
+    const createTokenBody = refreshToken.createTokenRequestBody({ userId: user.id, deviceId, ipAddress, ttl: envConfig.auth.refresh_token_expires_in });
+
+    await this.refreshTokenRepository.create(createTokenBody);
+
+    const accessToken = this.jwtTokenProvider.signAccessToken(user.id);
 
     this.logger.info("User logged in successfully", {
       userId: user.id,
       email,
     });
 
-    return authTokens;
+    return { accessToken, refreshToken: refreshToken.unhashedToken };
   }
 }
